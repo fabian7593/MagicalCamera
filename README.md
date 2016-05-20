@@ -55,6 +55,7 @@ You need to import the library
 import com.frosquivel.magicalcamera.MagicalCamera;
 ```
 
+#####Resize photo pixels with percentage
 You need to declare and constant or a simple int variable for the quality of the photo, while greater be, greater be the quality, and otherwise, worst be the quality, like this
 ```bash
 //worst quality :( 
@@ -67,10 +68,19 @@ private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 1000;
 //private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 4000;
 ```
 
-You need to instance the MagicalTakePhoto Class, like this:
+
+#####Instance Class MagicalCamera
+You need to instance the MagicalCamera Class, like this:
 The fisrt param is the current Activity, and the second the resize percentage photo
 ```bash
  MagicalCamera magicalCamera = new MagicalCamera(this,RESIZE_PHOTO_PIXELS_PERCENTAGE);
+```
+
+
+#####Resize photo in real time
+You can resize the photo in any moment with this:
+```bash
+  magicalCamera.setResizePhoto(newResizeInteger);
 ```
 
 
@@ -134,7 +144,7 @@ This method have a lot of params that you can need to use the library:
 * **Format:** the format of the photo, maybe png, jpeg or webp. Depends of that you need.
 * **AutoIncrementNameByDate:** This variable save the photo with the photo name and the current date and hour. (Only if is true).
 
- For example: myTestMagicalCameraPhoto_20160520131344 -> This is the year 2016, month 5, day 20, hour 13, minute 13 and second 44.
+For example: myTestMagicalCameraPhoto_20160520131344 -> This is the year 2016, month 5, day 20, hour 13, minute 13 and second 44.
          
 You have this posibilities:
 ```bash
