@@ -29,6 +29,7 @@ You need for usage the library in the best way, call any permissions in Android 
 ```
 <br>
 ### How to use
+#####Add dependecies
 If you need to take photo or select picture, this is your solution.
 This library give a magical solution for take a picture, you only need to download this and integrate this in your project, maybe downloading it or import in your gradle, like this.
 
@@ -44,7 +45,7 @@ dependencies {
 }
 ```
 <br>
-####Code Example to Use
+#####Import library
 You need to import the library
 ```bash
 import com.frosquivel.magicalcamera.MagicalCamera;
@@ -185,7 +186,7 @@ All the code has a internal documentation for more explanation of this example.
 
 <br><br>
 ## License
-Source code can be found on [github](https://github.com/fabian7593/MagicalTakePhoto)<br>
+Source code can be found on [github](https://github.com/fabian7593/MagicalCamera)<br>
 Licenced under [APACHE 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 <br><br>
 
