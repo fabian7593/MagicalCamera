@@ -55,7 +55,8 @@ You need to import the library
 import com.frosquivel.magicalcamera.MagicalCamera;
 ```
 
-#####Resize photo pixels with percentage
+<br>
+#####Declare variable to resize photo ( with pixels percentage )
 You need to declare and constant or a simple int variable for the quality of the photo, while greater be, greater be the quality, and otherwise, worst be the quality, like this
 ```bash
 //worst quality :( 
@@ -68,7 +69,7 @@ private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 1000;
 //private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 4000;
 ```
 
-
+<br>
 #####Instance Class MagicalCamera
 You need to instance the MagicalCamera Class, like this:
 The fisrt param is the current Activity, and the second the resize percentage photo
@@ -76,14 +77,14 @@ The fisrt param is the current Activity, and the second the resize percentage ph
  MagicalCamera magicalCamera = new MagicalCamera(this,RESIZE_PHOTO_PIXELS_PERCENTAGE);
 ```
 
-
+<br>
 #####Resize photo in real time
 You can resize the photo in any moment with this:
 ```bash
   magicalCamera.setResizePhoto(newResizeInteger);
 ```
 
-
+<br>
 #####You Need Call Methods in Activities
 You need to call the methods for take or select pictures in activities that this form:
 
@@ -94,6 +95,7 @@ magicalCamera.takePhoto();
 //select picture
 magicalCamera.selectedPicture("my_header_name");
 ```
+
 <br>
 #####You Need Call Methods in Fragments
 You need to call the methods for take or select pictures in fragments that this form:
@@ -157,6 +159,25 @@ public boolean savePhotoInMemoryDevice(Bitmap bitmap, String photoName, String d
 public boolean savePhotoInMemoryDevice(Bitmap bitmap, String photoName, String directoryName,
 Bitmap.CompressFormat format, boolean autoIncrementNameByDate)
 ```
+
+<br>
+#####Types of Formats for save photos
+You have any type of formats for save the pictures and the bitmaps.
+You can use, the static variables of the library MagicalCamera.
+```bash
+Bitmap.CompressFormat jpeg = MagicalCamera.JPEG;
+Bitmap.CompressFormat png = MagicalCamera.PNG;
+Bitmap.CompressFormat webp = MagicalCamera.WEBP;
+```
+
+<br>
+#####Conversion Methods
+The library have any methods to convert the bitmap in other formats that you need.
+All of this methods are public statics, I mean that you dont have to instance the library for usage this.
+* **bitmapToBytes:** Convert the bitmap to array bytes, only need the bitmap param and the compress format, return array bytes.
+* **bytesToBitmap:** Convert the array bytes to bitmap, only need the array bytes in param, return bitmap.
+* **bytesToStringBase64:** Convert the array bytes to String base 64, only need the array bytes format in param, return String.
+* **stringBase64ToBytes:** Convert string to array bytes, only need the String in param, return array bytes.
 
 <br><br>
 ##Documentation
