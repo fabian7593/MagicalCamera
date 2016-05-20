@@ -68,6 +68,7 @@ private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 1000;
 ```
 
 You need to instance the MagicalTakePhoto Class, like this:
+The fisrt param is the current Activity, and the second the resize percentage photo
 ```bash
  MagicalCamera magicalCamera = new MagicalCamera(this,RESIZE_PHOTO_PIXELS_PERCENTAGE);
 ```
@@ -101,8 +102,8 @@ You need to call the methods for take or select pictures in fragments that this 
 ```
 
 <br>
-#####REMEMBER THAT
-You need to override the method onActivityResult in your activity like this
+#####Remeber override the event onActivityResult
+You need to override the method onActivityResult in your activity or fragment like this
 ```bash
  @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -115,12 +116,35 @@ You need to override the method onActivityResult in your activity like this
         imageView.setImageBitmap(magicalCamera.getMyPhoto());
 
        //if you need save your bitmap in device use this method
-       if(magicalCamera.savePhotoInMemoryDevice(magicalCamera.getMyPhoto(),"myTestPhoto", MagicalCamera.JPEG, true)){
+       if(magicalCamera.savePhotoInMemoryDevice(magicalCamera.getMyPhoto(),"myTestMagicalCameraPhoto", MagicalCamera.JPEG, true)){
            Toast.makeText(MainActivity.this, "The photo is save in device, please check this", Toast.LENGTH_SHORT).show();
        }else{
            Toast.makeText(MainActivity.this, "Sorry your photo dont write in devide, please contact with fabian7593@gmail and say this error", Toast.LENGTH_SHORT).show();
        }
     }
+```
+
+<br>
+#####The savePhotoInMemoryDevice Method
+This method save your bitmap in internal memory device or if the internal memory is full this library save in sdcard (if you have anything :'D)
+This method have a lot of params that you can need to use the library:
+     * **Bitmap:** This is the bitmap that you need to save in memory device.
+     * **PhotoName:** The name of the photo
+     * **DirectoryName:** The name of directory that you need to save the image
+     * **Format:** the format of the photo, maybe png, jpeg or webp. Depends of that you need.
+     * **AutoIncrementNameByDate:** This variable save the photo with the photo name and the current date and hour. (Only if is true)
+         For example: myTestMagicalCameraPhoto_20160520131344 -> This is the year 2016, month 5, day 20, hour 13, minute 13 and second 44.
+         
+You have this posibilities
+```bash
+public boolean savePhotoInMemoryDevice(Bitmap bitmap, String photoName, boolean autoIncrementNameByDate);
+
+public boolean savePhotoInMemoryDevice(Bitmap bitmap, String photoName, Bitmap.CompressFormat format, boolean autoIncrementNameByDate);
+
+public boolean savePhotoInMemoryDevice(Bitmap bitmap, String photoName, String directoryName, boolean autoIncrementNameByDate)
+
+public boolean savePhotoInMemoryDevice(Bitmap bitmap, String photoName, String directoryName,
+Bitmap.CompressFormat format, boolean autoIncrementNameByDate)
 ```
 
 <br><br>
