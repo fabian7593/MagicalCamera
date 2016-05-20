@@ -19,11 +19,6 @@ Download from [Here](https://github.com/fabian7593/MagicalCamera/zipball/master)
 
 Another type download by Bintray from 
  
-
-And you can add the jcenter bintray library in dependecies, like this:
-```bash
-  compile 'com.frosquivel:magicalcamera:1.0'
-```
 <br>
 ### What you need?
 You need for usage the library in the best way, call any permissions in Android Manifest.xml
