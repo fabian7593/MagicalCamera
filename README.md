@@ -1,6 +1,6 @@
 [![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/cameraHighQ.png)](https://github.com/fabian7593/MagicalCamera)
 
-A Magic library to take photos and select pictures in Android.
+A Magic library to take photos and select pictures in Android. In a simple way and if you need it also save the pictures in device.
 <br>
 ## SDK
 * It requires **14+ API**.
