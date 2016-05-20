@@ -176,7 +176,7 @@ All of this methods are public statics, I mean that you dont have to instance th
 * **stringBase64ToBytes:** Convert string to array bytes, only need the String in param, return array bytes.
 
 <br><br>
-##Documentation
+##Internal documentation
 All the code has a internal documentation for more explanation of this example.
 
 <br><br>
