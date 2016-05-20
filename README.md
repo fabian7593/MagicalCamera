@@ -181,7 +181,7 @@ All the code has a internal documentation for more explanation of this example.
 
 <br><br>
 ##Preview of Example
-![alt tag](https://github.com/fabian7593/MagicalTakePhoto/blob/master/image.gif)
+![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/magicalcamera.gif)
 
 
 <br><br>
