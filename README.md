@@ -69,31 +69,59 @@ private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 1000;
 
 You need to instance the MagicalTakePhoto Class, like this:
 ```bash
- MagicalTakePhoto magicalTakePhoto =  new MagicalTakePhoto(this,RESIZE_PHOTO_PIXELS_PERCENTAGE);
+ MagicalCamera magicalCamera = new MagicalCamera(this,RESIZE_PHOTO_PIXELS_PERCENTAGE);
 ```
 
-You need to call the methods for take or select pictures:
+
+#####You Need Call Methods in Activities
+You need to call the methods for take or select pictures in activities that this form:
 
 ```bash
-magicalTakePhoto.takePhoto("my_photo_name");
-magicalTakePhoto.selectedPicture("my_header_name");
+//take photo
+magicalCamera.takePhoto();
+
+//select picture
+magicalCamera.selectedPicture("my_header_name");
 ```
 <br>
-######REMEMBER THAT
+#####You Need Call Methods in Fragments
+You need to call the methods for take or select pictures in fragments that this form:
+
+```bash
+//take photo
+ if(magicalCamera.takeFragmentPhoto()){
+        startActivityForResult(magicalCamera.getIntentFragment(),MagicalCamera.TAKE_PHOTO);
+ }
+ 
+ //select picture
+ if(magicalCamera.selectedFragmentPicture()){
+      startActivityForResult(Intent.createChooser(magicalCamera.getIntentFragment(),  "My Header Example"),
+                            MagicalCamera.SELECT_PHOTO);
+   }
+```
+
+<br>
+#####REMEMBER THAT
 You need to override the method onActivityResult in your activity like this
 ```bash
  @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        magicalTakePhoto.resultPhoto(requestCode, resultCode, data);
-        //If you need to obtain your photo you need to get this like that:
-        imageView.setImageBitmap(magicalTakePhoto.getMyPhoto());
+        
+        //call this method ever
+        magicalCamera.resultPhoto(requestCode, resultCode, data);
+        
+        //with this form you obtain the bitmap
+        imageView.setImageBitmap(magicalCamera.getMyPhoto());
+
+       //if you need save your bitmap in device use this method
+       if(magicalCamera.savePhotoInMemoryDevice(magicalCamera.getMyPhoto(),"myTestPhoto", MagicalCamera.JPEG, true)){
+           Toast.makeText(MainActivity.this, "The photo is save in device, please check this", Toast.LENGTH_SHORT).show();
+       }else{
+           Toast.makeText(MainActivity.this, "Sorry your photo dont write in devide, please contact with fabian7593@gmail and say this error", Toast.LENGTH_SHORT).show();
+       }
     }
 ```
-<br>
-######REMEMBER AGAIN
-The photo only get in Bitmap Format and only when the  onActivityResult Event is shoot up.
-
 
 <br><br>
 ##Documentation
