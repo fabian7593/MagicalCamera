@@ -128,11 +128,11 @@ You need to override the method onActivityResult in your activity or fragment li
 #####The savePhotoInMemoryDevice Method
 This method save your bitmap in internal memory device or if the internal memory is full this library save in sdcard (if you have anything :'D)
 This method have a lot of params that you can need to use the library:
-     * **Bitmap:** This is the bitmap that you need to save in memory device.
-     * **PhotoName:** The name of the photo
-     * **DirectoryName:** The name of directory that you need to save the image
-     * **Format:** the format of the photo, maybe png, jpeg or webp. Depends of that you need.
-     * **AutoIncrementNameByDate:** This variable save the photo with the photo name and the current date and hour. (Only if is true)
+* **Bitmap:** This is the bitmap that you need to save in memory device.
+* **PhotoName:** The name of the photo
+* **DirectoryName:** The name of directory that you need to save the image
+* **Format:** the format of the photo, maybe png, jpeg or webp. Depends of that you need.
+* **AutoIncrementNameByDate:** This variable save the photo with the photo name and the current date and hour. (Only if is true)
          For example: myTestMagicalCameraPhoto_20160520131344 -> This is the year 2016, month 5, day 20, hour 13, minute 13 and second 44.
          
 You have this posibilities
