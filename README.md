@@ -35,15 +35,21 @@ This library give a magical solution for take a picture, you only need to downlo
 
 ```bash
 repositories {
-....
     jcenter()
 }
 
 dependencies {
-....
     compile 'com.frosquivel:magicalcamera:1.0'
 }
 ```
+
+If you have any problem with this dependence, because the library override any styles or others please change the last line for this code:
+```bash
+ compile('com.frosquivel:magicalcamera:1.0@aar') {
+        transitive = false;
+    }
+```
+
 <br>
 #####Import library
 You need to import the library
@@ -74,14 +80,7 @@ The fisrt param is the current Activity, and the second the resize percentage ph
 ```
 
 <br>
-#####Resize photo in real time
-You can resize the photo in any moment with this:
-```bash
-  magicalCamera.setResizePhoto(newResizeInteger);
-```
-
-<br>
-#####You Need Call Methods in Activities
+#####Activities Methods
 You need to call the methods for take or select pictures in activities that this form:
 
 ```bash
@@ -93,7 +92,7 @@ magicalCamera.selectedPicture("my_header_name");
 ```
 
 <br>
-#####You Need Call Methods in Fragments
+#####Fragments Methods
 You need to call the methods for take or select pictures in fragments that this form:
 
 ```bash
@@ -116,7 +115,6 @@ You need to override the method onActivityResult in your activity or fragment li
  @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        
         //call this method ever
         magicalCamera.resultPhoto(requestCode, resultCode, data);
         
@@ -143,15 +141,9 @@ This method have a lot of params that you can need to use the library:
 * **AutoIncrementNameByDate:** This variable save the photo with the photo name and the current date and hour. (Only if is true).
 
 For example: myTestMagicalCameraPhoto_20160520131344 -> This is the year 2016, month 5, day 20, hour 13, minute 13 and second 44.
-         
-You have this posibilities:
+
+The method:
 ```bash
-public boolean savePhotoInMemoryDevice(Bitmap bitmap, String photoName, boolean autoIncrementNameByDate);
-
-public boolean savePhotoInMemoryDevice(Bitmap bitmap, String photoName, Bitmap.CompressFormat format, boolean autoIncrementNameByDate);
-
-public boolean savePhotoInMemoryDevice(Bitmap bitmap, String photoName, String directoryName, boolean autoIncrementNameByDate)
-
 public boolean savePhotoInMemoryDevice(Bitmap bitmap, String photoName, String directoryName,
 Bitmap.CompressFormat format, boolean autoIncrementNameByDate)
 ```
@@ -164,6 +156,13 @@ You can use, the static variables of the library MagicalCamera.
 Bitmap.CompressFormat jpeg = MagicalCamera.JPEG;
 Bitmap.CompressFormat png = MagicalCamera.PNG;
 Bitmap.CompressFormat webp = MagicalCamera.WEBP;
+```
+
+<br>
+#####Resize photo in real time
+You can resize the photo in any moment with this:
+```bash
+  magicalCamera.setResizePhoto(newResizeInteger);
 ```
 
 <br>
