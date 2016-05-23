@@ -65,7 +65,7 @@ You need to declare and constant or a simple int variable for the quality of the
 ```bash
 //a regular quality, if you declare with 50 is a worst quality and if you declare with 4000 is the better quality
 //only need to play with this variable (0 to 4000 ... or in other words, worst to better :D)
-//private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 1000;
+private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 1000;
 ```
 
 <br>
