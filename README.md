@@ -2,6 +2,8 @@
 
 A Magic library to take photos and select pictures in Android. In a simple way and if you need it also save the pictures in device.
 <br>
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-MagicalCamera-green.svg?style=true)](https://android-arsenal.com/details/1/3623)
+<br>
 ## SDK
 * It requires **14+ API**.
 <br>
@@ -144,8 +146,8 @@ For example: myTestMagicalCameraPhoto_20160520131344 -> This is the year 2016, m
 
 The method:
 ```bash
-public boolean savePhotoInMemoryDevice(Bitmap bitmap, String photoName, String directoryName,
-Bitmap.CompressFormat format, boolean autoIncrementNameByDate)
+ public boolean savePhotoInMemoryDevice(Bitmap bitmap, String photoName, String directoryName,
+ Bitmap.CompressFormat format, boolean autoIncrementNameByDate)
 ```
 
 <br>
@@ -153,16 +155,16 @@ Bitmap.CompressFormat format, boolean autoIncrementNameByDate)
 You have any type of formats for save the pictures and the bitmaps.
 You can use, the static variables of the library MagicalCamera.
 ```bash
-Bitmap.CompressFormat jpeg = MagicalCamera.JPEG;
-Bitmap.CompressFormat png = MagicalCamera.PNG;
-Bitmap.CompressFormat webp = MagicalCamera.WEBP;
+ Bitmap.CompressFormat jpeg = MagicalCamera.JPEG;
+ Bitmap.CompressFormat png = MagicalCamera.PNG;
+ Bitmap.CompressFormat webp = MagicalCamera.WEBP;
 ```
 
 <br>
 #####Resize photo in real time
 You can resize the photo in any moment with this:
 ```bash
-  magicalCamera.setResizePhoto(newResizeInteger);
+   magicalCamera.setResizePhoto(newResizeInteger);
 ```
 
 <br>
