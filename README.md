@@ -45,7 +45,7 @@ dependencies {
 }
 ```
 
-If you have any problem with this dependence, because the library override any styles or others please change the last line for this code:
+If you have any problem with this dependence, because the library override any styles or others, please change the last line for this code:
 ```bash
  compile('com.frosquivel:magicalcamera:1.0@aar') {
         transitive = false;
