@@ -180,6 +180,9 @@ All the code has a internal documentation for more explanation of this example.
 ##Preview of Example
 ![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/magicalcamera.gif)
 
+<br><br>
+##You can see the video explication here (in spanish)
+https://www.youtube.com/watch?v=U-JxaFZDSn4
 
 <br><br>
 ## License
