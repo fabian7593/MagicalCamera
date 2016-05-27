@@ -30,13 +30,13 @@ public class MagicalCamera {
     //================================================================================
     //region Properties
     //The constants for take or selected photo validate
-    public static int TAKE_PHOTO = 0;
-    public static int SELECT_PHOTO = 1;
+    public static final int TAKE_PHOTO = 0;
+    public static final int SELECT_PHOTO = 1;
 
     //compress format public static variables
-    public static Bitmap.CompressFormat JPEG = Bitmap.CompressFormat.JPEG;
-    public static Bitmap.CompressFormat PNG = Bitmap.CompressFormat.PNG;
-    public static Bitmap.CompressFormat WEBP = Bitmap.CompressFormat.WEBP;
+    public static final Bitmap.CompressFormat JPEG = Bitmap.CompressFormat.JPEG;
+    public static final Bitmap.CompressFormat PNG = Bitmap.CompressFormat.PNG;
+    public static final Bitmap.CompressFormat WEBP = Bitmap.CompressFormat.WEBP;
 
     //the max of quality photo
     int BEST_QUALITY_PHOTO = 4000;
