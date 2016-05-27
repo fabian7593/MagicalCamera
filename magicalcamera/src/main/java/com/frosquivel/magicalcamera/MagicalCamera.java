@@ -28,6 +28,7 @@ public class MagicalCamera {
     //================================================================================
     // Properties
     //================================================================================
+    public static final String MAGICAL_CAMERA = "MagicalCamera";
     //region Properties
     //The constants for take or selected photo validate
     public static final int TAKE_PHOTO = 0;
@@ -59,6 +60,28 @@ public class MagicalCamera {
     //endregion
 
     //================================================================================
+    // Constructs
+    //================================================================================
+    //region Construct
+    public MagicalCamera(Activity activity, int resizePhoto) {
+        if(resizePhoto<BEST_QUALITY_PHOTO)
+            this.resizePhoto = resizePhoto;
+        else
+            this.resizePhoto = BEST_QUALITY_PHOTO;
+
+        if(resizePhoto == 0){
+            this.resizePhoto = 1;
+        }
+        this.activity = activity;
+    }
+
+    public MagicalCamera(Activity activity) {
+        this.activity = activity;
+        this.resizePhoto = BEST_QUALITY_PHOTO;
+    }
+
+    //endregion
+    //================================================================================
     // Accessors
     //================================================================================
     //region Getter and Setters
@@ -87,28 +110,6 @@ public class MagicalCamera {
     //endregion
 
     //================================================================================
-    // Constructs
-    //================================================================================
-    //region Construct
-    public MagicalCamera(Activity activity, int resizePhoto) {
-        if(resizePhoto<BEST_QUALITY_PHOTO)
-            this.resizePhoto = resizePhoto;
-        else
-            this.resizePhoto = BEST_QUALITY_PHOTO;
-
-        if(resizePhoto == 0){
-            this.resizePhoto = 1;
-        }
-        this.activity = activity;
-    }
-
-    public MagicalCamera(Activity activity) {
-        this.activity = activity;
-        this.resizePhoto = BEST_QUALITY_PHOTO;
-    }
-    //endregion
-
-    //================================================================================
     // Principal Methods
     //================================================================================
     //region Take and Select photos
@@ -116,8 +117,8 @@ public class MagicalCamera {
      * This method call the intent to take photo
      */
     public void takePhoto(){
-        this.thePhotoName = "MagicalCamera";
-        this.anotherPhotoName = "MagicalCamera";
+        this.thePhotoName = MAGICAL_CAMERA;
+        this.anotherPhotoName = MAGICAL_CAMERA;
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, getPhotoFileUri(this.thePhotoName ,this.anotherPhotoName, this.activity));
 
@@ -130,8 +131,8 @@ public class MagicalCamera {
      * This library call the intent to take photo
      */
     public boolean takeFragmentPhoto(){
-        this.thePhotoName = "MagicalCamera";
-        this.anotherPhotoName = "MagicalCamera";
+        this.thePhotoName = MAGICAL_CAMERA;
+        this.anotherPhotoName = MAGICAL_CAMERA;
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, getPhotoFileUri(this.thePhotoName ,this.anotherPhotoName, this.activity));
 
@@ -154,7 +155,7 @@ public class MagicalCamera {
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         intent.setType("image/*");
         this.activity.startActivityForResult(
-                Intent.createChooser(intent, (!headerName.equals("") ? headerName : "Magical Camera")),
+                Intent.createChooser(intent, !headerName.equals("") ? headerName : "Magical Camera"),
                 SELECT_PHOTO);
     }
 
@@ -253,19 +254,22 @@ public class MagicalCamera {
         DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
         String date = df.format(Calendar.getInstance().getTime());
 
+        String newPhotoName;
         if(format == PNG){
-            photoName = (autoIncrementNameByDate) ?  photoName + "_" + date + ".png" : photoName + ".png";
+            newPhotoName = autoIncrementNameByDate ?  photoName + "_" + date + ".png" : photoName + ".png";
         }else if (format == JPEG){
-            photoName = (autoIncrementNameByDate) ?  photoName + "_" + date + ".jpeg" : photoName + ".jpeg";
+            newPhotoName = autoIncrementNameByDate ?  photoName + "_" + date + ".jpeg" : photoName + ".jpeg";
         }else if (format == WEBP){
-            photoName = (autoIncrementNameByDate) ?  photoName + "_" + date + ".webp" : photoName + ".webp";
+            newPhotoName = autoIncrementNameByDate ?  photoName + "_" + date + ".webp" : photoName + ".webp";
+        } else {
+            newPhotoName = photoName;
         }
 
         File wallpaperDirectory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES + "/" + directoryName + "/");
         if (!wallpaperDirectory.exists()) {
             wallpaperDirectory.mkdirs();
         }
-        File f = new File(wallpaperDirectory,photoName);
+        File f = new File(wallpaperDirectory,newPhotoName);
 
         try {
             f.createNewFile();
@@ -320,10 +324,10 @@ public class MagicalCamera {
     private static Bitmap resizePhoto(Bitmap realImage, float maxImageSize,
                                       boolean filter) {
         float ratio = Math.min(
-                (float) maxImageSize / realImage.getWidth(),
-                (float) maxImageSize / realImage.getHeight());
-        int width = Math.round((float) ratio * realImage.getWidth());
-        int height = Math.round((float) ratio * realImage.getHeight());
+                maxImageSize / realImage.getWidth(),
+                maxImageSize / realImage.getHeight());
+        int width = Math.round(ratio * realImage.getWidth());
+        int height = Math.round(ratio * realImage.getHeight());
 
         Bitmap newBitmap = Bitmap.createScaledBitmap(realImage, width,
                 height, filter);
