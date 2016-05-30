@@ -122,7 +122,7 @@ You need to override the method onActivityResult in your activity or fragment li
         imageView.setImageBitmap(magicalCamera.getMyPhoto());
 
        //if you need save your bitmap in device use this method
-       if(magicalCamera.savePhotoInMemoryDevice(magicalCamera.getMyPhoto(),"myTestMagicalCameraPhoto", MagicalCamera.JPEG, true)){
+       if(magicalCamera.savePhotoInMemoryDevice(magicalCamera.getMyPhoto(),"myPhotoName","myDirectoryName", MagicalCamera.JPEG, true)){
            Toast.makeText(MainActivity.this, "The photo is save in device, please check this", Toast.LENGTH_SHORT).show();
        }else{
            Toast.makeText(MainActivity.this, "Sorry your photo dont write in devide, please contact with fabian7593@gmail and say this error", Toast.LENGTH_SHORT).show();
