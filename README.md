@@ -2,10 +2,6 @@
 
 A Magic library to take photos and select pictures in Android. In a simple way and if you need it also save the pictures in device.
 <br>
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-MagicalCamera-green.svg?style=true)](https://android-arsenal.com/details/1/3623)
-
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a64cbf5369e14c3d98f8722c4ad3fad7)](https://www.codacy.com/app/fabian7593/MagicalCamera?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fabian7593/MagicalCamera&amp;utm_campaign=Badge_Grade)
-<br>
 ## SDK
 * It requires **14+ API**.
 <br>
@@ -21,7 +17,7 @@ git clone https://github.com/fabian7593/MagicalCamera.git
 
 Download from [Here](https://github.com/fabian7593/MagicalCamera/zipball/master)
 
-Another type download by Bintray from   [ ![Download](https://api.bintray.com/packages/fabian7593/maven/MagicalCamera/images/download.svg) ](https://bintray.com/fabian7593/maven/MagicalCamera/_latestVersion)
+Another type download by Bintray from 
  
 <br>
 ### What you need?
@@ -39,21 +35,15 @@ This library give a magical solution for take a picture, you only need to downlo
 
 ```bash
 repositories {
+....
     jcenter()
 }
 
 dependencies {
+....
     compile 'com.frosquivel:magicalcamera:1.0'
 }
 ```
-
-If you have any problem with this dependence, because the library override any styles or others, please change the last line for this code:
-```bash
- compile('com.frosquivel:magicalcamera:1.0@aar') {
-        transitive = false;
-    }
-```
-
 <br>
 #####Import library
 You need to import the library
@@ -65,10 +55,14 @@ import com.frosquivel.magicalcamera.MagicalCamera;
 #####Declare variable to resize photo ( with pixels percentage )
 You need to declare and constant or a simple int variable for the quality of the photo, while greater be, greater be the quality, and otherwise, worst be the quality, like this
 ```bash
-//a regular quality, if you declare with 50 is a worst quality and if you declare with 4000 is the better quality
-//only need to play with this variable (0 to 4000 ... or in other words, worst to better :D)
+//worst quality :( 
+//private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 50;
 
+//a regular quality
 private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 1000;
+
+//The best quality :D
+//private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 4000;
 ```
 
 <br>
@@ -80,7 +74,14 @@ The fisrt param is the current Activity, and the second the resize percentage ph
 ```
 
 <br>
-#####Activities Methods
+#####Resize photo in real time
+You can resize the photo in any moment with this:
+```bash
+  magicalCamera.setResizePhoto(newResizeInteger);
+```
+
+<br>
+#####You Need Call Methods in Activities
 You need to call the methods for take or select pictures in activities that this form:
 
 ```bash
@@ -92,7 +93,7 @@ magicalCamera.selectedPicture("my_header_name");
 ```
 
 <br>
-#####Fragments Methods
+#####You Need Call Methods in Fragments
 You need to call the methods for take or select pictures in fragments that this form:
 
 ```bash
@@ -115,6 +116,7 @@ You need to override the method onActivityResult in your activity or fragment li
  @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        
         //call this method ever
         magicalCamera.resultPhoto(requestCode, resultCode, data);
         
@@ -122,7 +124,7 @@ You need to override the method onActivityResult in your activity or fragment li
         imageView.setImageBitmap(magicalCamera.getMyPhoto());
 
        //if you need save your bitmap in device use this method
-       if(magicalCamera.savePhotoInMemoryDevice(magicalCamera.getMyPhoto(),"myPhotoName","myDirectoryName", MagicalCamera.JPEG, true)){
+       if(magicalCamera.savePhotoInMemoryDevice(magicalCamera.getMyPhoto(),"myTestMagicalCameraPhoto", MagicalCamera.JPEG, true)){
            Toast.makeText(MainActivity.this, "The photo is save in device, please check this", Toast.LENGTH_SHORT).show();
        }else{
            Toast.makeText(MainActivity.this, "Sorry your photo dont write in devide, please contact with fabian7593@gmail and say this error", Toast.LENGTH_SHORT).show();
@@ -141,11 +143,17 @@ This method have a lot of params that you can need to use the library:
 * **AutoIncrementNameByDate:** This variable save the photo with the photo name and the current date and hour. (Only if is true).
 
 For example: myTestMagicalCameraPhoto_20160520131344 -> This is the year 2016, month 5, day 20, hour 13, minute 13 and second 44.
-
-The method:
+         
+You have this posibilities:
 ```bash
- public boolean savePhotoInMemoryDevice(Bitmap bitmap, String photoName, String directoryName,
- Bitmap.CompressFormat format, boolean autoIncrementNameByDate)
+public boolean savePhotoInMemoryDevice(Bitmap bitmap, String photoName, boolean autoIncrementNameByDate);
+
+public boolean savePhotoInMemoryDevice(Bitmap bitmap, String photoName, Bitmap.CompressFormat format, boolean autoIncrementNameByDate);
+
+public boolean savePhotoInMemoryDevice(Bitmap bitmap, String photoName, String directoryName, boolean autoIncrementNameByDate)
+
+public boolean savePhotoInMemoryDevice(Bitmap bitmap, String photoName, String directoryName,
+Bitmap.CompressFormat format, boolean autoIncrementNameByDate)
 ```
 
 <br>
@@ -153,16 +161,9 @@ The method:
 You have any type of formats for save the pictures and the bitmaps.
 You can use, the static variables of the library MagicalCamera.
 ```bash
- Bitmap.CompressFormat jpeg = MagicalCamera.JPEG;
- Bitmap.CompressFormat png = MagicalCamera.PNG;
- Bitmap.CompressFormat webp = MagicalCamera.WEBP;
-```
-
-<br>
-#####Resize photo in real time
-You can resize the photo in any moment with this:
-```bash
-   magicalCamera.setResizePhoto(newResizeInteger);
+Bitmap.CompressFormat jpeg = MagicalCamera.JPEG;
+Bitmap.CompressFormat png = MagicalCamera.PNG;
+Bitmap.CompressFormat webp = MagicalCamera.WEBP;
 ```
 
 <br>
@@ -180,11 +181,8 @@ All the code has a internal documentation for more explanation of this example.
 
 <br><br>
 ##Preview of Example
-![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/magicalcamera.gif)
+![alt tag](https://github.com/fabian7593/MagicalTakePhoto/blob/master/image.gif)
 
-<br><br>
-##You can see the video explication here (in spanish)
-https://www.youtube.com/watch?v=U-JxaFZDSn4
 
 <br><br>
 ## License

@@ -48,6 +48,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center" />
+
+
+            <Button
+                android:id="@+id/btnSeeData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="See photo data" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
