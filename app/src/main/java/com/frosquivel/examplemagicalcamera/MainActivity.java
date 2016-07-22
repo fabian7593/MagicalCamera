@@ -149,6 +149,9 @@ public class MainActivity extends AppCompatActivity {
         if(magicalCamera.getMyPhoto()!=null) {
             imageView.setImageBitmap(magicalCamera.getMyPhoto());
 
+            imageView.setImageBitmap(magicalCamera.printSquare());
+            imageView.setScaleType(ImageView.ScaleType.CENTER);
+
             if (magicalCamera.savePhotoInMemoryDevice(magicalCamera.getMyPhoto(), "myTestPhoto", MagicalCamera.JPEG, true)) {
                 Toast.makeText(MainActivity.this, "The photo is save in device, please check this", Toast.LENGTH_SHORT).show();
             } else {

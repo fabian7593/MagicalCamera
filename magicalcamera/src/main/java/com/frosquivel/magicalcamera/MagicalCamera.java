@@ -7,14 +7,20 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Matrix;
+import android.graphics.Paint;
+import android.graphics.PointF;
 import android.media.ExifInterface;
+import android.media.FaceDetector;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.provider.Settings;
 import android.util.Base64;
+import android.widget.ImageView;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -88,6 +94,8 @@ public class MagicalCamera {
     String dateStamp;
 
     private String realPath;
+
+    FaceDetector.Face[] myFace;
     //endregion
 
 
@@ -756,8 +764,48 @@ public class MagicalCamera {
     }
 
 
+    //================================================================================
+    // Face detector method
+    //================================================================================
+
+    public int faceDetector(){
+        int imageWidth = this.getMyPhoto().getWidth();
+        int imageHeight = this.getMyPhoto().getHeight();
+        myFace = new FaceDetector.Face[1000];
+        FaceDetector myFaceDetect = new FaceDetector(imageWidth, imageHeight, 1000);
+        return myFaceDetect.findFaces(this.getMyPhoto(), myFace);
+    }
 
 
+    public Bitmap printSquare(){
+
+        Bitmap myBitmap = Bitmap.createBitmap(this.getMyPhoto().getWidth(), this.getMyPhoto().getHeight(), Bitmap.Config.ARGB_8888);
+        //Canvas cc = new Canvas();
+
+        //frndsimag.setImageBitmap(bmp);
+        //frndsimag.setScaleType(ImageView.ScaleType.CENTER);
+
+        //cc.drawBitmap(myBitmap, 0, 0, null);
+        Paint myPaint = new Paint();
+        myPaint.setColor(Color.GREEN);
+        myPaint.setStyle(Paint.Style.STROKE);
+        myPaint.setStrokeWidth(3);
+
+        Canvas cc = new Canvas(myBitmap);
+        cc.drawRect(48, 48, 48, 48, myPaint);
+        for (int i = 0; i < faceDetector(); i++) {
+            FaceDetector.Face face = myFace[i];
+            PointF myMidPoint = new PointF();
+            face.getMidPoint(myMidPoint);
+            float  myEyesDistance = face.eyesDistance();
+            cc.drawRect((int) (myMidPoint.x - myEyesDistance * 2),
+            (int) (myMidPoint.y - myEyesDistance * 2),
+            (int) (myMidPoint.x + myEyesDistance * 2),
+            (int) (myMidPoint.y + myEyesDistance * 2), myPaint);
+        }
+
+        return myBitmap;
+    }
 
     //================================================================================
     // Conversion Methods
