@@ -197,7 +197,7 @@ All of this methods are public statics, I mean that you dont have to instance th
 
 ###Explain New functionalities
 
-#### Facial Recognition:
+## Facial Recognition:
 
 This is a method to return your bitmap (magicalCamera.getMyPhoto()) like another bitmap with a square draws arround the face of the photo, with the posibillity of modify the color and the stroke of the square. And this is not all, you have the posibility of call the List<Landmark> of the photo with facial recognitions, for save data of all faces, for example the distance between eyes, the nose position and mounth position, all of this is important information for facials recognitions.
 
@@ -226,7 +226,7 @@ The photo and bitmap converted is like to:
 ![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/faceDetection2.png)
 
 
-#### Private information Photo:
+## Private information Photo:
 This method show you the private information photo if the photo is saved in device or not... 
 For view all information the device need to activate GPS locations (and maybe internet), else not show all information :(.
 
