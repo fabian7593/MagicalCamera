@@ -205,6 +205,7 @@ You need to write for example:
 ```bash
 if(magicalCamera != null){
     if(magicalCamera.getMyPhoto() != null){
+         //this comment line is the strok 5 and color red for default
          //imageView.setImageBitmap(magicalCamera.faceDetector());
          imageView.setImageBitmap(magicalCamera.faceDetector(50, Color.GREEN));
 
@@ -222,7 +223,7 @@ if(magicalCamera != null){
 ```
 
 The photo and bitmap converted is like to:
-
+![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/faceDetection.png)
 
 ###Issues Fixed
 * This version fix the issue of permission of android Marshmallow.
