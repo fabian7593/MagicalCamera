@@ -1,7 +1,6 @@
 package com.frosquivel.magicalcamera;
 
 import android.app.Activity;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.Cursor;
@@ -12,15 +11,15 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PointF;
+import android.graphics.RectF;
 import android.media.ExifInterface;
-import android.media.FaceDetector;
+
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
-import android.provider.Settings;
 import android.util.Base64;
-import android.widget.ImageView;
+import android.util.SparseArray;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -29,6 +28,14 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
+
+import com.google.android.gms.vision.Frame;
+import com.google.android.gms.vision.face.Face;
+import com.google.android.gms.vision.face.FaceDetector;
+import com.google.android.gms.vision.face.Landmark;
+
+import static android.graphics.Color.*;
 
 /**
  * Created by          Fabián Rosales Esquivel
@@ -49,7 +56,6 @@ public class MagicalCamera {
     public static int TAKE_PHOTO = 0;
     public static int SELECT_PHOTO = 1;
     public static final int LANDSCAPE_CAMERA = 1;
-    private static final int SAMSUNG_CAMERA = 2;
     private static final int NORMAL_CAMERA = 3;
 
     //compress format public static variables
@@ -94,8 +100,7 @@ public class MagicalCamera {
     String dateStamp;
 
     private String realPath;
-
-    FaceDetector.Face[] myFace;
+    private List<Landmark> listLandMarkPhoto;
     //endregion
 
 
@@ -183,6 +188,10 @@ public class MagicalCamera {
 
     public String getRealPath() {
         return realPath;
+    }
+
+    public List<Landmark> getListLandMarkPhoto() {
+        return listLandMarkPhoto;
     }
     //endregion
 
@@ -313,9 +322,24 @@ public class MagicalCamera {
             }
 
             if (this.myPhoto != null) {
-                if (ifCameraLandScape() == LANDSCAPE_CAMERA) {
-                    this.myPhoto = rotateImage(getMyPhoto(), 90);
-                } else if (ifCameraLandScape() == SAMSUNG_CAMERA) {
+                if (ifCameraLandScape(true) == LANDSCAPE_CAMERA) {
+                    this.myPhoto = rotateImage(getMyPhoto(), 270);
+                }
+            }
+        }
+    }
+
+
+    public void resultPhoto(int requestCode, int resultCode, Intent data, boolean doLandScape) {
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == SELECT_PHOTO) {
+                this.myPhoto = onSelectFromGalleryResult(data);
+            } else if (requestCode == TAKE_PHOTO) {
+                this.myPhoto = onTakePhotoResult();
+            }
+
+            if (this.myPhoto != null) {
+                if (ifCameraLandScape(doLandScape) == LANDSCAPE_CAMERA) {
                     this.myPhoto = rotateImage(getMyPhoto(), 270);
                 }
             }
@@ -493,11 +517,15 @@ public class MagicalCamera {
     // Utils methods, resize and get Photo Uri and others
     //================================================================================
     //region Utils
-    public static int ifCameraLandScape() {
-        if (rotateIfSamsung()) {
-            return SAMSUNG_CAMERA;
-        } else {
-            return NORMAL_CAMERA;
+    public static int ifCameraLandScape(boolean doRotate) {
+        if(doRotate) {
+            if (rotateIfLandScapeCamera()) {
+                return LANDSCAPE_CAMERA;
+            } else {
+                return NORMAL_CAMERA;
+            }
+        }else{
+            return 0;
         }
     }
 
@@ -505,10 +533,12 @@ public class MagicalCamera {
      * Rotate the image if the device camera is land scape
      * @return
      */
-    private static boolean rotateIfSamsung() {
+    private static boolean rotateIfLandScapeCamera() {
         if (Build.BRAND.toLowerCase().equals("samsung")) {
             return true;
-        } else {
+        } else if(Build.BRAND.toLowerCase().equals("sony")){
+            return true;
+        }else{
             return false;
         }
     }
@@ -765,46 +795,104 @@ public class MagicalCamera {
 
 
     //================================================================================
-    // Face detector method
+    // Face detector methods
     //================================================================================
+    public Bitmap faceDetector(int stroke, int color){
 
-    public int faceDetector(){
-        int imageWidth = this.getMyPhoto().getWidth();
-        int imageHeight = this.getMyPhoto().getHeight();
-        myFace = new FaceDetector.Face[1000];
-        FaceDetector myFaceDetect = new FaceDetector(imageWidth, imageHeight, 1000);
-        return myFaceDetect.findFaces(this.getMyPhoto(), myFace);
-    }
-
-
-    public Bitmap printSquare(){
-
-        Bitmap myBitmap = Bitmap.createBitmap(this.getMyPhoto().getWidth(), this.getMyPhoto().getHeight(), Bitmap.Config.ARGB_8888);
-        //Canvas cc = new Canvas();
-
-        //frndsimag.setImageBitmap(bmp);
-        //frndsimag.setScaleType(ImageView.ScaleType.CENTER);
-
-        //cc.drawBitmap(myBitmap, 0, 0, null);
-        Paint myPaint = new Paint();
-        myPaint.setColor(Color.GREEN);
-        myPaint.setStyle(Paint.Style.STROKE);
-        myPaint.setStrokeWidth(3);
-
-        Canvas cc = new Canvas(myBitmap);
-        cc.drawRect(48, 48, 48, 48, myPaint);
-        for (int i = 0; i < faceDetector(); i++) {
-            FaceDetector.Face face = myFace[i];
-            PointF myMidPoint = new PointF();
-            face.getMidPoint(myMidPoint);
-            float  myEyesDistance = face.eyesDistance();
-            cc.drawRect((int) (myMidPoint.x - myEyesDistance * 2),
-            (int) (myMidPoint.y - myEyesDistance * 2),
-            (int) (myMidPoint.x + myEyesDistance * 2),
-            (int) (myMidPoint.y + myEyesDistance * 2), myPaint);
+        if(stroke<1){
+            stroke =1;
+        }else if(stroke > 80){
+            stroke = 80;
         }
 
-        return myBitmap;
+        FaceDetector detector = new FaceDetector.Builder(this.activity)
+                .setMode(FaceDetector.ACCURATE_MODE)
+                .setLandmarkType(FaceDetector.ALL_LANDMARKS)
+                .setClassificationType(FaceDetector.ALL_CLASSIFICATIONS)
+                .setTrackingEnabled(false)
+                .build();
+
+        if(false == detector.isOperational()){
+            return null;
+        }
+
+        //Add the image on a Frame object
+        Frame frame = new Frame.Builder()
+                .setBitmap(getMyPhoto())
+                .build();
+
+        //Detect all faces from Frame object
+        SparseArray<Face> faceArray = detector.detect(frame);
+
+        //Do some drawing on faces
+        Bitmap outBitmap = drawOnFace(faceArray,stroke,color);
+
+        //Releasing the detector object
+        detector.release();
+        return outBitmap;
+    }
+
+    public Bitmap faceDetector(){
+        FaceDetector detector = new FaceDetector.Builder(this.activity)
+                .setMode(FaceDetector.ACCURATE_MODE)
+                .setLandmarkType(FaceDetector.ALL_LANDMARKS)
+                .setClassificationType(FaceDetector.ALL_CLASSIFICATIONS)
+                .setTrackingEnabled(false)
+                .build();
+
+        if(false == detector.isOperational()){
+            return null;
+        }
+
+        //Add the image on a Frame object
+        Frame frame = new Frame.Builder()
+                .setBitmap(getMyPhoto())
+                .build();
+
+        //Detect all faces from Frame object
+        SparseArray<Face> faceArray = detector.detect(frame);
+
+        //Do some drawing on faces
+        Bitmap outBitmap = drawOnFace(faceArray,5,RED);
+
+        //Releasing the detector object
+        detector.release();
+        return outBitmap;
+    }
+
+    /**
+     * Method to do some drawing on faces
+     */
+    private Bitmap drawOnFace(SparseArray<Face> faceArray, int stroke, int color){
+        Bitmap outBitmap = Bitmap.createBitmap(getMyPhoto().getWidth(), getMyPhoto().getHeight(), Bitmap.Config.RGB_565);
+        Canvas canvas = new Canvas(outBitmap);
+        canvas.drawBitmap(getMyPhoto(), 0, 0, null);
+
+        for(int i=0; i < faceArray.size(); i++){
+            int key = faceArray.keyAt(i);
+            // get the object by the key.
+            Face face = faceArray.get(key);
+            //Drawing rectangle on each face
+            drawRectangle(canvas, face.getPosition(), face.getWidth(), face.getHeight(),stroke,color);
+            this.listLandMarkPhoto = face.getLandmarks();
+        }
+        return outBitmap;
+    }
+
+    //draw a rectangle in your butmap
+    private void drawRectangle(Canvas canvas, PointF point, float width, float height, int stroke, int color){
+        Paint paint = new Paint();
+        paint.setColor(color);
+        paint.setStrokeWidth(stroke);
+        paint.setStyle(Paint.Style.STROKE);
+
+        float x1 = point.x;
+        float y1 = point.y;
+        float x2 = x1 + width;
+        float y2 = y1 + height;
+
+        RectF rect = new RectF(x1, y1, x2, y2);
+        canvas.drawRect(rect, paint);
     }
 
     //================================================================================

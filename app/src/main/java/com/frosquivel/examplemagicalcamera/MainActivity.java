@@ -1,6 +1,7 @@
 package com.frosquivel.examplemagicalcamera;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -11,6 +12,9 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.frosquivel.magicalcamera.MagicalCamera;
+import com.google.android.gms.vision.face.Landmark;
+
+import java.util.List;
 
 /**
  * Created by          Fabián Rosales Esquivel
@@ -20,12 +24,12 @@ import com.frosquivel.magicalcamera.MagicalCamera;
  * This is an android library to take easy picture
  */
 public class MainActivity extends AppCompatActivity {
-//http://stackoverflow.com/questions/19042511/android-camera-failure-delivering-result-resultinfowho-null-request-0-resul
     private ImageView imageView;
     private Button btntakephoto;
     private Button btnselectedphoto;
     private Button btnGoTo;
     private Button btnSeeData;
+    private Button btnFacialRecognition;
     private TextView texttitle;
 
     private MagicalCamera magicalCamera;
@@ -46,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         texttitle.setText("Activity Example");
         btnGoTo.setText("Go to Fragment");
         btnSeeData = (Button) findViewById(R.id.btnSeeData);
+        btnFacialRecognition = (Button) findViewById(R.id.btnFacialRecognition);
 
         btntakephoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,6 +70,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this, ActivityForFragment.class));
+            }
+        });
+
+        btnFacialRecognition.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(magicalCamera != null){
+                    if(magicalCamera.getMyPhoto() != null){
+                        //imageView.setImageBitmap(magicalCamera.faceDetector());
+                        imageView.setImageBitmap(magicalCamera.faceDetector(50, Color.GREEN));
+
+                        List<Landmark> listMark = magicalCamera.getListLandMarkPhoto();
+                    }else{
+                        Toast.makeText(MainActivity.this,
+                                "Your image is null, please select or take one",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    Toast.makeText(MainActivity.this,
+                            "Please initialized magical camera, maybe in static context for use in all activity",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
@@ -119,10 +146,14 @@ public class MainActivity extends AppCompatActivity {
                                 .positiveText("ok")
                                 .show();
                     }else{
-                        Toast.makeText(MainActivity.this, "You dont have data to show because the real path photo is wrong contact with fabian7593@gmail.com", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(MainActivity.this,
+                                "You dont have data to show because the real path photo is wrong contact with fabian7593@gmail.com",
+                                Toast.LENGTH_SHORT).show();
                     }
                 }else{
-                    Toast.makeText(MainActivity.this, "You dont have data to show because the photo is null (your photo isn't in memory device), contact with fabian7593@gmail.com", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,
+                            "You dont have data to show because the photo is null (your photo isn't in memory device)",
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -149,16 +180,19 @@ public class MainActivity extends AppCompatActivity {
         if(magicalCamera.getMyPhoto()!=null) {
             imageView.setImageBitmap(magicalCamera.getMyPhoto());
 
-            imageView.setImageBitmap(magicalCamera.printSquare());
-            imageView.setScaleType(ImageView.ScaleType.CENTER);
-
             if (magicalCamera.savePhotoInMemoryDevice(magicalCamera.getMyPhoto(), "myTestPhoto", MagicalCamera.JPEG, true)) {
-                Toast.makeText(MainActivity.this, "The photo is save in device, please check this", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,
+                        "The photo is save in device, please check this",
+                        Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(MainActivity.this, "Sorry your photo dont write in devide, please contact with fabian7593@gmail and say this error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this,
+                        "Sorry your photo dont write in devide, please contact with fabian7593@gmail and say this error",
+                        Toast.LENGTH_SHORT).show();
             }
         }else{
-            Toast.makeText(MainActivity.this, "Your image is null, please debug, or test with another device, or maybe contact with fabian7593@gmail.com for try to fix the bug, thanks and sorry", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this,
+                    "Your image is null, please debug, or test with another device, or maybe contact with fabian7593@gmail.com for try to fix the bug, thanks and sorry",
+                    Toast.LENGTH_SHORT).show();
         }
     }
 }
