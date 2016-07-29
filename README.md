@@ -21,15 +21,24 @@ git clone https://github.com/fabian7593/MagicalCamera.git
 
 Download from [Here](https://github.com/fabian7593/MagicalCamera/zipball/master)
 
-Another type download by Bintray from   [ ![Download](https://api.bintray.com/packages/fabian7593/maven/MagicalCamera/images/download.svg) ](https://bintray.com/fabian7593/maven/MagicalCamera/_latestVersion)
+Another type download by Bintray from    [ ![Download](https://api.bintray.com/packages/fabian7593/maven/MagicalCamera/images/download.svg) ](https://bintray.com/fabian7593/maven/MagicalCamera/_latestVersion)
  
 <br>
 ### What you need?
 You need for usage the library in the best way, call any permissions in Android Manifest.xml
 ```bash
+    //1.0 version
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA"/>
+    
+    //and for 3.0 version add this
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS"/>
 ```
 <br>
 ### How to use
@@ -44,6 +53,9 @@ repositories {
 
 dependencies {
     compile 'com.frosquivel:magicalcamera:1.0'
+    
+    //or the version 3.0
+    compile 'com.frosquivel:magicalcamera:3.0'
 }
 ```
 
@@ -175,6 +187,50 @@ All of this methods are public statics, I mean that you dont have to instance th
 * **stringBase64ToBytes:** Convert string to array bytes, only need the String in param, return array bytes.
 
 <br><br>
+
+#3.0 Version Modifications
+
+###New functionalities
+* Facial Recognition
+* Take photo private information (like, gps location coordinates, the date time photo, brand and company devices).
+
+
+###Explain New functionalities
+
+#### Facial Recognition:
+
+This is a method to return your bitmap (magicalCamera.getMyPhoto()) like another bitmap with a square draws arround the face of the photo, with the posibillity of modify the color and the stroke of the square. And this is not all, you have the posibility of call the List<Landmark> of the photo with facial recognitions, for save data of all faces, for example the distance between eyes, the nose position and mounth position, all of this is important information for facials recognitions.
+
+You need to write for example:
+```bash
+if(magicalCamera != null){
+    if(magicalCamera.getMyPhoto() != null){
+         //imageView.setImageBitmap(magicalCamera.faceDetector());
+         imageView.setImageBitmap(magicalCamera.faceDetector(50, Color.GREEN));
+
+         List<Landmark> listMark = magicalCamera.getListLandMarkPhoto();
+     }else{
+         Toast.makeText(MainActivity.this,
+                 "Your image is null, please select or take one",
+                 Toast.LENGTH_SHORT).show();
+     }
+ }else{
+     Toast.makeText(MainActivity.this,
+             "Please initialized magical camera, maybe in static context for use in all activity",
+             Toast.LENGTH_SHORT).show();
+ }
+```
+
+The photo and bitmap converted is like to:
+
+
+###Issues Fixed
+* This version fix the issue of permission of android Marshmallow.
+* Fix the land scape photo in any devices (in general Samsung and Sony brands), and the posibility of turn manually.
+
+
+
+
 ##Internal documentation
 All the code has a internal documentation for more explanation of this example.
 
