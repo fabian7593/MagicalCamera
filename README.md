@@ -288,6 +288,21 @@ You need to write this code for example:
            "You dont have data to show because the photo is null (your photo isn't in memory device)",
            Toast.LENGTH_SHORT).show();
  }
+ 
+ 
+ 
+ and the method that I use in the example is for validate not null or empty
+    private boolean notNullNotFill(String validate){
+        if(validate != null){
+            if(!validate.trim().equals("")){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
 ```
 
 See the example of this infomartion return:
@@ -296,9 +311,21 @@ See the example of this infomartion return:
 ###Issues Fixed
 * This version fix the issue of permission of android Marshmallow.
 * Fix the land scape photo in any devices (in general Samsung and Sony brands), and the posibility of turn manually.
-
-
-
+ The code that you use is like that in the event override of public void onActivityResult:
+```bash
+ @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        
+        //Please see this line, the last flag is for if camera land scape rotate
+        //or false if you dont need to rotate photo
+        magicalCamera.resultPhoto(requestCode, resultCode, data, true);
+        
+        if(magicalCamera.getMyPhoto()!=null) {
+            imageView.setImageBitmap(magicalCamera.getMyPhoto());
+        }
+}
+```
 
 ##Internal documentation
 All the code has a internal documentation for more explanation of this example.
