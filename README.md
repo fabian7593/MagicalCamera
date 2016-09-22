@@ -133,10 +133,12 @@ You need to override the method onActivityResult in your activity or fragment li
         
         //with this form you obtain the bitmap
         imageView.setImageBitmap(magicalCamera.getMyPhoto());
+        
+        String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getMyPhoto(),"myPhotoName","myDirectoryName", MagicalCamera.JPEG, true);
 
        //if you need save your bitmap in device use this method
-       if(magicalCamera.savePhotoInMemoryDevice(magicalCamera.getMyPhoto(),"myPhotoName","myDirectoryName", MagicalCamera.JPEG, true)){
-           Toast.makeText(MainActivity.this, "The photo is save in device, please check this", Toast.LENGTH_SHORT).show();
+       if(path != null){
+           Toast.makeText(MainActivity.this, "The photo is save in device, please check this path: " + path, Toast.LENGTH_SHORT).show();
        }else{
            Toast.makeText(MainActivity.this, "Sorry your photo dont write in devide, please contact with fabian7593@gmail and say this error", Toast.LENGTH_SHORT).show();
        }
@@ -157,7 +159,7 @@ For example: myTestMagicalCameraPhoto_20160520131344 -> This is the year 2016, m
 
 The method:
 ```bash
- public boolean savePhotoInMemoryDevice(Bitmap bitmap, String photoName, String directoryName,
+ public String savePhotoInMemoryDevice(Bitmap bitmap, String photoName, String directoryName,
  Bitmap.CompressFormat format, boolean autoIncrementNameByDate)
 ```
 

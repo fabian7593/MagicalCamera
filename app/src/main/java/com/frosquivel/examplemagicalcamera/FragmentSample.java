@@ -192,8 +192,10 @@ public class FragmentSample extends Fragment {
         if(magicalCamera.getMyPhoto()!=null) {
             imageView.setImageBitmap(magicalCamera.getMyPhoto());
 
-            if (magicalCamera.savePhotoInMemoryDevice(magicalCamera.getMyPhoto(), "myTestPhoto", MagicalCamera.JPEG, true)) {
-                Toast.makeText(activity, "The photo is save in device, please check this", Toast.LENGTH_SHORT).show();
+            String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getMyPhoto(), "myTestPhoto", MagicalCamera.JPEG, true);
+
+            if (path != null) {
+                Toast.makeText(activity, "The photo is save in device, please check this path: " + path, Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(activity, "Sorry your photo dont write in devide, please contact with fabian7593@gmail and say this error", Toast.LENGTH_SHORT).show();
             }
