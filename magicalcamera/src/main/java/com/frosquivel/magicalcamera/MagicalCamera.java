@@ -415,11 +415,11 @@ public class MagicalCamera {
      *                                the photo with a number of the date, hour, and second to diferenciate this
      * @return return true if the photo is writen
      */
-    private boolean writePhotoFile(Bitmap bitmap, String photoName, String directoryName,
+    private String writePhotoFile(Bitmap bitmap, String photoName, String directoryName,
                                    Bitmap.CompressFormat format, boolean autoIncrementNameByDate) {
 
         if (bitmap == null) {
-            return false;
+            return null;
         } else {
             ByteArrayOutputStream bytes = new ByteArrayOutputStream();
             bitmap.compress(format, 100, bytes);
@@ -473,13 +473,13 @@ public class MagicalCamera {
                     } catch (Exception ex) {
                     }
 
-                    return true;
+                    return f.getAbsolutePath();
                 } catch (Exception ev) {
-                    return false;
+                    return null;
                 }
 
             } else {
-                return false;
+                return null;
             }
         }
     }
@@ -490,20 +490,19 @@ public class MagicalCamera {
      * with diferents params
      * **********************************************
      */
-    public boolean savePhotoInMemoryDevice(Bitmap bitmap, String photoName, boolean autoIncrementNameByDate) {
+    public String savePhotoInMemoryDevice(Bitmap bitmap, String photoName, boolean autoIncrementNameByDate) {
         return writePhotoFile(bitmap, photoName, "MAGICAL CAMERA", PNG, autoIncrementNameByDate);
     }
 
-    public boolean savePhotoInMemoryDevice(Bitmap bitmap, String photoName, Bitmap.CompressFormat format, boolean autoIncrementNameByDate) {
+    public String savePhotoInMemoryDevice(Bitmap bitmap, String photoName, Bitmap.CompressFormat format, boolean autoIncrementNameByDate) {
         return writePhotoFile(bitmap, photoName, "MAGICAL CAMERA", format, autoIncrementNameByDate);
     }
 
-    public boolean savePhotoInMemoryDevice(Bitmap bitmap, String photoName, String directoryName, boolean autoIncrementNameByDate) {
-
+    public String savePhotoInMemoryDevice(Bitmap bitmap, String photoName, String directoryName, boolean autoIncrementNameByDate) {
         return writePhotoFile(bitmap, photoName, directoryName, PNG, autoIncrementNameByDate);
     }
 
-    public boolean savePhotoInMemoryDevice(Bitmap bitmap, String photoName, String directoryName,
+    public String savePhotoInMemoryDevice(Bitmap bitmap, String photoName, String directoryName,
                                            Bitmap.CompressFormat format, boolean autoIncrementNameByDate) {
         return writePhotoFile(bitmap, photoName, directoryName, format, autoIncrementNameByDate);
     }
