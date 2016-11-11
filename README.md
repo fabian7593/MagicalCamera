@@ -6,14 +6,7 @@ A Magic library to take photos and select pictures in Android. In a simple way a
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a64cbf5369e14c3d98f8722c4ad3fad7)](https://www.codacy.com/app/fabian7593/MagicalCamera?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fabian7593/MagicalCamera&amp;utm_campaign=Badge_Grade)
 
-<br>
-## Buy me a coffee ;)
-<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-<input type="hidden" name="cmd" value="_s-xclick">
-<input type="hidden" name="hosted_button_id" value="L25MKCRPR7TWY">
-<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-<img alt="" border="0" src="https://www.paypalobjects.com/es_XC/i/scr/pixel.gif" width="1" height="1">
-</form>
+
 
 <br>
 ## SDK
@@ -356,6 +349,13 @@ https://www.youtube.com/watch?v=U-JxaFZDSn4
 Source code can be found on [github](https://github.com/fabian7593/MagicalCamera)<br>
 Licenced under [APACHE 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 <br><br>
+
+
+## Buy me a coffee ;)
+
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=L25MKCRPR7TWY)
+<br>
+<br>
 
 ## About Developer
 Developed by [Fabian Rosales](http://www.frosquivel.com)<br>
