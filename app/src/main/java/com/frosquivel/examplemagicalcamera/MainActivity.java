@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.frosquivel.magicalcamera.MagicalCamera;
+import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
 import com.google.android.gms.vision.face.Landmark;
 
 import java.util.List;
@@ -77,11 +78,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(magicalCamera != null){
-                    if(magicalCamera.getMyPhoto() != null){
+                    if(magicalCamera.getPhoto() != null){
                         //imageView.setImageBitmap(magicalCamera.faceDetector());
                         imageView.setImageBitmap(magicalCamera.faceDetector(50, Color.GREEN));
-
-                        List<Landmark> listMark = magicalCamera.getListLandMarkPhoto();
+                        List<Landmark> listMark = magicalCamera.getFaceRecognitionInformation().getListLandMarkPhoto();
                     }else{
                         Toast.makeText(MainActivity.this,
                                 "Your image is null, please select or take one",
@@ -99,46 +99,46 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(magicalCamera.getMyPhoto()!=null) {
-                    if(magicalCamera.getImageInformation()) {
+                if(magicalCamera.getPhoto()!=null) {
+                    if(magicalCamera.hasImageInformation()) {
 
                         StringBuilder builderInformation = new StringBuilder();
 
-                        if (notNullNotFill(magicalCamera.getLatitude() + ""))
-                            builderInformation.append("Latitude: " + magicalCamera.getLatitude() + "\n");
+                        if (notNullNotFill(magicalCamera.getPrivateInformation().getLatitude() + ""))
+                            builderInformation.append("Latitude: " + magicalCamera.getPrivateInformation().getLatitude() + "\n");
 
-                        if (notNullNotFill(magicalCamera.getLatitudeReference()))
-                            builderInformation.append("Latitude Reference: " + magicalCamera.getLatitudeReference() + "\n");
+                        if (notNullNotFill(magicalCamera.getPrivateInformation().getLatitudeReference()))
+                            builderInformation.append("Latitude Reference: " + magicalCamera.getPrivateInformation().getLatitudeReference() + "\n");
 
-                        if (notNullNotFill(magicalCamera.getLongitude() + ""))
-                            builderInformation.append("Longitude: " + magicalCamera.getLongitude() + "\n");
+                        if (notNullNotFill(magicalCamera.getPrivateInformation().getLongitude() + ""))
+                            builderInformation.append("Longitude: " + magicalCamera.getPrivateInformation().getLongitude() + "\n");
 
-                        if (notNullNotFill(magicalCamera.getLongitudeReference()))
-                            builderInformation.append("Longitude Reference: " + magicalCamera.getLongitudeReference() + "\n");
+                        if (notNullNotFill(magicalCamera.getPrivateInformation().getLongitudeReference()))
+                            builderInformation.append("Longitude Reference: " + magicalCamera.getPrivateInformation().getLongitudeReference() + "\n");
 
-                        if (notNullNotFill(magicalCamera.getDateTimeTakePhoto()))
-                            builderInformation.append("Date time to photo: " + magicalCamera.getDateTimeTakePhoto() + "\n");
+                        if (notNullNotFill(magicalCamera.getPrivateInformation().getDateTimeTakePhoto()))
+                            builderInformation.append("Date time to photo: " + magicalCamera.getPrivateInformation().getDateTimeTakePhoto() + "\n");
 
-                        if (notNullNotFill(magicalCamera.getDateStamp()))
-                            builderInformation.append("Date stamp to photo: " + magicalCamera.getDateStamp() + "\n");
+                        if (notNullNotFill(magicalCamera.getPrivateInformation().getDateStamp()))
+                            builderInformation.append("Date stamp to photo: " + magicalCamera.getPrivateInformation().getDateStamp() + "\n");
 
-                        if (notNullNotFill(magicalCamera.getIso()))
-                            builderInformation.append("ISO: " + magicalCamera.getIso() + "\n");
+                        if (notNullNotFill(magicalCamera.getPrivateInformation().getIso()))
+                            builderInformation.append("ISO: " + magicalCamera.getPrivateInformation().getIso() + "\n");
 
-                        if (notNullNotFill(magicalCamera.getOrientation()))
-                            builderInformation.append("Orientation photo: " + magicalCamera.getOrientation() + "\n");
+                        if (notNullNotFill(magicalCamera.getPrivateInformation().getOrientation()))
+                            builderInformation.append("Orientation photo: " + magicalCamera.getPrivateInformation().getOrientation() + "\n");
 
-                        if (notNullNotFill(magicalCamera.getImageLength()))
-                            builderInformation.append("Image lenght: " + magicalCamera.getImageLength() + "\n");
+                        if (notNullNotFill(magicalCamera.getPrivateInformation().getImageLength()))
+                            builderInformation.append("Image lenght: " + magicalCamera.getPrivateInformation().getImageLength() + "\n");
 
-                        if (notNullNotFill(magicalCamera.getImageWidth()))
-                            builderInformation.append("Image Width: " + magicalCamera.getImageWidth() + "\n");
+                        if (notNullNotFill(magicalCamera.getPrivateInformation().getImageWidth()))
+                            builderInformation.append("Image Width: " + magicalCamera.getPrivateInformation().getImageWidth() + "\n");
 
-                        if (notNullNotFill(magicalCamera.getModelDevice()))
-                            builderInformation.append("Model Device: " + magicalCamera.getModelDevice() + "\n");
+                        if (notNullNotFill(magicalCamera.getPrivateInformation().getModelDevice()))
+                            builderInformation.append("Model Device: " + magicalCamera.getPrivateInformation().getModelDevice() + "\n");
 
-                        if (notNullNotFill(magicalCamera.getMakeCompany()))
-                            builderInformation.append("Make company: " + magicalCamera.getMakeCompany() + "\n");
+                        if (notNullNotFill(magicalCamera.getPrivateInformation().getMakeCompany()))
+                            builderInformation.append("Make company: " + magicalCamera.getPrivateInformation().getMakeCompany() + "\n");
 
                         new MaterialDialog.Builder(MainActivity.this)
                                 .title("See photo information")
@@ -177,10 +177,10 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         magicalCamera.resultPhoto(requestCode, resultCode, data);
 
-        if(magicalCamera.getMyPhoto()!=null) {
-            imageView.setImageBitmap(magicalCamera.getMyPhoto());
+        if(magicalCamera.getPhoto()!=null) {
+            imageView.setImageBitmap(magicalCamera.getPhoto());
 
-            String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getMyPhoto(), "myTestPhoto", MagicalCamera.JPEG, true);
+            String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getPhoto(), "myTestPhoto", MagicalCameraObject.JPEG, true);
 
             if (path != null) {
                 Toast.makeText(MainActivity.this,
@@ -196,5 +196,10 @@ public class MainActivity extends AppCompatActivity {
                     "Your image is null, please debug, or test with another device, or maybe contact with fabian7593@gmail.com for try to fix the bug, thanks and sorry",
                     Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        magicalCamera.permissionGrant(requestCode, permissions, grantResults);
     }
 }
