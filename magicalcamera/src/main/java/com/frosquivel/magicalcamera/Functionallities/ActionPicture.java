@@ -10,6 +10,7 @@ import android.provider.MediaStore;
 
 import com.frosquivel.magicalcamera.Objects.ActionPictureObject;
 import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
+import com.frosquivel.magicalcamera.Objects.PermissionGrantedObject;
 import com.frosquivel.magicalcamera.Utilities.PictureUtils;
 
 /**
@@ -19,13 +20,13 @@ import com.frosquivel.magicalcamera.Utilities.PictureUtils;
     public class ActionPicture {
 
     private ActionPictureObject actionPictureObject;
-    private PermissionGranted permissionGranted;
+    private PermissionGrantedObject permissionGrantedObject;
     private URIPaths uriPaths;
 
-    public ActionPicture(Activity activity,int resizePicture,
-                         PermissionGranted permissionGranted, URIPaths uriPaths){
+    public ActionPicture(Activity activity, int resizePicture,
+                         PermissionGrantedObject permissionGrantedObject, URIPaths uriPaths){
         this.actionPictureObject = new ActionPictureObject();
-        this.permissionGranted = permissionGranted;
+        this.permissionGrantedObject = permissionGrantedObject;
         this.uriPaths = uriPaths;
 
         this.actionPictureObject.setActivity(activity);
@@ -34,15 +35,15 @@ import com.frosquivel.magicalcamera.Utilities.PictureUtils;
 
     public ActionPicture(Activity activity,int resizePicture, URIPaths uriPaths){
         this.actionPictureObject = new ActionPictureObject();
-        this.permissionGranted = null;
+        this.permissionGrantedObject = null;
         this.uriPaths = uriPaths;
 
         this.actionPictureObject.setActivity(activity);
         this.actionPictureObject.setResizePhoto(resizePicture);
     }
 
-    public void setPermissionGranted(PermissionGranted permissionGranted) {
-        this.permissionGranted = permissionGranted;
+    public void setMagicalCameraPermissionGranted(PermissionGrantedObject permissionGrantedObject) {
+        this.permissionGrantedObject = permissionGrantedObject;
     }
 
     public ActionPictureObject getActionPictureObject() {
@@ -68,7 +69,7 @@ import com.frosquivel.magicalcamera.Utilities.PictureUtils;
             intent.putExtra(MediaStore.EXTRA_OUTPUT, FileUri);
             if (intent.resolveActivity(this.actionPictureObject.getActivity().getPackageManager()) != null) {
                 if (android.os.Build.VERSION.SDK_INT >= 23) {
-                    if(this.permissionGranted.getPermissionGrantedObject().isCameraPermission()){
+                    if(this.permissionGrantedObject.isCameraPermission()){
                         this.actionPictureObject.getActivity().startActivityForResult(intent, MagicalCameraObject.TAKE_PHOTO);
                         return true;
                     }else{
@@ -102,7 +103,7 @@ import com.frosquivel.magicalcamera.Utilities.PictureUtils;
             if (intent.resolveActivity(this.actionPictureObject.getActivity().getPackageManager()) != null) {
 
                 if (android.os.Build.VERSION.SDK_INT >= 23) {
-                    if(this.permissionGranted.getPermissionGrantedObject().isCameraPermission()){
+                    if(this.permissionGrantedObject.isCameraPermission()){
                         this.actionPictureObject.setIntentFragment(intent);
                         return true;
                     }else{

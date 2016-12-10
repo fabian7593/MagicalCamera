@@ -30,6 +30,8 @@ import static android.graphics.Color.RED;
 public class FaceRecognition {
     //object
     private FaceRecognitionObject faceRecognitionInformation;
+    private FaceDetector detector;
+
     public FaceRecognitionObject getFaceRecognitionInformation() {
         return faceRecognitionInformation;
     }
@@ -61,14 +63,14 @@ public class FaceRecognition {
      * @return
      */
     private Bitmap faceDetection(int stroke, int color, Activity activity, Bitmap photo){
-        FaceDetector detector = new FaceDetector.Builder(activity)
+         this.detector = new FaceDetector.Builder(activity)
                 .setMode(FaceDetector.ACCURATE_MODE)
                 .setLandmarkType(FaceDetector.ALL_LANDMARKS)
                 .setClassificationType(FaceDetector.ALL_CLASSIFICATIONS)
                 .setTrackingEnabled(false)
                 .build();
 
-        if(false == detector.isOperational()){
+        if(false == this.detector.isOperational()){
             return null;
         }
 
@@ -84,8 +86,8 @@ public class FaceRecognition {
         Bitmap outBitmap = drawOnFace(faceArray,photo,stroke,color);
 
         //Releasing the detector object
-        detector.release();
-        return outBitmap;
+        this.detector.release();
+        return (outBitmap != null) ? outBitmap : photo;
     }
 
 
@@ -103,7 +105,7 @@ public class FaceRecognition {
             Face face = faceArray.get(key);
             //Drawing rectangle on each face
             drawRectangle(canvas, face.getPosition(), face.getWidth(), face.getHeight(),stroke,color);
-            faceRecognitionInformation.setListLandMarkPhoto(face.getLandmarks());
+            this.faceRecognitionInformation.setListLandMarkPhoto(face.getLandmarks());
         }
         return outBitmap;
     }

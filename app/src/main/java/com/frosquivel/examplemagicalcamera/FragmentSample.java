@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
 import com.frosquivel.magicalcamera.MagicalCamera;
 import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
 
@@ -37,6 +38,7 @@ public class FragmentSample extends Fragment {
     private Button btnFacialRecognition;
 
     private MagicalCamera magicalCamera;
+    private PermissionGranted permissionGranted;
     private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 3000;
 
     @Override
@@ -45,7 +47,12 @@ public class FragmentSample extends Fragment {
         View rootView = inflater.inflate(R.layout.activity_main, container, false);
 
         activity = getActivity();
-        magicalCamera = new MagicalCamera(activity ,RESIZE_PHOTO_PIXELS_PERCENTAGE);
+        permissionGranted = new PermissionGranted(activity);
+        permissionGranted.checkCameraPermission();
+        permissionGranted.checkReadExternalPermission();
+        permissionGranted.checkWriteExternalPermission();
+
+        magicalCamera = new MagicalCamera(activity ,RESIZE_PHOTO_PIXELS_PERCENTAGE, permissionGranted);
 
         imageView =  (ImageView) rootView.findViewById(R.id.imageView);
         btntakephoto =  (Button) rootView.findViewById(R.id.btntakephoto);

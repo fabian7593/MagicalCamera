@@ -1,35 +1,14 @@
 package com.frosquivel.magicalcamera;
 
-import android.Manifest;
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.database.Cursor;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 
-import android.net.Uri;
-import android.os.Build;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-
-import com.frosquivel.magicalcamera.Functionallities.FaceRecognition;
-import com.frosquivel.magicalcamera.Functionallities.PrivateInformation;
-import com.frosquivel.magicalcamera.Functionallities.SaveEasyPhoto;
+import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
 import com.frosquivel.magicalcamera.Objects.ActionPictureObject;
 import com.frosquivel.magicalcamera.Objects.FaceRecognitionObject;
 import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
+import com.frosquivel.magicalcamera.Objects.PermissionGrantedObject;
 import com.frosquivel.magicalcamera.Objects.PrivateInformationObject;
 
 import static android.graphics.Color.*;
@@ -42,20 +21,45 @@ import static android.graphics.Color.*;
  */
 public class MagicalCamera {
     private MagicalCameraObject magicalCameraObject;
+    private PermissionGrantedObject permissionGrantedObject;
+    private PermissionGranted permissionGranted;
 
     //================================================================================
     // Constructs
     //================================================================================
     //region Construct
-    public MagicalCamera(Activity activity, int resizePhoto) {
+    public MagicalCamera(Activity activity, int resizePhoto, PermissionGranted permissionGranted) {
+        this.permissionGrantedObject =  permissionGranted.getPermissionGrantedObject();
+        this.permissionGranted = permissionGranted;
+
         magicalCameraObject = new MagicalCameraObject(activity, resizePhoto <= 0 ?
-                ActionPictureObject.BEST_QUALITY_PHOTO : resizePhoto);
+                ActionPictureObject.BEST_QUALITY_PHOTO : resizePhoto, permissionGrantedObject);
     }
 
-    public MagicalCamera(Activity activity) {
-        magicalCameraObject = new MagicalCameraObject(activity);
+    public MagicalCamera(Activity activity, PermissionGranted permissionGranted) {
+        this.permissionGrantedObject =  permissionGranted.getPermissionGrantedObject();
+        this.permissionGranted = permissionGranted;
+
+        magicalCameraObject = new MagicalCameraObject(activity, permissionGrantedObject);
     }
     //endregion
+
+
+    public PermissionGrantedObject getPermissionGrantedObject() {
+        return permissionGrantedObject;
+    }
+
+    public void setPermissionGrantedObject(PermissionGrantedObject permissionGrantedObject) {
+        this.permissionGrantedObject = permissionGrantedObject;
+    }
+
+    public PermissionGranted getPermissionGranted() {
+        return permissionGranted;
+    }
+
+    public void setPermissionGranted(PermissionGranted permissionGranted) {
+        this.permissionGranted = permissionGranted;
+    }
 
     //Principal Methods
     public void takePhoto(){
@@ -143,7 +147,7 @@ public class MagicalCamera {
     }
 
     public void permissionGrant(int requestCode, String[] permissions, int[] grantResults){
-        magicalCameraObject.getPermissionGranted().permissionGrant(requestCode, permissions, grantResults);
+        this.permissionGranted.permissionGrant(requestCode, permissions, grantResults);
     }
 
     public Intent getIntentFragment(){

@@ -1,6 +1,7 @@
 package com.frosquivel.examplemagicalcamera;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
 import com.frosquivel.magicalcamera.MagicalCamera;
 import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
 import com.google.android.gms.vision.face.Landmark;
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView texttitle;
 
     private MagicalCamera magicalCamera;
+    private PermissionGranted permissionGranted;
     private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 3000;
 
     @Override
@@ -41,7 +44,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        magicalCamera = new MagicalCamera(this,RESIZE_PHOTO_PIXELS_PERCENTAGE);
+        permissionGranted = new PermissionGranted(this);
+        //permission for take photo, it is false if the user check deny
+        permissionGranted.checkCameraPermission();
+        //for search and write photoss in device internal memory
+        //normal or SD memory
+        permissionGranted.checkReadExternalPermission();
+        permissionGranted.checkWriteExternalPermission();
+        //permission for location for use the `photo information device.
+        permissionGranted.checkLocationPermission();
+
+        magicalCamera = new MagicalCamera(this, RESIZE_PHOTO_PIXELS_PERCENTAGE, permissionGranted);
 
         imageView =  (ImageView) findViewById(R.id.imageView);
         btntakephoto =  (Button) findViewById(R.id.btntakephoto);
@@ -79,9 +92,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(magicalCamera != null){
                     if(magicalCamera.getPhoto() != null){
-                        //imageView.setImageBitmap(magicalCamera.faceDetector());
-                        imageView.setImageBitmap(magicalCamera.faceDetector(50, Color.GREEN));
-                        List<Landmark> listMark = magicalCamera.getFaceRecognitionInformation().getListLandMarkPhoto();
+                        Bitmap faceDetectorBitmap = magicalCamera.faceDetector(50, Color.GREEN);
+                        if(faceDetectorBitmap != null){
+                            imageView.setImageBitmap(faceDetectorBitmap);
+                            List<Landmark> listMark = magicalCamera.getFaceRecognitionInformation().getListLandMarkPhoto();
+                        }
+
                     }else{
                         Toast.makeText(MainActivity.this,
                                 "Your image is null, please select or take one",

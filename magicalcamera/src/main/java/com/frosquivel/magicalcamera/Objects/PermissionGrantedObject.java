@@ -11,10 +11,12 @@ public class PermissionGrantedObject {
     public static final int REQUEST_CAMERA_PERMISSION = 1;
     public static final int REQUEST_WRITE_EXTERNAL_STORAGE_PERMISSION = 2;
     public static final int REQUEST_READ_EXTERNAL_STORAGE_PERMISSION = 3;
+    public static final int REQUEST_LOCATION_PERMISSION = 4;
 
     private boolean cameraPermission;
     private boolean writeExternalStoragePermission;
     private boolean readExternalStoragePermission;
+    private boolean locationPermission;
 
     private Activity activity;
 
@@ -40,6 +42,14 @@ public class PermissionGrantedObject {
 
     public void setWriteExternalStoragePermission(boolean writeExternalStoragePermission) {
         this.writeExternalStoragePermission = writeExternalStoragePermission;
+    }
+
+    public boolean isLocationPermission() {
+        return locationPermission;
+    }
+
+    public void setLocationPermission(boolean locationPermission) {
+        this.locationPermission = locationPermission;
     }
 
     public Activity getActivity() {

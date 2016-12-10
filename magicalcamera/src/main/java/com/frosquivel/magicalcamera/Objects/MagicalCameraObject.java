@@ -1,13 +1,10 @@
 package com.frosquivel.magicalcamera.Objects;
 
 import android.app.Activity;
-import android.app.Notification;
-import android.content.Intent;
 import android.graphics.Bitmap;
 
 import com.frosquivel.magicalcamera.Functionallities.ActionPicture;
 import com.frosquivel.magicalcamera.Functionallities.FaceRecognition;
-import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
 import com.frosquivel.magicalcamera.Functionallities.PrivateInformation;
 import com.frosquivel.magicalcamera.Functionallities.SaveEasyPhoto;
 import com.frosquivel.magicalcamera.Functionallities.URIPaths;
@@ -49,32 +46,28 @@ public class MagicalCameraObject {
     //the actions to take pictures or selected
     private ActionPicture actionPicture;
 
-    //validate the permission granted for android 6.0 or more
-    private PermissionGranted permissionGranted;
-
     //the uri of paths class
     private URIPaths uriPaths;
     //endregion
 
 
     //Constructor
-    public MagicalCameraObject(Activity activity){
+    public MagicalCameraObject(Activity activity, PermissionGrantedObject permissionGranted){
         this.activity = activity;
         this.faceRecognition = new FaceRecognition();
         this.privateInformation = new PrivateInformation();
         this.uriPaths = new URIPaths(this.privateInformation);
         this.saveEasyPhoto = new SaveEasyPhoto();
-        this.permissionGranted = new PermissionGranted(activity);
-        this.actionPicture = new ActionPicture(activity, ActionPictureObject.BEST_QUALITY_PHOTO, this.permissionGranted, this.uriPaths);
+        this.actionPicture = new ActionPicture(activity, ActionPictureObject.BEST_QUALITY_PHOTO, permissionGranted, this.uriPaths);
     }
 
-    public MagicalCameraObject(Activity activity, int qualityPhoto){
+    public MagicalCameraObject(Activity activity, int qualityPhoto, PermissionGrantedObject permissionGranted){
         this.activity = activity;
         this.faceRecognition = new FaceRecognition();
         this.privateInformation = new PrivateInformation();
+        this.uriPaths = new URIPaths(this.privateInformation);
         this.saveEasyPhoto = new SaveEasyPhoto();
-        this.permissionGranted = new PermissionGranted(activity);
-        this.actionPicture = new ActionPicture(activity, qualityPhoto, this.permissionGranted, this.uriPaths);
+        this.actionPicture = new ActionPicture(activity, qualityPhoto, permissionGranted, this.uriPaths);
     }
 
 
@@ -121,15 +114,6 @@ public class MagicalCameraObject {
     public void setActionPicture(ActionPicture actionPicture) {
         this.actionPicture = actionPicture;
     }
-
-    public PermissionGranted getPermissionGranted() {
-        return permissionGranted;
-    }
-
-    public void setPermissionGranted(PermissionGranted permissionGranted) {
-        this.permissionGranted = permissionGranted;
-    }
-
     public URIPaths getUriPaths() {
         return uriPaths;
     }
