@@ -1,5 +1,4 @@
 package com.frosquivel.magicalcamera.Functionallities;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -7,22 +6,39 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
-
 import com.frosquivel.magicalcamera.Objects.ActionPictureObject;
 import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
 import com.frosquivel.magicalcamera.Objects.PermissionGrantedObject;
 import com.frosquivel.magicalcamera.Utilities.PictureUtils;
 
 /**
- * Created by Fabian on 07/12/2016.
+ * Created by Fabian Rosales Esquivel (Frosquivel Developer)
+ * Created Date 07/12/2016.
+ * Made in Costa Rica
+ * This class call the intent of take picture or select picture in device
  */
 
     public class ActionPicture {
 
+    //================================================================================
+    // Properties and constructor
+    //================================================================================
+    //region Properties
     private ActionPictureObject actionPictureObject;
     private PermissionGrantedObject permissionGrantedObject;
     private URIPaths uriPaths;
 
+    //Getter and Setter methods
+    public void setMagicalCameraPermissionGranted(PermissionGrantedObject permissionGrantedObject) {
+        this.permissionGrantedObject = permissionGrantedObject;
+    }
+
+    public ActionPictureObject getActionPictureObject() {
+        return actionPictureObject;
+    }
+    //endregion
+
+    //region Constructor
     public ActionPicture(Activity activity, int resizePicture,
                          PermissionGrantedObject permissionGrantedObject, URIPaths uriPaths){
         this.actionPictureObject = new ActionPictureObject();
@@ -37,26 +53,21 @@ import com.frosquivel.magicalcamera.Utilities.PictureUtils;
         this.actionPictureObject = new ActionPictureObject();
         this.permissionGrantedObject = null;
         this.uriPaths = uriPaths;
-
         this.actionPictureObject.setActivity(activity);
         this.actionPictureObject.setResizePhoto(resizePicture);
     }
+    //endregion
 
-    public void setMagicalCameraPermissionGranted(PermissionGrantedObject permissionGrantedObject) {
-        this.permissionGrantedObject = permissionGrantedObject;
-    }
-
-    public ActionPictureObject getActionPictureObject() {
-        return actionPictureObject;
-    }
 
     //================================================================================
-    // Principal Methods
+    // Take and Select photos
     //================================================================================
-    //region Take and Select photos
+    //region Photo Methods
 
     /**
-     * This method call the intent to take photo
+     * This method call the intent for take the picture in activity screen
+     * Too validate the permissions in android 6.0
+     * @return return true if the picture was taken
      */
     public boolean takePhoto() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -87,7 +98,9 @@ import com.frosquivel.magicalcamera.Utilities.PictureUtils;
     }
 
     /**
-     * This library call the intent to take photo
+     * This method call the intent for take the picture in fragment screen
+     * Too validate the permissions in android 6.0
+     * @return return true if the picture was taken
      */
     public boolean takeFragmentPhoto() {
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -124,24 +137,30 @@ import com.frosquivel.magicalcamera.Utilities.PictureUtils;
 
 
     /**
-     * This call the intent to selected the picture
-     *
-     * @param headerName the header name of popUp
+     * This call the intent to selected the picture for activity screen
+     * @param headerName the header name of popUp that you need to shown
+     * @return return true if the photo was taken or false if it was not.
      */
     public boolean selectedPicture(String headerName) {
-        Intent intent = new Intent(
-                Intent.ACTION_PICK,
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        intent.setType("image/*");
-        this.actionPictureObject.getActivity().startActivityForResult(
-                Intent.createChooser(intent, (!headerName.equals("") ? headerName : "Magical Camera")),
-                MagicalCameraObject.SELECT_PHOTO);
 
-        return true;
+        try {
+            Intent intent = new Intent(
+                    Intent.ACTION_PICK,
+                    android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            intent.setType("image/*");
+            this.actionPictureObject.getActivity().startActivityForResult(
+                    Intent.createChooser(intent, (!headerName.equals("") ? headerName : "Magical Camera")),
+                    MagicalCameraObject.SELECT_PHOTO);
+
+            return true;
+        }catch (Exception ev){
+            return false;
+        }
     }
 
     /**
-     * This call the intent to selected the picture
+     * This call the intent to selected the picture for activity screen
+     * @return return true if the photo was taken or false if it was not.
      */
     public boolean selectedFragmentPicture() {
         Intent intent = new Intent(
@@ -155,45 +174,6 @@ import com.frosquivel.magicalcamera.Utilities.PictureUtils;
             return false;
         }
     }
-
-    /**
-     * This methods is called in the override method onActivityResult
-     * for the respective activation, and this validate which of the intentn result be,
-     * for example: if is selected file or if is take picture
-     */
-    public void resultPhoto(int requestCode, int resultCode, Intent data) {
-        if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == MagicalCameraObject.SELECT_PHOTO) {
-                this.actionPictureObject.setMyPhoto(onSelectFromGalleryResult(data));
-            } else if (requestCode == MagicalCameraObject.TAKE_PHOTO) {
-                this.actionPictureObject.setMyPhoto(onTakePhotoResult());
-            }
-
-            if (this.actionPictureObject.getMyPhoto() != null) {
-                if (PictureUtils.ifCameraLandScape(true) == MagicalCameraObject.LANDSCAPE_CAMERA) {
-                    this.actionPictureObject.setMyPhoto(PictureUtils.rotateImage(this.actionPictureObject.getMyPhoto(), 270));
-                }
-            }
-        }
-    }
-
-
-    public void resultPhoto(int requestCode, int resultCode, Intent data, boolean doLandScape) {
-        if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == MagicalCameraObject.SELECT_PHOTO) {
-                this.actionPictureObject.setMyPhoto(onSelectFromGalleryResult(data));
-            } else if (requestCode == MagicalCameraObject.TAKE_PHOTO) {
-                this.actionPictureObject.setMyPhoto(onTakePhotoResult());
-            }
-
-            if (this.actionPictureObject.getMyPhoto() != null) {
-                if (PictureUtils.ifCameraLandScape(doLandScape) == MagicalCameraObject.LANDSCAPE_CAMERA) {
-                    this.actionPictureObject.setMyPhoto(PictureUtils.rotateImage(this.actionPictureObject.getMyPhoto(), 270));
-                }
-            }
-        }
-    }
-
 
     /**
      * This method obtain the path of the picture selected, and convert this in the
@@ -228,10 +208,9 @@ import com.frosquivel.magicalcamera.Utilities.PictureUtils;
 
     /**
      * Save the photo in memory bitmap, resize and return the photo
-     *
      * @return the bitmap of the respective photo
      */
-    public Bitmap onTakePhotoResult() {
+    private Bitmap onTakePhotoResult() {
         Uri takenPhotoUri = this.uriPaths.getPhotoFileUri(ActionPictureObject.photoNameAuxiliar,
                 ActionPictureObject.photoNameAuxiliar, actionPictureObject.getActivity());
         // by this point we have the camera photo on disk
@@ -241,6 +220,53 @@ import com.frosquivel.magicalcamera.Utilities.PictureUtils;
             return takenImage;
         } else {
             return null;
+        }
+    }
+    //endregion
+
+    //region Method to call in Override
+    /**
+     * This methods is called in the override method onActivityResult
+     * for the respective activation, and this validate which of the intentn result be,
+     * for example: if is selected file or if is take picture
+     */
+    public void resultPhoto(int requestCode, int resultCode, Intent data) {
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == MagicalCameraObject.SELECT_PHOTO) {
+                this.actionPictureObject.setMyPhoto(onSelectFromGalleryResult(data));
+            } else if (requestCode == MagicalCameraObject.TAKE_PHOTO) {
+                this.actionPictureObject.setMyPhoto(onTakePhotoResult());
+            }
+
+            if (this.actionPictureObject.getMyPhoto() != null) {
+                if (PictureUtils.ifCameraLandScape(true) == MagicalCameraObject.LANDSCAPE_CAMERA) {
+                    this.actionPictureObject.setMyPhoto(PictureUtils.rotateImage(this.actionPictureObject.getMyPhoto(), 270));
+                }
+            }
+        }
+    }
+
+    /**
+     * This methods is called in the override method onActivityResult
+     * for the respective activation, and this validate which of the intentn result be,
+     * for example: if is selected file or if is take picture
+     *
+     * doLandScape
+     * BUT you have the posibillity of rotate the picture "manually", with the parameter doLandScape
+     */
+    public void resultPhoto(int requestCode, int resultCode, Intent data, boolean doLandScape) {
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == MagicalCameraObject.SELECT_PHOTO) {
+                this.actionPictureObject.setMyPhoto(onSelectFromGalleryResult(data));
+            } else if (requestCode == MagicalCameraObject.TAKE_PHOTO) {
+                this.actionPictureObject.setMyPhoto(onTakePhotoResult());
+            }
+
+            if (this.actionPictureObject.getMyPhoto() != null) {
+                if (PictureUtils.isRotateIamge(doLandScape) == MagicalCameraObject.LANDSCAPE_CAMERA) {
+                    this.actionPictureObject.setMyPhoto(PictureUtils.rotateImage(this.actionPictureObject.getMyPhoto(), 270));
+                }
+            }
         }
     }
     //endregion

@@ -1,19 +1,20 @@
 package com.frosquivel.magicalcamera.Functionallities;
 
 import android.media.ExifInterface;
-
 import com.frosquivel.magicalcamera.Objects.PrivateInformationObject;
 import com.frosquivel.magicalcamera.Utilities.Utils;
-
 import java.io.IOException;
 
 /**
- * Created by Fabian on 07/12/2016.
+ * Created by Fabian Rosales Esquivel (Frosquivel Developer)
+ * Created Date 07/12/2016.
+ * Made in Costa Rica
+ * This class access to information of photographies with exif interface
  */
 
 public class PrivateInformation {
     
-    //object
+    //properties
     private PrivateInformationObject privateInformationObject;
     public PrivateInformationObject getPrivateInformationObject() {
         return privateInformationObject;

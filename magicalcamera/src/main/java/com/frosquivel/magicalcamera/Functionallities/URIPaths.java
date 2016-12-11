@@ -10,7 +10,10 @@ import com.frosquivel.magicalcamera.Objects.URIPathsObject;
 import java.io.File;
 
 /**
- * Created by Fabian on 07/12/2016.
+ * Created by Fabian Rosales Esquivel (Frosquivel Developer)
+ * Created Date 07/12/2016.
+ * Made in Costa Rica
+ * This class return the uri photo like real uri or fake (for a some jobs)
  */
 
 public class URIPaths {

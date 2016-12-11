@@ -17,11 +17,13 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 /**
- * Created by Fabian on 07/12/2016.
+ * Created by Fabian Rosales Esquivel (Frosquivel Developer)
+ * Created Date 07/12/2016.
+ * Made in Costa Rica
+ * This class save the photo bitmap like a real photo in device
  */
 
 public class SaveEasyPhoto {
-
 
     //================================================================================
     // Save Photo in device
@@ -107,4 +109,5 @@ public class SaveEasyPhoto {
             }
         }
     }
+    //endregion
 }

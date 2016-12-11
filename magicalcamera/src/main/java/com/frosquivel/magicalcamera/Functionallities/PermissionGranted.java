@@ -9,22 +9,26 @@ import android.support.v4.content.ContextCompat;
 import com.frosquivel.magicalcamera.Objects.PermissionGrantedObject;
 
 /**
- * Created by Fabian on 08/12/2016.
+ * Created by Fabian Rosales Esquivel (Frosquivel Developer)
+ * Created Date 08/12/2016.
+ * Made in Costa Rica
+ * This class validate the permission in android 6.0 or more
  */
 
 public class PermissionGranted {
-    //properties
+    //region Properties
     private PermissionGrantedObject permissionGrantedObject;
 
-    //Getters and setters
+    //Getter and setter method
     public void setPermissionGrantedObject(PermissionGrantedObject permissionGrantedObject) {
         this.permissionGrantedObject = permissionGrantedObject;
     }
     public PermissionGrantedObject getPermissionGrantedObject() {
         return permissionGrantedObject;
     }
+    //endregion
 
-    //constructor
+    //region Constructor
     public PermissionGranted(Activity activity){
         this.permissionGrantedObject = new PermissionGrantedObject();
         this.permissionGrantedObject.setCameraPermission(false);
@@ -33,7 +37,9 @@ public class PermissionGranted {
 
         this.permissionGrantedObject.setActivity(activity);
     }
+    //endregion
 
+    //region Check permission for use camera, write and read of external storage and location for android 6.0
     public void checkCameraPermission(){
         if (android.os.Build.VERSION.SDK_INT >= 23) {
             if (ContextCompat.checkSelfPermission(this.permissionGrantedObject.getActivity(), Manifest.permission.CAMERA)
@@ -80,7 +86,6 @@ public class PermissionGranted {
         }
     }
 
-
     public void checkLocationPermission(){
         if (android.os.Build.VERSION.SDK_INT >= 23) {
             if (ContextCompat.checkSelfPermission(this.permissionGrantedObject.getActivity(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
@@ -98,9 +103,9 @@ public class PermissionGranted {
             }
         }
     }
+    //endregion
 
-
-
+    //region Method to call in override
     /***
      * This method is call in the grant permission override
      * For verify if the user acept the camera permission or not
@@ -121,5 +126,5 @@ public class PermissionGranted {
             }
         }
     }
-
+    //endregion
 }

@@ -21,8 +21,6 @@ import java.util.List;
 
 /**
  * Created by          Fabián Rosales Esquivel
- * Visit my web page   http://www.frosquivel.com
- * Visit my blog       http://www.frosquivel.com/blog
  * Created Date        on 5/19/16
  * This is an android library to take easy picture
  */
@@ -37,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
     private MagicalCamera magicalCamera;
     private PermissionGranted permissionGranted;
-    private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 3000;
+    private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 80;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

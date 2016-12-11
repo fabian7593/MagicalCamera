@@ -27,6 +27,15 @@ public class PictureUtils {
         }
     }
 
+    public static int isRotateIamge(boolean doRotate) {
+        if(doRotate){
+            return MagicalCameraObject.LANDSCAPE_CAMERA;
+        } else {
+            return MagicalCameraObject.NORMAL_CAMERA;
+        }
+    }
+
+
     /**
      * Rotate the image if the device camera is land scape
      * @return

@@ -20,31 +20,38 @@ import java.io.IOException;
 import static android.graphics.Color.RED;
 
 /**
- * Created by          Fabián Rosales Esquivel
- * Visit my web page   http://www.frosquivel.com
- * Created Date        on 06/12/16
+ * Created by Fabian Rosales Esquivel (Frosquivel Developer)
+ * Created Date 06/12/2016.
+ * Made in Costa Rica
  * This is the class for use face recognition
  */
 
-
 public class FaceRecognition {
-    //object
+
+    //================================================================================
+    // Properties and constructor
+    //================================================================================
+    //region Properties
     private FaceRecognitionObject faceRecognitionInformation;
     private FaceDetector detector;
 
+    //Getter and setter methods
     public FaceRecognitionObject getFaceRecognitionInformation() {
         return faceRecognitionInformation;
     }
+    //endregion
 
-    //constructor
+    //region Constructor
     public FaceRecognition(){
         super();
         faceRecognitionInformation = new FaceRecognitionObject();
     }
+    //endregion
 
     //================================================================================
     // Face detector methods
     //================================================================================
+    //region FaceDetector
     public Bitmap faceDetector(int stroke, int color, Activity activity, Bitmap photo){
         return faceDetection(stroke, color, activity, photo);
     }
@@ -110,7 +117,7 @@ public class FaceRecognition {
         return outBitmap;
     }
 
-    //draw a rectangle in your butmap
+    //draw a rectangle in your bitmap
     private void drawRectangle(Canvas canvas, PointF point, float width, float height, int stroke, int color){
         Paint paint = new Paint();
         paint.setColor(color);
@@ -125,5 +132,5 @@ public class FaceRecognition {
         RectF rect = new RectF(x1, y1, x2, y2);
         canvas.drawRect(rect, paint);
     }
-
+    //endregion
 }

@@ -15,9 +15,12 @@ import static android.graphics.Color.*;
 
 /**
  * Created by          Fabián Rosales Esquivel
- * Visit my web page   http://www.frosquivel.com
  * Created Date        on 5/15/16
- * This is an android library to take easy picture
+ * This is an android library to take easy picture,
+ * This have the objects or anothers classes to toast the best form to use this library
+ * I recommended use only this class in your code for take a best experience of this third party library
+ * You have the possibility of write me in my personal email fabian7593@gmail.com
+ * v2
  */
 public class MagicalCamera {
     private MagicalCameraObject magicalCameraObject;
@@ -39,7 +42,6 @@ public class MagicalCamera {
     public MagicalCamera(Activity activity, PermissionGranted permissionGranted) {
         this.permissionGrantedObject =  permissionGranted.getPermissionGrantedObject();
         this.permissionGranted = permissionGranted;
-
         magicalCameraObject = new MagicalCameraObject(activity, permissionGrantedObject);
     }
     //endregion
@@ -153,5 +155,7 @@ public class MagicalCamera {
     public Intent getIntentFragment(){
         return magicalCameraObject.getActionPicture().getActionPictureObject().getIntentFragment();
     }
+
+
     //endregion
 }
