@@ -6,11 +6,29 @@ A Magic library to take photos and select pictures in Android. In a simple way a
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a64cbf5369e14c3d98f8722c4ad3fad7)](https://www.codacy.com/app/fabian7593/MagicalCamera?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fabian7593/MagicalCamera&amp;utm_campaign=Badge_Grade)
 
-
-
 <br>
-## SDK
-* It requires **14+ API**.
+##That Offers MagicalCamera.
+* **Take picture** with camera device.
+* **Select pictures in gallery** device (read in devices). 
+* **Write the pictures** that you taken in device, in your own directory.
+* Return the **path of your photo** in device. (This issue is solved for @arthursz)
+* Working in **android 6.0** (We have a class to request the user permission).
+* Create yours **standards of name of pictures**, or use our standard, like "photoname_YYYYmmddHHmmss"
+* Posibility of shown the **private info photography**, like latitude, longitude, ISO or others with Exif Class.
+* Posibility of **rotate picture** when it's required.
+* Select the **quality of the photo** with a percentage, when 1 is the worst and 100 is the better.
+* Obtain the LandMark and return a bitmap with a **facial recognition** that you need.
+* **Return the Bitmap** Photo if you need to save this in internal DB of your application.
+* **Convert your bitmap** in array bytes or string64, if you need to send by Json or XML.
+
+####Other Offers
+* A library completely OpenSource.
+* Use best practice in POO
+* Minimun SDK 14+ API.
+* Support library
+* Compile with Gradle
+* License Under Apache 2.0
+
 <br>
 
 ## Getting Started
