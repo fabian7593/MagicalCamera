@@ -1,6 +1,6 @@
 [![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/cameraHighQ.png)](https://github.com/fabian7593/MagicalCamera)
 
-A Magic library to take photos and select pictures in Android. In a simple way and if you need it also save the pictures in device.
+A Magic library to take photos and select pictures in Android. In a simple way and if you need it also save the pictures in device, and facial recognition, get the real uri path or the photo or obtain the private information of the picture.
 <br>
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-MagicalCamera-green.svg?style=true)](https://android-arsenal.com/details/1/3623)
 
@@ -30,25 +30,45 @@ Another type download by Bintray from    [ ![Download](https://api.bintray.com/p
 <br>
 ### What you need?
 You need for usage the library in the best way, call any permissions in Android Manifest.xml
+If you have android 6.0 the library have a method for validate this permissions, you see this later in this documentation
 ```bash
-    //1.0 version
+ 
+    //this is for take and select or write the bitmap picture in your device
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA"/>
     
-    //and for 3.0 version add this
+    //you need this permission for access the private information and gps locations of yours picture (only if you need this     functionallities)
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    
+    //this permission is required only if you use the facial recognition functionallities
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.MANAGE_DOCUMENTS"/>
+```
+Permissions with required user authorization for Androd 6.0, do like this (You need to call this class and method before that you do the instance of MagicalCamera class, you dont have to validate if is only for android 6.0, This class of PermissionGranted already does everything for you, you only need to call this methods)
+```bash
+        //The parameter this, is the current activity
+        PermissionGranted permissionGranted = new PermissionGranted(this);
+        
+        //permission for take photo, it is false if the user check deny
+        permissionGranted.checkCameraPermission();
+        
+        //for search and write photoss in device internal memory
+        //normal or SD memory
+        permissionGranted.checkReadExternalPermission();
+        permissionGranted.checkWriteExternalPermission();
+        
+        //permission for location for use the `photo information device.
+        permissionGranted.checkLocationPermission();
 ```
 <br>
 ### How to use
 #####Add dependecies
 If you need to take photo or select picture, this is your solution.
-This library give a magical solution for take a picture, you only need to download this and integrate this in your project, maybe downloading it or import in your gradle, like this.
+This library give a magical solution for take a picture,write and red in device, return your uri real path and obtain yhe private info of the photo and facial recognition, you only need to download this and integrate this in your project, maybe downloading it or import in your gradle, like this.
 
 ```bash
 repositories {
@@ -56,16 +76,13 @@ repositories {
 }
 
 dependencies {
-    compile 'com.frosquivel:magicalcamera:1.0'
-    
-    //or the version 3.0
-    compile 'com.frosquivel:magicalcamera:3.0'
+    compile 'com.frosquivel:magicalcamera:4.3'
 }
 ```
 
-If you have any problem with this dependence, because the library override any styles or others, please change the last line for this code:
+If you have any problem with this dependence, because the library override any styles, colors or others, please change the last line for this code:
 ```bash
- compile('com.frosquivel:magicalcamera:1.0@aar') {
+ compile('com.frosquivel:magicalcamera:4.3@aar') {
         transitive = false;
     }
 ```
