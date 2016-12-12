@@ -1,9 +1,5 @@
 package com.frosquivel.magicalcamera.Objects;
 
-import com.google.android.gms.vision.face.Landmark;
-
-import java.util.List;
-
 /**
  * Created by Fabian on 07/12/2016.
  */
