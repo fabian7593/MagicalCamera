@@ -27,8 +27,44 @@ Download from [Here](https://github.com/fabian7593/MagicalCamera/zipball/master)
 Another type download by Bintray from    [ ![Download](https://api.bintray.com/packages/fabian7593/maven/MagicalCamera/images/download.svg) ](https://bintray.com/fabian7593/maven/MagicalCamera/_latestVersion)
  
  Give me a question in [![Codewake](https://www.codewake.com/badges/ask_question.svg)](https://www.codewake.com/p/magicalcamera)
+ 
+ <br>
+### How to use
+#####Add dependecies
+If you need to take photo or select picture, this is your solution.
+This library give a magical solution for take a picture,write and red in device, return your uri real path and obtain yhe private info of the photo and facial recognition, you only need to download this and integrate this in your project, maybe downloading it or import in your gradle, like this.
+
+```bash
+repositories {
+    jcenter()
+}
+
+dependencies {
+    compile 'com.frosquivel:magicalcamera:4.3'
+}
+```
+
+If you have any problem with this dependence, because the library override any styles, colors or others, please change the last line for this code:
+```bash
+ compile('com.frosquivel:magicalcamera:4.3@aar') {
+        transitive = false;
+    }
+```
+ 
 <br>
 ### What you need?
+<br>
+#####Import library
+You need to import the library
+```bash
+import com.frosquivel.magicalcamera.MagicalCamera;
+import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
+
+//and maybe you need in some ocations
+import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
+```
+<br>
+#####Declare Permissions
 You need for usage the library in the best way, call any permissions in Android Manifest.xml
 If you have android 6.0 the library have a method for validate this permissions, you see this later in this documentation
 ```bash
@@ -64,52 +100,34 @@ Permissions with required user authorization for Androd 6.0, do like this (You n
         //permission for location for use the `photo information device.
         permissionGranted.checkLocationPermission();
 ```
-<br>
-### How to use
-#####Add dependecies
-If you need to take photo or select picture, this is your solution.
-This library give a magical solution for take a picture,write and red in device, return your uri real path and obtain yhe private info of the photo and facial recognition, you only need to download this and integrate this in your project, maybe downloading it or import in your gradle, like this.
 
+And for activate the Permissions you need to override the method onRequestPermissionsResult in your respective activity or fragment, like this: 
 ```bash
-repositories {
-    jcenter()
-}
-
-dependencies {
-    compile 'com.frosquivel:magicalcamera:4.3'
-}
-```
-
-If you have any problem with this dependence, because the library override any styles, colors or others, please change the last line for this code:
-```bash
- compile('com.frosquivel:magicalcamera:4.3@aar') {
-        transitive = false;
+ @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        magicalCamera.permissionGrant(requestCode, permissions, grantResults);
     }
 ```
 
-<br>
-#####Import library
-You need to import the library
-```bash
-import com.frosquivel.magicalcamera.MagicalCamera;
-```
+
 
 <br>
 #####Declare variable to resize photo ( with pixels percentage )
 You need to declare and constant or a simple int variable for the quality of the photo, while greater be, greater be the quality, and otherwise, worst be the quality, like this
 ```bash
-//a regular quality, if you declare with 50 is a worst quality and if you declare with 4000 is the better quality
-//only need to play with this variable (0 to 4000 ... or in other words, worst to better :D)
-
-private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 1000;
+//The pixel percentage is declare like an percentage of 100, if your value is 50, the photo will have the middle quality of your camera. 
+// this value could be only 1 to 100.
+private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 80;
 ```
 
 <br>
 #####Instance Class MagicalCamera
+######*YOU NEED TO INSTANCE THIS AFTER THAT PERMISSION GRANTED INSTANCE.*
 You need to instance the MagicalCamera Class, like this:
-The fisrt param is the current Activity, and the second the resize percentage photo
+The fisrt param is the current Activity, and the second the resize percentage photo, and the third param is the Permission Granted
 ```bash
- MagicalCamera magicalCamera = new MagicalCamera(this,RESIZE_PHOTO_PIXELS_PERCENTAGE);
+ MagicalCamera magicalCamera = new MagicalCamera(this,RESIZE_PHOTO_PIXELS_PERCENTAGE, permissionGranted);
+ 
 ```
 
 <br>
