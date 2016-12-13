@@ -209,4 +209,9 @@ public class FragmentSample extends Fragment {
         }
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        magicalCamera.permissionGrant(requestCode, permissions, grantResults);
+    }
+
 }
