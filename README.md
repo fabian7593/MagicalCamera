@@ -20,6 +20,7 @@ A Magic library to take photos and select pictures in Android. In a simple way a
 * Obtain the LandMark and return a bitmap with a **facial recognition** that you need.
 * **Return the Bitmap** Photo if you need to save this in internal DB of your application.
 * **Convert your bitmap** in array bytes or string64, if you need to send by Json or XML.
+* **Type of photo formats:** PNG, JPEG and WEBP.
 
 ####Other Offers
 * A library completely OpenSource.
@@ -28,6 +29,9 @@ A Magic library to take photos and select pictures in Android. In a simple way a
 * Support library
 * Compile with Gradle
 * License Under Apache 2.0
+* The easiest possible integration
+* Integrate in less than 5 minutes
+* Quick and simple API
 
 <br>
 <br>
@@ -400,14 +404,25 @@ All the code has a internal documentation for more explanation of this example.
 https://www.youtube.com/watch?v=U-JxaFZDSn4
 
 <br><br>
-## License
-Source code can be found on [github](https://github.com/fabian7593/MagicalCamera)<br>
-Licenced under [APACHE 2.0](http://www.apache.org/licenses/LICENSE-2.0).
-<br><br>
-
 
 ## About Developer
 Developed by [Fabian Rosales]<br>
 Known as [Frosquivel Developer]<br>
+Source code can be found on [github](https://github.com/fabian7593/MagicalCamera)<br>
+<br><br>
+#License
+Copyright 2016 Fabian Rosales
 
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+<br><br>
 
