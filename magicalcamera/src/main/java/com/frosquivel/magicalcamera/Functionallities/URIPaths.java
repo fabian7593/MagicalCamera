@@ -3,10 +3,7 @@ package com.frosquivel.magicalcamera.Functionallities;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Environment;
-
-import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
 import com.frosquivel.magicalcamera.Objects.URIPathsObject;
-
 import java.io.File;
 
 /**

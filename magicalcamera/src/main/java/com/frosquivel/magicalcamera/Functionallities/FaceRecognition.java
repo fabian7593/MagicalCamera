@@ -6,16 +6,11 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.PointF;
 import android.graphics.RectF;
-import android.media.ExifInterface;
 import android.util.SparseArray;
-
 import com.frosquivel.magicalcamera.Objects.FaceRecognitionObject;
-import com.frosquivel.magicalcamera.Utilities.Utils;
 import com.google.android.gms.vision.Frame;
 import com.google.android.gms.vision.face.Face;
 import com.google.android.gms.vision.face.FaceDetector;
-
-import java.io.IOException;
 
 import static android.graphics.Color.RED;
 
