@@ -32,6 +32,7 @@ A Magic library to take photos and select pictures in Android. In a simple way a
 * The easiest possible integration
 * Integrate in less than 5 minutes
 * Quick and simple API
+* A good Internal Documentation
 
 <br>
 <br>
