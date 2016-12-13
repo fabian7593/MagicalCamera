@@ -117,12 +117,17 @@ Permissions with required user authorization for Androd 6.0, do like this (You n
         
         //permission for location for use the `photo information device.
         permissionGranted.checkLocationPermission();
+        
+        ...
+        //Then instance MagicalCamera
+        ...
 ```
 
 And for activate the Permissions you need to override the method onRequestPermissionsResult in your respective activity or fragment, like this: 
 ```bash
  @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    //CALL THIS METHOD EVER IN THIS OVERRIDE FOR ACTIVATE PERMISSIONS
         magicalCamera.permissionGrant(requestCode, permissions, grantResults);
     }
 ```
@@ -140,7 +145,7 @@ private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 80;
 
 <br>
 #####Instance Class MagicalCamera
-######*YOU NEED TO INSTANCE THIS AFTER THAT PERMISSION GRANTED INSTANCE.*
+######*YOU NEED TO INSTANCE THIS, AFTER THAT PERMISSION GRANTED INSTANCE.*
 You need to instance the MagicalCamera Class, like this:
 The fisrt param is the current Activity, and the second the resize percentage photo, and the third param is the Permission Granted
 ```bash
@@ -178,21 +183,22 @@ You need to call the methods for take or select pictures in fragments that this 
 ```
 
 <br>
-#####Remeber override the event onActivityResult
+#####Remember override the event onActivityResult
 You need to override the method onActivityResult in your activity or fragment like this
 ```bash
  @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        //call this method ever
+        //CALL THIS METHOD EVER
         magicalCamera.resultPhoto(requestCode, resultCode, data);
         
-        //with this form you obtain the bitmap
-        imageView.setImageBitmap(magicalCamera.getMyPhoto());
+        //with this form you obtain the bitmap (in this example set this bitmap in image view)
+        imageView.setImageBitmap(magicalCamera.getPhoto());
         
-        String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getMyPhoto(),"myPhotoName","myDirectoryName", MagicalCamera.JPEG, true);
+        //if you need save your bitmap in device use this method and return the path if you need this
+        //You need to send, the bitmap picture, the photo name, the directory name, the picture type, and autoincrement photo name if           //you need this send true, else you have the posibility or realize your standard name for your pictures.
+        String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getPhoto(),"myPhotoName","myDirectoryName", MagicalCamera.JPEG, true);
 
-       //if you need save your bitmap in device use this method
        if(path != null){
            Toast.makeText(MainActivity.this, "The photo is save in device, please check this path: " + path, Toast.LENGTH_SHORT).show();
        }else{
@@ -240,32 +246,25 @@ You can resize the photo in any moment with this:
 #####Conversion Methods
 The library have any methods to convert the bitmap in other formats that you need.
 All of this methods are public statics, I mean that you dont have to instance the library for usage this.
+You need to call the class * ConvertSimpleImage * And the respective params.
 * **bitmapToBytes:** Convert the bitmap to array bytes, only need the bitmap param and the compress format, return array bytes.
 * **bytesToBitmap:** Convert the array bytes to bitmap, only need the array bytes in param, return bitmap.
 * **bytesToStringBase64:** Convert the array bytes to String base 64, only need the array bytes format in param, return String.
 * **stringBase64ToBytes:** Convert string to array bytes, only need the String in param, return array bytes.
 
-<br><br>
+<br
 
-#3.0 Version Modifications
+##### Facial Recognition:
 
-###New functionalities
-* Facial Recognition
-* Take photo private information (like, gps location coordinates, the date time photo, brand and company devices).
-
-
-###Explain New functionalities
-
-## Facial Recognition:
-
-This is a method to return your bitmap (magicalCamera.getMyPhoto()) like another bitmap with a square draws arround the face of the photo, with the posibillity of modify the color and the stroke of the square. And this is not all, you have the posibility of call the List<Landmark> of the photo with facial recognitions, for save data of all faces, for example the distance between eyes, the nose position and mounth position, all of this is important information for facials recognitions.
+This is a method to return your bitmap (magicalCamera.getPhoto()) like another bitmap with a square draws arround the face of the photo, with the posibillity of modify the color and the stroke of the square. And this is not all, you have the posibility of call the List<Landmark> of the photo with facial recognitions, for save data of all faces, for example the distance between eyes, the nose position and mounth position, all of this is important information for facials recognitions.
 
 You need to write for example:
 ```bash
 if(magicalCamera != null){
-    if(magicalCamera.getMyPhoto() != null){
+    if(magicalCamera.getPhoto() != null){
          //this comment line is the strok 5 and color red for default
          //imageView.setImageBitmap(magicalCamera.faceDetector());
+         //you can the posibility of send the square color and the respective stroke
          imageView.setImageBitmap(magicalCamera.faceDetector(50, Color.GREEN));
 
          List<Landmark> listMark = magicalCamera.getListLandMarkPhoto();
@@ -285,13 +284,13 @@ The photo and bitmap converted is like to:
 ![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/faceDetection2.png)
 
 
-## Private information Photo:
+##### Private information Photo:
 This method show you the private information photo if the photo is saved in device or not... 
 For view all information the device need to activate GPS locations (and maybe internet), else not show all information :(.
 
 You need to write this code for example:
 ```bash
- if(magicalCamera.getMyPhoto()!=null) {
+ if(magicalCamera.getPhoto()!=null) {
    if(magicalCamera.getImageInformation()) {
  
        StringBuilder builderInformation = new StringBuilder();
@@ -367,10 +366,8 @@ You need to write this code for example:
 See the example of this infomartion return:
 ![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/information2.png)
 
-###Issues Fixed
-* This version fix the issue of permission of android Marshmallow.
-* Fix the land scape photo in any devices (in general Samsung and Sony brands), and the posibility of turn manually.
- The code that you use is like that in the event override of public void onActivityResult:
+#####Rotate image
+ The code that you use is in the event override of public void onActivityResult:
 ```bash
  @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -411,9 +408,7 @@ Licenced under [APACHE 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 <br>
 
 ## About Developer
-Developed by [Fabian Rosales](http://www.frosquivel.com)<br>
-Known as [Frosquivel Developer](http://www.frosquivel.com)<br>
-Web Page [www.frosquivel.com](http://www.frosquivel.com)<br>
-Blog (Spanish) [www.frosquivel.com/blog](http://www.frosquivel.com/blog)<br>
+Developed by [Fabian Rosales]<br>
+Known as [Frosquivel Developer]<br>
 
 
