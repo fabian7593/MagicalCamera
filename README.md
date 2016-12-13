@@ -30,6 +30,11 @@ A Magic library to take photos and select pictures in Android. In a simple way a
 * License Under Apache 2.0
 
 <br>
+<br>
+## If you can do it, buy me a coffee ;)
+[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=L25MKCRPR7TWY)
+<br>
+<br>
 
 ## Getting Started
 
@@ -47,8 +52,8 @@ Another type download by Bintray from    [ ![Download](https://api.bintray.com/p
  Give me a question in [![Codewake](https://www.codewake.com/badges/ask_question.svg)](https://www.codewake.com/p/magicalcamera)
  
  <br>
-### How to use
-#####Add dependecies
+## How to use
+####Add dependecies
 If you need to take photo or select picture, this is your solution.
 This library give a magical solution for take a picture,write and red in device, return your uri real path and obtain yhe private info of the photo and facial recognition, you only need to download this and integrate this in your project, maybe downloading it or import in your gradle, like this.
 
@@ -70,9 +75,9 @@ If you have any problem with this dependence, because the library override any s
 ```
  
 <br>
-### What you need?
+## What you need?
 <br>
-#####Import library
+###Import library
 You need to import the library
 ```bash
 import com.frosquivel.magicalcamera.MagicalCamera;
@@ -82,7 +87,7 @@ import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
 import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
 ```
 <br>
-#####Declare Permissions
+###Declare Permissions
 You need for usage the library in the best way, call any permissions in Android Manifest.xml
 If you have android 6.0 the library have a method for validate this permissions, you see this later in this documentation
 ```bash
@@ -135,7 +140,7 @@ And for activate the Permissions you need to override the method onRequestPermis
 
 
 <br>
-#####Declare variable to resize photo ( with pixels percentage )
+###Declare variable to resize photo ( with pixels percentage )
 You need to declare and constant or a simple int variable for the quality of the photo, while greater be, greater be the quality, and otherwise, worst be the quality, like this
 ```bash
 //The pixel percentage is declare like an percentage of 100, if your value is 50, the photo will have the middle quality of your camera. 
@@ -144,7 +149,7 @@ private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 80;
 ```
 
 <br>
-#####Instance Class MagicalCamera
+###Instance Class MagicalCamera
 ######*YOU NEED TO INSTANCE THIS, AFTER THAT PERMISSION GRANTED INSTANCE.*
 You need to instance the MagicalCamera Class, like this:
 The fisrt param is the current Activity, and the second the resize percentage photo, and the third param is the Permission Granted
@@ -154,7 +159,7 @@ The fisrt param is the current Activity, and the second the resize percentage ph
 ```
 
 <br>
-#####Activities Methods
+###Activities Methods
 You need to call the methods for take or select pictures in activities that this form:
 
 ```bash
@@ -166,7 +171,7 @@ magicalCamera.selectedPicture("my_header_name");
 ```
 
 <br>
-#####Fragments Methods
+###Fragments Methods
 You need to call the methods for take or select pictures in fragments that this form:
 
 ```bash
@@ -183,7 +188,7 @@ You need to call the methods for take or select pictures in fragments that this 
 ```
 
 <br>
-#####Remember override the event onActivityResult
+###Remember override the event onActivityResult
 You need to override the method onActivityResult in your activity or fragment like this
 ```bash
  @Override
@@ -208,7 +213,7 @@ You need to override the method onActivityResult in your activity or fragment li
 ```
 
 <br>
-#####The savePhotoInMemoryDevice Method
+###The savePhotoInMemoryDevice Method
 This method save your bitmap in internal memory device or if the internal memory is full this library save in sdcard (if you have anything :'D)
 This method have a lot of params that you can need to use the library:
 * **Bitmap:** This is the bitmap that you need to save in memory device.
@@ -226,7 +231,7 @@ The method:
 ```
 
 <br>
-#####Types of Formats for save photos
+###Types of Formats for save photos
 You have any type of formats for save the pictures and the bitmaps.
 You can use, the static variables of the library MagicalCamera.
 ```bash
@@ -236,14 +241,14 @@ You can use, the static variables of the library MagicalCamera.
 ```
 
 <br>
-#####Resize photo in real time
+###Resize photo in real time
 You can resize the photo in any moment with this:
 ```bash
    magicalCamera.setResizePhoto(newResizeInteger);
 ```
 
 <br>
-#####Conversion Methods
+###Conversion Methods
 The library have any methods to convert the bitmap in other formats that you need.
 All of this methods are public statics, I mean that you dont have to instance the library for usage this.
 You need to call the class * ConvertSimpleImage * And the respective params.
@@ -254,7 +259,7 @@ You need to call the class * ConvertSimpleImage * And the respective params.
 
 <br
 
-##### Facial Recognition:
+### Facial Recognition:
 
 This is a method to return your bitmap (magicalCamera.getPhoto()) like another bitmap with a square draws arround the face of the photo, with the posibillity of modify the color and the stroke of the square. And this is not all, you have the posibility of call the List<Landmark> of the photo with facial recognitions, for save data of all faces, for example the distance between eyes, the nose position and mounth position, all of this is important information for facials recognitions.
 
@@ -284,7 +289,7 @@ The photo and bitmap converted is like to:
 ![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/faceDetection2.png)
 
 
-##### Private information Photo:
+### Private information Photo:
 This method show you the private information photo if the photo is saved in device or not... 
 For view all information the device need to activate GPS locations (and maybe internet), else not show all information :(.
 
@@ -366,7 +371,7 @@ You need to write this code for example:
 See the example of this infomartion return:
 ![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/information2.png)
 
-#####Rotate image
+###Rotate image
  The code that you use is in the event override of public void onActivityResult:
 ```bash
  @Override
@@ -400,12 +405,6 @@ Source code can be found on [github](https://github.com/fabian7593/MagicalCamera
 Licenced under [APACHE 2.0](http://www.apache.org/licenses/LICENSE-2.0).
 <br><br>
 
-
-## Buy me a coffee ;)
-
-[![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=L25MKCRPR7TWY)
-<br>
-<br>
 
 ## About Developer
 Developed by [Fabian Rosales]<br>
