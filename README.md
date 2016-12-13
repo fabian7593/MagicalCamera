@@ -31,7 +31,7 @@ A Magic library to take photos and select pictures in Android. In a simple way a
 
 <br>
 <br>
-## If you can do it, buy me a coffee ;)
+### If you can do it, buy me a coffee ;)
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=L25MKCRPR7TWY)
 <br>
 <br>
