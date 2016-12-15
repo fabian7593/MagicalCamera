@@ -420,7 +420,7 @@ You need to write this code for example:
 ```
 
 See the example of this infomartion return:
-
+<br>
 ![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/information2.png)
 
 
@@ -429,7 +429,7 @@ All the code has a internal documentation for more explanation of this example.
 
 <br><br>
 ##Preview of Example
-
+<br>
 ![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/magicalcamera.gif)
 
 <br><br>
