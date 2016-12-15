@@ -68,13 +68,13 @@ repositories {
 }
 
 dependencies {
-    compile 'com.frosquivel:magicalcamera:4.3'
+    compile 'com.frosquivel:magicalcamera:4.4'
 }
 ```
 
 If you have any problem with this dependence, because the library override any styles, colors or others, please change the last line for this code:
 ```bash
- compile('com.frosquivel:magicalcamera:4.3@aar') {
+ compile('com.frosquivel:magicalcamera:4.4@aar') {
         transitive = false;
     }
 ```
@@ -202,6 +202,9 @@ You need to override the method onActivityResult in your activity or fragment li
         //CALL THIS METHOD EVER
         magicalCamera.resultPhoto(requestCode, resultCode, data);
         
+        //this is for rotate picture in this method
+        //magicalCamera.resultPhoto(requestCode, resultCode, data, MagicalCamera.ORIENTATION_ROTATE_180);
+        
         //with this form you obtain the bitmap (in this example set this bitmap in image view)
         imageView.setImageBitmap(magicalCamera.getPhoto());
         
@@ -235,6 +238,10 @@ The method:
  Bitmap.CompressFormat format, boolean autoIncrementNameByDate)
 ```
 
+Example:
+```bash
+ String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getPhoto(), "myTestPhotoName", MagicalCamera.JPEG, true);
+```
 <br>
 ###Types of Formats for save photos
 You have any type of formats for save the pictures and the bitmaps.
@@ -262,7 +269,46 @@ You need to call the class * ConvertSimpleImage * And the respective params.
 * **bytesToStringBase64:** Convert the array bytes to String base 64, only need the array bytes format in param, return String.
 * **stringBase64ToBytes:** Convert string to array bytes, only need the String in param, return array bytes.
 
-<br
+Example:
+```bash
+  //convert the bitmap to bytes
+  byte[] bytesArray =  ConvertSimpleImage.bitmapToBytes(magicalCamera.getPhoto(), MagicalCamera.PNG);
+  
+   //convert the bytes to string 64, with this form is easly to send by web service or store data in DB
+   String imageBase64 = ConvertSimpleImage.bytesToStringBase64(bytesArray);
+
+   //if you need to revert the process
+   byte[] anotherArrayBytes = ConvertSimpleImage.stringBase64ToBytes(imageBase64);
+
+  //again deserialize the image
+  Bitmap myImageAgain = ConvertSimpleImage.bytesToBitmap(anotherArrayBytes);
+```
+
+<br>
+
+###Rotate picture
+You have the posibility of rotate picture because some devices have the camera in landscape, and the picture is shown upside down.
+If you need to rotate image use in event onActivityResult the method with the last param:
+```bash
+  magicalCamera.resultPhoto(requestCode, resultCode, data, MagicalCamera.ORIENTATION_ROTATE_180);
+``` 
+or if you rotate manually in another part of code use method:
+```bash
+//rotate any image
+Bitmap myImage = magicalCamera.rotatePicture(magicalCamera.getPhoto(),  MagicalCamera.ORIENTATION_ROTATE_90);
+
+//rotate the getPhoto in magicalCamera Object
+Bitmap myImage = magicalCamera.rotatePicture(MagicalCamera.ORIENTATION_ROTATE_NORMAL);
+``` 
+
+You have this posibillities of rotate image:
+```bash
+MagicalCamera.ORIENTATION_ROTATE_NORMAL
+MagicalCamera.ORIENTATION_ROTATE_90
+MagicalCamera.ORIENTATION_ROTATE_180
+MagicalCamera.ORIENTATION_ROTATE_270
+``` 
+<br>
 
 ### Facial Recognition:
 
@@ -376,22 +422,6 @@ You need to write this code for example:
 See the example of this infomartion return:
 ![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/information2.png)
 
-###Rotate image
- The code that you use is in the event override of public void onActivityResult:
-```bash
- @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        
-        //Please see this line, the last flag is for if camera land scape rotate
-        //or false if you dont need to rotate photo
-        magicalCamera.resultPhoto(requestCode, resultCode, data, true);
-        
-        if(magicalCamera.getMyPhoto()!=null) {
-            imageView.setImageBitmap(magicalCamera.getMyPhoto());
-        }
-}
-```
 
 ##Internal documentation
 All the code has a internal documentation for more explanation of this example.
