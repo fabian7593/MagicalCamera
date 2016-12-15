@@ -337,6 +337,7 @@ if(magicalCamera != null){
 ```
 
 The photo and bitmap converted is like to:
+<br>
 ![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/faceDetection2.png)
 
 
@@ -421,6 +422,7 @@ You need to write this code for example:
 
 See the example of this infomartion return:
 <br>
+
 ![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/information2.png)
 
 
