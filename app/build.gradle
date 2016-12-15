@@ -9,7 +9,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 23
         versionCode 4
-        versionName "4.3"
+        versionName "4.4"
     }
     android {
         lintOptions {
@@ -27,7 +27,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:24.0.0-alpha1'
-   // compile project(':magicalcamera')
-    compile 'com.frosquivel:magicalcamera:4.3'
+    //compile project(':magicalcamera')
+    compile 'com.frosquivel:magicalcamera:4.4'
     compile 'com.afollestad.material-dialogs:commons:0.8.6.1'
 }

@@ -5,7 +5,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
-import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
+
+import com.frosquivel.magicalcamera.MagicalCamera;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -50,11 +51,11 @@ public class SaveEasyPhoto {
             DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
             String date = df.format(Calendar.getInstance().getTime());
 
-            if (format == MagicalCameraObject.PNG) {
+            if (format == MagicalCamera.PNG) {
                 photoName = (autoIncrementNameByDate) ? photoName + "_" + date + ".png" : photoName + ".png";
-            } else if (format == MagicalCameraObject.JPEG) {
+            } else if (format == MagicalCamera.JPEG) {
                 photoName = (autoIncrementNameByDate) ? photoName + "_" + date + ".jpeg" : photoName + ".jpeg";
-            } else if (format == MagicalCameraObject.WEBP) {
+            } else if (format == MagicalCamera.WEBP) {
                 photoName = (autoIncrementNameByDate) ? photoName + "_" + date + ".webp" : photoName + ".webp";
             }
 

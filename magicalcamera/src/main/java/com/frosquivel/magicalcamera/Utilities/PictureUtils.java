@@ -14,41 +14,7 @@ public class PictureUtils {
     //===============================================================================
     // Utils methods, resize and get Photo Uri and others
     //================================================================================
-    //region Utils
-    public static int ifCameraLandScape(boolean doRotate) {
-        if(doRotate) {
-            if (rotateIfLandScapeCamera()) {
-                return MagicalCameraObject.LANDSCAPE_CAMERA;
-            } else {
-                return MagicalCameraObject.NORMAL_CAMERA;
-            }
-        }else{
-            return 0;
-        }
-    }
 
-    public static int isRotateIamge(boolean doRotate) {
-        if(doRotate){
-            return MagicalCameraObject.LANDSCAPE_CAMERA;
-        } else {
-            return MagicalCameraObject.NORMAL_CAMERA;
-        }
-    }
-
-
-    /**
-     * Rotate the image if the device camera is land scape
-     * @return
-     */
-    private static boolean rotateIfLandScapeCamera() {
-        if (Build.BRAND.toLowerCase().equals("samsung")) {
-            return true;
-        } else if(Build.BRAND.toLowerCase().equals("sony")){
-            return true;
-        }else{
-            return false;
-        }
-    }
 
     /**
      * Rotate the bitmap if the image is in landscape camera

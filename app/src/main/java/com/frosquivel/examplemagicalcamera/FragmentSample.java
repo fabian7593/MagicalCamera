@@ -194,12 +194,12 @@ public class FragmentSample extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        magicalCamera.resultPhoto(requestCode, resultCode, data);
+        magicalCamera.resultPhoto(requestCode, resultCode, data, MagicalCamera.ORIENTATION_ROTATE_90);
 
         if(magicalCamera.getPhoto()!=null) {
             imageView.setImageBitmap(magicalCamera.getPhoto());
 
-            String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getPhoto(), "myTestPhoto", MagicalCameraObject.JPEG, true);
+            String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getPhoto(), "myTestPhoto", MagicalCamera.JPEG, true);
 
             if (path != null) {
                 Toast.makeText(activity, "The photo is save in device, please check this path: " + path, Toast.LENGTH_SHORT).show();

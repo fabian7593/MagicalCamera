@@ -189,12 +189,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+        //this is for rotate picture in this method
+        //magicalCamera.resultPhoto(requestCode, resultCode, data, MagicalCamera.ORIENTATION_ROTATE_180);
         magicalCamera.resultPhoto(requestCode, resultCode, data);
 
         if(magicalCamera.getPhoto()!=null) {
+            //another form to rotate image
+            magicalCamera.rotatePicture(magicalCamera.getPhoto(), MagicalCamera.ORIENTATION_ROTATE_90);
+
+            //set the photo in image view
             imageView.setImageBitmap(magicalCamera.getPhoto());
 
-            String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getPhoto(), "myTestPhoto", MagicalCameraObject.JPEG, true);
+            String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getPhoto(), "myTestPhoto", MagicalCamera.JPEG, true);
 
             if (path != null) {
                 Toast.makeText(MainActivity.this,

@@ -6,6 +6,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
+
+import com.frosquivel.magicalcamera.MagicalCamera;
 import com.frosquivel.magicalcamera.Objects.ActionPictureObject;
 import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
 import com.frosquivel.magicalcamera.Objects.PermissionGrantedObject;
@@ -239,9 +241,7 @@ import com.frosquivel.magicalcamera.Utilities.PictureUtils;
             }
 
             if (this.actionPictureObject.getMyPhoto() != null) {
-                if (PictureUtils.ifCameraLandScape(true) == MagicalCameraObject.LANDSCAPE_CAMERA) {
                     this.actionPictureObject.setMyPhoto(PictureUtils.rotateImage(this.actionPictureObject.getMyPhoto(), 270));
-                }
             }
         }
     }
@@ -254,7 +254,7 @@ import com.frosquivel.magicalcamera.Utilities.PictureUtils;
      * doLandScape
      * BUT you have the posibillity of rotate the picture "manually", with the parameter doLandScape
      */
-    public void resultPhoto(int requestCode, int resultCode, Intent data, boolean doLandScape) {
+    public void resultPhoto(int requestCode, int resultCode, Intent data, int rotatePicture) {
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == MagicalCameraObject.SELECT_PHOTO) {
                 this.actionPictureObject.setMyPhoto(onSelectFromGalleryResult(data));
@@ -263,9 +263,7 @@ import com.frosquivel.magicalcamera.Utilities.PictureUtils;
             }
 
             if (this.actionPictureObject.getMyPhoto() != null) {
-                if (PictureUtils.isRotateIamge(doLandScape) == MagicalCameraObject.LANDSCAPE_CAMERA) {
-                    this.actionPictureObject.setMyPhoto(PictureUtils.rotateImage(this.actionPictureObject.getMyPhoto(), 270));
-                }
+                this.actionPictureObject.setMyPhoto(PictureUtils.rotateImage(this.actionPictureObject.getMyPhoto(), rotatePicture));
             }
         }
     }

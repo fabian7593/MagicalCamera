@@ -10,6 +10,7 @@ import com.frosquivel.magicalcamera.Objects.FaceRecognitionObject;
 import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
 import com.frosquivel.magicalcamera.Objects.PermissionGrantedObject;
 import com.frosquivel.magicalcamera.Objects.PrivateInformationObject;
+import com.frosquivel.magicalcamera.Utilities.PictureUtils;
 
 import static android.graphics.Color.*;
 
@@ -23,6 +24,17 @@ import static android.graphics.Color.*;
  * v2
  */
 public class MagicalCamera {
+
+    //compress format public static variables
+    public static final Bitmap.CompressFormat JPEG = Bitmap.CompressFormat.JPEG;
+    public static final Bitmap.CompressFormat PNG = Bitmap.CompressFormat.PNG;
+    public static final Bitmap.CompressFormat WEBP = Bitmap.CompressFormat.WEBP;
+
+    public static final int ORIENTATION_ROTATE_NORMAL = 0;
+    public static final int ORIENTATION_ROTATE_90 = 90;
+    public static final int ORIENTATION_ROTATE_180 = 180;
+    public static final int ORIENTATION_ROTATE_270 = 270;
+
     private MagicalCameraObject magicalCameraObject;
     private PermissionGrantedObject permissionGrantedObject;
     private PermissionGranted permissionGranted;
@@ -95,7 +107,6 @@ public class MagicalCamera {
         return magicalCameraObject.getFaceRecognition().getFaceRecognitionInformation();
     }
 
-
     //Image information methods
     public boolean hasImageInformation() {
         return magicalCameraObject.getPrivateInformation().getImageInformation(magicalCameraObject.getUriPaths().getUriPathsObject().getRealPath());
@@ -105,7 +116,6 @@ public class MagicalCamera {
         return magicalCameraObject.getPrivateInformation().getPrivateInformationObject();
     }
 
-
     /**
      * ***********************************************
      * This methods save the photo in memory device
@@ -114,7 +124,7 @@ public class MagicalCamera {
      */
     public String savePhotoInMemoryDevice(Bitmap bitmap, String photoName, boolean autoIncrementNameByDate) {
         return magicalCameraObject.getSaveEasyPhoto().writePhotoFile(bitmap,
-                photoName, "MAGICAL CAMERA", MagicalCameraObject.PNG, autoIncrementNameByDate, magicalCameraObject.getActivity());
+                photoName, "MAGICAL CAMERA", PNG, autoIncrementNameByDate, magicalCameraObject.getActivity());
     }
 
     public String savePhotoInMemoryDevice(Bitmap bitmap, String photoName, Bitmap.CompressFormat format, boolean autoIncrementNameByDate) {
@@ -124,7 +134,7 @@ public class MagicalCamera {
 
     public String savePhotoInMemoryDevice(Bitmap bitmap, String photoName, String directoryName, boolean autoIncrementNameByDate) {
         return magicalCameraObject.getSaveEasyPhoto().writePhotoFile(bitmap,
-                photoName, directoryName, MagicalCameraObject.PNG, autoIncrementNameByDate, magicalCameraObject.getActivity());
+                photoName, directoryName, PNG, autoIncrementNameByDate, magicalCameraObject.getActivity());
     }
 
     public String savePhotoInMemoryDevice(Bitmap bitmap, String photoName, String directoryName,
@@ -132,8 +142,6 @@ public class MagicalCamera {
         return magicalCameraObject.getSaveEasyPhoto().writePhotoFile(bitmap,
                 photoName, directoryName, format, autoIncrementNameByDate, magicalCameraObject.getActivity());
     }
-
-
 
     //get variables
     public Bitmap getPhoto(){
@@ -144,8 +152,8 @@ public class MagicalCamera {
         magicalCameraObject.getActionPicture().resultPhoto(requestCode, resultCode, data);
     }
 
-    public void resultPhoto(int requestCode, int resultCode, Intent data, boolean doLandScape){
-        magicalCameraObject.getActionPicture().resultPhoto(requestCode, resultCode, data, doLandScape);
+    public void resultPhoto(int requestCode, int resultCode, Intent data, int rotateType){
+        magicalCameraObject.getActionPicture().resultPhoto(requestCode, resultCode, data, rotateType);
     }
 
     public void permissionGrant(int requestCode, String[] permissions, int[] grantResults){
@@ -156,6 +164,19 @@ public class MagicalCamera {
         return magicalCameraObject.getActionPicture().getActionPictureObject().getIntentFragment();
     }
 
+    //methods to rotate picture
+    public Bitmap rotatePicture(int rotateType){
+        if(getPhoto() != null)
+            return PictureUtils.rotateImage(getPhoto(), rotateType);
+        else
+            return null;
+    }
 
+    public Bitmap rotatePicture(Bitmap picture,int rotateType){
+        if(picture != null)
+            return PictureUtils.rotateImage(picture, rotateType);
+        else
+            return null;
+    }
     //endregion
 }

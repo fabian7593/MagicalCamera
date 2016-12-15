@@ -24,13 +24,6 @@ public class MagicalCameraObject {
     public static final int LANDSCAPE_CAMERA = 2;
     public static final int NORMAL_CAMERA = 3;
 
-    //compress format public static variables
-    public static final Bitmap.CompressFormat JPEG = Bitmap.CompressFormat.JPEG;
-    public static final Bitmap.CompressFormat PNG = Bitmap.CompressFormat.PNG;
-    public static final Bitmap.CompressFormat WEBP = Bitmap.CompressFormat.WEBP;
-
-
-
     //my activity variable
     private Activity activity;
 
