@@ -15,6 +15,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
 import com.frosquivel.magicalcamera.MagicalCamera;
 import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
+import com.frosquivel.magicalcamera.Utilities.ConvertSimpleImage;
 import com.google.android.gms.vision.face.Landmark;
 
 import java.util.List;
@@ -201,6 +202,19 @@ public class MainActivity extends AppCompatActivity {
             imageView.setImageBitmap(magicalCamera.getPhoto());
 
             String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getPhoto(), "myTestPhoto", MagicalCamera.JPEG, true);
+
+            //CONVERT BITMAP EXAMPLE COMMENT
+            //convert the bitmap to bytes
+            /*byte[] bytesArray =  ConvertSimpleImage.bitmapToBytes(magicalCamera.getPhoto(), MagicalCamera.PNG);
+            //convert the bytes to string 64, with this form is easly to send by web service or store data in DB
+            String imageBase64 = ConvertSimpleImage.bytesToStringBase64(bytesArray);
+
+            //if you need to revert the process
+            byte[] anotherArrayBytes = ConvertSimpleImage.stringBase64ToBytes(imageBase64);
+
+            //again deserialize the image
+            Bitmap myImageAgain = ConvertSimpleImage.bytesToBitmap(anotherArrayBytes);
+            */
 
             if (path != null) {
                 Toast.makeText(MainActivity.this,
