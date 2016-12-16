@@ -348,55 +348,61 @@ For view all information the device need to activate GPS locations (and maybe in
 You need to write this code for example:
 ```bash
  if(magicalCamera.getPhoto()!=null) {
-   if(magicalCamera.getImageInformation()) {
- 
-       StringBuilder builderInformation = new StringBuilder();
- 
-       if (notNullNotFill(magicalCamera.getLatitude() + ""))
-           builderInformation.append("Latitude: " + magicalCamera.getLatitude() + "\n");
- 
-       if (notNullNotFill(magicalCamera.getLatitudeReference()))
-           builderInformation.append("Latitude Reference: " + magicalCamera.getLatitudeReference() + "\n");
- 
-       if (notNullNotFill(magicalCamera.getLongitude() + ""))
-           builderInformation.append("Longitude: " + magicalCamera.getLongitude() + "\n");
- 
-       if (notNullNotFill(magicalCamera.getLongitudeReference()))
-           builderInformation.append("Longitude Reference: " + magicalCamera.getLongitudeReference() + "\n");
- 
-       if (notNullNotFill(magicalCamera.getDateTimeTakePhoto()))
-           builderInformation.append("Date time to photo: " + magicalCamera.getDateTimeTakePhoto() + "\n");
- 
-       if (notNullNotFill(magicalCamera.getDateStamp()))
-           builderInformation.append("Date stamp to photo: " + magicalCamera.getDateStamp() + "\n");
- 
-       if (notNullNotFill(magicalCamera.getIso()))
-           builderInformation.append("ISO: " + magicalCamera.getIso() + "\n");
- 
-       if (notNullNotFill(magicalCamera.getOrientation()))
-           builderInformation.append("Orientation photo: " + magicalCamera.getOrientation() + "\n");
- 
-       if (notNullNotFill(magicalCamera.getImageLength()))
-           builderInformation.append("Image lenght: " + magicalCamera.getImageLength() + "\n");
- 
-       if (notNullNotFill(magicalCamera.getImageWidth()))
-           builderInformation.append("Image Width: " + magicalCamera.getImageWidth() + "\n");
- 
-       if (notNullNotFill(magicalCamera.getModelDevice()))
-           builderInformation.append("Model Device: " + magicalCamera.getModelDevice() + "\n");
- 
-       if (notNullNotFill(magicalCamera.getMakeCompany()))
-           builderInformation.append("Make company: " + magicalCamera.getMakeCompany() + "\n");
- 
-       new MaterialDialog.Builder(MainActivity.this)
-               .title("See photo information")
-               .content(builderInformation.toString())
-               .positiveText("ok")
-               .show();
+   if(magicalCamera.hasImageInformation()) {
+     if(magicalCamera.getImageInformation()) {
+
+         StringBuilder builderInformation = new StringBuilder();
+
+         if (notNullNotFill(magicalCamera.getLatitude() + ""))
+             builderInformation.append("Latitude: " + magicalCamera.getLatitude() + "\n");
+
+         if (notNullNotFill(magicalCamera.getLatitudeReference()))
+             builderInformation.append("Latitude Reference: " + magicalCamera.getLatitudeReference() + "\n");
+
+         if (notNullNotFill(magicalCamera.getLongitude() + ""))
+             builderInformation.append("Longitude: " + magicalCamera.getLongitude() + "\n");
+
+         if (notNullNotFill(magicalCamera.getLongitudeReference()))
+             builderInformation.append("Longitude Reference: " + magicalCamera.getLongitudeReference() + "\n");
+
+         if (notNullNotFill(magicalCamera.getDateTimeTakePhoto()))
+             builderInformation.append("Date time to photo: " + magicalCamera.getDateTimeTakePhoto() + "\n");
+
+         if (notNullNotFill(magicalCamera.getDateStamp()))
+             builderInformation.append("Date stamp to photo: " + magicalCamera.getDateStamp() + "\n");
+
+         if (notNullNotFill(magicalCamera.getIso()))
+             builderInformation.append("ISO: " + magicalCamera.getIso() + "\n");
+
+         if (notNullNotFill(magicalCamera.getOrientation()))
+             builderInformation.append("Orientation photo: " + magicalCamera.getOrientation() + "\n");
+
+         if (notNullNotFill(magicalCamera.getImageLength()))
+             builderInformation.append("Image lenght: " + magicalCamera.getImageLength() + "\n");
+
+         if (notNullNotFill(magicalCamera.getImageWidth()))
+             builderInformation.append("Image Width: " + magicalCamera.getImageWidth() + "\n");
+
+         if (notNullNotFill(magicalCamera.getModelDevice()))
+             builderInformation.append("Model Device: " + magicalCamera.getModelDevice() + "\n");
+
+         if (notNullNotFill(magicalCamera.getMakeCompany()))
+             builderInformation.append("Make company: " + magicalCamera.getMakeCompany() + "\n");
+
+         new MaterialDialog.Builder(MainActivity.this)
+                 .title("See photo information")
+                 .content(builderInformation.toString())
+                 .positiveText("ok")
+                 .show();
+     }else{
+         Toast.makeText(MainActivity.this,
+                 "You dont have data to show because the real path photo is wrong contact with fabian7593@gmail.com",
+                 Toast.LENGTH_SHORT).show();
+     }
    }else{
-       Toast.makeText(MainActivity.this,
-               "You dont have data to show because the real path photo is wrong contact with fabian7593@gmail.com",
-               Toast.LENGTH_SHORT).show();
+   Toast.makeText(MainActivity.this,
+           "This photo donte have ifnormation, remember, for obtain the info you need to save the picture in device before",
+           Toast.LENGTH_SHORT).show();
    }
  }else{
    Toast.makeText(MainActivity.this,
