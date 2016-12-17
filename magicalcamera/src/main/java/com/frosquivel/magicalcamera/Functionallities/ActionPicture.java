@@ -239,10 +239,6 @@ import com.frosquivel.magicalcamera.Utilities.PictureUtils;
             } else if (requestCode == MagicalCameraObject.TAKE_PHOTO) {
                 this.actionPictureObject.setMyPhoto(onTakePhotoResult());
             }
-
-            if (this.actionPictureObject.getMyPhoto() != null) {
-                    this.actionPictureObject.setMyPhoto(PictureUtils.rotateImage(this.actionPictureObject.getMyPhoto(), 270));
-            }
         }
     }
 
