@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <modelVersion>4.4</modelVersion>
+  <modelVersion>4.8</modelVersion>
   <groupId>com.frosquivel</groupId>
   <artifactId>magicalcamera</artifactId>
-  <version>4.4</version>
+  <version>4.8</version>
   <packaging>aar</packaging>
   <name>magicalcamera</name>
-  <description>You can take photo easy and save too :D</description>
+  <description>You can take photo easy and save too</description>
   <url>https://github.com/fabian7593/MagicalCamera</url>
   <licenses>
     <license>
