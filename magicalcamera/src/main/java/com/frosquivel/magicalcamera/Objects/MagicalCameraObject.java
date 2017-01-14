@@ -49,7 +49,7 @@ public class MagicalCameraObject {
         this.activity = activity;
         this.faceRecognition = new FaceRecognition();
         this.privateInformation = new PrivateInformation();
-        this.uriPaths = new URIPaths(this.privateInformation);
+        this.uriPaths = new URIPaths(this.privateInformation, activity);
         this.saveEasyPhoto = new SaveEasyPhoto();
         this.actionPicture = new ActionPicture(activity, ActionPictureObject.BEST_QUALITY_PHOTO, permissionGranted, this.uriPaths);
     }
@@ -58,7 +58,7 @@ public class MagicalCameraObject {
         this.activity = activity;
         this.faceRecognition = new FaceRecognition();
         this.privateInformation = new PrivateInformation();
-        this.uriPaths = new URIPaths(this.privateInformation);
+        this.uriPaths = new URIPaths(this.privateInformation, activity);
         this.saveEasyPhoto = new SaveEasyPhoto();
         this.actionPicture = new ActionPicture(activity, qualityPhoto, permissionGranted, this.uriPaths);
     }

@@ -3,6 +3,8 @@ package com.frosquivel.magicalcamera.Functionallities;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Environment;
+import android.support.v4.content.FileProvider;
+
 import com.frosquivel.magicalcamera.Objects.URIPathsObject;
 import java.io.File;
 
@@ -16,10 +18,12 @@ import java.io.File;
 public class URIPaths {
     private URIPathsObject uriPathsObject;
     private PrivateInformation privateInformation;
+    private Context context;
 
-    public URIPaths(PrivateInformation privateInformation){
+    public URIPaths(PrivateInformation privateInformation, Context context){
         this.privateInformation = privateInformation;
         this.uriPathsObject = new URIPathsObject();
+        this.context = context;
     }
 
     public URIPathsObject getUriPathsObject() {
@@ -39,13 +43,20 @@ public class URIPaths {
     public Uri getPhotoFileUri(String fileDir) {
         File mediaStorageDir = null;
         mediaStorageDir = new File("", fileDir);
-        Uri imgUri = Uri.fromFile(mediaStorageDir);
+
+        Uri photoURI = null;
+        if (android.os.Build.VERSION.SDK_INT >= 24) {
+            photoURI = FileProvider.getUriForFile(context,
+                    context.getApplicationContext().getPackageName() + ".provider", mediaStorageDir);
+        }else{
+            photoURI = Uri.fromFile(mediaStorageDir);
+        }
 
         this.uriPathsObject.setRealPath(mediaStorageDir.getPath());
         try {
             this.privateInformation.getImageInformation(uriPathsObject.getRealPath());
         } catch (Exception ex) {}
-        return imgUri;
+        return photoURI;
     }
 
 
@@ -106,13 +117,21 @@ public class URIPaths {
     private Uri getUriAuxiliar(String direction, String nameFile) {
         try {
             File file = new File(direction, nameFile);
-            Uri imgUri = Uri.fromFile(file);
-            this.uriPathsObject.setRealPath(imgUri.getPath());
+
+            Uri photoURI = null;
+            if (android.os.Build.VERSION.SDK_INT >= 24) {
+                photoURI = FileProvider.getUriForFile(context,
+                        context.getApplicationContext().getPackageName() + ".provider", file);
+            }else{
+                photoURI = Uri.fromFile(file);
+            }
+
+            this.uriPathsObject.setRealPath(photoURI.getPath());
             try {
                 this.privateInformation.getImageInformation(this.uriPathsObject.getRealPath());
             } catch (Exception ev) {}
 
-            return imgUri;
+            return photoURI;
         } catch (Exception ex) {
             return null;
         }
@@ -126,9 +145,16 @@ public class URIPaths {
     private Uri getUriAuxiliar(String direction) {
         try {
             File file = new File(direction);
-            Uri imgUri = Uri.fromFile(file);
-            this.uriPathsObject.setRealPath(imgUri.getPath());
-            return imgUri;
+            Uri photoURI;
+            if (android.os.Build.VERSION.SDK_INT >= 24) {
+                 photoURI = FileProvider.getUriForFile(context,
+                         context.getApplicationContext().getPackageName() + ".provider", file);
+            }else{
+                photoURI = Uri.fromFile(file);
+            }
+
+            this.uriPathsObject.setRealPath(photoURI.getPath());
+            return photoURI;
         } catch (Exception ex) {
             return null;
         }

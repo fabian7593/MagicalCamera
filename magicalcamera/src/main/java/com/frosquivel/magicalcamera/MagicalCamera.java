@@ -108,7 +108,7 @@ public class MagicalCamera {
     }
 
     //Image information methods
-    public boolean hasImageInformation() {
+    public boolean initImageInformation() {
         return magicalCameraObject.getPrivateInformation().getImageInformation(magicalCameraObject.getUriPaths().getUriPathsObject().getRealPath());
     }
 
@@ -146,6 +146,10 @@ public class MagicalCamera {
     //get variables
     public Bitmap getPhoto(){
         return magicalCameraObject.getActionPicture().getActionPictureObject().getMyPhoto();
+    }
+
+    public void setPhoto(Bitmap bitmap){
+        magicalCameraObject.getActionPicture().getActionPictureObject().setMyPhoto(bitmap);
     }
 
     public void resultPhoto(int requestCode, int resultCode, Intent data){

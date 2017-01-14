@@ -1,5 +1,4 @@
 package com.frosquivel.examplemagicalcamera;
-
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
@@ -11,9 +10,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
 import com.frosquivel.magicalcamera.MagicalCamera;
 import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
 
@@ -24,7 +21,7 @@ import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
  * Created Date        on 5/19/16
  * This is an android library to take easy picture
  */
-public class FragmentSample extends Fragment {
+public class FragmentSample extends Fragment{
 
     private Activity activity;
 
@@ -35,10 +32,11 @@ public class FragmentSample extends Fragment {
     private TextView texttitle;
     private Button btnSeeData;
     private Button btnFacialRecognition;
+    private Button imgRotate;
+    private Button saveImage;
 
     private MagicalCamera magicalCamera;
-    private PermissionGranted permissionGranted;
-    private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 3000;
+    private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 100;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -46,14 +44,10 @@ public class FragmentSample extends Fragment {
         View rootView = inflater.inflate(R.layout.activity_main, container, false);
 
         activity = getActivity();
-        permissionGranted = new PermissionGranted(activity);
-        permissionGranted.checkCameraPermission();
-        permissionGranted.checkReadExternalPermission();
-        permissionGranted.checkWriteExternalPermission();
-
-        magicalCamera = new MagicalCamera(activity ,RESIZE_PHOTO_PIXELS_PERCENTAGE, permissionGranted);
+        magicalCamera = new MagicalCamera(activity ,RESIZE_PHOTO_PIXELS_PERCENTAGE, ActivityForFragment.permissionGranted);
 
         imageView =  (ImageView) rootView.findViewById(R.id.imageView);
+        imgRotate =  (Button) rootView.findViewById(R.id.imgRotate);
         btntakephoto =  (Button) rootView.findViewById(R.id.btntakephoto);
         btnselectedphoto =  (Button) rootView.findViewById(R.id.btnselectedphoto);
         btnGoTo =  (Button) rootView.findViewById(R.id.btnGoTo);
@@ -62,7 +56,57 @@ public class FragmentSample extends Fragment {
         btnGoTo.setText("Go to Activity");
         btnSeeData = (Button) rootView.findViewById(R.id.btnSeeData);
         btnFacialRecognition = (Button) rootView.findViewById(R.id.btnFacialRecognition);
+        saveImage = (Button) rootView.findViewById(R.id.saveImage);
 
+
+        saveImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(magicalCamera != null) {
+                    if (magicalCamera.getPhoto() != null) {
+                        String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getPhoto(), "myTestPhoto", MagicalCamera.JPEG, true);
+                        if (path != null) {
+                            Toast.makeText(activity,
+                                    "The photo is save manual in device, please check this path: " + path,
+                                    Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(activity,
+                                    "Sorry your photo dont write in devide, please contact with fabian7593@gmail and say this error",
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }else{
+                        Toast.makeText(activity,
+                                "Your image is null, please select or take one",
+                                Toast.LENGTH_LONG).show();
+                    }
+                }else{
+                    Toast.makeText(activity,
+                            "Please initialized magical camera, maybe in static context for use in all activity",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        imgRotate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(magicalCamera != null) {
+                    if (magicalCamera.getPhoto() != null) {
+                        magicalCamera.setPhoto(magicalCamera.rotatePicture(magicalCamera.getPhoto(), MagicalCamera.ORIENTATION_ROTATE_90));
+                        imageView.setImageBitmap(magicalCamera.getPhoto());
+                    }else{
+                        Toast.makeText(activity,
+                                "Your image is null, please select or take one",
+                                Toast.LENGTH_LONG).show();
+                    }
+                }else{
+                    Toast.makeText(activity,
+                            "Please initialized magical camera, maybe in static context for use in all activity",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        
         btntakephoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,7 +162,7 @@ public class FragmentSample extends Fragment {
             public void onClick(View v) {
 
                 if(magicalCamera.getPhoto()!=null) {
-                    if(magicalCamera.hasImageInformation()) {
+                    if(magicalCamera.initImageInformation()) {
 
                         StringBuilder builderInformation = new StringBuilder();
 
@@ -166,12 +210,12 @@ public class FragmentSample extends Fragment {
                     }else{
                         Toast.makeText(activity,
                                 "You dont have data to show because the real path photo is wrong contact with fabian7593@gmail.com",
-                                Toast.LENGTH_SHORT).show();
+                                Toast.LENGTH_LONG).show();
                     }
                 }else{
                     Toast.makeText(activity,
-                            "You dont have data to show because the photo is null (your photo isn't in memory device), contact with fabian7593@gmail.com",
-                            Toast.LENGTH_SHORT).show();
+                            "You dont have data to show because the photo is null (your photo isn't in memory device, plase save your photo in gallery first), contact with fabian7593@gmail.com",
+                            Toast.LENGTH_LONG).show();
                 }
             }
         });

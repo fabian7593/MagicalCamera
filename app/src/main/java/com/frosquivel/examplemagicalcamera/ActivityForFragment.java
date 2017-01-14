@@ -1,8 +1,7 @@
 package com.frosquivel.examplemagicalcamera;
-
 import android.app.Activity;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
+import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
 
 /**
  * Created by          Fabián Rosales Esquivel
@@ -12,14 +11,22 @@ import android.os.Bundle;
  * This is an android library to take easy picture
  */
 public class ActivityForFragment extends Activity {
-
+    public static PermissionGranted permissionGranted;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        permissionGranted = new PermissionGranted(this);
+        permissionGranted.checkCameraPermission();
+        permissionGranted.checkReadExternalPermission();
+        permissionGranted.checkWriteExternalPermission();
+        permissionGranted.checkLocationPermission();
         setContentView(R.layout.activity_activity_for_fragment);
+    }
 
-        FragmentTransaction ft = this.getFragmentManager().beginTransaction();
-        ft.replace(R.id.fragment_place, new FragmentSample()).addToBackStack("tag").commit();
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        permissionGranted.permissionGrant(requestCode, permissions, grantResults);
     }
 
 }

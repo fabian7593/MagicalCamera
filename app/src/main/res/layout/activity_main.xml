@@ -23,11 +23,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_height="400dp"
-                android:layout_gravity="center" />
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="400dp"
+                    android:layout_gravity="center" />
 
             <Button
                 android:id="@+id/btntakephoto"
@@ -44,25 +44,36 @@
                 android:text="Selected photo" />
 
             <Button
-                android:id="@+id/btnGoTo"
+                android:id="@+id/imgRotate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center" />
+                android:layout_gravity="center"
+                android:text="Rotate image 90º"/>
 
-
+            <Button
+                android:id="@+id/saveImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Save the photo"/>
             <Button
                 android:id="@+id/btnSeeData"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="See photo data" />
-
             <Button
                 android:id="@+id/btnFacialRecognition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Facial Recognition" />
+            <Button
+                android:id="@+id/btnGoTo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

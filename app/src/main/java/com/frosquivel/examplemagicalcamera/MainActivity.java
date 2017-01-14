@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     private Button btnSeeData;
     private Button btnFacialRecognition;
     private TextView texttitle;
+    private Button imgRotate;
+    private Button saveImage;
 
     private MagicalCamera magicalCamera;
     private PermissionGranted permissionGranted;
@@ -44,27 +46,86 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         permissionGranted = new PermissionGranted(this);
-        //permission for take photo, it is false if the user check deny
-        permissionGranted.checkCameraPermission();
-        //for search and write photoss in device internal memory
-        //normal or SD memory
-        permissionGranted.checkReadExternalPermission();
-        permissionGranted.checkWriteExternalPermission();
-        //permission for location for use the `photo information device.
-        permissionGranted.checkLocationPermission();
+        //call the permission for all that you need to use in this library
+        //This has nothing to do with the library API, I only put it as an example
+        //but if you needed call this like another versions
+        if (android.os.Build.VERSION.SDK_INT >= 24) {
+            permissionGranted.checkAllMagicalCameraPermission();
+        }else{
+            //call one on one permission
+            //permission for take photo, it is false if the user check deny
+            permissionGranted.checkCameraPermission();
+            //for search and write photoss in device internal memory
+            //normal or SD memory
+            permissionGranted.checkReadExternalPermission();
+            permissionGranted.checkWriteExternalPermission();
+            //permission for location for use the `photo information device.
+            permissionGranted.checkLocationPermission();
+        }
 
         magicalCamera = new MagicalCamera(this, RESIZE_PHOTO_PIXELS_PERCENTAGE, permissionGranted);
 
         imageView =  (ImageView) findViewById(R.id.imageView);
+        imgRotate =  (Button) findViewById(R.id.imgRotate);
         btntakephoto =  (Button) findViewById(R.id.btntakephoto);
         btnselectedphoto =  (Button) findViewById(R.id.btnselectedphoto);
         btnGoTo =  (Button) findViewById(R.id.btnGoTo);
         texttitle =  (TextView) findViewById(R.id.texttitle);
         texttitle.setText("Activity Example");
         btnGoTo.setText("Go to Fragment");
+        saveImage = (Button) findViewById(R.id.saveImage);
         btnSeeData = (Button) findViewById(R.id.btnSeeData);
         btnFacialRecognition = (Button) findViewById(R.id.btnFacialRecognition);
 
+
+        saveImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(magicalCamera != null) {
+                    if (magicalCamera.getPhoto() != null) {
+                        String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getPhoto(), "myTestPhoto", MagicalCamera.JPEG, true);
+                        if (path != null) {
+                            Toast.makeText(MainActivity.this,
+                                    "The photo is save manual in device, please check this path: " + path,
+                                    Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(MainActivity.this,
+                                    "Sorry your photo dont write in devide, please contact with fabian7593@gmail and say this error",
+                                    Toast.LENGTH_LONG).show();
+                        }
+                    }else{
+                        Toast.makeText(MainActivity.this,
+                                "Your image is null, please select or take one",
+                                Toast.LENGTH_LONG).show();
+                    }
+                }else{
+                    Toast.makeText(MainActivity.this,
+                            "Please initialized magical camera, maybe in static context for use in all activity",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        imgRotate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(magicalCamera != null) {
+                    if (magicalCamera.getPhoto() != null) {
+                        magicalCamera.setPhoto(magicalCamera.rotatePicture(magicalCamera.getPhoto(), MagicalCamera.ORIENTATION_ROTATE_90));
+                        imageView.setImageBitmap(magicalCamera.getPhoto());
+                    }else{
+                        Toast.makeText(MainActivity.this,
+                                "Your image is null, please select or take one",
+                                Toast.LENGTH_LONG).show();
+                    }
+                }else{
+                    Toast.makeText(MainActivity.this,
+                            "Please initialized magical camera, maybe in static context for use in all activity",
+                            Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        
         btntakephoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,12 +161,12 @@ public class MainActivity extends AppCompatActivity {
                     }else{
                         Toast.makeText(MainActivity.this,
                                 "Your image is null, please select or take one",
-                                Toast.LENGTH_SHORT).show();
+                                Toast.LENGTH_LONG).show();
                     }
                 }else{
                     Toast.makeText(MainActivity.this,
                             "Please initialized magical camera, maybe in static context for use in all activity",
-                            Toast.LENGTH_SHORT).show();
+                            Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -115,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(magicalCamera.getPhoto()!=null) {
-                    if(magicalCamera.hasImageInformation()) {
+                    if(magicalCamera.initImageInformation()) {
 
                         StringBuilder builderInformation = new StringBuilder();
 
@@ -163,12 +224,12 @@ public class MainActivity extends AppCompatActivity {
                     }else{
                         Toast.makeText(MainActivity.this,
                                 "You dont have data to show because the real path photo is wrong contact with fabian7593@gmail.com",
-                                Toast.LENGTH_SHORT).show();
+                                Toast.LENGTH_LONG).show();
                     }
                 }else{
                     Toast.makeText(MainActivity.this,
                             "You dont have data to show because the photo is null (your photo isn't in memory device)",
-                            Toast.LENGTH_SHORT).show();
+                            Toast.LENGTH_LONG).show();
                 }
             }
         });
@@ -196,7 +257,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(magicalCamera.getPhoto()!=null) {
             //another form to rotate image
-            magicalCamera.rotatePicture(magicalCamera.getPhoto(), MagicalCamera.ORIENTATION_ROTATE_90);
+            magicalCamera.setPhoto(magicalCamera.rotatePicture(magicalCamera.getPhoto(), MagicalCamera.ORIENTATION_ROTATE_NORMAL));
 
             //set the photo in image view
             imageView.setImageBitmap(magicalCamera.getPhoto());
@@ -219,21 +280,21 @@ public class MainActivity extends AppCompatActivity {
             if (path != null) {
                 Toast.makeText(MainActivity.this,
                         "The photo is save in device, please check this path: " + path,
-                        Toast.LENGTH_SHORT).show();
+                        Toast.LENGTH_LONG).show();
             } else {
                 Toast.makeText(MainActivity.this,
                         "Sorry your photo dont write in devide, please contact with fabian7593@gmail and say this error",
-                        Toast.LENGTH_SHORT).show();
+                        Toast.LENGTH_LONG).show();
             }
         }else{
             Toast.makeText(MainActivity.this,
                     "Your image is null, please debug, or test with another device, or maybe contact with fabian7593@gmail.com for try to fix the bug, thanks and sorry",
-                    Toast.LENGTH_SHORT).show();
+                    Toast.LENGTH_LONG).show();
         }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        magicalCamera.permissionGrant(requestCode, permissions, grantResults);
+        permissionGranted.permissionGrant(requestCode, permissions, grantResults);
     }
 }

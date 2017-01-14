@@ -71,25 +71,28 @@ public class FaceRecognition {
                 .setClassificationType(FaceDetector.ALL_CLASSIFICATIONS)
                 .setTrackingEnabled(false)
                 .build();
+            try {
+                if (false == this.detector.isOperational()) {
+                    return null;
+                }
 
-        if(false == this.detector.isOperational()){
-            return null;
-        }
+                //Add the image on a Frame object
+                Frame frame = new Frame.Builder()
+                        .setBitmap(photo)
+                        .build();
 
-        //Add the image on a Frame object
-        Frame frame = new Frame.Builder()
-                .setBitmap(photo)
-                .build();
+                //Detect all faces from Frame object
+                SparseArray<Face> faceArray = detector.detect(frame);
 
-        //Detect all faces from Frame object
-        SparseArray<Face> faceArray = detector.detect(frame);
+                //Do some drawing on faces
+                Bitmap outBitmap = drawOnFace(faceArray, photo, stroke, color);
 
-        //Do some drawing on faces
-        Bitmap outBitmap = drawOnFace(faceArray,photo,stroke,color);
-
-        //Releasing the detector object
-        this.detector.release();
-        return (outBitmap != null) ? outBitmap : photo;
+                //Releasing the detector object
+                this.detector.release();
+                return (outBitmap != null) ? outBitmap : photo;
+            }catch(Exception ev){
+                return null;
+            }
     }
 
 

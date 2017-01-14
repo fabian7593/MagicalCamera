@@ -14,7 +14,7 @@ ext {
     siteUrl = 'https://github.com/fabian7593/MagicalCamera'
     gitUrl = 'https://github.com/fabian7593/MagicalCamera.git'
 
-    libraryVersion = '4.8'
+    libraryVersion = '5.0.0'
 
     developerId = 'frosquiveldev'
     developerName = 'Fabian Rosales - Frosquivel Developer'
@@ -49,8 +49,8 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 23
-        versionCode 4
-        versionName "4.8"
+        versionCode 5
+        versionName "5.0.0"
     }
     buildTypes {
         release {

@@ -94,7 +94,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/24.0.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.0.0/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.frosquivel/magicalcamera/4.8/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.frosquivel/magicalcamera/5.0.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.8.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/7.8.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/7.8.0/jars" />
@@ -151,7 +151,6 @@
     <orderEntry type="library" exported="" name="play-services-base-7.8.0" level="project" />
     <orderEntry type="library" exported="" name="recyclerview-v7-24.0.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-fitness-7.8.0" level="project" />
-    <orderEntry type="library" exported="" name="magicalcamera-4.8" level="project" />
     <orderEntry type="library" exported="" name="play-services-vision-7.8.0" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-24.0.0" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-24.0.0" level="project" />
@@ -165,6 +164,7 @@
     <orderEntry type="library" exported="" name="play-services-identity-7.8.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-panorama-7.8.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-plus-7.8.0" level="project" />
+    <orderEntry type="library" exported="" name="magicalcamera-5.0.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-maps-7.8.0" level="project" />
   </component>
 </module>
