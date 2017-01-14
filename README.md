@@ -182,13 +182,13 @@ You need to call the methods for take or select pictures in fragments that this 
 ```bash
 //take photo
  if(magicalCamera.takeFragmentPhoto()){
-        startActivityForResult(magicalCamera.getIntentFragment(),MagicalCamera.TAKE_PHOTO);
+        startActivityForResult(magicalCamera.getIntentFragment(),MagicalCameraObject.TAKE_PHOTO);
  }
  
  //select picture
  if(magicalCamera.selectedFragmentPicture()){
       startActivityForResult(Intent.createChooser(magicalCamera.getIntentFragment(),  "My Header Example"),
-                            MagicalCamera.SELECT_PHOTO);
+                            MagicalCameraObject.SELECT_PHOTO);
    }
 ```
 
