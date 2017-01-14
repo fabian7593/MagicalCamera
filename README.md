@@ -45,6 +45,7 @@ A Magic library to take photos and select pictures in Android. In a simple way a
 
 ### Download Sources
 use git (sourcetree or others)
+Remember Download the example for understand better the process
 
 ```bash
 git clone https://github.com/fabian7593/MagicalCamera.git
@@ -68,13 +69,13 @@ repositories {
 }
 
 dependencies {
-    compile 'com.frosquivel:magicalcamera:4.8'
+    compile 'com.frosquivel:magicalcamera:5.0.2'
 }
 ```
 
 If you have any problem with this dependence, because the library override any styles, colors or others, please change the last line for this code:
 ```bash
- compile('com.frosquivel:magicalcamera:4.8@aar') {
+ compile('com.frosquivel:magicalcamera:5.0.2@aar') {
         transitive = false;
     }
 ```
@@ -133,6 +134,11 @@ Permissions with required user authorization for Androd 6.0, do like this (You n
         ...
 ```
 
+You have the possibility of call this permissions with only one method, you can use this:
+```bash
+ permissionGranted.checkAllMagicalCameraPermission();
+```
+
 And for activate the Permissions you need to override the method onRequestPermissionsResult in your respective activity or fragment, like this: 
 ```bash
  @Override
@@ -141,8 +147,30 @@ And for activate the Permissions you need to override the method onRequestPermis
         magicalCamera.permissionGrant(requestCode, permissions, grantResults);
     }
 ```
+<br>Permissions For fragment
+If you need the permissions for fragment, you need to call this permission in the activity parent and declare the permission like an static for use this in the instance of magical camera in fragment (Please see the example app, download this).
+```bash
+  public static PermissionGranted permissionGranted;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        permissionGranted = new PermissionGranted(this);
+        if (android.os.Build.VERSION.SDK_INT >= 24) {
+            permissionGranted.checkAllMagicalCameraPermission();
+        }else{
+            permissionGranted.checkCameraPermission();
+            permissionGranted.checkReadExternalPermission();
+            permissionGranted.checkWriteExternalPermission();
+            permissionGranted.checkLocationPermission();
+        }
+        setContentView(R.layout.activity_activity_for_fragment);
+    }
 
-
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        permissionGranted.permissionGrant(requestCode, permissions, grantResults);
+    }
+```
 
 <br>
 ###Declare variable to resize photo ( with pixels percentage )
@@ -182,13 +210,13 @@ You need to call the methods for take or select pictures in fragments that this 
 ```bash
 //take photo
  if(magicalCamera.takeFragmentPhoto()){
-        startActivityForResult(magicalCamera.getIntentFragment(),MagicalCameraObject.TAKE_PHOTO);
+        startActivityForResult(magicalCamera.getIntentFragment(),MagicalCamera.TAKE_PHOTO);
  }
  
  //select picture
  if(magicalCamera.selectedFragmentPicture()){
       startActivityForResult(Intent.createChooser(magicalCamera.getIntentFragment(),  "My Header Example"),
-                            MagicalCameraObject.SELECT_PHOTO);
+                            MagicalCamera.SELECT_PHOTO);
    }
 ```
 
