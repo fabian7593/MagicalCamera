@@ -30,10 +30,17 @@ public class MagicalCamera {
     public static final Bitmap.CompressFormat PNG = Bitmap.CompressFormat.PNG;
     public static final Bitmap.CompressFormat WEBP = Bitmap.CompressFormat.WEBP;
 
+    //the orientation rotates
     public static final int ORIENTATION_ROTATE_NORMAL = 0;
     public static final int ORIENTATION_ROTATE_90 = 90;
     public static final int ORIENTATION_ROTATE_180 = 180;
     public static final int ORIENTATION_ROTATE_270 = 270;
+
+    //other constants for realized tasks
+    public static final int TAKE_PHOTO = 0;
+    public static final int SELECT_PHOTO = 1;
+    public static final int LANDSCAPE_CAMERA = 2;
+    public static final int NORMAL_CAMERA = 3;
 
     private MagicalCameraObject magicalCameraObject;
     private PermissionGrantedObject permissionGrantedObject;

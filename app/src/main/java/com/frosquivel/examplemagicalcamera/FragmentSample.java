@@ -12,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.frosquivel.magicalcamera.MagicalCamera;
-import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
 
 /**
  * Created by          Fabián Rosales Esquivel
@@ -23,27 +22,39 @@ import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
  */
 public class FragmentSample extends Fragment{
 
-    private Activity activity;
-
+    //this is the image view for show your picture taken
     private ImageView imageView;
+    //button to take picture
     private Button btntakephoto;
+    //button to select picture of your device
     private Button btnselectedphoto;
+    //see the information data of the picture
+    private Button btnSeeData;
+    //button for realized the facial recognition of your picture
+    private Button btnFacialRecognition;
+    //button for rotate the image in bitmap and in image view
+    private Button imgRotate;
+    //button for save the photo in device
+    private Button saveImage;
+    //button for go to fragment
     private Button btnGoTo;
     private TextView texttitle;
-    private Button btnSeeData;
-    private Button btnFacialRecognition;
-    private Button imgRotate;
-    private Button saveImage;
 
+    //Ever you need to call magical camera and permissionGranted
     private MagicalCamera magicalCamera;
     private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 100;
+
+    private Activity activity;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_main, container, false);
 
+        //obtain the activity of the parent
         activity = getActivity();
+
+        //instance magical camera
         magicalCamera = new MagicalCamera(activity ,RESIZE_PHOTO_PIXELS_PERCENTAGE, ActivityForFragment.permissionGranted);
 
         imageView =  (ImageView) rootView.findViewById(R.id.imageView);
@@ -64,6 +75,7 @@ public class FragmentSample extends Fragment{
             public void onClick(View v) {
                 if(magicalCamera != null) {
                     if (magicalCamera.getPhoto() != null) {
+                        //save the photo in your memory external or internal of your device
                         String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getPhoto(), "myTestPhoto", MagicalCamera.JPEG, true);
                         if (path != null) {
                             Toast.makeText(activity,
@@ -92,6 +104,7 @@ public class FragmentSample extends Fragment{
             public void onClick(View v) {
                 if(magicalCamera != null) {
                     if (magicalCamera.getPhoto() != null) {
+                        //for once click rotate the picture in 90ª, and set in the image view.
                         magicalCamera.setPhoto(magicalCamera.rotatePicture(magicalCamera.getPhoto(), MagicalCamera.ORIENTATION_ROTATE_90));
                         imageView.setImageBitmap(magicalCamera.getPhoto());
                     }else{
@@ -110,9 +123,10 @@ public class FragmentSample extends Fragment{
         btntakephoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //this is the form to take picture in fragment
                 if (magicalCamera.takeFragmentPhoto()) {
                     startActivityForResult(magicalCamera.getIntentFragment(),
-                            MagicalCameraObject.TAKE_PHOTO);
+                            MagicalCamera.TAKE_PHOTO);
                 }
 
             }
@@ -121,10 +135,11 @@ public class FragmentSample extends Fragment{
         btnselectedphoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //this is the form to select picture of device
                 if (magicalCamera.selectedFragmentPicture()) {
                     startActivityForResult(
                             Intent.createChooser(magicalCamera.getIntentFragment(), "My Header Example"),
-                            MagicalCameraObject.SELECT_PHOTO);
+                            MagicalCamera.SELECT_PHOTO);
                 }
             }
         });
@@ -132,6 +147,7 @@ public class FragmentSample extends Fragment{
         btnGoTo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //go to acivity
                 startActivity(new Intent(getActivity(), MainActivity.class));
             }
         });
@@ -142,6 +158,7 @@ public class FragmentSample extends Fragment{
             public void onClick(View v) {
                 if(magicalCamera != null){
                     if(magicalCamera.getPhoto() != null){
+                        //call the face detector
                         imageView.setImageBitmap(magicalCamera.faceDetector());
                         //imageView.setImageBitmap(magicalCamera.faceDetector(10, Color.GREEN));
                     }else{
@@ -162,8 +179,10 @@ public class FragmentSample extends Fragment{
             public void onClick(View v) {
 
                 if(magicalCamera.getPhoto()!=null) {
+                    //for see the data you need to call this method ever
+                    //if the function return true you have the posibility of see the data
                     if(magicalCamera.initImageInformation()) {
-
+                        //question in have data
                         StringBuilder builderInformation = new StringBuilder();
 
                         if (notNullNotFill(magicalCamera.getPrivateInformation().getLatitude() + ""))
@@ -238,7 +257,7 @@ public class FragmentSample extends Fragment{
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        magicalCamera.resultPhoto(requestCode, resultCode, data, MagicalCamera.ORIENTATION_ROTATE_90);
+        magicalCamera.resultPhoto(requestCode, resultCode, data, MagicalCamera.ORIENTATION_ROTATE_NORMAL);
 
         if(magicalCamera.getPhoto()!=null) {
             imageView.setImageBitmap(magicalCamera.getPhoto());

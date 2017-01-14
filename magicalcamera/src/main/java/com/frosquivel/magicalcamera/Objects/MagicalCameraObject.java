@@ -17,12 +17,6 @@ public class MagicalCameraObject {
     //================================================================================
     // Properties
     //================================================================================
-    //region Properties
-    //The constants for take or selected photo validate
-    public static final int TAKE_PHOTO = 0;
-    public static final int SELECT_PHOTO = 1;
-    public static final int LANDSCAPE_CAMERA = 2;
-    public static final int NORMAL_CAMERA = 3;
 
     //my activity variable
     private Activity activity;

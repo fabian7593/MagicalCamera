@@ -10,12 +10,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
 import com.frosquivel.magicalcamera.MagicalCamera;
-import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
-import com.frosquivel.magicalcamera.Utilities.ConvertSimpleImage;
 import com.google.android.gms.vision.face.Landmark;
 
 import java.util.List;
@@ -26,16 +23,25 @@ import java.util.List;
  * This is an android library to take easy picture
  */
 public class MainActivity extends AppCompatActivity {
+    //this is the image view for show your picture taken
     private ImageView imageView;
+    //button to take picture
     private Button btntakephoto;
+    //button to select picture of your device
     private Button btnselectedphoto;
-    private Button btnGoTo;
+    //see the information data of the picture
     private Button btnSeeData;
+    //button for realized the facial recognition of your picture
     private Button btnFacialRecognition;
-    private TextView texttitle;
+    //button for rotate the image in bitmap and in image view
     private Button imgRotate;
+    //button for save the photo in device
     private Button saveImage;
+    //button for go to fragment
+    private Button btnGoTo;
+    private TextView texttitle;
 
+    //Ever you need to call magical camera and permissionGranted
     private MagicalCamera magicalCamera;
     private PermissionGranted permissionGranted;
     private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 80;
@@ -63,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
             permissionGranted.checkLocationPermission();
         }
 
+        //realized the instance of magical camera, this need the context, this need the context,
+        //the percentage of quality photo and the permission granted
         magicalCamera = new MagicalCamera(this, RESIZE_PHOTO_PIXELS_PERCENTAGE, permissionGranted);
 
         imageView =  (ImageView) findViewById(R.id.imageView);
@@ -83,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(magicalCamera != null) {
                     if (magicalCamera.getPhoto() != null) {
+                        //save the photo in your memory external or internal of your device
                         String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getPhoto(), "myTestPhoto", MagicalCamera.JPEG, true);
                         if (path != null) {
                             Toast.makeText(MainActivity.this,
@@ -111,6 +120,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(magicalCamera != null) {
                     if (magicalCamera.getPhoto() != null) {
+                        //for once click rotate the picture in 90ª, and set in the image view.
                         magicalCamera.setPhoto(magicalCamera.rotatePicture(magicalCamera.getPhoto(), MagicalCamera.ORIENTATION_ROTATE_90));
                         imageView.setImageBitmap(magicalCamera.getPhoto());
                     }else{
@@ -129,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
         btntakephoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //call the method of take the picture
                 magicalCamera.takePhoto();
             }
         });
@@ -136,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
         btnselectedphoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //call the method of selected picture
                 magicalCamera.selectedPicture("my_header_name");
             }
         });
@@ -152,6 +164,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if(magicalCamera != null){
                     if(magicalCamera.getPhoto() != null){
+                        //obtain the bitmap with facial recognition and the landmark of this points
                         Bitmap faceDetectorBitmap = magicalCamera.faceDetector(50, Color.GREEN);
                         if(faceDetectorBitmap != null){
                             imageView.setImageBitmap(faceDetectorBitmap);
@@ -176,10 +189,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(magicalCamera.getPhoto()!=null) {
+                    //for see the data you need to call this method ever
+                    //if the function return true you have the posibility of see the data
                     if(magicalCamera.initImageInformation()) {
 
                         StringBuilder builderInformation = new StringBuilder();
-
+                        //question in have data
                         if (notNullNotFill(magicalCamera.getPrivateInformation().getLatitude() + ""))
                             builderInformation.append("Latitude: " + magicalCamera.getPrivateInformation().getLatitude() + "\n");
 
@@ -253,6 +268,8 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         //this is for rotate picture in this method
         //magicalCamera.resultPhoto(requestCode, resultCode, data, MagicalCamera.ORIENTATION_ROTATE_180);
+
+        //you should to call the method ever, for obtain the bitmap photo (= magicalCamera.getPhoto())
         magicalCamera.resultPhoto(requestCode, resultCode, data);
 
         if(magicalCamera.getPhoto()!=null) {
@@ -262,6 +279,7 @@ public class MainActivity extends AppCompatActivity {
             //set the photo in image view
             imageView.setImageBitmap(magicalCamera.getPhoto());
 
+            //save the picture inmemory device, and return the physical path of this photo
             String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getPhoto(), "myTestPhoto", MagicalCamera.JPEG, true);
 
             //CONVERT BITMAP EXAMPLE COMMENT
@@ -295,6 +313,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        //call the event of onRequestPermissionsResult for android 6.0 or more
         permissionGranted.permissionGrant(requestCode, permissions, grantResults);
     }
 }

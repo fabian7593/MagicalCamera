@@ -83,13 +83,13 @@ import com.frosquivel.magicalcamera.Utilities.PictureUtils;
             if (intent.resolveActivity(this.actionPictureObject.getActivity().getPackageManager()) != null) {
                 if (android.os.Build.VERSION.SDK_INT >= 23) {
                     if(this.permissionGrantedObject.isCameraPermission()){
-                        this.actionPictureObject.getActivity().startActivityForResult(intent, MagicalCameraObject.TAKE_PHOTO);
+                        this.actionPictureObject.getActivity().startActivityForResult(intent, MagicalCamera.TAKE_PHOTO);
                         return true;
                     }else{
                         return false;
                     }
                 }else{
-                    this.actionPictureObject.getActivity().startActivityForResult(intent, MagicalCameraObject.TAKE_PHOTO);
+                    this.actionPictureObject.getActivity().startActivityForResult(intent, MagicalCamera.TAKE_PHOTO);
                     return true;
                 }
             }
@@ -152,7 +152,7 @@ import com.frosquivel.magicalcamera.Utilities.PictureUtils;
             intent.setType("image/*");
             this.actionPictureObject.getActivity().startActivityForResult(
                     Intent.createChooser(intent, (!headerName.equals("") ? headerName : "Magical Camera")),
-                    MagicalCameraObject.SELECT_PHOTO);
+                    MagicalCamera.SELECT_PHOTO);
 
             return true;
         }catch (Exception ev){
@@ -234,9 +234,9 @@ import com.frosquivel.magicalcamera.Utilities.PictureUtils;
      */
     public void resultPhoto(int requestCode, int resultCode, Intent data) {
         if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == MagicalCameraObject.SELECT_PHOTO) {
+            if (requestCode == MagicalCamera.SELECT_PHOTO) {
                 this.actionPictureObject.setMyPhoto(onSelectFromGalleryResult(data));
-            } else if (requestCode == MagicalCameraObject.TAKE_PHOTO) {
+            } else if (requestCode == MagicalCamera.TAKE_PHOTO) {
                 this.actionPictureObject.setMyPhoto(onTakePhotoResult());
             }
         }
@@ -252,9 +252,9 @@ import com.frosquivel.magicalcamera.Utilities.PictureUtils;
      */
     public void resultPhoto(int requestCode, int resultCode, Intent data, int rotatePicture) {
         if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == MagicalCameraObject.SELECT_PHOTO) {
+            if (requestCode == MagicalCamera.SELECT_PHOTO) {
                 this.actionPictureObject.setMyPhoto(onSelectFromGalleryResult(data));
-            } else if (requestCode == MagicalCameraObject.TAKE_PHOTO) {
+            } else if (requestCode == MagicalCamera.TAKE_PHOTO) {
                 this.actionPictureObject.setMyPhoto(onTakePhotoResult());
             }
 
