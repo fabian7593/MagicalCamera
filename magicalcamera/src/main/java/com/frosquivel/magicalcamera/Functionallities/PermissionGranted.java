@@ -65,6 +65,28 @@ public class PermissionGranted {
         }
     }
 
+    //CHECK only  the simple permissions, read, write and take picture
+    public void checkInOutCameraPermissions(){
+        if (android.os.Build.VERSION.SDK_INT >= 23) {
+            if (ContextCompat.checkSelfPermission(this.permissionGrantedObject.getActivity(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED &&
+                    ContextCompat.checkSelfPermission(this.permissionGrantedObject.getActivity(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED &&
+                    ContextCompat.checkSelfPermission(this.permissionGrantedObject.getActivity(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED)
+            {
+                ActivityCompat.requestPermissions(this.permissionGrantedObject.getActivity(),
+                        new String[]{
+                                Manifest.permission.CAMERA,
+                                Manifest.permission.READ_EXTERNAL_STORAGE,
+                                Manifest.permission.WRITE_EXTERNAL_STORAGE
+                        },
+                        PermissionGrantedObject.REQUEST_ALL_PERMISSION);
+            }else{
+                this.permissionGrantedObject.setCameraPermission(true);
+                this.permissionGrantedObject.setReadExternalStoragePermission(true);
+                this.permissionGrantedObject.setWriteExternalStoragePermission(true);
+            }
+        }
+    }
+
     //region Check permission for use camera, write and read of external storage and location for android 6.0
     public void checkCameraPermission(){
         if (android.os.Build.VERSION.SDK_INT >= 23) {
@@ -157,6 +179,11 @@ public class PermissionGranted {
                 this.permissionGrantedObject.setCameraPermission(true);
                 this.permissionGrantedObject.setReadExternalStoragePermission(true);
                 this.permissionGrantedObject.setLocationPermission(true);
+
+            }else if(requestCode == PermissionGrantedObject.REQUEST_IN_OUT_PERMISSION){
+                this.permissionGrantedObject.setWriteExternalStoragePermission(true);
+                this.permissionGrantedObject.setCameraPermission(true);
+                this.permissionGrantedObject.setReadExternalStoragePermission(true);
             }
         }
     }

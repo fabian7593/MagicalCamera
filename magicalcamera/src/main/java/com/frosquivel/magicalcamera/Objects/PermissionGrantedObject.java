@@ -13,6 +13,7 @@ public class PermissionGrantedObject {
     public static final int REQUEST_READ_EXTERNAL_STORAGE_PERMISSION = 3;
     public static final int REQUEST_LOCATION_PERMISSION = 4;
     public static final int REQUEST_ALL_PERMISSION = 5;
+    public static final int REQUEST_IN_OUT_PERMISSION = 6;
 
     private boolean cameraPermission;
     private boolean writeExternalStoragePermission;
