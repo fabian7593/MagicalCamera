@@ -465,6 +465,12 @@ All the code has a internal documentation for more explanation of this example.
 ![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/magicalcamera.gif)
 
 <br><br>
+##Projects/Apps using MagicalCamera:
+UTNCources
+
+Feel free to contact me to add yours to this list.
+
+<br><br>
 ##You can see the video explication here (in spanish) This video is for MagicalCamera version 1.0
 https://www.youtube.com/watch?v=U-JxaFZDSn4
 
