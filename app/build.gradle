@@ -1,8 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.2"
 
     defaultConfig {
         applicationId "com.frosquivel.examplemagicalcamera"
@@ -26,8 +26,9 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    //compile 'com.android.support:appcompat-v7:24.0.0-alpha1'
+    compile 'com.android.support:appcompat-v7:25.2.0'
     compile project(':magicalcamera')
-    compile 'com.frosquivel:magicalcamera:5.0.3'
+    compile project(':magicalpermissions')
+    //compile 'com.frosquivel:magicalcamera:5.0.3'
     compile 'com.afollestad.material-dialogs:commons:0.8.6.1'
 }
