@@ -1,1 +1,1 @@
-include ':app', ':magicalcamera'
+include ':app', ':magicalcamera', ':magicalpermissions'
