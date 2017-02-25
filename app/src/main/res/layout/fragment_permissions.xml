@@ -11,5 +11,11 @@
     tools:context="com.frosquivel.examplemagicalcamera.PermissionsActivityFragment"
     tools:showIn="@layout/activity_permissions">
 
+    <Button
+        android:text="Ask for permissions in a fragment"
+        android:id="@+id/permissionsBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 
 </RelativeLayout>

@@ -28,7 +28,7 @@ public class MagicalPermissions {
     }
 
     private boolean permissionsNeeded() {
-        return (Build.VERSION.SDK_INT > Build.VERSION_CODES.M);
+        return (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M);
     }
 
     public boolean askPermissions() {
