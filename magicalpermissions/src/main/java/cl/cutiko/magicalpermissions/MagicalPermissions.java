@@ -2,6 +2,7 @@ package cl.cutiko.magicalpermissions;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.v4.app.Fragment;
 
@@ -16,6 +17,7 @@ public class MagicalPermissions {
     private Activity activity;
     private Fragment fragment;
     private String[] permissions;
+    private Runnable task;
 
     public MagicalPermissions(Activity activity, String[] permissions) {
         this.activity = activity;
@@ -31,7 +33,9 @@ public class MagicalPermissions {
         return (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M);
     }
 
-    public boolean askPermissions() {
+    public boolean askPermissions(final Runnable task) {
+        //In case the developer want to do something after the permissions are granted
+        this.task = task;
         boolean validation = permissionsNeeded();
         if (permissionsNeeded()) {
             requestPermissions();
@@ -48,6 +52,17 @@ public class MagicalPermissions {
         }
     }
 
-
-
+    public void permissionResult(int requestCode, String[] permissions, int[] grantResults) {
+        if (RC_PERMISSIONS_ACTIVITY == requestCode || RC_PERMISSIONS_FRAGMENT == requestCode) {
+            boolean validation = true;
+            for (int i = 0; i < permissions.length; i++) {
+                if (PackageManager.PERMISSION_GRANTED != grantResults[i]) {
+                    validation = false;
+                }
+            }
+            if (validation && task != null) {
+                task.run();
+            }
+        }
+    }
 }

@@ -6,8 +6,8 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import cl.cutiko.magicalpermissions.MagicalPermissions;
 
@@ -23,12 +23,18 @@ public class PermissionsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         magicalPermissions = new MagicalPermissions(PermissionsActivity.this, new String[]{Manifest.permission.CAMERA});
+        final Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(PermissionsActivity.this, "Oli", Toast.LENGTH_SHORT).show();
+            }
+        };
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                magicalPermissions.askPermissions();
+                magicalPermissions.askPermissions(runnable);
             }
         });
     }
@@ -36,6 +42,6 @@ public class PermissionsActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        Log.d("PERMISSION_RESULT", "activity");
+        magicalPermissions.permissionResult(requestCode, permissions, grantResults);
     }
 }
