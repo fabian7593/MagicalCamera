@@ -38,13 +38,13 @@ public class MagicalCameraObject {
 
 
     //Constructor
-    public MagicalCameraObject(Activity activity, int qualityPhoto, PermissionGrantedObject permissionGranted){
+    public MagicalCameraObject(Activity activity, int qualityPhoto){
         this.activity = activity;
         this.faceRecognition = new FaceRecognition();
         this.privateInformation = new PrivateInformation();
         this.uriPaths = new URIPaths(this.privateInformation, activity);
         this.saveEasyPhoto = new SaveEasyPhoto();
-        this.actionPicture = new ActionPicture(activity, qualityPhoto, permissionGranted, this.uriPaths);
+        this.actionPicture = new ActionPicture(activity, qualityPhoto, this.uriPaths);
     }
 
 

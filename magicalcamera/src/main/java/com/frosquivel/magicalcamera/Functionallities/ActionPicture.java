@@ -1,4 +1,5 @@
 package com.frosquivel.magicalcamera.Functionallities;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -9,7 +10,6 @@ import android.provider.MediaStore;
 
 import com.frosquivel.magicalcamera.MagicalCamera;
 import com.frosquivel.magicalcamera.Objects.ActionPictureObject;
-import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
 import com.frosquivel.magicalcamera.Objects.PermissionGrantedObject;
 import com.frosquivel.magicalcamera.Utilities.PictureUtils;
 
@@ -41,16 +41,6 @@ import com.frosquivel.magicalcamera.Utilities.PictureUtils;
     //endregion
 
     //region Constructor
-    public ActionPicture(Activity activity, int resizePicture,
-                         PermissionGrantedObject permissionGrantedObject, URIPaths uriPaths){
-        this.actionPictureObject = new ActionPictureObject();
-        this.permissionGrantedObject = permissionGrantedObject;
-        this.uriPaths = uriPaths;
-
-        this.actionPictureObject.setActivity(activity);
-        this.actionPictureObject.setResizePhoto(resizePicture);
-    }
-
     public ActionPicture(Activity activity,int resizePicture, URIPaths uriPaths){
         this.actionPictureObject = new ActionPictureObject();
         this.permissionGrantedObject = null;
