@@ -12,7 +12,7 @@ import com.frosquivel.magicalcamera.Objects.PermissionGrantedObject;
 import com.frosquivel.magicalcamera.Objects.PrivateInformationObject;
 import com.frosquivel.magicalcamera.Utilities.PictureUtils;
 
-import static android.graphics.Color.*;
+import static android.graphics.Color.RED;
 
 /**
  * Created by          Fabián Rosales Esquivel
@@ -56,12 +56,6 @@ public class MagicalCamera {
 
         magicalCameraObject = new MagicalCameraObject(activity, resizePhoto <= 0 ?
                 ActionPictureObject.BEST_QUALITY_PHOTO : resizePhoto, permissionGrantedObject);
-    }
-
-    public MagicalCamera(Activity activity, PermissionGranted permissionGranted) {
-        this.permissionGrantedObject =  permissionGranted.getPermissionGrantedObject();
-        this.permissionGranted = permissionGranted;
-        magicalCameraObject = new MagicalCameraObject(activity, permissionGrantedObject);
     }
     //endregion
 
