@@ -44,7 +44,7 @@ public class MagicalPermissions {
         if (permissionsNeeded()) {
             requestPermissions();
         } else {
-            task.run();
+            runPendingTask();
         }
     }
 
@@ -71,7 +71,7 @@ public class MagicalPermissions {
             }
         } else {
             //But if every permission is granted then go a head and do what you want
-            task.run();
+            runPendingTask();
         }
     }
 
@@ -83,9 +83,15 @@ public class MagicalPermissions {
                     validation = false;
                 }
             }
-            if (validation && task != null) {
-                task.run();
+            if (validation) {
+                runPendingTask();
             }
+        }
+    }
+
+    private void runPendingTask(){
+        if (task != null) {
+            task.run();
         }
     }
 }
