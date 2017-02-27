@@ -1,7 +1,6 @@
 package com.frosquivel.magicalcamera.Objects;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
 
 import com.frosquivel.magicalcamera.Functionallities.ActionPicture;
 import com.frosquivel.magicalcamera.Functionallities.FaceRecognition;
@@ -39,15 +38,6 @@ public class MagicalCameraObject {
 
 
     //Constructor
-    public MagicalCameraObject(Activity activity, PermissionGrantedObject permissionGranted){
-        this.activity = activity;
-        this.faceRecognition = new FaceRecognition();
-        this.privateInformation = new PrivateInformation();
-        this.uriPaths = new URIPaths(this.privateInformation, activity);
-        this.saveEasyPhoto = new SaveEasyPhoto();
-        this.actionPicture = new ActionPicture(activity, ActionPictureObject.BEST_QUALITY_PHOTO, permissionGranted, this.uriPaths);
-    }
-
     public MagicalCameraObject(Activity activity, int qualityPhoto, PermissionGrantedObject permissionGranted){
         this.activity = activity;
         this.faceRecognition = new FaceRecognition();

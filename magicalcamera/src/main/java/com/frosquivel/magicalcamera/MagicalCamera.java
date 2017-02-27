@@ -3,14 +3,16 @@ package com.frosquivel.magicalcamera;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.support.v4.app.Fragment;
 
 import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
 import com.frosquivel.magicalcamera.Objects.ActionPictureObject;
 import com.frosquivel.magicalcamera.Objects.FaceRecognitionObject;
 import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
-import com.frosquivel.magicalcamera.Objects.PermissionGrantedObject;
 import com.frosquivel.magicalcamera.Objects.PrivateInformationObject;
 import com.frosquivel.magicalcamera.Utilities.PictureUtils;
+
+import cl.cutiko.magicalpermissions.MagicalPermissions;
 
 import static android.graphics.Color.RED;
 
@@ -43,30 +45,22 @@ public class MagicalCamera {
     public static final int NORMAL_CAMERA = 3;
 
     private MagicalCameraObject magicalCameraObject;
-    private PermissionGrantedObject permissionGrantedObject;
     private PermissionGranted permissionGranted;
 
     //================================================================================
     // Constructs
     //================================================================================
     //region Construct
-    public MagicalCamera(Activity activity, int resizePhoto, PermissionGranted permissionGranted) {
-        this.permissionGrantedObject =  permissionGranted.getPermissionGrantedObject();
-        this.permissionGranted = permissionGranted;
+    public MagicalCamera(Activity activity, int resizePhoto, MagicalPermissions magicalPermissions) {
 
         magicalCameraObject = new MagicalCameraObject(activity, resizePhoto <= 0 ?
                 ActionPictureObject.BEST_QUALITY_PHOTO : resizePhoto, permissionGrantedObject);
     }
+
+    public MagicalCamera(Fragment fragment, int resizePhoto, PermissionGranted permissionGranted) {
+
+    }
     //endregion
-
-
-    public PermissionGrantedObject getPermissionGrantedObject() {
-        return permissionGrantedObject;
-    }
-
-    public void setPermissionGrantedObject(PermissionGrantedObject permissionGrantedObject) {
-        this.permissionGrantedObject = permissionGrantedObject;
-    }
 
     public PermissionGranted getPermissionGranted() {
         return permissionGranted;
