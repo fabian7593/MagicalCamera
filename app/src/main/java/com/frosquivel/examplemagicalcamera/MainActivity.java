@@ -13,15 +13,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
 import com.frosquivel.magicalcamera.MagicalCamera;
 import com.google.android.gms.vision.face.Landmark;
 
 import java.util.List;
 
 import cl.cutiko.magicalpermissions.MagicalPermissions;
-
-import static com.frosquivel.examplemagicalcamera.ActivityForFragment.permissionGranted;
 
 /**
  * Created by          Fabián Rosales Esquivel
@@ -56,8 +53,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        permissionGranted = new PermissionGranted(this);
 
         //realized the instance of magical camera, this need the context, this need the context,
         //the percentage of quality photo and the permission granted
@@ -306,6 +301,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         //call the event of onRequestPermissionsResult for android 6.0 or more
-        permissionGranted.permissionGrant(requestCode, permissions, grantResults);
+        magicalPermissions.permissionResult(requestCode, permissions, grantResults);
     }
 }
