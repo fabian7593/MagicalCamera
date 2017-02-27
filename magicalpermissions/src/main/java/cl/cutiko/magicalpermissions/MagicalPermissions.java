@@ -34,20 +34,18 @@ public class MagicalPermissions {
         this.permissions = permissions;
     }
 
-    private boolean permissionsNeeded() {
+    public boolean permissionsNeeded() {
         return (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M);
     }
 
-    public boolean askPermissions(final Runnable task) {
+    public void askPermissions(final Runnable task) {
         //In case the developer want to do something after the permissions are granted
         this.task = task;
-        boolean validation = permissionsNeeded();
         if (permissionsNeeded()) {
             requestPermissions();
         } else {
             task.run();
         }
-        return validation;
     }
 
     @SuppressLint("NewApi")
