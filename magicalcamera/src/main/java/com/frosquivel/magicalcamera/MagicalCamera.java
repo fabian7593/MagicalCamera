@@ -3,9 +3,7 @@ package com.frosquivel.magicalcamera;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.support.v4.app.Fragment;
 
-import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
 import com.frosquivel.magicalcamera.Objects.ActionPictureObject;
 import com.frosquivel.magicalcamera.Objects.FaceRecognitionObject;
 import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
@@ -45,46 +43,59 @@ public class MagicalCamera {
     public static final int NORMAL_CAMERA = 3;
 
     private MagicalCameraObject magicalCameraObject;
-    private PermissionGranted permissionGranted;
+    private MagicalPermissions magicalPermissions;
 
     //================================================================================
     // Constructs
     //================================================================================
     //region Construct
     public MagicalCamera(Activity activity, int resizePhoto, MagicalPermissions magicalPermissions) {
-
-        magicalCameraObject = new MagicalCameraObject(activity, resizePhoto <= 0 ?
-                ActionPictureObject.BEST_QUALITY_PHOTO : resizePhoto, permissionGrantedObject);
-    }
-
-    public MagicalCamera(Fragment fragment, int resizePhoto, PermissionGranted permissionGranted) {
-
+        resizePhoto = resizePhoto <= 0 ? ActionPictureObject.BEST_QUALITY_PHOTO : resizePhoto;
+        magicalCameraObject = new MagicalCameraObject(activity, resizePhoto);
+        this.magicalPermissions = magicalPermissions;
     }
     //endregion
 
-    public PermissionGranted getPermissionGranted() {
-        return permissionGranted;
-    }
-
-    public void setPermissionGranted(PermissionGranted permissionGranted) {
-        this.permissionGranted = permissionGranted;
-    }
 
     //Principal Methods
     public void takePhoto(){
-        magicalCameraObject.getActionPicture().takePhoto();
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                magicalCameraObject.getActionPicture().takePhoto();
+            }
+        };
+        magicalPermissions.askPermissions(runnable);
     }
 
-    public void selectedPicture(String headerPopUpName){
-        magicalCameraObject.getActionPicture().selectedPicture(headerPopUpName);
+    public void selectedPicture(final String headerPopUpName){
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                magicalCameraObject.getActionPicture().selectedPicture(headerPopUpName);
+            }
+        };
+        magicalPermissions.askPermissions(runnable);
     }
 
-    public boolean takeFragmentPhoto(){
-        return magicalCameraObject.getActionPicture().takeFragmentPhoto();
+    public void takeFragmentPhoto(){
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                magicalCameraObject.getActionPicture().takeFragmentPhoto();
+            }
+        };
+        magicalPermissions.askPermissions(runnable);
     }
 
-    public boolean selectedFragmentPicture(){
-        return magicalCameraObject.getActionPicture().selectedFragmentPicture();
+    public void selectedFragmentPicture(){
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                magicalCameraObject.getActionPicture().selectedFragmentPicture();
+            }
+        };
+        magicalPermissions.askPermissions(runnable);
     }
 
     //Face detector methods
@@ -153,10 +164,6 @@ public class MagicalCamera {
 
     public void resultPhoto(int requestCode, int resultCode, Intent data, int rotateType){
         magicalCameraObject.getActionPicture().resultPhoto(requestCode, resultCode, data, rotateType);
-    }
-
-    public void permissionGrant(int requestCode, String[] permissions, int[] grantResults){
-        this.permissionGranted.permissionGrant(requestCode, permissions, grantResults);
     }
 
     public Intent getIntentFragment(){

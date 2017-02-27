@@ -1,5 +1,6 @@
 package com.frosquivel.examplemagicalcamera;
 
+import android.Manifest;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -17,6 +18,10 @@ import com.frosquivel.magicalcamera.MagicalCamera;
 import com.google.android.gms.vision.face.Landmark;
 
 import java.util.List;
+
+import cl.cutiko.magicalpermissions.MagicalPermissions;
+
+import static com.frosquivel.examplemagicalcamera.ActivityForFragment.permissionGranted;
 
 /**
  * Created by          Fabián Rosales Esquivel
@@ -44,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Ever you need to call magical camera and permissionGranted
     private MagicalCamera magicalCamera;
-    private PermissionGranted permissionGranted;
+    private MagicalPermissions magicalPermissions;
     private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 80;
 
     @Override
@@ -52,31 +57,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Temporarily adding this activity to test new permissions module
-        startActivity(new Intent(this, PermissionsActivity.class));
-        finish();
-
         permissionGranted = new PermissionGranted(this);
-        //call the permission for all that you need to use in this library
-        //This has nothing to do with the library API, I only put it as an example
-        //but if you needed call this like another versions
-        if (android.os.Build.VERSION.SDK_INT >= 24) {
-            permissionGranted.checkAllMagicalCameraPermission();
-        }else{
-            //call one on one permission
-            //permission for take photo, it is false if the user check deny
-            permissionGranted.checkCameraPermission();
-            //for search and write photoss in device internal memory
-            //normal or SD memory
-            permissionGranted.checkReadExternalPermission();
-            permissionGranted.checkWriteExternalPermission();
-            //permission for location for use the `photo information device.
-            permissionGranted.checkLocationPermission();
-        }
 
         //realized the instance of magical camera, this need the context, this need the context,
         //the percentage of quality photo and the permission granted
-        magicalCamera = new MagicalCamera(this, RESIZE_PHOTO_PIXELS_PERCENTAGE, permissionGranted);
+        String[] permissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        magicalPermissions = new MagicalPermissions(this, permissions);
+        magicalCamera = new MagicalCamera(this, RESIZE_PHOTO_PIXELS_PERCENTAGE, magicalPermissions);
 
         imageView =  (ImageView) findViewById(R.id.imageView);
         imgRotate =  (Button) findViewById(R.id.imgRotate);

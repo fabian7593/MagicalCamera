@@ -10,7 +10,6 @@ import android.provider.MediaStore;
 
 import com.frosquivel.magicalcamera.MagicalCamera;
 import com.frosquivel.magicalcamera.Objects.ActionPictureObject;
-import com.frosquivel.magicalcamera.Objects.PermissionGrantedObject;
 import com.frosquivel.magicalcamera.Utilities.PictureUtils;
 
 /**
@@ -27,14 +26,9 @@ import com.frosquivel.magicalcamera.Utilities.PictureUtils;
     //================================================================================
     //region Properties
     private ActionPictureObject actionPictureObject;
-    private PermissionGrantedObject permissionGrantedObject;
     private URIPaths uriPaths;
 
     //Getter and Setter methods
-    public void setMagicalCameraPermissionGranted(PermissionGrantedObject permissionGrantedObject) {
-        this.permissionGrantedObject = permissionGrantedObject;
-    }
-
     public ActionPictureObject getActionPictureObject() {
         return actionPictureObject;
     }
@@ -43,7 +37,6 @@ import com.frosquivel.magicalcamera.Utilities.PictureUtils;
     //region Constructor
     public ActionPicture(Activity activity,int resizePicture, URIPaths uriPaths){
         this.actionPictureObject = new ActionPictureObject();
-        this.permissionGrantedObject = null;
         this.uriPaths = uriPaths;
         this.actionPictureObject.setActivity(activity);
         this.actionPictureObject.setResizePhoto(resizePicture);
@@ -71,17 +64,7 @@ import com.frosquivel.magicalcamera.Utilities.PictureUtils;
 
             intent.putExtra(MediaStore.EXTRA_OUTPUT, FileUri);
             if (intent.resolveActivity(this.actionPictureObject.getActivity().getPackageManager()) != null) {
-                if (android.os.Build.VERSION.SDK_INT >= 23) {
-                    if(this.permissionGrantedObject.isCameraPermission()){
-                        this.actionPictureObject.getActivity().startActivityForResult(intent, MagicalCamera.TAKE_PHOTO);
-                        return true;
-                    }else{
-                        return false;
-                    }
-                }else{
-                    this.actionPictureObject.getActivity().startActivityForResult(intent, MagicalCamera.TAKE_PHOTO);
-                    return true;
-                }
+                this.actionPictureObject.getActivity().startActivityForResult(intent, MagicalCamera.TAKE_PHOTO);
             }
             return true;
         } else {
@@ -106,18 +89,8 @@ import com.frosquivel.magicalcamera.Utilities.PictureUtils;
                     ActionPictureObject.photoNameAuxiliar, this.actionPictureObject.getActivity()));
 
             if (intent.resolveActivity(this.actionPictureObject.getActivity().getPackageManager()) != null) {
-
-                if (android.os.Build.VERSION.SDK_INT >= 23) {
-                    if(this.permissionGrantedObject.isCameraPermission()){
-                        this.actionPictureObject.setIntentFragment(intent);
-                        return true;
-                    }else{
-                        return false;
-                    }
-                }else{
-                    this.actionPictureObject.setIntentFragment(intent);
-                    return true;
-                }
+                this.actionPictureObject.setIntentFragment(intent);
+                return true;
 
             } else {
                 return false;

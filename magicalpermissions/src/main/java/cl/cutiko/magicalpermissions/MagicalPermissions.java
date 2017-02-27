@@ -44,6 +44,8 @@ public class MagicalPermissions {
         boolean validation = permissionsNeeded();
         if (permissionsNeeded()) {
             requestPermissions();
+        } else {
+            task.run();
         }
         return validation;
     }
@@ -68,6 +70,9 @@ public class MagicalPermissions {
             } else {
                 fragment.requestPermissions(permissions, RC_PERMISSIONS_FRAGMENT);
             }
+        } else {
+            //But if every permission is granted then go a head and do what you want
+            task.run();
         }
     }
 

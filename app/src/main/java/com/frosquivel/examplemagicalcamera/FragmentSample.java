@@ -1,8 +1,10 @@
 package com.frosquivel.examplemagicalcamera;
+
+import android.Manifest;
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +12,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.frosquivel.magicalcamera.MagicalCamera;
+
+import cl.cutiko.magicalpermissions.MagicalPermissions;
 
 /**
  * Created by          Fabián Rosales Esquivel
@@ -43,6 +48,7 @@ public class FragmentSample extends Fragment{
     //Ever you need to call magical camera and permissionGranted
     private MagicalCamera magicalCamera;
     private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 100;
+    private MagicalPermissions magicalPermissions;
 
     private Activity activity;
 
@@ -55,7 +61,9 @@ public class FragmentSample extends Fragment{
         activity = getActivity();
 
         //instance magical camera
-        magicalCamera = new MagicalCamera(activity ,RESIZE_PHOTO_PIXELS_PERCENTAGE, ActivityForFragment.permissionGranted);
+        String[] permissions = new String[]{Manifest.permission.CAMERA, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        magicalPermissions = new MagicalPermissions(this, permissions);
+        magicalCamera = new MagicalCamera(activity, RESIZE_PHOTO_PIXELS_PERCENTAGE, magicalPermissions);
 
         imageView =  (ImageView) rootView.findViewById(R.id.imageView);
         imgRotate =  (Button) rootView.findViewById(R.id.imgRotate);
@@ -119,15 +127,16 @@ public class FragmentSample extends Fragment{
                 }
             }
         });
-        
+
         btntakephoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //this is the form to take picture in fragment
-                if (magicalCamera.takeFragmentPhoto()) {
+                //TODO what? Where in the doc is this?
+                /*if (magicalCamera.takeFragmentPhoto()) {
                     startActivityForResult(magicalCamera.getIntentFragment(),
                             MagicalCamera.TAKE_PHOTO);
-                }
+                }*/
 
             }
         });
@@ -136,11 +145,12 @@ public class FragmentSample extends Fragment{
             @Override
             public void onClick(View v) {
                 //this is the form to select picture of device
-                if (magicalCamera.selectedFragmentPicture()) {
+                //TODO what? Where in the doc is this?
+                /*if (magicalCamera.selectedFragmentPicture()) {
                     startActivityForResult(
                             Intent.createChooser(magicalCamera.getIntentFragment(), "My Header Example"),
                             MagicalCamera.SELECT_PHOTO);
-                }
+                }*/
             }
         });
 
@@ -274,7 +284,7 @@ public class FragmentSample extends Fragment{
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        magicalCamera.permissionGrant(requestCode, permissions, grantResults);
+        magicalPermissions.permissionResult(requestCode, permissions, grantResults);
     }
 
 }
