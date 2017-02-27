@@ -1,6 +1,7 @@
 package com.frosquivel.magicalcamera;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Bitmap;
 
@@ -78,24 +79,31 @@ public class MagicalCamera {
         magicalPermissions.askPermissions(runnable);
     }
 
-    public void takeFragmentPhoto(){
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                magicalCameraObject.getActionPicture().takeFragmentPhoto();
-            }
-        };
-        magicalPermissions.askPermissions(runnable);
+    public void takeFragmentPhoto(final Fragment fragment) {
+        if (magicalCameraObject.getActionPicture().takeFragmentPhoto()) {
+            Runnable runnable = new Runnable() {
+                @Override
+                public void run() {
+                    fragment.startActivityForResult(getIntentFragment(), MagicalCamera.TAKE_PHOTO);
+                }
+            };
+            magicalPermissions.askPermissions(runnable);
+        }
     }
 
-    public void selectedFragmentPicture(){
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                magicalCameraObject.getActionPicture().selectedFragmentPicture();
-            }
-        };
-        magicalPermissions.askPermissions(runnable);
+    public void selectedFragmentPicture(final Fragment fragment){
+        if (magicalCameraObject.getActionPicture().selectedFragmentPicture()) {
+            Runnable runnable = new Runnable() {
+                @Override
+                public void run() {
+                    fragment.startActivityForResult(
+                            Intent.createChooser(getIntentFragment(), "My Header Example"),
+                            MagicalCamera.SELECT_PHOTO);
+                }
+            };
+
+            magicalPermissions.askPermissions(runnable);
+        }
     }
 
     //Face detector methods

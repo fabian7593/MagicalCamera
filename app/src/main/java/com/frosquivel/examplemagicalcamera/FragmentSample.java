@@ -131,11 +131,7 @@ public class FragmentSample extends android.app.Fragment{
             @Override
             public void onClick(View v) {
                 //this is the form to take picture in fragment
-                //TODO what? Where in the doc is this?
-                /*if (magicalCamera.takeFragmentPhoto()) {
-                    startActivityForResult(magicalCamera.getIntentFragment(),
-                            MagicalCamera.TAKE_PHOTO);
-                }*/
+                magicalCamera.takeFragmentPhoto(FragmentSample.this);
 
             }
         });
@@ -144,12 +140,7 @@ public class FragmentSample extends android.app.Fragment{
             @Override
             public void onClick(View v) {
                 //this is the form to select picture of device
-                //TODO what? Where in the doc is this?
-                /*if (magicalCamera.selectedFragmentPicture()) {
-                    startActivityForResult(
-                            Intent.createChooser(magicalCamera.getIntentFragment(), "My Header Example"),
-                            MagicalCamera.SELECT_PHOTO);
-                }*/
+                magicalCamera.selectedFragmentPicture(FragmentSample.this);
             }
         });
 
