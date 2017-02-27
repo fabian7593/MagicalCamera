@@ -4,7 +4,6 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +24,7 @@ import cl.cutiko.magicalpermissions.MagicalPermissions;
  * Created Date        on 5/19/16
  * This is an android library to take easy picture
  */
-public class FragmentSample extends Fragment{
+public class FragmentSample extends android.app.Fragment{
 
     //this is the image view for show your picture taken
     private ImageView imageView;

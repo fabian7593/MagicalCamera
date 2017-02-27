@@ -1,10 +1,10 @@
 package com.frosquivel.examplemagicalcamera;
 
 import android.Manifest;
+import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,7 +37,7 @@ public class PermissionsActivityFragment extends Fragment {
         final Runnable runnable = new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(getContext(), "something", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "something", Toast.LENGTH_SHORT).show();
             }
         };
         Button button = (Button) view.findViewById(R.id.permissionsBtn);
