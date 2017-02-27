@@ -50,6 +50,7 @@ public class MagicalPermissions {
 
     @SuppressLint("NewApi")
     private void requestPermissions() {
+        //TODO what happen when user select the don't show again checkbox in the dialog?
         final Context context = (activity != null) ? activity : fragment.getContext();
 
         List<String> permissionList = new ArrayList<>();
