@@ -1,6 +1,5 @@
 package com.frosquivel.magicalcamera;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
@@ -50,7 +49,6 @@ public class MagicalPermissions {
         }
     }
 
-    @SuppressLint("NewApi")
     private void requestPermissions() {
         //TODO what happen when user select the don't show again checkbox in the dialog?
         final Context context = (activity != null) ? activity : fragment.getContext();
@@ -66,6 +64,8 @@ public class MagicalPermissions {
         if (permissionList.size() > 0) {
             //If there are permissions to be requested then we can redefine the original array with the ones we have to take care
             permissions = permissionList.toArray(new String[permissionList.size()]);
+            //Request permissions is being lint, but that is not a problem in the askPermissions method there is a validation to prevent it in lowe API
+            //Adding a suppress warning annotation is worst because since android studio 2.3 annotated methods can be marked as dangerous
             if (activity != null) {
                 activity.requestPermissions(permissions, RC_PERMISSIONS_ACTIVITY);
             } else {
