@@ -5,7 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/MagicalCamera.iml" filepath="$PROJECT_DIR$/MagicalCamera.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/magicalcamera/magicalcamera.iml" filepath="$PROJECT_DIR$/magicalcamera/magicalcamera.iml" />
-      <module fileurl="file://$PROJECT_DIR$/magicalpermissions/magicalpermissions.iml" filepath="$PROJECT_DIR$/magicalpermissions/magicalpermissions.iml" />
     </modules>
   </component>
 </project>

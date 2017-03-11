@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,8 @@ import android.widget.Toast;
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.frosquivel.magicalcamera.MagicalCamera;
 import com.frosquivel.magicalcamera.MagicalPermissions;
+
+import java.util.Map;
 
 /**
  * Created by          Fabián Rosales Esquivel
@@ -279,7 +282,10 @@ public class FragmentSample extends android.app.Fragment{
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        magicalPermissions.permissionResult(requestCode, permissions, grantResults);
+        Map<String, Boolean> map = magicalPermissions.permissionResult(requestCode, permissions, grantResults);
+        for (String permission : map.keySet()) {
+            Log.d("PERMISSIONS", permission + " was: " + map.get(permission));
+        }
     }
 
 }

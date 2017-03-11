@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,6 +19,7 @@ import com.frosquivel.magicalcamera.MagicalPermissions;
 import com.google.android.gms.vision.face.Landmark;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by          Fabián Rosales Esquivel
@@ -306,6 +308,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         //call the event of onRequestPermissionsResult for android 6.0 or more
-        magicalPermissions.permissionResult(requestCode, permissions, grantResults);
+        Map<String, Boolean> map = magicalPermissions.permissionResult(requestCode, permissions, grantResults);
+        for (String permission : map.keySet()) {
+            Log.d("PERMISSIONS", permission + " was: " + map.get(permission));
+        }
     }
 }
