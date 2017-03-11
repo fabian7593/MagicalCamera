@@ -9,7 +9,9 @@ import android.os.Build;
 import android.support.v4.content.ContextCompat;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by cutiko on 25-02-17.
@@ -75,11 +77,14 @@ public class MagicalPermissions {
         }
     }
 
-    public void permissionResult(int requestCode, String[] permissions, int[] grantResults) {
+    public Map<String, Boolean> permissionResult(int requestCode, String[] permissions, int[] grantResults) {
+        Map<String, Boolean> map = new HashMap<>();
         if (RC_PERMISSIONS_ACTIVITY == requestCode || RC_PERMISSIONS_FRAGMENT == requestCode) {
             boolean validation = true;
             for (int i = 0; i < permissions.length; i++) {
-                if (PackageManager.PERMISSION_GRANTED != grantResults[i]) {
+                int result = grantResults[i];
+                map.put(permissions[i], (result == PackageManager.PERMISSION_GRANTED));
+                if (PackageManager.PERMISSION_GRANTED != result) {
                     validation = false;
                 }
             }
@@ -87,6 +92,7 @@ public class MagicalPermissions {
                 runPendingTask();
             }
         }
+        return map;
     }
 
     private void runPendingTask(){
