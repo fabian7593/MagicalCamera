@@ -14,11 +14,10 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.frosquivel.magicalcamera.MagicalCamera;
+import com.frosquivel.magicalcamera.MagicalPermissions;
 import com.google.android.gms.vision.face.Landmark;
 
 import java.util.List;
-
-import cl.cutiko.magicalpermissions.MagicalPermissions;
 
 /**
  * Created by          Fabián Rosales Esquivel

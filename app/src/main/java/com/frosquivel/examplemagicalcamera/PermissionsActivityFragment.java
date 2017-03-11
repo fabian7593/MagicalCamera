@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import cl.cutiko.magicalpermissions.MagicalPermissions;
+import com.frosquivel.magicalcamera.MagicalPermissions;
 
 /**
  * A placeholder fragment containing a simple view.

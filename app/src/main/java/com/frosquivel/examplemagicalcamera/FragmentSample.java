@@ -14,8 +14,7 @@ import android.widget.Toast;
 
 import com.afollestad.materialdialogs.MaterialDialog;
 import com.frosquivel.magicalcamera.MagicalCamera;
-
-import cl.cutiko.magicalpermissions.MagicalPermissions;
+import com.frosquivel.magicalcamera.MagicalPermissions;
 
 /**
  * Created by          Fabián Rosales Esquivel

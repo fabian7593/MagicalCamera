@@ -1,4 +1,4 @@
-package cl.cutiko.magicalpermissions;
+package com.frosquivel.magicalcamera;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

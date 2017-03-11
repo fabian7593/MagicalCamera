@@ -11,8 +11,6 @@ import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
 import com.frosquivel.magicalcamera.Objects.PrivateInformationObject;
 import com.frosquivel.magicalcamera.Utilities.PictureUtils;
 
-import cl.cutiko.magicalpermissions.MagicalPermissions;
-
 import static android.graphics.Color.RED;
 
 /**

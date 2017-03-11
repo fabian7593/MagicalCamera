@@ -9,7 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
 
-import cl.cutiko.magicalpermissions.MagicalPermissions;
+import com.frosquivel.magicalcamera.MagicalPermissions;
 
 public class PermissionsActivity extends AppCompatActivity {
 
