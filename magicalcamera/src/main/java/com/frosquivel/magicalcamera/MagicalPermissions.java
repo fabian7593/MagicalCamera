@@ -78,6 +78,7 @@ public class MagicalPermissions {
     }
 
     public Map<String, Boolean> permissionResult(int requestCode, String[] permissions, int[] grantResults) {
+        //Returning a map is better to let developer know the permissions and what happened
         Map<String, Boolean> map = new HashMap<>();
         if (RC_PERMISSIONS_ACTIVITY == requestCode || RC_PERMISSIONS_FRAGMENT == requestCode) {
             boolean validation = true;
