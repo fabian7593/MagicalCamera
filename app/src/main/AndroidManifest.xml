@@ -32,10 +32,6 @@
         <activity
             android:name=".ActivityForFragment"
             android:configChanges="orientation|screenSize"></activity>
-        <activity
-            android:name=".PermissionsActivity"
-            android:label="@string/title_activity_permissions"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
