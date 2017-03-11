@@ -89,13 +89,13 @@ public class MagicalCamera {
         }
     }
 
-    public void selectedFragmentPicture(final Fragment fragment){
+    public void selectedFragmentPicture(final Fragment fragment, final String header){
         if (magicalCameraObject.getActionPicture().selectedFragmentPicture()) {
             Runnable runnable = new Runnable() {
                 @Override
                 public void run() {
                     fragment.startActivityForResult(
-                            Intent.createChooser(getIntentFragment(), "My Header Example"),
+                            Intent.createChooser(getIntentFragment(), header),
                             MagicalCamera.SELECT_PHOTO);
                 }
             };
