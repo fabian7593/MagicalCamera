@@ -22,6 +22,7 @@ public class MagicalPermissions {
     private static final int RC_PERMISSIONS_FRAGMENT = 879;
     private Activity activity;
     private Fragment fragment;
+    private android.support.v4.app.Fragment fragmentV4;
     private String[] permissions;
     private Runnable task;
 
@@ -34,6 +35,12 @@ public class MagicalPermissions {
         this.fragment = fragment;
         this.permissions = permissions;
     }
+
+    public MagicalPermissions(android.support.v4.app.Fragment fragmentV4, String[] permissions) {
+        this.fragmentV4 = fragmentV4;
+        this.permissions = permissions;
+    }
+
 
     public boolean permissionsNeeded() {
         return (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M);
@@ -50,8 +57,12 @@ public class MagicalPermissions {
     }
 
     private void requestPermissions() {
-        //TODO what happen when user select the don't show again checkbox in the dialog?
-        final Context context = (activity != null) ? activity : fragment.getContext();
+        Context context = null;
+        if (activity != null) {
+            context = activity;
+        } else {
+            context = (fragment != null) ? fragment.getActivity() : fragmentV4.getContext();
+        }
 
         List<String> permissionList = new ArrayList<>();
         for (String permission : permissions) {
@@ -68,8 +79,10 @@ public class MagicalPermissions {
             //Adding a suppress warning annotation is worst because since android studio 2.3 annotated methods can be marked as dangerous
             if (activity != null) {
                 activity.requestPermissions(permissions, RC_PERMISSIONS_ACTIVITY);
-            } else {
+            } else  if (fragment != null) {
                 fragment.requestPermissions(permissions, RC_PERMISSIONS_FRAGMENT);
+            } else if (fragmentV4 != null){
+                fragmentV4.requestPermissions(permissions, RC_PERMISSIONS_FRAGMENT);
             }
         } else {
             //But if every permission is granted then go a head and do what you want

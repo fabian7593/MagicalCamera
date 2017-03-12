@@ -64,7 +64,7 @@ public class MagicalCamera {
                 magicalCameraObject.getActionPicture().takePhoto();
             }
         };
-        magicalPermissions.askPermissions(runnable);
+        askPermissions(runnable);
     }
 
     public void selectedPicture(final String headerPopUpName){
@@ -74,7 +74,7 @@ public class MagicalCamera {
                 magicalCameraObject.getActionPicture().selectedPicture(headerPopUpName);
             }
         };
-        magicalPermissions.askPermissions(runnable);
+        askPermissions(runnable);
     }
 
     public void takeFragmentPhoto(final Fragment fragment) {
@@ -85,11 +85,11 @@ public class MagicalCamera {
                     fragment.startActivityForResult(getIntentFragment(), MagicalCamera.TAKE_PHOTO);
                 }
             };
-            magicalPermissions.askPermissions(runnable);
+            askPermissions(runnable);
         }
     }
 
-    public void selectedFragmentPicture(final Fragment fragment, final String header){
+    public void selectFragmentPicture(final Fragment fragment, final String header){
         if (magicalCameraObject.getActionPicture().selectedFragmentPicture()) {
             Runnable runnable = new Runnable() {
                 @Override
@@ -99,9 +99,38 @@ public class MagicalCamera {
                             MagicalCamera.SELECT_PHOTO);
                 }
             };
-
-            magicalPermissions.askPermissions(runnable);
+            askPermissions(runnable);
         }
+    }
+
+    public void takeFragmentV4Photo(final android.support.v4.app.Fragment fragment) {
+        if (magicalCameraObject.getActionPicture().takeFragmentPhoto()) {
+            Runnable runnable = new Runnable() {
+                @Override
+                public void run() {
+                    fragment.startActivityForResult(getIntentFragment(), MagicalCamera.TAKE_PHOTO);
+                }
+            };
+            askPermissions(runnable);
+        }
+    }
+
+    public void selecFragmentV4Picture(final android.support.v4.app.Fragment fragment, final String header) {
+        if (magicalCameraObject.getActionPicture().selectedFragmentPicture()) {
+            Runnable runnable = new Runnable() {
+                @Override
+                public void run() {
+                    fragment.startActivityForResult(
+                            Intent.createChooser(getIntentFragment(), header),
+                            MagicalCamera.SELECT_PHOTO);
+                }
+            };
+            askPermissions(runnable);
+        }
+    }
+
+    private void askPermissions(final Runnable runnable){
+        magicalPermissions.askPermissions(runnable);
     }
 
     //Face detector methods

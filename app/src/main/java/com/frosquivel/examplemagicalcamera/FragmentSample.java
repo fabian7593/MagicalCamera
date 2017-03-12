@@ -148,7 +148,7 @@ public class FragmentSample extends android.app.Fragment{
             @Override
             public void onClick(View v) {
                 //this is the form to select picture of device
-                magicalCamera.selectedFragmentPicture(FragmentSample.this, "My Header Example");
+                magicalCamera.selectFragmentPicture(FragmentSample.this, "My Header Example");
             }
         });
 
