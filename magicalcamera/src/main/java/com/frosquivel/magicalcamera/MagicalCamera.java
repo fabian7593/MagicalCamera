@@ -103,7 +103,7 @@ public class MagicalCamera {
         }
     }
 
-    public void takeFragmentV4Photo(final android.support.v4.app.Fragment fragment) {
+    public void takeFragmentPhoto(final android.support.v4.app.Fragment fragment) {
         if (magicalCameraObject.getActionPicture().takeFragmentPhoto()) {
             Runnable runnable = new Runnable() {
                 @Override
@@ -115,7 +115,7 @@ public class MagicalCamera {
         }
     }
 
-    public void selecFragmentV4Picture(final android.support.v4.app.Fragment fragment, final String header) {
+    public void selectFragmentPicture(final android.support.v4.app.Fragment fragment, final String header) {
         if (magicalCameraObject.getActionPicture().selectedFragmentPicture()) {
             Runnable runnable = new Runnable() {
                 @Override
