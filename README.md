@@ -7,20 +7,20 @@ A Magic library to take photos and select pictures in Android. In a simple way a
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a64cbf5369e14c3d98f8722c4ad3fad7)](https://www.codacy.com/app/fabian7593/MagicalCamera?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fabian7593/MagicalCamera&amp;utm_campaign=Badge_Grade)
 
 <br>
-##That Offers MagicalCamera.
-* **Take picture** with camera device.
-* **Select pictures in gallery** device (read in devices). 
-* **Write the pictures** that you taken in device, in your own directory.
-* Return the **path of your photo** in device. (This issue is solved for @arthursz)
-* Working in **android 6.0** (We have a class to request the user permission).
-* Create yours **standards of name of pictures**, or use our standard, like "photoname_YYYYmmddHHmmss"
-* Posibility of shown the **private info photography**, like latitude, longitude, ISO or others with Exif Class.
-* Posibility of **rotate picture** when it's required.
-* Select the **quality of the photo** with a percentage, when 1 is the worst and 100 is the better.
-* Obtain the LandMark and return a bitmap with a **facial recognition** that you need.
-* **Return the Bitmap** Photo if you need to save this in internal DB of your application.
-* **Convert your bitmap** in array bytes or string64, if you need to send by Json or XML.
-* **Type of photo formats:** PNG, JPEG and WEBP.
+## That Offers MagicalCamera.
+* ** Take picture ** with camera device.
+* ** Select pictures in gallery ** device (read in devices). 
+* ** Write the pictures ** that you taken in device, in your own directory.
+* Return the ** path of your photo ** in device. (This issue is solved for @arthursz)
+* Working in ** android 6.0 ** (We have a class to request the user permission).
+* Create yours ** standards of name of pictures **, or use our standard, like "photoname_YYYYmmddHHmmss"
+* Posibility of shown the ** private info photography **, like latitude, longitude, ISO or others with Exif Class.
+* Posibility of ** rotate picture ** when it's required.
+* Select the ** quality of the photo ** with a percentage, when 1 is the worst and 100 is the better.
+* Obtain the LandMark and return a bitmap with a ** facial recognition ** that you need.
+* ** Return the Bitmap ** Photo if you need to save this in internal DB of your application.
+* ** Convert your bitmap ** in array bytes or string64, if you need to send by Json or XML.
+* ** Type of photo formats: ** PNG, JPEG and WEBP.
 
 ####Other Offers
 * A library completely OpenSource.
@@ -59,7 +59,7 @@ Another type download by Bintray from    [ ![Download](https://api.bintray.com/p
  
  <br>
 ## How to use
-####Add dependecies
+#### Add dependecies
 If you need to take photo or select picture, this is your solution.
 This library give a magical solution for take a picture,write and red in device, return your uri real path and obtain yhe private info of the photo and facial recognition, you only need to download this and integrate this in your project, maybe downloading it or import in your gradle, like this.
 
@@ -83,7 +83,7 @@ If you have any problem with this dependence, because the library override any s
 <br>
 ## What you need?
 <br>
-###Import library
+### Import library
 You need to import the library
 ```bash
 import com.frosquivel.magicalcamera.MagicalCamera;
@@ -93,7 +93,7 @@ import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
 import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
 ```
 <br>
-###Declare Permissions
+### Declare Permissions
 You need for usage the library in the best way, call any permissions in Android Manifest.xml
 If you have android 6.0 the library have a method for validate this permissions, you see this later in this documentation
 ```bash
@@ -173,7 +173,7 @@ If you need the permissions for fragment, you need to call this permission in th
 ```
 
 <br>
-###Declare variable to resize photo ( with pixels percentage )
+### Declare variable to resize photo ( with pixels percentage )
 You need to declare and constant or a simple int variable for the quality of the photo, while greater be, greater be the quality, and otherwise, worst be the quality, like this
 ```bash
 //The pixel percentage is declare like an percentage of 100, if your value is 50, the photo will have the middle quality of your camera. 
@@ -182,8 +182,8 @@ private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 80;
 ```
 
 <br>
-###Instance Class MagicalCamera
-######*YOU NEED TO INSTANCE THIS, AFTER THAT PERMISSION GRANTED INSTANCE.*
+### Instance Class MagicalCamera
+###### *YOU NEED TO INSTANCE THIS, AFTER THAT PERMISSION GRANTED INSTANCE.*
 You need to instance the MagicalCamera Class, like this:
 The fisrt param is the current Activity, and the second the resize percentage photo, and the third param is the Permission Granted
 ```bash
@@ -192,7 +192,7 @@ The fisrt param is the current Activity, and the second the resize percentage ph
 ```
 
 <br>
-###Activities Methods
+### Activities Methods
 You need to call the methods for take or select pictures in activities that this form:
 
 ```bash
@@ -204,7 +204,7 @@ magicalCamera.selectedPicture("my_header_name");
 ```
 
 <br>
-###Fragments Methods
+### Fragments Methods
 You need to call the methods for take or select pictures in fragments that this form:
 
 ```bash
@@ -221,7 +221,7 @@ You need to call the methods for take or select pictures in fragments that this 
 ```
 
 <br>
-###Remember override the event onActivityResult
+### Remember override the event onActivityResult
 You need to override the method onActivityResult in your activity or fragment like this
 ```bash
  @Override
@@ -249,7 +249,7 @@ You need to override the method onActivityResult in your activity or fragment li
 ```
 
 <br>
-###The savePhotoInMemoryDevice Method
+### The savePhotoInMemoryDevice Method
 This method save your bitmap in internal memory device or if the internal memory is full this library save in sdcard (if you have anything :'D)
 This method have a lot of params that you can need to use the library:
 * **Bitmap:** This is the bitmap that you need to save in memory device.
@@ -271,7 +271,7 @@ Example:
  String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getPhoto(), "myTestPhotoName", MagicalCamera.JPEG, true);
 ```
 <br>
-###Types of Formats for save photos
+### Types of Formats for save photos
 You have any type of formats for save the pictures and the bitmaps.
 You can use, the static variables of the library MagicalCamera.
 ```bash
@@ -281,14 +281,14 @@ You can use, the static variables of the library MagicalCamera.
 ```
 
 <br>
-###Resize photo in real time
+### Resize photo in real time
 You can resize the photo in any moment with this:
 ```bash
    magicalCamera.setResizePhoto(newResizeInteger);
 ```
 
 <br>
-###Conversion Methods
+### Conversion Methods
 The library have any methods to convert the bitmap in other formats that you need.
 All of this methods are public statics, I mean that you dont have to instance the library for usage this.
 You need to call the class * ConvertSimpleImage * And the respective params.
@@ -314,7 +314,7 @@ Example:
 
 <br>
 
-###Rotate picture
+### Rotate picture
 You have the posibility of rotate picture because some devices have the camera in landscape, and the picture is shown upside down.
 If you need to rotate image use in event onActivityResult the method with the last param:
 ```bash
@@ -456,22 +456,22 @@ See the example of this infomartion return:
 ![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/information2.png)
 
 
-##Internal documentation
+## Internal documentation
 All the code has a internal documentation for more explanation of this example.
 
 <br><br>
-##Preview of Example
+## Preview of Example
 <br>
 ![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/magicalcamera.gif)
 
 <br><br>
-##Projects/Apps using MagicalCamera:
+## Projects/Apps using MagicalCamera:
 UTNCources
 
 Feel free to contact me to add yours to this list.
 
 <br><br>
-##You can see the video explication here (in spanish) This video is for MagicalCamera version 1.0
+## You can see the video explication here (in spanish) This video is for MagicalCamera version 1.0
 https://www.youtube.com/watch?v=U-JxaFZDSn4
 
 <br><br>
@@ -481,7 +481,7 @@ Developed by [Fabian Rosales]<br>
 Known as [Frosquivel Developer]<br>
 Source code can be found on [github](https://github.com/fabian7593/MagicalCamera)<br>
 <br><br>
-#License
+# License
 Copyright 2016 Fabian Rosales
 
 Licensed under the Apache License, Version 2.0 (the "License");
