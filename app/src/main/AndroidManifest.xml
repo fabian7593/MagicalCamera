@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.frosquivel.examplemagicalcamera" >
 
+    <!-- Another permission for use gps, information and face recognition -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -9,6 +10,7 @@
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
     <uses-permission android:name="android.permission.MANAGE_DOCUMENTS"/>
 
+    <!-- General permission for use magical camera -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA"/>
@@ -22,18 +24,61 @@
         android:largeHeap="true">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.AboutUsActivity"
             android:label="@string/app_name"
             android:configChanges="orientation|screenSize">
+        </activity>
+
+        <activity
+            android:name=".Activities.MainActivity"
+            android:label="@string/app_name"
+            android:configChanges="orientation|screenSize">
+        </activity>
+
+        <activity
+            android:name=".Activities.ImageViewActivity"
+            android:label="@string/app_name"
+            android:configChanges="orientation|screenSize">
+        </activity>
+
+        <activity
+            android:name=".Activities.WebViewActivity"
+            android:label="@string/app_name"
+            android:configChanges="orientation|screenSize">
+        </activity>
+
+        <activity
+            android:name=".Activities.SharedPreferenceActivity"
+            android:label="@string/app_name"
+            android:configChanges="orientation|screenSize">
+        </activity>
+
+        <activity
+            android:name=".Activities.FeedbacksActivity"
+            android:label="@string/app_name"
+            android:configChanges="orientation|screenSize">
+        </activity>
+
+        <activity
+            android:name=".Activities.SplashActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/app_name"
+            android:noHistory="true"
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".ActivityForFragment"
+        <activity android:name=".Fragments.ActivityForFragment"
+            android:label="@string/app_name"
             android:configChanges="orientation|screenSize">
         </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="d99772e53218c64c9e36291cbc9ec30ae8c2c180" />
     </application>
 
 </manifest>

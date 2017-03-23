@@ -1,6 +1,129 @@
 <resources>
-    <string name="app_name">ExampleMagicalCamera</string>
+    <string name="app_name">Magical Camera</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <!-- menu photos-->
+    <string name="face_recognition">Face Recognition</string>
+    <string name="information_photo">Photo/Image Information</string>
+    <string name="full_image">View Full Photo/Image</string>
+    <string name="rotate_picture">Rotate Photo/Image 90º</string>
+
+    <!-- titles and generals -->
+    <string name="go_to_fragment">Next to fragment</string>
+    <string name="title_activity">Activity Example Magical Camera</string>
+    <string name="go_to_activity">Back to Activity</string>
+    <string name="title_fragment">Fragment Example Magical Camera</string>
+    <string name="version">Version Library 5.0.3</string>
+
+    <!-- Menu -->
+    <string name="menu_shared">Shared</string>
+    <string name="menu_about">About Developers</string>
+    <string name="menu_settings">Settings</string>
+    <string name="menu_github">Github</string>
+    <string name="menu_donation">Donation</string>
+    <string name="menu_documentation">Documentation</string>
+    <string name="menu_todo_list">TODO List</string>
+
+    <!-- Links -->
+    <string name="link_git">https://github.com/fabian7593/MagicalCamera</string>
+    <string name="link_donate">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=L25MKCRPR7TWY</string>
+    <string name="link_todo">https://github.com/fabian7593/MagicalCamera/projects/1</string>
+    <string name="link_documentation">https://github.com/fabian7593/MagicalCamera/blob/master/README.md</string>
+    <string name="link_play_store">https://play.google.com/store/apps/details?id=com.frosquivel.examplemagicalcamera</string>
+
+    <!-- About Developers -->
+    <string name="dev_creator">MagicalCamera creator</string>
+    <string name="dev_name_creator">Fabián Rosales (Frosquivel Developer)</string>
+    <string name="dev_image_creator">https://avatars3.githubusercontent.com/u/13343461?v=3&amp;s=460</string>
+    <string name="dev_description">A magical camera creator, I do the take camera, select photo, rotate picture, convert bitmap, facial recognition, save picture, get information and others...</string>
+    <string name="dev_link_git_creator">https://github.com/fabian7593</string>
+    <string name="dev_link_git_contributor_1">https://github.com/arthursz</string>
+    <string name="dev_link_git_contributor_2">https://github.com/cutiko</string>
+    <string name="dev_contributor">MagicalCamera contributors</string>
+    <string name="dev_name_contributor_1">Arthur Zettler</string>
+    <string name="dev_image_contributor_1">https://avatars2.githubusercontent.com/u/6000680?v=3&amp;s=460</string>
+    <string name="dev_desc_contributor_1">Arthur create the return path of the image saved like a String</string>
+    <string name="dev_name_contributor_2">Erick Navarro</string>
+    <string name="dev_image_contributor_2">https://avatars3.githubusercontent.com/u/6012585?v=3&amp;s=460</string>
+    <string name="dev_desc_contributor_2">Erick Add a best usage of google play library, and he develop the better usage of permissions, and an excellent code refactor for permission class and other components.</string>
+
+    <!-- Messages -->
+    <string name="message_save_manual">The photo is save manual in device, please check this path: </string>
+    <string name="message_see_photo_information">See photo information</string>
+    <string name="convert_to_string_base_64_title">View String base 64, only shown 300 string lenght for this example.</string>
+    <string name="convert_to_string_base_64">Convert to String base 64</string>
+    <string name="message_ok">Ok</string>
+
+    <!-- Information Data -->
+    <string name="info_data_latitude">Latitude: </string>
+    <string name="info_data_latitude_referene">Latitude Reference: </string>
+    <string name="info_data_longitude">Longitude: </string>
+    <string name="info_data_longitude_reference">Longitude Reference: </string>
+    <string name="info_data_date_time_photo">Date time to photo: </string>
+    <string name="info_data_date_stamp_photo">Date stamp to photo: </string>
+    <string name="info_data_ISO">ISO: </string>
+    <string name="info_data_orientation_photo">Orientation photo: </string>
+    <string name="info_data_image_lenght">Image lenght: </string>
+    <string name="info_data_image_width">Image Width: </string>
+    <string name="info_data_make_company">Make company: </string>
+    <string name="info_data_model_device">Model Device: </string>
+
+    <!-- Email -->
+    <string name="email_subject">MagicalCamera 5.0.3 Android Library</string>
+    <string name="email_title">Share MagicalCamera</string>
+    <string name="email_text">Hello We are Magical Camera, \n\n I want to share with you this awesome library, for use the camera photos/pictures of android native. \n\n This is the best library Open source of this subject. \n\n View this library here. \n XXXX1 \n\n And download the app here: \n XXXX2</string>
+
+    <!-- values preference -->
+    <string name="value_directory_name">Magical Camera</string>
+    <string name="value_photo_name">MagicalCamera_test_photo_name</string>
+    <string name="value_selected_picture">Select Picture</string>
+    <string name="value_quality_picture">100</string>
+    <string name="value_autoincrement_picture">True</string>
+    <string name="value_facial_recognition_thick">50</string>
+    <string name="value_facial_recognition_color">#0E477F</string>
+
+    <!-- shared preference -->
+    <string name="shared_photo_name">Photo Name</string>
+    <string name="shared_directory_name">Directory Name</string>
+    <string name="shared_title_popup">Title PopUp Select Picture</string>
+    <string name="shared_quality_photo">Average quality photo</string>
+    <string name="shared_type_extension">Type extension</string>
+    <string name="shared_autoincrement">Autoincrement name picture</string>
+    <string name="shared_line_thickness">Line Tickness of Face recognition</string>
+    <string name="shared_preference_title">Configuration Preference</string>
+    <string name="shared_accept">Ok</string>
+    <string name="shared_cancel">Cancel</string>
+    <string name="shared_change_color">Change Color</string>
+    <string name="shared_hexadecimal_color">Line color FaceRecognition</string>
+    <string name="image_down_quality">Press to down quality of the bitmap in runtime</string>
+
+    <string name="shared_preference_extension_png">PNG</string>
+    <string name="shared_preference_extension_jpg">JPEG</string>
+    <string name="shared_preference_extension_webp">WEBP</string>
+
+    <!-- errors -->
+    <string name="error">Error!</string>
+    <string name="error_image_null">Your image is null, please select or take one</string>
+    <string name="error_not_connect">You Dont connect for feedback</string>
+    <string name="error_not_save_feedback">You dont save feedback, please try again later</string>
+    <string name="error_init_magicalcamera">Please initialized magical camera, maybe in static context for use in all activity</string>
+    <string name="error_not_have_data">You dont have data to show because the real path photo is wrong, save your photo first</string>
+    <string name="error_dont_save_photo">Sorry your photo dont save in devide, please make sure you have write permissions.</string>
+    <string name="error_not_detect_face">The library not detect any face in the picture</string>
+    <string name="error_string_base_64">The String base 64 is too big, please try again with a lower quality image</string>
+    <string name="note_fragment">NOTE: This changes only be reflect into Activity Example, the fragment example will have a basic configuration</string>
+
+    <string name="feedback">FeedBacks</string>
+    <string name="feedback_save">Save</string>
+    <string name="feedback_save_message">Your feedback is save, thanks for your comments :)</string>
+    <string name="feedback_not_save">Please fill all fields</string>
+    <string name="feedback_select_comment">Select the option for feedback</string>
+    <string name="feedback_write_comment">Write your comment</string>
+    <string-array name="feedbacks">
+        <item>FeedBacks</item>
+        <item>Issues</item>
+        <item>New Ideas</item>
+    </string-array>
 </resources>

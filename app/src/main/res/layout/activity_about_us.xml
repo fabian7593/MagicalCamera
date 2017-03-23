@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/normal_margin"
+                android:layout_marginTop="@dimen/normal_margin"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="@string/dev_creator"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/dev_name_creator"
+                android:textColor="@color/colorBlack"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center">
+                <ImageView
+                    android:id="@+id/imageCreator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:scaleType="fitCenter" />
+
+                <ImageButton
+                    android:id="@+id/btnGitCreator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/button_height"
+                    android:src="@drawable/ic_git"
+                    style="@style/buttonStyle"
+                    android:layout_alignRight="@+id/imageCreator"
+                    android:layout_alignBottom="@+id/imageCreator"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lines="4"
+                android:maxLines="4"
+                android:text="@string/dev_description"
+                android:textColor="@color/colorBlack"
+                android:textSize="12sp"
+                android:layout_margin="10dp"/>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/normal_margin"
+                android:layout_marginTop="25dp"
+                android:gravity="center"
+                android:text="@string/dev_contributor"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/normal_margin"
+                android:gravity="center"
+                android:text="@string/dev_name_contributor_2"
+                android:textColor="@color/colorBlack"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center">
+                <ImageView
+                    android:id="@+id/imageContributor2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:scaleType="fitCenter"/>
+
+                <ImageButton
+                    android:id="@+id/btnGitContributor2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/button_height"
+                    android:src="@drawable/ic_git"
+                    style="@style/buttonStyle"
+                    android:layout_alignRight="@+id/imageContributor2"
+                    android:layout_alignBottom="@+id/imageContributor2"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lines="4"
+                android:maxLines="4"
+                android:text="@string/dev_desc_contributor_2"
+                android:textColor="@color/colorBlack"
+                android:textSize="12sp"
+                android:layout_margin="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/dev_name_contributor_1"
+                android:textColor="@color/colorBlack"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center">
+                <ImageView
+                    android:id="@+id/imageContributor1"
+                    android:layout_width="230dp"
+                    android:layout_height="230dp"
+                    android:adjustViewBounds="true"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:scaleType="fitCenter"/>
+
+                <ImageButton
+                    android:id="@+id/btnGitContributor1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/button_height"
+                    android:src="@drawable/ic_git"
+                    style="@style/buttonStyle"
+                    android:layout_alignRight="@+id/imageContributor1"
+                    android:layout_alignBottom="@+id/imageContributor1"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lines="4"
+                android:maxLines="4"
+                android:text="@string/dev_desc_contributor_1"
+                android:textColor="@color/colorBlack"
+                android:textSize="12sp"
+                android:layout_margin="10dp"/>
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

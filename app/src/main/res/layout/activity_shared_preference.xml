@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorWhite">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/normal_margin"
+        android:layout_marginTop="@dimen/normal_margin"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:text="@string/shared_preference_title"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <com.rey.material.widget.EditText
+        android:id="@+id/txtPhotoName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/normal_margin"
+        android:layout_marginLeft="@dimen/normal_margin_x3"
+        android:layout_marginRight="@dimen/normal_margin_x3"
+        android:inputType="text"
+        android:hint="@string/shared_photo_name"
+        style="@style/LightEditText"/>
+
+
+    <com.rey.material.widget.EditText
+        android:id="@+id/txtDirectoryName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/normal_margin"
+        android:layout_marginBottom="@dimen/normal_margin"
+        android:layout_marginLeft="@dimen/normal_margin_x3"
+        android:layout_marginRight="@dimen/normal_margin_x3"
+        android:inputType="text"
+        android:hint="@string/shared_directory_name"
+        style="@style/LightEditText"/>
+
+
+    <com.rey.material.widget.EditText
+        android:id="@+id/txtTitleSelectPictureName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/normal_margin"
+        android:layout_marginBottom="@dimen/normal_margin"
+        android:layout_marginLeft="@dimen/normal_margin_x3"
+        android:layout_marginRight="@dimen/normal_margin_x3"
+        android:inputType="text"
+        android:hint="@string/shared_title_popup"
+        style="@style/LightEditText"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_weight="10"
+        android:layout_marginBottom="@dimen/normal_margin"
+        android:layout_marginLeft="@dimen/normal_margin_x2"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/normal_margin"
+            android:gravity="left|bottom"
+            android:layout_gravity="left|bottom"
+            android:text="@string/shared_quality_photo"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <com.rey.material.widget.Slider
+            android:id="@+id/sliderQuality"
+            style="@style/Material.Widget.Slider"
+            android:layout_width="0dp"
+            android:layout_weight="6"
+            android:layout_height="wrap_content"
+            android:paddingRight="@dimen/normal_margin_x3"
+            android:paddingLeft="@dimen/normal_margin"
+            android:gravity="right"
+            android:layout_gravity="right"
+            app:sl_minValue="1"
+            app:sl_maxValue="100"
+            app:sl_discreteMode = "true"
+            app:sl_stepValue = "1"/>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/normal_margin"
+        android:layout_marginBottom="@dimen/normal_margin"
+        android:layout_marginLeft="@dimen/normal_margin_x3"
+        android:layout_marginRight="@dimen/normal_margin_x3">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_gravity="center"
+            android:text="@string/shared_type_extension"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="12sp"
+            android:textStyle="bold"
+           />
+
+        <RadioGroup
+            android:id="@+id/radioTypeExtension"
+            android:layout_width="0dp"
+            android:layout_weight="7"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radioExtensionJPEG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:checked="false"
+                android:text="@string/shared_preference_extension_jpg" />
+
+            <RadioButton
+                android:id="@+id/radioExtensionPNG"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/shared_preference_extension_png" />
+
+
+            <RadioButton
+                android:id="@+id/radioExtensionWEBP"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="@string/shared_preference_extension_webp" />
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/normal_margin"
+        android:layout_marginBottom="@dimen/normal_margin"
+        android:layout_marginLeft="@dimen/normal_margin_x3"
+        android:layout_marginRight="@dimen/normal_margin_x3">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:layout_gravity="left"
+            android:text="@string/shared_autoincrement"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            />
+
+        <Switch
+            android:id="@+id/switchAutoIncrement"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:layout_gravity="right"/>
+    </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/normal_margin"
+            android:layout_marginBottom="@dimen/normal_margin"
+            android:layout_marginLeft="@dimen/normal_margin_x3"
+            android:layout_marginRight="@dimen/normal_margin_x3">
+
+        <com.rey.material.widget.EditText
+            android:id="@+id/txtLineThickness"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:hint="@string/shared_line_thickness"
+            android:maxLength="3"
+            style="@style/LightEditText"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="10"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/normal_margin"
+            android:layout_marginBottom="@dimen/normal_margin_x3"
+            android:layout_marginLeft="@dimen/normal_margin_x3"
+            android:layout_marginRight="@dimen/normal_margin_x3">
+
+            <com.rey.material.widget.EditText
+                android:id="@+id/txtHexadecimalColor"
+                android:layout_width="0dp"
+                android:layout_weight="5"
+                android:layout_height="wrap_content"
+                android:digits="abcdefABCDEF0123456789"
+                android:hint="@string/shared_hexadecimal_color"
+                android:maxLength="8"
+                style="@style/LightEditText"
+                android:layout_gravity="bottom|left"
+                android:foregroundGravity="bottom|left"/>
+
+            <Button
+                android:id="@+id/btnColor"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_height"
+                style="@style/buttonStyle"
+                android:textSize="12sp"
+                android:text="@string/shared_change_color"
+                android:paddingTop="@dimen/normal_margin"
+                android:gravity="center"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/noteFragment"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/note_fragment"
+            android:textSize="12dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorBlackLight"
+            android:layout_margin="@dimen/normal_margin_x2"/>
+
+    </LinearLayout>
+    </ScrollView>
+</LinearLayout>

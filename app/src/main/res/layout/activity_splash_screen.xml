@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/colorWhite">
+
+    <ImageView android:id="@+id/splashscreen"
+        android:layout_width="300dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/ic_magical"
+        android:layout_gravity="center|center_vertical"/>
+
+</LinearLayout>

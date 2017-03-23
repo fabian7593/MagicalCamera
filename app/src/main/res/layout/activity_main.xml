@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".MainActivity">
+    tools:context=".Activities.MainActivity"
+    android:background="@color/colorWhite"
+    android:id="@+id/principalLayout">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -21,58 +21,166 @@
             <TextView
                 android:id="@+id/texttitle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:textColor="@color/colorBlackLight"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="5dp"/>
 
+
+            <FrameLayout
+                android:id="@+id/frame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
                 <ImageView
                     android:id="@+id/imageView"
                     android:layout_width="match_parent"
-                    android:layout_height="400dp"
-                    android:layout_gravity="center" />
+                    android:layout_height="300dp"
+                    android:layout_gravity="center"
+                    android:foregroundGravity="center"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_remove"/>
 
-            <Button
-                android:id="@+id/btntakephoto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="    Take Photo    " />
+                <com.github.clans.fab.FloatingActionMenu
+                    android:id="@+id/floatingBtnMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="bottom|right"
+                    fab:menu_icon="@drawable/ic_category"
+                    fab:menu_animationDelayPerItem="50"
+                    fab:menu_colorNormal="@color/colorCategory1"
+                    fab:menu_colorPressed="@color/appointmentPrincipalMenuPressed"
+                    fab:menu_colorRipple="@color/appointmentPrincipalMenuPressed"
+                    fab:menu_labels_maxLines="2"
+                    fab:menu_labels_ellipsize="end"
+                    app:menu_icon="@drawable/ic_settings"
+                    app:menu_animationDelayPerItem="50"
+                    app:menu_colorNormal="@color/colorPrimary"
+                    app:menu_colorPressed="@color/colorAccent"
+                    app:menu_colorRipple="@color/colorAccent"
+                    app:menu_labels_maxLines="2"
+                    app:menu_labels_ellipsize="end"
+                    fab:menu_labels_style="@style/menu_labels_style"
+                    fab:menu_labels_position="left"
+                    fab:menu_openDirection="up"
+                    fab:menu_backgroundColor="@android:color/transparent"
+                    app:menu_labels_style="@style/menu_labels_style"
+                    app:menu_labels_position="left"
+                    app:menu_openDirection="up"
+                    app:menu_fab_size="mini"
+                    app:menu_backgroundColor="@android:color/transparent"
+                    >
 
-            <Button
-                android:id="@+id/btnselectedphoto"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Selected photo" />
+                    <com.github.clans.fab.FloatingActionButton
+                        android:id="@+id/floatingBtnSeeString64"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:fab_size="mini"
+                        app:fab_label="@string/convert_to_string_base_64"
+                        app:fab_colorNormal="@color/colorPrimary"
+                        app:fab_colorPressed="@color/colorAccent"
+                        app:fab_colorRipple="@color/colorAccent"
+                        app:fab_progress_color="@color/colorPrimaryDark"
+                        app:fab_progress_backgroundColor="@color/colorPrimaryDark"
+                        app:icon="@drawable/ic_information"
+                        fab:icon="@drawable/ic_information"
+                        />
 
-            <Button
-                android:id="@+id/imgRotate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Rotate image 90º"/>
+                <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/floatingBtnPhotoInformation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:fab_size="mini"
+                    app:fab_label="@string/information_photo"
+                    app:fab_colorNormal="@color/colorPrimary"
+                    app:fab_colorPressed="@color/colorAccent"
+                    app:fab_colorRipple="@color/colorAccent"
+                    app:fab_progress_color="@color/colorPrimaryDark"
+                    app:fab_progress_backgroundColor="@color/colorPrimaryDark"
+                    app:icon="@drawable/ic_information"
+                    fab:icon="@drawable/ic_information"
+                    />
 
-            <Button
-                android:id="@+id/saveImage"
-                android:layout_width="wrap_content"
+                <com.github.clans.fab.FloatingActionButton
+                    android:id="@+id/floatingBtnFacialRecognition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:fab_size="mini"
+                    app:fab_label="@string/face_recognition"
+                    app:fab_colorNormal="@color/colorPrimary"
+                    app:fab_colorPressed="@color/colorAccent"
+                    app:fab_colorRipple="@color/colorAccent"
+                    app:fab_progress_color="@color/colorPrimaryDark"
+                    app:fab_progress_backgroundColor="@color/colorPrimaryDark"/>
+
+                    <com.github.clans.fab.FloatingActionButton
+                        android:id="@+id/floatingBtnRotate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:fab_size="mini"
+                        app:fab_label="@string/rotate_picture"
+                        app:fab_colorNormal="@color/colorPrimary"
+                        app:fab_colorPressed="@color/colorAccent"
+                        app:fab_colorRipple="@color/colorAccent"
+                        app:fab_progress_color="@color/colorPrimaryDark"
+                        app:fab_progress_backgroundColor="@color/colorPrimaryDark"/>
+
+                </com.github.clans.fab.FloatingActionMenu>
+
+           </FrameLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Save the photo"/>
-            <Button
-                android:id="@+id/btnSeeData"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="See photo data" />
-            <Button
-                android:id="@+id/btnFacialRecognition"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:text="Facial Recognition" />
+                android:orientation="horizontal"
+                android:layout_weight="12">
+                <ImageButton
+                    android:id="@+id/btntakephoto"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_weight="3"
+                    android:src="@drawable/ic_cam"
+                    style="@style/buttonStyle"/>
+
+                <ImageButton
+                    android:id="@+id/btnselectedphoto"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_weight="3"
+                    android:src="@drawable/ic_gallery"
+                    style="@style/buttonStyle"/>
+
+                <ImageButton
+                    android:id="@+id/saveImage"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/button_height"
+                    android:layout_weight="3"
+                    android:src="@drawable/ic_save"
+                    style="@style/buttonStyle"/>
+
+            </LinearLayout>
+
             <Button
                 android:id="@+id/btnGoTo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center" />
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:src="@drawable/ic_next"
+                style="@style/buttonStyle"
+                android:textSize="18sp"
+                android:layout_gravity="bottom|right"
+                android:foregroundGravity="bottom|right"
+                />
+
+
 
         </LinearLayout>
     </ScrollView>

@@ -53,7 +53,7 @@ public class ActionPictureObject {
 
     public void setResizePhoto(int resizePhoto) {
         resizePhoto = resizePhoto * 40;
-        if (resizePhoto < BEST_QUALITY_PHOTO && resizePhoto > 0)
+        if (resizePhoto <= BEST_QUALITY_PHOTO && resizePhoto > 0)
             this.resizePhoto = resizePhoto;
         else{
             this.resizePhoto = BEST_QUALITY_PHOTO;

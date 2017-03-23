@@ -3,6 +3,8 @@ package com.frosquivel.magicalcamera;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 
 import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
 import com.frosquivel.magicalcamera.Objects.ActionPictureObject;
@@ -167,13 +169,19 @@ public class MagicalCamera {
         magicalCameraObject.getActionPicture().resultPhoto(requestCode, resultCode, data, rotateType);
     }
 
+    public Intent getIntentFragment(){
+        return magicalCameraObject.getActionPicture().getActionPictureObject().getIntentFragment();
+    }
+
+    public void setResizePhoto(int resize){
+         magicalCameraObject.getActionPicture().getActionPictureObject().setResizePhoto(resize);
+    }
+
     public void permissionGrant(int requestCode, String[] permissions, int[] grantResults){
         this.permissionGranted.permissionGrant(requestCode, permissions, grantResults);
     }
 
-    public Intent getIntentFragment(){
-        return magicalCameraObject.getActionPicture().getActionPictureObject().getIntentFragment();
-    }
+
 
     //methods to rotate picture
     public Bitmap rotatePicture(int rotateType){
@@ -189,5 +197,6 @@ public class MagicalCamera {
         else
             return null;
     }
+
     //endregion
 }

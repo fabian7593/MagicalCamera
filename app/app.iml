@@ -33,6 +33,7 @@
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/buildConfig/debug" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/rs/debug" isTestSource="false" generated="true" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/apt/debug" isTestSource="false" generated="true" />
+      <sourceFolder url="file://$MODULE_DIR$/build/generated/fabric/res/debug" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/res/rs/debug" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/res/resValues/debug" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/build/generated/source/r/androidTest/debug" isTestSource="true" generated="true" />
@@ -84,21 +85,31 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/shaders" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/assets" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/blame" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/builds" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/classes" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/dependency-cache" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.afollestad.material-dialogs/commons/0.8.6.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.afollestad.material-dialogs/core/0.8.6.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.0.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.4.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/design/22.2.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/24.0.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.0.0/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.frosquivel/magicalcamera/5.0.3/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.0/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.2.0/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/10.2.0/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.2.0/jars" />
-      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-vision/10.2.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.crashlytics.sdk.android/answers/1.3.12/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.crashlytics.sdk.android/beta/1.2.4/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.crashlytics.sdk.android/crashlytics-core/2.3.16/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.crashlytics.sdk.android/crashlytics/2.6.7/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.daimajia.androidanimations/library/1.1.3/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.daimajia.easing/library/1.0.1/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.ViksaaSkool/AwesomeSplash/v1.0.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.clans/fab/1.6.3/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.jorgecastilloprz/fillableloaders/1.02/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.ozodrukh/CircularReveal/1.1.1/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.rey5137/material/1.2.4/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.larswerkman/HoloColorPicker/1.5/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/io.fabric.sdk.android/fabric/1.3.16/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/me.zhanghai.android.materialprogressbar/library/1.1.6/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/incremental-classes" />
@@ -121,20 +132,41 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 23 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" exported="" name="picasso-2.5.2" level="project" />
+    <orderEntry type="library" exported="" name="fillableloaders-1.02" level="project" />
+    <orderEntry type="library" exported="" name="AwesomeSplash-v1.0.0" level="project" />
+    <orderEntry type="library" exported="" name="support-v4-24.0.0" level="project" />
+    <orderEntry type="library" exported="" name="animated-vector-drawable-24.0.0" level="project" />
+    <orderEntry type="library" exported="" name="material-1.2.4" level="project" />
+    <orderEntry type="library" exported="" name="crashlytics-core-2.3.16" level="project" />
+    <orderEntry type="library" exported="" name="CircularReveal-1.1.1" level="project" />
+    <orderEntry type="library" exported="" name="library-1.1.6" level="project" />
+    <orderEntry type="library" exported="" name="library-1.0.1" level="project" />
+    <orderEntry type="library" exported="" name="library-1.1.3" level="project" />
     <orderEntry type="library" exported="" name="recyclerview-v7-24.0.0" level="project" />
-    <orderEntry type="library" exported="" name="play-services-tasks-10.2.0" level="project" />
+    <orderEntry type="library" exported="" name="library-2.4.0" level="project" />
+    <orderEntry type="library" exported="" name="fabric-1.3.16" level="project" />
+    <orderEntry type="library" exported="" name="backendless-3.0.10" level="project" />
+    <orderEntry type="library" exported="" name="crashlytics-2.6.7" level="project" />
+    <orderEntry type="library" exported="" name="HoloColorPicker-1.5" level="project" />
+    <orderEntry type="library" exported="" name="beta-1.2.4" level="project" />
     <orderEntry type="library" exported="" name="appcompat-v7-24.0.0" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-24.0.0" level="project" />
-    <orderEntry type="library" exported="" name="support-v4-24.0.0" level="project" />
     <orderEntry type="library" exported="" name="support-vector-drawable-24.0.0" level="project" />
-    <orderEntry type="library" exported="" name="animated-vector-drawable-24.0.0" level="project" />
     <orderEntry type="library" exported="" name="core-0.8.6.1" level="project" />
-    <orderEntry type="library" exported="" name="play-services-base-10.2.0" level="project" />
-    <orderEntry type="library" exported="" name="play-services-basement-10.2.0" level="project" />
+    <orderEntry type="library" exported="" name="cardview-v7-23.4.0" level="project" />
     <orderEntry type="library" exported="" name="commons-0.8.6.1" level="project" />
-    <orderEntry type="library" exported="" name="library-1.1.6" level="project" />
-    <orderEntry type="library" exported="" name="magicalcamera-5.0.3" level="project" />
+    <orderEntry type="library" exported="" name="answers-1.3.12" level="project" />
+    <orderEntry type="library" exported="" name="fab-1.6.3" level="project" />
+    <orderEntry type="library" exported="" name="design-22.2.0" level="project" />
+    <orderEntry type="module" module-name="magicalcamera" exported="" />
+    <orderEntry type="library" exported="" name="play-services-basement-10.2.0" level="project" />
+    <orderEntry type="library" exported="" name="animated-vector-drawable-24.0.0-alpha1" level="project" />
+    <orderEntry type="library" exported="" name="support-vector-drawable-24.0.0-alpha1" level="project" />
+    <orderEntry type="library" exported="" name="play-services-tasks-10.2.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-location-10.2.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-vision-10.2.0" level="project" />
+    <orderEntry type="library" exported="" name="appcompat-v7-24.0.0-alpha1" level="project" />
+    <orderEntry type="library" exported="" name="play-services-base-10.2.0" level="project" />
   </component>
 </module>

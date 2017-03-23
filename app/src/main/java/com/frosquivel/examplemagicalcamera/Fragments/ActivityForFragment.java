@@ -1,6 +1,11 @@
-package com.frosquivel.examplemagicalcamera;
+package com.frosquivel.examplemagicalcamera.Fragments;
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+
+import com.frosquivel.examplemagicalcamera.R;
 import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
 
 /**
@@ -10,7 +15,7 @@ import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
  * Created Date        on 5/19/16
  * This is an android library to take easy picture
  */
-public class ActivityForFragment extends Activity {
+public class ActivityForFragment extends AppCompatActivity {
 
     //You need to declare permission granted in activity parent fragment
     //in static context for use in fragment
@@ -18,24 +23,12 @@ public class ActivityForFragment extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //initialized the permission in onCreate event
+
         permissionGranted = new PermissionGranted(this);
-        //call the permission for all that you need to use in this library
-        //This has nothing to do with the library API, I only put it as an example
-        //but if you needed call this like another versions
         if (android.os.Build.VERSION.SDK_INT >= 24) {
             permissionGranted.checkAllMagicalCameraPermission();
-        }else{
-            //call one on one permission
-            //permission for take photo, it is false if the user check deny
-            permissionGranted.checkCameraPermission();
-            //for search and write photoss in device internal memory
-            //normal or SD memory
-            permissionGranted.checkReadExternalPermission();
-            permissionGranted.checkWriteExternalPermission();
-            //permission for location for use the `photo information device.
-            permissionGranted.checkLocationPermission();
         }
+
         setContentView(R.layout.activity_activity_for_fragment);
     }
 
@@ -43,5 +36,10 @@ public class ActivityForFragment extends Activity {
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         //callthe permission grant
         permissionGranted.permissionGrant(requestCode, permissions, grantResults);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }

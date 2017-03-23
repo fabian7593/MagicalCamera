@@ -1,6 +1,64 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools" tools:context=".MainActivity">
-    <item android:id="@+id/action_settings" android:title="@string/action_settings"
-        android:orderInCategory="100" app:showAsAction="never" />
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/menu_git"
+        android:orderInCategory="1"
+        android:title="@string/menu_github"
+        android:icon="@drawable/ic_git"
+        android:showAsAction="ifRoom"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/menu_setting"
+        android:orderInCategory="2"
+        android:title="@string/menu_settings"
+        android:icon="@drawable/ic_setting_menu"
+        android:showAsAction="ifRoom"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/menu_shared"
+        android:orderInCategory="3"
+        android:title="@string/menu_shared"
+        android:showAsAction="ifRoom"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/menu_documentation"
+        android:orderInCategory="4"
+        android:title="@string/menu_documentation"
+        android:showAsAction="ifRoom"
+        app:showAsAction="ifRoom"
+        />
+
+    <item
+        android:id="@+id/menu_donate"
+        android:orderInCategory="5"
+        android:title="@string/menu_donation"
+        android:showAsAction="ifRoom"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/menu_todo"
+        android:orderInCategory="6"
+        android:title="@string/menu_todo_list"
+        android:showAsAction="ifRoom"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/menu_feedback"
+        android:orderInCategory="7"
+        android:title="@string/feedback"
+        android:showAsAction="ifRoom"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/menu_about"
+        android:orderInCategory="8"
+        android:title="@string/menu_about"
+        android:showAsAction="ifRoom"
+        app:showAsAction="ifRoom"/>
+
 </menu>

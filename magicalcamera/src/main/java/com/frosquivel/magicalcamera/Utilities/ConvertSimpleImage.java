@@ -1,7 +1,9 @@
 package com.frosquivel.magicalcamera.Utilities;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.util.Base64;
 
 import java.io.ByteArrayOutputStream;
@@ -15,6 +17,12 @@ public class ConvertSimpleImage {
     //================================================================================
     // Conversion Methods
     //================================================================================
+
+    public static Bitmap resizeImageRunTime(byte[] byteArray, int width, int height,boolean isFilter){
+        Bitmap b = BitmapFactory.decodeByteArray(byteArray, 0, byteArray.length);
+        return Bitmap.createScaledBitmap(b, width, height, isFilter);
+    }
+
     //region Conversion Methods
     public static byte[] bitmapToBytes(Bitmap bitmap, Bitmap.CompressFormat format) {
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
