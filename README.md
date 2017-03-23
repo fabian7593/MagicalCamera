@@ -55,8 +55,6 @@ Download from [Here](https://github.com/fabian7593/MagicalCamera/zipball/master)
 
 Another type download by Bintray from    [ ![Download](https://api.bintray.com/packages/fabian7593/maven/MagicalCamera/images/download.svg) ](https://bintray.com/fabian7593/maven/MagicalCamera/_latestVersion)
  
- Give me a question in [![Codewake](https://www.codewake.com/badges/ask_question.svg)](https://www.codewake.com/p/magicalcamera)
- 
  <br>
 ## How to use
 #### Add dependecies
@@ -79,121 +77,181 @@ If you have any problem with this dependence, because the library override any s
         transitive = false;
     }
 ```
+
+Yet, if you still have any problem with this and you suspect it could be related to multidex please read this [guide](https://developer.android.com/studio/build/multidex.html?hl=es-419). Multidex problem is mostly caused by adding every Google Service library, you can see [here](https://developer.android.com/studio/build/multidex.html?hl=es-419) how to add targeted dependencies. 
  
 <br>
+<<<<<<< HEAD
 ## What you need?
 <br>
 ### Import library
+=======
+#What you need?
+
+###Import library
+>>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7
 You need to import the library
+
 ```bash
 import com.frosquivel.magicalcamera.MagicalCamera;
-import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
-
-//and maybe you need in some ocations
-import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
+import com.frosquivel.magicalcamera.MagicalPermissions;
 ```
+
+MagicalCamera class take care of the image (photo, selection, face recognition, etc) and MagicalPermissions take care of permission.
 <br>
+<<<<<<< HEAD
 ### Declare Permissions
 You need for usage the library in the best way, call any permissions in Android Manifest.xml
 If you have android 6.0 the library have a method for validate this permissions, you see this later in this documentation
+=======
+
+
+##Permissions
+
+###Declare Permissions
+Regardless the device API level, permissions must always be requested in the `AndroidManifest.xml`. Starting from API level 23 permissions must be requested on real time to the user, we will cover this later. The permissions you need to request depends on what you are intending to do. You can see the comment in the code bewlo to have an idea of what you need.
+
+>>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7
 ```bash
- 
-    //this is for take and select or write the bitmap picture in your device
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA"/>
+//this is for take and select or write the bitmap picture in your device
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.CAMERA"/>
     
-    //you need this permission for access the private information and gps locations of yours picture (only if you need this     functionallities)
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+//you need this permission for access the private information and gps locations of yours picture (only if you need this     functionallities)
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     
-    //this permission is required only if you use the facial recognition functionallities
-    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS"/>
-```
-Permissions with required user authorization for Androd 6.0, do like this (You need to call this class and method before that you do the instance of MagicalCamera class, you dont have to validate if is only for android 6.0, This class of PermissionGranted already does everything for you, you only need to call this methods)
-```bash
-        //The parameter this, is the current activity
-        PermissionGranted permissionGranted = new PermissionGranted(this);
-        
-        //permission for take photo, it is false if the user check deny
-        permissionGranted.checkCameraPermission();
-        
-        //for search and write photoss in device internal memory
-        //normal or SD memory
-        permissionGranted.checkReadExternalPermission();
-        permissionGranted.checkWriteExternalPermission();
-        
-        //permission for location for use the `photo information device.
-        permissionGranted.checkLocationPermission();
-        
-        ...
-        //Then instance MagicalCamera
-        ...
+//this permission is required only if you use the facial recognition functionallities
+<uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+<uses-permission android:name="android.permission.MANAGE_DOCUMENTS"/>
 ```
 
-You have the possibility of call this permissions with only one method, you can use this:
-```bash
- permissionGranted.checkAllMagicalCameraPermission();
+###Permissions on real time
+With the MagicalPermissions class you can ask for permissions in a Activity or in an Fragment. This class will take care of validating the device API level, what permissions the user haven't granted yet, ask for thoose permissions, deliver the result and together with MagicalCamera will take the photo or select it from the gallery.
+
+Requesting permissions on real time to the user is a 2 part process. First permissions most be requested, then the result is delivered. So you need a field variable to later call it again on the permissions result:
+
+```
+private MagicalPermissions magicalPermissions;
 ```
 
-And for activate the Permissions you need to override the method onRequestPermissionsResult in your respective activity or fragment, like this: 
-```bash
- @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-    //CALL THIS METHOD EVER IN THIS OVERRIDE FOR ACTIVATE PERMISSIONS
-        magicalCamera.permissionGrant(requestCode, permissions, grantResults);
-    }
+MagicalPermissions constructor accept two params, the first is the Activity or Fragment and the second is a String array of the permissions you **need** `String[]`. MagicalPermissions use the Activity or Fragment to later deliver the result of the permission, and the array to ask for thoose permissions.
+
 ```
-<br>Permissions For fragment
-If you need the permissions for fragment, you need to call this permission in the activity parent and declare the permission like an static for use this in the instance of magical camera in fragment (Please see the example app, download this).
-```bash
-  public static PermissionGranted permissionGranted;
+magicalPermissions = new MagicalPermissions(this, permissions);
+```
+
+Inside MagicalPermissions it will be solved if the API level of the device requiere to ask permissions or not. If permissions must be asked to the user then MagicalPermissions will validate which permissions are already granted and only asked for the needed. **This is why is very important you only ask for the permissions you need, taking the photo or selecting it will only happen if every permission you have asked is granted**. 
+
+ - By example, if you only need to take the photo then:
+
+```
+String[] permissions = new String[] {
+                Manifest.permission.CAMERA
+        };
+magicalPermissions = new MagicalPermissions(this, permissions);
+```
+
+- MagicalCamera take care of saving the photo commonly you will need:
+
+```
+String[] permissions = new String[] {
+            Manifest.permission.CAMERA,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE
+    };
+magicalPermissions = new MagicalPermissions(this, permissions);
+```
+
+ - Or maybe you want to use more potential of MagicalCamera and also ask for location related info, then you need:
+
+```
+String[] permissions = new String[] {
+            Manifest.permission.CAMERA,
+            Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION
+    };
+magicalPermissions = new MagicalPermissions(this, permissions);
+```
+
+You can also ask for other permissions in other places of your app, even unrelated to MagicalCamera using MagicalPermissions separatedly. So if getting location information is not requiered for the photo, but is a plus, you should consider separating thoose permissions from the absolutely needed to your feature. MagicalPermissions use a `Runnable` to do whatever you want after checking the permissions. When is used along with MagicalCamera you don't have to be aware of that, is automatic, but in this case we are considering asking for other permissions:
+
+```
+String[] location = new String[] {
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION
+    };
+locationPermissions = new MagicalPermissions(this, location);
+
+
+Runnable runnable = new Runnable() {
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        permissionGranted = new PermissionGranted(this);
-        if (android.os.Build.VERSION.SDK_INT >= 24) {
-            permissionGranted.checkAllMagicalCameraPermission();
-        }else{
-            permissionGranted.checkCameraPermission();
-            permissionGranted.checkReadExternalPermission();
-            permissionGranted.checkWriteExternalPermission();
-            permissionGranted.checkLocationPermission();
-        }
-        setContentView(R.layout.activity_activity_for_fragment);
+    public void run() {
+        //TODO location permissions are granted code here your feature
+        Toast.makeText(context, "Thanks for granting location permissions", Toast.LENGTH_LONG).show();
     }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        permissionGranted.permissionGrant(requestCode, permissions, grantResults);
-    }
+};
+locationPermissions.askPermissions(runnable);
 ```
 
+Then the second part of the process come into play: receiving the permissions result. You have to **always override** the `onRequestPermissionsResult` method in the Activity or Fragment. Inside of it, call your instance of MagicalPermissions and give it the result to the `permissionResult()` method (this is why must be a field). The `permissionResult()` method is a `Map<String, Boolean>` in case you need to know what happened and do something about it:
+
+```
+@Override
+public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    Map<String, Boolean> map = magicalPermissions.permissionResult(requestCode, permissions, grantResults);
+    for (String permission : map.keySet()) {
+        Log.d("PERMISSIONS", permission + " was: " + map.get(permission));
+    }
+    //Following the example you could also
+    //locationPermissions(requestCode, permissions, grantResults);
+}
+```
+
+<<<<<<< HEAD
 <br>
 ### Declare variable to resize photo ( with pixels percentage )
 You need to declare and constant or a simple int variable for the quality of the photo, while greater be, greater be the quality, and otherwise, worst be the quality, like this
+=======
+#Photo
+
+###Declare variable to resize photo ( with pixels percentage )
+You need to declare a constant or a simple int variable for the quality of the photo, while greater, higher the quality, and viceversa, lower the value lower quality. To get a reference a value 20 in a Samsung Galaxy Note 3 will create 300kb photo.
+
+>>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7
 ```bash
-//The pixel percentage is declare like an percentage of 100, if your value is 50, the photo will have the middle quality of your camera. 
-// this value could be only 1 to 100.
+//The pixel percentage is declare like a percentage of 100, if your value is 50, the photo will have the middle quality of your camera. 
+//The must be between 1 to 100.
 private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 80;
 ```
 
+<<<<<<< HEAD
 <br>
 ### Instance Class MagicalCamera
 ###### *YOU NEED TO INSTANCE THIS, AFTER THAT PERMISSION GRANTED INSTANCE.*
+=======
+###Instance Class MagicalCamera
+######*YOU NEED TO INSTANCE THIS, AFTER THE MAGICALPERMISSIONS INSTANCE.*
+>>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7
 You need to instance the MagicalCamera Class, like this:
-The fisrt param is the current Activity, and the second the resize percentage photo, and the third param is the Permission Granted
+The fisrt param is the current Activity, the second the resize percentage photo, and the third param is the MagicalPermissions instance
 ```bash
- MagicalCamera magicalCamera = new MagicalCamera(this,RESIZE_PHOTO_PIXELS_PERCENTAGE, permissionGranted);
- 
+magicalCamera = new MagicalCamera(activity, RESIZE_PHOTO_PIXELS_PERCENTAGE, magicalPermissions);
 ```
 
 <br>
+<<<<<<< HEAD
 ### Activities Methods
 You need to call the methods for take or select pictures in activities that this form:
+=======
+###Activities Methods
+You need to call these methods for take or select pictures in activities:
+>>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7
 
 ```bash
 //take photo
@@ -204,25 +262,33 @@ magicalCamera.selectedPicture("my_header_name");
 ```
 
 <br>
+<<<<<<< HEAD
 ### Fragments Methods
 You need to call the methods for take or select pictures in fragments that this form:
+=======
+###Fragments Methods
+You need to call these methods for take or select pictures in fragments:
+>>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7
 
 ```bash
 //take photo
- if(magicalCamera.takeFragmentPhoto()){
-        startActivityForResult(magicalCamera.getIntentFragment(),MagicalCamera.TAKE_PHOTO);
- }
+magicalCamera.takeFragmentPhoto(FragmentSample.this);
  
  //select picture
- if(magicalCamera.selectedFragmentPicture()){
-      startActivityForResult(Intent.createChooser(magicalCamera.getIntentFragment(),  "My Header Example"),
-                            MagicalCamera.SELECT_PHOTO);
-   }
+magicalCamera.selectedFragmentPicture(FragmentSample.this, "My Header Example");
 ```
-
 <br>
+<<<<<<< HEAD
 ### Remember override the event onActivityResult
 You need to override the method onActivityResult in your activity or fragment like this
+=======
+As you can see MagicalCamera is working together MagicalPermissions so you don't need to pass a `Runnable` the camera or photo selection will be triggered once permissions are solved.
+<br>
+
+###Remember override the event onActivityResult
+You **need to override** the method `onActivityResult` in your Activity or Fragment like this:
+
+>>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7
 ```bash
  @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -456,8 +522,13 @@ See the example of this infomartion return:
 ![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/information2.png)
 
 
+<<<<<<< HEAD
 ## Internal documentation
 All the code has a internal documentation for more explanation of this example.
+=======
+##Internal documentation
+All the code has a internal documentation for more explanation of this example. Wiki is pending, will be glad to see you contributing.
+>>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7
 
 <br><br>
 ## Preview of Example
@@ -471,7 +542,15 @@ UTNCources
 Feel free to contact me to add yours to this list.
 
 <br><br>
+<<<<<<< HEAD
 ## You can see the video explication here (in spanish) This video is for MagicalCamera version 1.0
+=======
+
+##Contributors are welcome
+The goal for MagicalCamera is to allow Android Developers care about what is important, feautures not getting worry about something that should be trivial such as taking a picture. We look forward to make this a great library to make image capture process simple and painless. There are amny features and other issues waiting. If you would like to contribute please reach to us, or maybe be bold! Getting a surprise pull request is very gratifying.
+
+##You can see the video explication here (in spanish) This video is for MagicalCamera version 1.0
+>>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7
 https://www.youtube.com/watch?v=U-JxaFZDSn4
 
 <br><br>
@@ -481,7 +560,20 @@ Developed by [Fabian Rosales]<br>
 Known as [Frosquivel Developer]<br>
 Source code can be found on [github](https://github.com/fabian7593/MagicalCamera)<br>
 <br><br>
+<<<<<<< HEAD
 # License
+=======
+
+##Suggestions
+MagicalCamera was created to make Android Devoloper's life easy. If you have any feedback please let us know in the issues by creating an issue with this format:
+ 
+ - Write what your feedback is about and add the next "tag" including the square brackets [FEEDBACK]
+
+Suggestions about how to improve the library or new features are welcome. Thanks for choosing us.
+<br><br><br>
+
+#License
+>>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7
 Copyright 2016 Fabian Rosales
 
 Licensed under the Apache License, Version 2.0 (the "License");

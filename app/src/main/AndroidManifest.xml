@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.frosquivel.examplemagicalcamera" >
+    package="com.frosquivel.examplemagicalcamera">
 
     <!-- Another permission for use gps, information and face recognition -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -8,22 +8,27 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+<<<<<<< HEAD
     <uses-permission android:name="android.permission.MANAGE_DOCUMENTS"/>
 
     <!-- General permission for use magical camera -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+=======
+    <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+>>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme"
-        android:hardwareAccelerated="false"
-        android:largeHeap="true">
-
+        android:largeHeap="true"
+        android:theme="@style/AppTheme">
         <activity
+<<<<<<< HEAD
             android:name=".Activities.AboutUsActivity"
             android:label="@string/app_name"
             android:configChanges="orientation|screenSize">
@@ -66,11 +71,18 @@
             android:noHistory="true"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
+=======
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize"
+            android:label="@string/app_name">
+>>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
 
         <activity android:name=".Fragments.ActivityForFragment"
             android:label="@string/app_name"
@@ -79,6 +91,11 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="d99772e53218c64c9e36291cbc9ec30ae8c2c180" />
+=======
+        <activity
+            android:name=".ActivityForFragment"
+            android:configChanges="orientation|screenSize"></activity>
+>>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7
     </application>
 
 </manifest>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD:app/src/main/java/com/frosquivel/examplemagicalcamera/Fragments/ActivityForFragment.java
 package com.frosquivel.examplemagicalcamera.Fragments;
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,6 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.frosquivel.examplemagicalcamera.R;
 import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
+=======
+package com.frosquivel.examplemagicalcamera;
+
+import android.app.Activity;
+import android.os.Bundle;
+>>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7:app/src/main/java/com/frosquivel/examplemagicalcamera/ActivityForFragment.java
 
 /**
  * Created by          Fabián Rosales Esquivel
@@ -17,12 +24,10 @@ import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
  */
 public class ActivityForFragment extends AppCompatActivity {
 
-    //You need to declare permission granted in activity parent fragment
-    //in static context for use in fragment
-    public static PermissionGranted permissionGranted;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+<<<<<<< HEAD:app/src/main/java/com/frosquivel/examplemagicalcamera/Fragments/ActivityForFragment.java
 
         permissionGranted = new PermissionGranted(this);
         if (android.os.Build.VERSION.SDK_INT >= 24) {
@@ -42,4 +47,8 @@ public class ActivityForFragment extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
     }
+=======
+        setContentView(R.layout.activity_activity_for_fragment);
+    }
+>>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7:app/src/main/java/com/frosquivel/examplemagicalcamera/ActivityForFragment.java
 }
