@@ -1,4 +1,4 @@
-[![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/cameraHighQ.png)](https://github.com/fabian7593/MagicalCamera)
+[![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/Images/cameraHighQ.png)](https://github.com/fabian7593/MagicalCamera)
 
 A Magic library to take photos and select pictures in Android. In a simple way and if you need it also save the pictures in device, and facial recognition, get the real uri path or the photo or obtain the private information of the picture.
 <br>
@@ -22,7 +22,7 @@ A Magic library to take photos and select pictures in Android. In a simple way a
 * ** Convert your bitmap ** in array bytes or string64, if you need to send by Json or XML.
 * ** Type of photo formats: ** PNG, JPEG and WEBP.
 
-####Other Offers
+#### Other Offers
 * A library completely OpenSource.
 * Use best practice in POO
 * Minimun SDK 14+ API.
@@ -93,6 +93,7 @@ import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
 import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
 ```
 <br>
+
 ### Declare Permissions
 You need for usage the library in the best way, call any permissions in Android Manifest.xml
 If you have android 6.0 the library have a method for validate this permissions, you see this later in this documentation
@@ -182,6 +183,7 @@ private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 80;
 ```
 
 <br>
+
 ### Instance Class MagicalCamera
 ###### *YOU NEED TO INSTANCE THIS, AFTER THAT PERMISSION GRANTED INSTANCE.*
 You need to instance the MagicalCamera Class, like this:
@@ -192,6 +194,7 @@ The fisrt param is the current Activity, and the second the resize percentage ph
 ```
 
 <br>
+
 ### Activities Methods
 You need to call the methods for take or select pictures in activities that this form:
 
@@ -204,6 +207,7 @@ magicalCamera.selectedPicture("my_header_name");
 ```
 
 <br>
+
 ### Fragments Methods
 You need to call the methods for take or select pictures in fragments that this form:
 
@@ -221,6 +225,7 @@ You need to call the methods for take or select pictures in fragments that this 
 ```
 
 <br>
+
 ### Remember override the event onActivityResult
 You need to override the method onActivityResult in your activity or fragment like this
 ```bash
@@ -249,6 +254,7 @@ You need to override the method onActivityResult in your activity or fragment li
 ```
 
 <br>
+
 ### The savePhotoInMemoryDevice Method
 This method save your bitmap in internal memory device or if the internal memory is full this library save in sdcard (if you have anything :'D)
 This method have a lot of params that you can need to use the library:
@@ -271,6 +277,7 @@ Example:
  String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getPhoto(), "myTestPhotoName", MagicalCamera.JPEG, true);
 ```
 <br>
+
 ### Types of Formats for save photos
 You have any type of formats for save the pictures and the bitmaps.
 You can use, the static variables of the library MagicalCamera.
@@ -281,6 +288,7 @@ You can use, the static variables of the library MagicalCamera.
 ```
 
 <br>
+
 ### Resize photo in real time
 You can resize the photo in any moment with this:
 ```bash
@@ -288,6 +296,7 @@ You can resize the photo in any moment with this:
 ```
 
 <br>
+
 ### Conversion Methods
 The library have any methods to convert the bitmap in other formats that you need.
 All of this methods are public statics, I mean that you dont have to instance the library for usage this.
@@ -366,7 +375,8 @@ if(magicalCamera != null){
 
 The photo and bitmap converted is like to:
 <br>
-![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/faceDetection2.png)
+
+![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/Images/faceDetection2.png)
 
 
 ### Private information Photo:
@@ -453,24 +463,28 @@ You need to write this code for example:
 See the example of this infomartion return:
 <br>
 
-![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/information2.png)
+![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/Images/information2.png)
 
 
 ## Internal documentation
 All the code has a internal documentation for more explanation of this example.
 
 <br><br>
+
 ## Preview of Example
 <br>
+
 ![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/magicalcamera.gif)
 
 <br><br>
+
 ## Projects/Apps using MagicalCamera:
 UTNCources
 
 Feel free to contact me to add yours to this list.
 
 <br><br>
+
 ## You can see the video explication here (in spanish) This video is for MagicalCamera version 1.0
 https://www.youtube.com/watch?v=U-JxaFZDSn4
 
@@ -481,6 +495,7 @@ Developed by [Fabian Rosales]<br>
 Known as [Frosquivel Developer]<br>
 Source code can be found on [github](https://github.com/fabian7593/MagicalCamera)<br>
 <br><br>
+
 # License
 Copyright 2016 Fabian Rosales
 
