@@ -1,5 +1,6 @@
 package com.frosquivel.examplemagicalcamera.Activities;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -20,8 +21,8 @@ import com.afollestad.materialdialogs.MaterialDialog;
 import com.frosquivel.examplemagicalcamera.Fragments.ActivityForFragment;
 import com.frosquivel.examplemagicalcamera.R;
 import com.frosquivel.examplemagicalcamera.Utils.Utils;
-import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
 import com.frosquivel.magicalcamera.MagicalCamera;
+import com.frosquivel.magicalcamera.MagicalPermissions;
 import com.frosquivel.magicalcamera.Utilities.ConvertSimpleImage;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Ever you need to call magical camera and permissionGranted
     private MagicalCamera magicalCamera;
-    private PermissionGranted permissionGranted;
+    private MagicalPermissions magicalPermissions;
     public static Bitmap magicalCameraBitmap;
 
     @Override
@@ -77,43 +78,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_main);
-
-        permissionGranted = new PermissionGranted(this);
-        //call the permission for all that you need to use in this library
-        //This has nothing to do with the library API, I only put it as an example
-        //but if you needed call this like another versions
-        if (android.os.Build.VERSION.SDK_INT >= 24) {
-            permissionGranted.checkAllMagicalCameraPermission();
-
-            /*****************************************************
-             *       CALL ONE ON ONE PERMISSIONS CODE COMMENT
-             *****************************************************/
-             /*
-            //permission for take photo, it is false if the user check deny
-            permissionGranted.checkCameraPermission();
-            //for search and write photoss in device internal memory
-            //normal or SD memory
-            permissionGranted.checkReadExternalPermission();
-            permissionGranted.checkWriteExternalPermission();
-            //permission for location for use the `photo information device.
-            permissionGranted.checkLocationPermission();
-            */
-
-
-            /*****************************************************
-             *       CALL BASIC PERMISSIONS CODE COMMENT
-             *****************************************************/
-             /*
-            //Only write the permissions for take photo and write and read this
-             permissionGranted.checkInOutCameraPermissions();
-            */
-        }
-
         setUIComponents();
+
+        String[] permissions = new String[] {
+                Manifest.permission.CAMERA,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION
+        };
 
         //realized the instance of magical camera, this need the context, this need the context,
         //the percentage of quality photo and the permission granted
-        magicalCamera = new MagicalCamera(this, Integer.parseInt(Utils.getSharedPreference(this, Utils.C_PREFERENCE_MC_QUALITY_PICTURE)), permissionGranted);
+        magicalPermissions = new MagicalPermissions(this, permissions);
+        magicalCamera = new MagicalCamera(this, Integer.parseInt(Utils.getSharedPreference(this, Utils.C_PREFERENCE_MC_QUALITY_PICTURE)), magicalPermissions);
 
         btntakephoto.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -345,7 +323,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         //call the event of onRequestPermissionsResult for android 6.0 or more
-        permissionGranted.permissionGrant(requestCode, permissions, grantResults);
+        //permissionGranted.permissionGrant(requestCode, permissions, grantResults);
     }
 
     @Override

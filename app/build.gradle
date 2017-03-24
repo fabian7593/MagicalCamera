@@ -3,7 +3,7 @@ apply plugin: 'io.fabric'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
         applicationId "com.frosquivel.examplemagicalcamera"
@@ -34,9 +34,10 @@ repositories {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-<<<<<<< HEAD
-    compile 'com.android.support:design:22.2.0'
-    compile 'com.android.support:appcompat-v7:24.0.0-alpha1'
+
+    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.afollestad.material-dialogs:commons:0.8.6.1'
+    compile 'com.android.support:design:25.2.0'
 
     compile('com.crashlytics.sdk.android:crashlytics:2.6.7@aar') {
         transitive = true;
@@ -52,11 +53,4 @@ dependencies {
     compile 'com.larswerkman:HoloColorPicker:1.5'
     compile 'com.github.rey5137:material:1.2.4'
     compile 'com.github.rey5137:material:1.2.3.1-SNAPSHOT'
-=======
-    compile project(':magicalcamera')
-    //compile 'com.frosquivel:magicalcamera:5.0.3'
-    compile 'com.android.support:appcompat-v7:25.2.0'
-    compile 'com.afollestad.material-dialogs:commons:0.8.6.1'
-    compile 'com.android.support:design:25.2.0'
->>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7
 }

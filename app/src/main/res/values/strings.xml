@@ -3,7 +3,6 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-<<<<<<< HEAD
 
     <!-- menu photos-->
     <string name="face_recognition">Face Recognition</string>
@@ -127,7 +126,5 @@
         <item>Issues</item>
         <item>New Ideas</item>
     </string-array>
-=======
     <string name="title_activity_permissions">PermissionsActivity</string>
->>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7
 </resources>

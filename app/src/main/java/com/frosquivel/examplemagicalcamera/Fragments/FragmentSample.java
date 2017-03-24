@@ -1,10 +1,12 @@
 package com.frosquivel.examplemagicalcamera.Fragments;
+import android.Manifest;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,12 +20,14 @@ import com.frosquivel.examplemagicalcamera.Activities.ImageViewActivity;
 import com.frosquivel.examplemagicalcamera.R;
 import com.frosquivel.examplemagicalcamera.Utils.Utils;
 import com.frosquivel.magicalcamera.MagicalCamera;
+import com.frosquivel.magicalcamera.MagicalPermissions;
 import com.frosquivel.magicalcamera.Utilities.ConvertSimpleImage;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.vision.face.Landmark;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by          Fabián Rosales Esquivel
@@ -63,6 +67,7 @@ public class FragmentSample extends Fragment{
 
     //Ever you need to call magical camera and permissionGranted
     private MagicalCamera magicalCamera;
+    private MagicalPermissions magicalPermissions;
     private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 80;
     private Activity activity;
     public static Bitmap magicalCameraBitmap;
@@ -77,16 +82,21 @@ public class FragmentSample extends Fragment{
         setUIComponents(rootView);
 
         //instance magical camera
-        magicalCamera = new MagicalCamera(activity ,RESIZE_PHOTO_PIXELS_PERCENTAGE, ActivityForFragment.permissionGranted);
+        String[] permissions = new String[] {
+                Manifest.permission.CAMERA,
+                Manifest.permission.READ_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.ACCESS_COARSE_LOCATION,
+                Manifest.permission.ACCESS_FINE_LOCATION
+        };
+        magicalPermissions = new MagicalPermissions(this, permissions);
+        magicalCamera = new MagicalCamera(activity, RESIZE_PHOTO_PIXELS_PERCENTAGE, magicalPermissions);
 
         btntakephoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //call the method of take the picture
-                if (magicalCamera.takeFragmentPhoto()) {
-                    startActivityForResult(magicalCamera.getIntentFragment(),
-                            MagicalCamera.TAKE_PHOTO);
-                }
+                magicalCamera.takeFragmentPhoto(FragmentSample.this);
             }
         });
 
@@ -94,11 +104,7 @@ public class FragmentSample extends Fragment{
             @Override
             public void onClick(View v) {
                 //this is the form to select picture of device
-                if (magicalCamera.selectedFragmentPicture()) {
-                    startActivityForResult(
-                            Intent.createChooser(magicalCamera.getIntentFragment(), "My Header Example"),
-                            MagicalCamera.SELECT_PHOTO);
-                }
+                magicalCamera.selectFragmentPicture(FragmentSample.this, "My Header Example");
             }
         });
 
@@ -292,7 +298,10 @@ public class FragmentSample extends Fragment{
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        magicalCamera.permissionGrant(requestCode, permissions, grantResults);
+        Map<String, Boolean> map = magicalPermissions.permissionResult(requestCode, permissions, grantResults);
+        for (String permission : map.keySet()) {
+            Log.d("PERMISSIONS", permission + " was: " + map.get(permission));
+        }
     }
 
     private void setUIComponents(View rootView) {

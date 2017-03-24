@@ -33,7 +33,7 @@
         <item name="android:textColorPrimary">@android:color/white</item>
     </style>
 
-<<<<<<< HEAD
+
     <style  name="LightEditText"  parent="Material.Widget.EditText.Light">
         <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Body1</item>
         <item name="android:textColor">@color/colorBlack</item>
@@ -73,15 +73,12 @@
         <item name="android:textColor">@color/abc_primary_text_material_light</item>
     </style>
 
-=======
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
->>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7
 
 </resources>
