@@ -180,6 +180,7 @@ If you need the permissions for fragment, you need to call this permission in th
 ```
 
 <br>
+
 ### Declare variable to resize photo ( with pixels percentage )
 You need to declare and constant or a simple int variable for the quality of the photo, while greater be, greater be the quality, and otherwise, worst be the quality, like this
 ```bash
@@ -471,6 +472,7 @@ See the example of this infomartion return:
 
 ![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/Images/information2.png)
 
+<br>
 
 ## Internal documentation
 All the code has a internal documentation for more explanation of this example.
