@@ -9,19 +9,19 @@ A Magic library to take photos and select pictures in Android. In a simple way a
 <br>
 
 ## That Offers MagicalCamera.
-* ** Take picture ** with camera device.
-* ** Select pictures in gallery ** device (read in devices). 
-* ** Write the pictures ** that you taken in device, in your own directory.
-* Return the ** path of your photo ** in device. (This issue is solved for @arthursz)
-* Working in ** android 6.0 ** (We have a class to request the user permission).
-* Create yours ** standards of name of pictures **, or use our standard, like "photoname_YYYYmmddHHmmss"
-* Posibility of shown the ** private info photography **, like latitude, longitude, ISO or others with Exif Class.
-* Posibility of ** rotate picture ** when it's required.
-* Select the ** quality of the photo ** with a percentage, when 1 is the worst and 100 is the better.
-* Obtain the LandMark and return a bitmap with a ** facial recognition ** that you need.
-* ** Return the Bitmap ** Photo if you need to save this in internal DB of your application.
-* ** Convert your bitmap ** in array bytes or string64, if you need to send by Json or XML.
-* ** Type of photo formats: ** PNG, JPEG and WEBP.
+* **Take picture** with camera device.
+* **Select pictures in gallery** device (read in devices). 
+* **Write the pictures** that you taken in device, in your own directory.
+* Return the **path of your photo** in device. (This issue is solved for @arthursz)
+* Working in **android 6.0** (We have a class to request the user permission).
+* Create yours **standards of name of pictures**, or use our standard, like "photoname_YYYYmmddHHmmss"
+* Posibility of shown the **private info photography**, like latitude, longitude, ISO or others with Exif Class.
+* Posibility of **rotate picture** when it's required.
+* Select the **quality of the photo** with a percentage, when 1 is the worst and 100 is the better.
+* Obtain the LandMark and return a bitmap with a **facial recognition** that you need.
+* **Return the Bitmap**Photo if you need to save this in internal DB of your application.
+* **Convert your bitmap** in array bytes or string64, if you need to send by Json or XML.
+* **Type of photo formats:** PNG, JPEG and WEBP.
 
 #### Other Offers
 * A library completely OpenSource.
@@ -59,6 +59,7 @@ Another type download by Bintray from    [ ![Download](https://api.bintray.com/p
  Give me a question in [![Codewake](https://www.codewake.com/badges/ask_question.svg)](https://www.codewake.com/p/magicalcamera)
  
  <br>
+ 
 ## How to use
 #### Add dependecies
 If you need to take photo or select picture, this is your solution.
@@ -75,6 +76,7 @@ dependencies {
 ```
 
 If you have any problem with this dependence, because the library override any styles, colors or others, please change the last line for this code:
+
 ```bash
  compile('com.frosquivel:magicalcamera:5.0.3@aar') {
         transitive = false;
@@ -82,8 +84,10 @@ If you have any problem with this dependence, because the library override any s
 ```
  
 <br>
+
 ## What you need?
 <br>
+
 ### Import library
 You need to import the library
 ```bash
@@ -96,6 +100,7 @@ import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
 <br>
 
 ### Declare Permissions
+
 You need for usage the library in the best way, call any permissions in Android Manifest.xml
 If you have android 6.0 the library have a method for validate this permissions, you see this later in this documentation
 ```bash
@@ -475,7 +480,7 @@ All the code has a internal documentation for more explanation of this example.
 ## Preview of Example
 <br>
 
-![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/magicalcamera.gif)
+![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/Images/magicalcamera.gif)
 
 <br><br>
 
