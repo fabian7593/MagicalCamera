@@ -28,7 +28,7 @@ A Magic library to take photos and select pictures in Android. In a simple way a
   - [Activities Methods](#activities-methods)
   - [Fragments Methods](#fragments-methods)
   - [Override the event onActivityResult](#override-the-event-onactivityresult)
-  - [Save Photo in Memory Devices](#savephotoinmemorydevice-method)
+  - [Save Photo in Memory Devices](#save-photo-in-memory-devices)
   - [Types of Formats for save photos](#types-of-formats-for-save-photos)
   
   - [Resize photo in real time](#resize-photo-in-real-time)
@@ -282,8 +282,8 @@ magicalCamera.selectedFragmentPicture(FragmentSample.this, "My Header Example");
 As you can see MagicalCamera is working together MagicalPermissions so you don't need to pass a `Runnable` the camera or photo selection will be triggered once permissions are solved.
 <br>
 
-### Remember override the event onActivityResult
-You **need to override** the method onActivityResult in your activity or fragment like this
+### Override the event onActivityResult
+**Remember**, you **need to override** the method onActivityResult in your activity or fragment like this
 ```bash
  @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -311,7 +311,7 @@ You **need to override** the method onActivityResult in your activity or fragmen
 
 <br>
 
-### The savePhotoInMemoryDevice Method
+### Save Photo in Memory Devices
 This method save your bitmap in internal memory device or if the internal memory is full this library save in sdcard (if you have anything :'D)
 This method have a lot of params that you can need to use the library:
 * **Bitmap:** This is the bitmap that you need to save in memory device.
@@ -574,7 +574,7 @@ The goal for MagicalCamera is to allow Android Developers care about what is imp
 
 <br><br>
 
-##Video
+## Video
 ## You can see the video explication here (in spanish) This video is for MagicalCamera version 1.0
 https://www.youtube.com/watch?v=U-JxaFZDSn4
 
