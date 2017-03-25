@@ -6,8 +6,7 @@ A Magic library to take photos and select pictures in Android. In a simple way a
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a64cbf5369e14c3d98f8722c4ad3fad7)](https://www.codacy.com/app/fabian7593/MagicalCamera?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fabian7593/MagicalCamera&amp;utm_campaign=Badge_Grade)
 
-<br><br>
-
+<br>
 ## Contents
 
 - [Features MagicalCamera](#features-magicalcamera)
@@ -47,7 +46,7 @@ A Magic library to take photos and select pictures in Android. In a simple way a
 - [Video Explanation](#video) 
 - [Apache License](#license) 
   
-
+<br><br>
 
 ## Features MagicalCamera.
 * **Take picture** with camera device.
