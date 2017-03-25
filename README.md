@@ -12,11 +12,40 @@ A Magic library to take photos and select pictures in Android. In a simple way a
 
 - [Features MagicalCamera](#features-magicalcamera)
 - [Other Features](#other-features)
-- [Buy Me A Coffee](#donate)
+- - -
+- [Donate](#donate)
 - [Getting Started](#getting-started)
   - [Download Sources](#download-sources)
 - [Setup](#setup)
   - [Add dependecies](#add-dependecies)
+- [How To use](#how-to-use)
+  - [Import library](#import-library)
+- - -
+- [Permissions on real time](#permissions-on-real-time)
+- [Photo](#photo)
+  - [Declare variable to resize photo](#declare-variable-to-resize-photo)
+  - [Instance Class MagicalCamera](#instance-class-magicalcamera)
+  - [Activities Methods](#activities-methods)
+  - [Fragments Methods](#fragments-methods)
+  - [Override the event onActivityResult](#override-the-event-onactivityresult)
+  - [Save Photo in Memory Devices](#savephotoinmemorydevice-method)
+  - [Types of Formats for save photos](#types-of-formats-for-save-photos)
+  
+  - [Resize photo in real time](#resize-photo-in-real-time)
+  - [Conversion Methods](#conversion-methods)
+  - [Rotate picture](#rotate-picture)
+  - [Facial Recognition](#facial-recognition)
+  - [Private information Photo](#private-information-photo)
+- - -
+- [Footer Document](#footer-document)
+  - [Internal documentation](#internal-documentation)
+  - [Preview of Example](#preview-of-example)
+  - [Application that use MagicalCamera](#application-that-use-magicalcamera)
+  - [Suggestions](#suggestions)
+- [Contributors](#contributors) 
+  - [Contributors are welcome](#contributors-are-welcome)
+- [Video Explanation](#video) 
+- [Apache License](#license) 
   
 
 
@@ -102,7 +131,7 @@ If you have any problem with this dependence, because the library override any s
  
 <br>
 
-## How To use?
+## How To use
 <br>
 
 ### Import library
@@ -204,7 +233,8 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions, in
 
 # Photo
 
-### Declare variable to resize photo ( with pixels percentage )
+### Declare variable to resize photo 
+**( with pixels percentage )**
 You need to declare and constant or a simple int variable for the quality of the photo, while greater be, greater be the quality, and otherwise, worst be the quality, like this
 ```bash
 //The pixel percentage is declare like an percentage of 100, if your value is 50, the photo will have the middle quality of your camera. 
@@ -507,12 +537,20 @@ All the code has a internal documentation for more explanation of this example.
 
 <br><br>
 
-## Projects/Apps using MagicalCamera:
+## Application that use MagicalCamera
 UTNCources<br>
 ExampleMagicalCamera
 
 Feel free to contact me to add yours apps to this list.
 
+<br><br>
+
+## Suggestions
+MagicalCamera was created to make Android Devoloper's life easy. If you have any feedback please let us know in the issues by creating an issue with this format:
+ 
+ - Write what your feedback is about and add the next "tag" including the square brackets [FEEDBACK]
+
+Suggestions about how to improve the library or new features are welcome. Thanks for choosing us.
 <br><br>
 
 ## Contributors
@@ -536,17 +574,10 @@ The goal for MagicalCamera is to allow Android Developers care about what is imp
 
 <br><br>
 
+##Video
 ## You can see the video explication here (in spanish) This video is for MagicalCamera version 1.0
 https://www.youtube.com/watch?v=U-JxaFZDSn4
 
-<br><br>
-
-## Suggestions
-MagicalCamera was created to make Android Devoloper's life easy. If you have any feedback please let us know in the issues by creating an issue with this format:
- 
- - Write what your feedback is about and add the next "tag" including the square brackets [FEEDBACK]
-
-Suggestions about how to improve the library or new features are welcome. Thanks for choosing us.
 <br><br><br>
 
 # License
