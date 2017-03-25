@@ -6,13 +6,27 @@ A Magic library to take photos and select pictures in Android. In a simple way a
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a64cbf5369e14c3d98f8722c4ad3fad7)](https://www.codacy.com/app/fabian7593/MagicalCamera?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fabian7593/MagicalCamera&amp;utm_campaign=Badge_Grade)
 
-<br>
+<br><br>
 
-## That Offers MagicalCamera.
+## Contents
+
+- [Features MagicalCamera](#features-magicalcamera)
+- [Other Features](#other-features)
+- [Buy Me A Coffee](#donate)
+- [Getting Started](#getting-started)
+  - [Download Sources](#download-sources)
+- [Setup](#setup)
+  - [Add dependecies](#add-dependecies)
+  
+
+
+## Features MagicalCamera.
 * **Take picture** with camera device.
 * **Select pictures in gallery** device (read in devices). 
 * **Write the pictures** that you taken in device, in your own directory.
-* Return the **path of your photo** in device. (This issue is solved for @arthursz)
+* Return the **path of your photo** in device. (This issue is solved for [@arthursz](https://github.com/arthursz))
+* **RealTime Permissions** Magical camera offers a simple integration of realtime permissions. (This functionallity is created by [@cutiko](https://github.com/cutiko))
+
 * Working in **android 6.0** (We have a class to request the user permission).
 * Create yours **standards of name of pictures**, or use our standard, like "photoname_YYYYmmddHHmmss"
 * Posibility of shown the **private info photography**, like latitude, longitude, ISO or others with Exif Class.
@@ -23,7 +37,7 @@ A Magic library to take photos and select pictures in Android. In a simple way a
 * **Convert your bitmap** in array bytes or string64, if you need to send by Json or XML.
 * **Type of photo formats:** PNG, JPEG and WEBP.
 
-#### Other Offers
+#### Other Features
 * A library completely OpenSource.
 * Use best practice in POO
 * Minimun SDK 14+ API.
@@ -38,7 +52,7 @@ A Magic library to take photos and select pictures in Android. In a simple way a
 <br>
 <br>
 
-### If you can do it, buy me a coffee ;)
+### Donate
 
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=L25MKCRPR7TWY)
 
@@ -63,7 +77,7 @@ Another type download by Bintray from    [ ![Download](https://api.bintray.com/p
  
  <br>
  
-## How to use
+## Setup
 #### Add dependecies
 If you need to take photo or select picture, this is your solution.
 This library give a magical solution for take a picture,write and red in device, return your uri real path and obtain yhe private info of the photo and facial recognition, you only need to download this and integrate this in your project, maybe downloading it or import in your gradle, like this.
@@ -88,7 +102,7 @@ If you have any problem with this dependence, because the library override any s
  
 <br>
 
-## What you need?
+## How To use?
 <br>
 
 ### Import library
@@ -503,16 +517,16 @@ Feel free to contact me to add yours apps to this list.
 
 ## Contributors
 
-### Fabián Rosales 
-**MagicalCamera Creator (Frosquivel developer) (https://github.com/fabian7593)**
+### [Fabián Rosales](https://github.com/fabian7593)
+**MagicalCamera Creator (Frosquivel developer)**
 A magical camera creator, I do the take camera, select photo, rotate picture, convert bitmap, facial recognition, save picture, get information and others...
 
-### Erick Navarro
-**MagicalCamera Contributor (Cutiko) (https://github.com/cutiko)**
+### [Erick Navarro](https://github.com/cutiko)
+**MagicalCamera Contributor (Cutiko)**
 Erick Add a best usage of google play library, and he develop the better usage of permissions, and an excellent code refactor for permission class and other components.
 
-### Arthur Zettler
-**MagicalCamera Contributor (arthursz) (https://github.com/arthursz)**
+### [Arthur Zettler](https://github.com/arthursz)
+**MagicalCamera Contributor (arthursz)**
 Arthur create the return path of the image saved like a String.
 
 <br><br>
