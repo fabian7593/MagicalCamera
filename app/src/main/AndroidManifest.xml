@@ -73,11 +73,11 @@
             </intent-filter>
         </activity>
 
-
-        <activity android:name=".ActivityForFragment"
+        <activity android:name=".Fragments.ActivityForFragment"
             android:label="@string/app_name"
             android:configChanges="orientation|screenSize">
         </activity>
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="d99772e53218c64c9e36291cbc9ec30ae8c2c180" />

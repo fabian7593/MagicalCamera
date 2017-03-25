@@ -70,7 +70,6 @@ public class FragmentSample extends Fragment{
     private MagicalPermissions magicalPermissions;
     private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 80;
     private Activity activity;
-    public static Bitmap magicalCameraBitmap;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -129,7 +128,7 @@ public class FragmentSample extends Fragment{
             public void onClick(View v) {
                 if (Utils.validateMagicalCameraNull(activity, principalLayout, magicalCamera)) {
 
-                    magicalCameraBitmap = magicalCamera.getPhoto();
+                    Utils.magicalCameraBitmap = magicalCamera.getPhoto();
                     Intent intent = new Intent(activity, ImageViewActivity.class);
                     startActivity(intent);
                 }
@@ -167,32 +166,31 @@ public class FragmentSample extends Fragment{
             public void onClick(View v) {
 
                 if (Utils.validateMagicalCameraNull(activity, principalLayout, magicalCamera)) {
-                    new Thread(new Runnable() {
-                        public void run() {
-                            try {
-                                //convert the bitmap to bytes array
-                                byte[] bytesArray = ConvertSimpleImage.bitmapToBytes(magicalCamera.getPhoto(), Utils.getFormat(activity));
-                                //convert the bytes to string 64, with this form is easly to send by web service or store data in DB
-                                String imageBase64 = ConvertSimpleImage.bytesToStringBase64(bytesArray);
 
-                                /*****************************************************************
-                                 *                    Revert the process
-                                 *****************************************************************/
-                                //if you need to revert the process
-                                //byte[] anotherArrayBytes = ConvertSimpleImage.stringBase64ToBytes(imageBase64);
-                                //again deserialize the image
-                                //Bitmap myImageAgain = ConvertSimpleImage.bytesToBitmap(anotherArrayBytes);
+                    try {
+                        //convert the bitmap to bytes array
+                        byte[] bytesArray = ConvertSimpleImage.bitmapToBytes(magicalCamera.getPhoto(), Utils.getFormat(activity));
+                        //convert the bytes to string 64, with this form is easly to send by web service or store data in DB
+                        String imageBase64 = ConvertSimpleImage.bytesToStringBase64(bytesArray);
 
-                                new MaterialDialog.Builder(activity)
-                                        .title(getString(R.string.convert_to_string_base_64))
-                                        .content(imageBase64)
-                                        .positiveText(getString(R.string.message_ok))
-                                        .show();
-                            } catch (Exception e) {
-                                Utils.viewSnackBar(getString(R.string.error_string_base_64), principalLayout);
-                            }
-                        }
-                    }).start();
+                        /*****************************************************************
+                         *                    Revert the process
+                         *****************************************************************/
+                        //if you need to revert the process
+                        //byte[] anotherArrayBytes = ConvertSimpleImage.stringBase64ToBytes(imageBase64);
+                        //again deserialize the image
+                        //Bitmap myImageAgain = ConvertSimpleImage.bytesToBitmap(anotherArrayBytes);
+
+                        String base64 = imageBase64.substring(0,300);
+
+                        new MaterialDialog.Builder(activity)
+                                .title(getString(R.string.convert_to_string_base_64_title))
+                                .content(base64)
+                                .positiveText(getString(R.string.message_ok))
+                                .show();
+                    } catch (Exception e) {
+                        Utils.viewSnackBar(getString(R.string.error_string_base_64), principalLayout);
+                    }
                 }
             }
         });

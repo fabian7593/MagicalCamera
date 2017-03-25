@@ -71,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
     //Ever you need to call magical camera and permissionGranted
     private MagicalCamera magicalCamera;
     private MagicalPermissions magicalPermissions;
-    public static Bitmap magicalCameraBitmap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -139,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
                     //This error is E/JavaBinder﹕ !!! FAILED BINDER TRANSACTION !!!
                     //please check this link
                     //http://stackoverflow.com/questions/31708092/setting-a-bitmap-as-intent-extra-causes-error
-                    magicalCameraBitmap = magicalCamera.getPhoto();
+                    Utils.magicalCameraBitmap = magicalCamera.getPhoto();
                     Intent intent = new Intent(MainActivity.this, ImageViewActivity.class);
                     startActivity(intent);
                 }

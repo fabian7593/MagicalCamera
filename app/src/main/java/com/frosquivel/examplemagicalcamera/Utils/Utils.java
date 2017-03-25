@@ -34,6 +34,8 @@ public class Utils {
     public static final String C_JPG = "jpg";
     public static final String C_WEBP = "webp";
 
+    public static Bitmap magicalCameraBitmap;
+
     // Utils methods
 
     /**
