@@ -514,11 +514,12 @@ Erick Add a best usage of google play library, and he develop the better usage o
 ### Arthur Zettler
 **MagicalCamera Contributor (arthursz) (https://github.com/arthursz)**
 Arthur create the return path of the image saved like a String.
-
-<br><br>
+<br>
 
 ## Contributors are welcome
 The goal for MagicalCamera is to allow Android Developers care about what is important, feautures not getting worry about something that should be trivial such as taking a picture. We look forward to make this a great library to make image capture process simple and painless. There are amny features and other issues waiting. If you would like to contribute please reach to us, or maybe be bold! Getting a surprise pull request is very gratifying.
+
+<br><br>
 
 ## You can see the video explication here (in spanish) This video is for MagicalCamera version 1.0
 https://www.youtube.com/watch?v=U-JxaFZDSn4
