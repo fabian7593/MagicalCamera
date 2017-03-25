@@ -8,7 +8,7 @@ A Magic library to take photos and select pictures in Android. In a simple way a
 
 <br>
 
-## Contents
+# Contents
 
 ### Features
 - - -
