@@ -125,14 +125,14 @@ repositories {
 }
 
 dependencies {
-    compile 'com.frosquivel:magicalcamera:5.0.3'
+    compile 'com.frosquivel:magicalcamera:5.0.4'
 }
 ```
 
 If you have any problem with this dependence, because the library override any styles, colors or others, please change the last line for this code:
 
 ```bash
- compile('com.frosquivel:magicalcamera:5.0.3@aar') {
+ compile('com.frosquivel:magicalcamera:5.0.4@aar') {
         transitive = false;
     }
 ```
