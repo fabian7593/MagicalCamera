@@ -1,4 +1,4 @@
-[![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/cameraHighQ.png)](https://github.com/fabian7593/MagicalCamera)
+[![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/Images/cameraHighQ.png)](https://github.com/fabian7593/MagicalCamera)
 
 A Magic library to take photos and select pictures in Android. In a simple way and if you need it also save the pictures in device, and facial recognition, get the real uri path or the photo or obtain the private information of the picture.
 <br>
@@ -7,22 +7,74 @@ A Magic library to take photos and select pictures in Android. In a simple way a
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a64cbf5369e14c3d98f8722c4ad3fad7)](https://www.codacy.com/app/fabian7593/MagicalCamera?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=fabian7593/MagicalCamera&amp;utm_campaign=Badge_Grade)
 
 <br>
-## That Offers MagicalCamera.
-* ** Take picture ** with camera device.
-* ** Select pictures in gallery ** device (read in devices). 
-* ** Write the pictures ** that you taken in device, in your own directory.
-* Return the ** path of your photo ** in device. (This issue is solved for @arthursz)
-* Working in ** android 6.0 ** (We have a class to request the user permission).
-* Create yours ** standards of name of pictures **, or use our standard, like "photoname_YYYYmmddHHmmss"
-* Posibility of shown the ** private info photography **, like latitude, longitude, ISO or others with Exif Class.
-* Posibility of ** rotate picture ** when it's required.
-* Select the ** quality of the photo ** with a percentage, when 1 is the worst and 100 is the better.
-* Obtain the LandMark and return a bitmap with a ** facial recognition ** that you need.
-* ** Return the Bitmap ** Photo if you need to save this in internal DB of your application.
-* ** Convert your bitmap ** in array bytes or string64, if you need to send by Json or XML.
-* ** Type of photo formats: ** PNG, JPEG and WEBP.
 
-####Other Offers
+# Contents
+
+### Features
+- - -
+- [Features MagicalCamera](#features-magicalcamera)
+- [Other Features](#other-features)
+
+### How to Start
+- - -
+- [Donate](#donate)
+- [Getting Started](#getting-started)
+  - [Download Sources](#download-sources)
+- [Setup](#setup)
+  - [Add dependecies](#add-dependecies)
+- [How To use](#how-to-use)
+  - [Import library](#import-library)
+  
+### Photo Features and permissions
+- - -
+- [Permissions on real time](#permissions-on-real-time)
+- [Photo](#photo)
+  - [Declare variable to resize photo](#declare-variable-to-resize-photo)
+  - [Instance Class MagicalCamera](#instance-class-magicalcamera)
+  - [Activities Methods](#activities-methods)
+  - [Fragments Methods](#fragments-methods)
+  - [Override the event onActivityResult](#override-the-event-onactivityresult)
+  - [Save Photo in Memory Devices](#save-photo-in-memory-devices)
+  - [Types of Formats for save photos](#types-of-formats-for-save-photos)
+  
+  - [Resize photo in real time](#resize-photo-in-real-time)
+  - [Conversion Methods](#conversion-methods)
+  - [Rotate picture](#rotate-picture)
+  - [Facial Recognition](#facial-recognition)
+  - [Private information Photo](#private-information-photo)
+  
+### Footer Docs
+- - -
+- [Footer Document](#footer-document)
+  - [Internal documentation](#internal-documentation)
+  - [Preview of Example](#preview-of-example)
+  - [Application that use MagicalCamera](#application-that-use-magicalcamera)
+  - [Suggestions](#suggestions)
+- [Contributors](#contributors) 
+  - [Contributors are welcome](#contributors-are-welcome)
+- [Video Explanation](#video) 
+- [Apache License](#license) 
+  
+<br><br>
+
+## Features MagicalCamera.
+* **Take picture** with camera device.
+* **Select pictures in gallery** device (read in devices). 
+* **Write the pictures** that you taken in device, in your own directory.
+* Return the **path of your photo** in device. (This issue is solved for [@arthursz](https://github.com/arthursz))
+* **RealTime Permissions** Magical camera offers a simple integration of realtime permissions. (This functionallity is created by [@cutiko](https://github.com/cutiko))
+
+* Working in **android 6.0** (We have a class to request the user permission).
+* Create yours **standards of name of pictures**, or use our standard, like "photoname_YYYYmmddHHmmss"
+* Posibility of shown the **private info photography**, like latitude, longitude, ISO or others with Exif Class.
+* Posibility of **rotate picture** when it's required.
+* Select the **quality of the photo** with a percentage, when 1 is the worst and 100 is the better.
+* Obtain the LandMark and return a bitmap with a **facial recognition** that you need.
+* **Return the Bitmap**Photo if you need to save this in internal DB of your application.
+* **Convert your bitmap** in array bytes or string64, if you need to send by Json or XML.
+* **Type of photo formats:** PNG, JPEG and WEBP.
+
+#### Other Features
 * A library completely OpenSource.
 * Use best practice in POO
 * Minimun SDK 14+ API.
@@ -36,8 +88,11 @@ A Magic library to take photos and select pictures in Android. In a simple way a
 
 <br>
 <br>
-### If you can do it, buy me a coffee ;)
+
+### Donate
+
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=L25MKCRPR7TWY)
+
 <br>
 <br><br>
 
@@ -55,8 +110,11 @@ Download from [Here](https://github.com/fabian7593/MagicalCamera/zipball/master)
 
 Another type download by Bintray from    [ ![Download](https://api.bintray.com/packages/fabian7593/maven/MagicalCamera/images/download.svg) ](https://bintray.com/fabian7593/maven/MagicalCamera/_latestVersion)
  
+ Give me a question in [![Codewake](https://www.codewake.com/badges/ask_question.svg)](https://www.codewake.com/p/magicalcamera)
+ 
  <br>
-## How to use
+ 
+## Setup
 #### Add dependecies
 If you need to take photo or select picture, this is your solution.
 This library give a magical solution for take a picture,write and red in device, return your uri real path and obtain yhe private info of the photo and facial recognition, you only need to download this and integrate this in your project, maybe downloading it or import in your gradle, like this.
@@ -67,69 +125,35 @@ repositories {
 }
 
 dependencies {
-    compile 'com.frosquivel:magicalcamera:5.0.3'
+    compile 'com.frosquivel:magicalcamera:5.0.4'
 }
 ```
 
 If you have any problem with this dependence, because the library override any styles, colors or others, please change the last line for this code:
+
 ```bash
- compile('com.frosquivel:magicalcamera:5.0.3@aar') {
+ compile('com.frosquivel:magicalcamera:5.0.4@aar') {
         transitive = false;
     }
 ```
-
-Yet, if you still have any problem with this and you suspect it could be related to multidex please read this [guide](https://developer.android.com/studio/build/multidex.html?hl=es-419). Multidex problem is mostly caused by adding every Google Service library, you can see [here](https://developer.android.com/studio/build/multidex.html?hl=es-419) how to add targeted dependencies. 
  
 <br>
-<<<<<<< HEAD
-## What you need?
+
+## How To use
 <br>
+
 ### Import library
-=======
-#What you need?
-
-###Import library
->>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7
 You need to import the library
-
 ```bash
 import com.frosquivel.magicalcamera.MagicalCamera;
-import com.frosquivel.magicalcamera.MagicalPermissions;
-```
+import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
 
-MagicalCamera class take care of the image (photo, selection, face recognition, etc) and MagicalPermissions take care of permission.
+//and maybe you need in some ocations
+import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
+```
 <br>
-<<<<<<< HEAD
-### Declare Permissions
-You need for usage the library in the best way, call any permissions in Android Manifest.xml
-If you have android 6.0 the library have a method for validate this permissions, you see this later in this documentation
-=======
 
-
-##Permissions
-
-###Declare Permissions
-Regardless the device API level, permissions must always be requested in the `AndroidManifest.xml`. Starting from API level 23 permissions must be requested on real time to the user, we will cover this later. The permissions you need to request depends on what you are intending to do. You can see the comment in the code bewlo to have an idea of what you need.
-
->>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7
-```bash
-//this is for take and select or write the bitmap picture in your device
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-<uses-permission android:name="android.permission.CAMERA"/>
-    
-//you need this permission for access the private information and gps locations of yours picture (only if you need this     functionallities)
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    
-//this permission is required only if you use the facial recognition functionallities
-<uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
-<uses-permission android:name="android.permission.MANAGE_DOCUMENTS"/>
-```
-
-###Permissions on real time
+### Permissions on real time
 With the MagicalPermissions class you can ask for permissions in a Activity or in an Fragment. This class will take care of validating the device API level, what permissions the user haven't granted yet, ask for thoose permissions, deliver the result and together with MagicalCamera will take the photo or select it from the gallery.
 
 Requesting permissions on real time to the user is a 2 part process. First permissions most be requested, then the result is delivered. So you need a field variable to later call it again on the permissions result:
@@ -213,45 +237,34 @@ public void onRequestPermissionsResult(int requestCode, String[] permissions, in
 }
 ```
 
-<<<<<<< HEAD
 <br>
-### Declare variable to resize photo ( with pixels percentage )
+
+# Photo
+
+### Declare variable to resize photo 
+**( with pixels percentage )**
 You need to declare and constant or a simple int variable for the quality of the photo, while greater be, greater be the quality, and otherwise, worst be the quality, like this
-=======
-#Photo
-
-###Declare variable to resize photo ( with pixels percentage )
-You need to declare a constant or a simple int variable for the quality of the photo, while greater, higher the quality, and viceversa, lower the value lower quality. To get a reference a value 20 in a Samsung Galaxy Note 3 will create 300kb photo.
-
->>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7
 ```bash
-//The pixel percentage is declare like a percentage of 100, if your value is 50, the photo will have the middle quality of your camera. 
-//The must be between 1 to 100.
+//The pixel percentage is declare like an percentage of 100, if your value is 50, the photo will have the middle quality of your camera. 
+// this value could be only 1 to 100.
 private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 80;
 ```
 
-<<<<<<< HEAD
 <br>
+
 ### Instance Class MagicalCamera
 ###### *YOU NEED TO INSTANCE THIS, AFTER THAT PERMISSION GRANTED INSTANCE.*
-=======
-###Instance Class MagicalCamera
-######*YOU NEED TO INSTANCE THIS, AFTER THE MAGICALPERMISSIONS INSTANCE.*
->>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7
 You need to instance the MagicalCamera Class, like this:
-The fisrt param is the current Activity, the second the resize percentage photo, and the third param is the MagicalPermissions instance
+The fisrt param is the current Activity, and the second the resize percentage photo, and the third param is the Permission Granted
 ```bash
-magicalCamera = new MagicalCamera(activity, RESIZE_PHOTO_PIXELS_PERCENTAGE, magicalPermissions);
+ MagicalCamera magicalCamera = new MagicalCamera(this,RESIZE_PHOTO_PIXELS_PERCENTAGE, permissionGranted);
+ 
 ```
 
 <br>
-<<<<<<< HEAD
+
 ### Activities Methods
 You need to call the methods for take or select pictures in activities that this form:
-=======
-###Activities Methods
-You need to call these methods for take or select pictures in activities:
->>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7
 
 ```bash
 //take photo
@@ -262,13 +275,9 @@ magicalCamera.selectedPicture("my_header_name");
 ```
 
 <br>
-<<<<<<< HEAD
+
 ### Fragments Methods
-You need to call the methods for take or select pictures in fragments that this form:
-=======
-###Fragments Methods
 You need to call these methods for take or select pictures in fragments:
->>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7
 
 ```bash
 //take photo
@@ -278,17 +287,11 @@ magicalCamera.takeFragmentPhoto(FragmentSample.this);
 magicalCamera.selectedFragmentPicture(FragmentSample.this, "My Header Example");
 ```
 <br>
-<<<<<<< HEAD
-### Remember override the event onActivityResult
-You need to override the method onActivityResult in your activity or fragment like this
-=======
 As you can see MagicalCamera is working together MagicalPermissions so you don't need to pass a `Runnable` the camera or photo selection will be triggered once permissions are solved.
 <br>
 
-###Remember override the event onActivityResult
-You **need to override** the method `onActivityResult` in your Activity or Fragment like this:
-
->>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7
+### Override the event onActivityResult
+**Remember**, you **need to override** the method onActivityResult in your activity or fragment like this
 ```bash
  @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -315,7 +318,8 @@ You **need to override** the method `onActivityResult` in your Activity or Fragm
 ```
 
 <br>
-### The savePhotoInMemoryDevice Method
+
+### Save Photo in Memory Devices
 This method save your bitmap in internal memory device or if the internal memory is full this library save in sdcard (if you have anything :'D)
 This method have a lot of params that you can need to use the library:
 * **Bitmap:** This is the bitmap that you need to save in memory device.
@@ -337,6 +341,7 @@ Example:
  String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getPhoto(), "myTestPhotoName", MagicalCamera.JPEG, true);
 ```
 <br>
+
 ### Types of Formats for save photos
 You have any type of formats for save the pictures and the bitmaps.
 You can use, the static variables of the library MagicalCamera.
@@ -347,6 +352,7 @@ You can use, the static variables of the library MagicalCamera.
 ```
 
 <br>
+
 ### Resize photo in real time
 You can resize the photo in any moment with this:
 ```bash
@@ -354,6 +360,7 @@ You can resize the photo in any moment with this:
 ```
 
 <br>
+
 ### Conversion Methods
 The library have any methods to convert the bitmap in other formats that you need.
 All of this methods are public statics, I mean that you dont have to instance the library for usage this.
@@ -432,7 +439,8 @@ if(magicalCamera != null){
 
 The photo and bitmap converted is like to:
 <br>
-![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/faceDetection2.png)
+
+![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/Images/faceDetection2.png)
 
 
 ### Private information Photo:
@@ -519,61 +527,68 @@ You need to write this code for example:
 See the example of this infomartion return:
 <br>
 
-![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/information2.png)
+![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/Images/information2.png)
 
+<br><br><br>
 
-<<<<<<< HEAD
+# Footer Document
+
 ## Internal documentation
 All the code has a internal documentation for more explanation of this example.
-=======
-##Internal documentation
-All the code has a internal documentation for more explanation of this example. Wiki is pending, will be glad to see you contributing.
->>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7
 
 <br><br>
+
 ## Preview of Example
 <br>
-![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/magicalcamera.gif)
 
-<br><br>
-## Projects/Apps using MagicalCamera:
-UTNCources
-
-Feel free to contact me to add yours to this list.
-
-<br><br>
-<<<<<<< HEAD
-## You can see the video explication here (in spanish) This video is for MagicalCamera version 1.0
-=======
-
-##Contributors are welcome
-The goal for MagicalCamera is to allow Android Developers care about what is important, feautures not getting worry about something that should be trivial such as taking a picture. We look forward to make this a great library to make image capture process simple and painless. There are amny features and other issues waiting. If you would like to contribute please reach to us, or maybe be bold! Getting a surprise pull request is very gratifying.
-
-##You can see the video explication here (in spanish) This video is for MagicalCamera version 1.0
->>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7
-https://www.youtube.com/watch?v=U-JxaFZDSn4
+![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/Images/magicalcamera.gif)
 
 <br><br>
 
-## About Developer
-Developed by [Fabian Rosales]<br>
-Known as [Frosquivel Developer]<br>
-Source code can be found on [github](https://github.com/fabian7593/MagicalCamera)<br>
-<br><br>
-<<<<<<< HEAD
-# License
-=======
+## Application that use MagicalCamera
+UTNCources<br>
+ExampleMagicalCamera
 
-##Suggestions
+Feel free to contact me to add yours apps to this list.
+
+<br><br>
+
+## Suggestions
 MagicalCamera was created to make Android Devoloper's life easy. If you have any feedback please let us know in the issues by creating an issue with this format:
  
  - Write what your feedback is about and add the next "tag" including the square brackets [FEEDBACK]
 
 Suggestions about how to improve the library or new features are welcome. Thanks for choosing us.
+<br><br>
+
+## Contributors
+
+### [Fabián Rosales](https://github.com/fabian7593)
+**MagicalCamera Creator (Frosquivel developer)**
+A magical camera creator, I do the take camera, select photo, rotate picture, convert bitmap, facial recognition, save picture, get information and others...
+
+### [Erick Navarro](https://github.com/cutiko)
+**MagicalCamera Contributor (Cutiko)**
+Erick Add a best usage of google play library, and he develop the better usage of permissions, and an excellent code refactor for permission class and other components.
+
+### [Arthur Zettler](https://github.com/arthursz)
+**MagicalCamera Contributor (arthursz)**
+Arthur create the return path of the image saved like a String.
+
+<br><br>
+
+## Contributors are welcome
+The goal for MagicalCamera is to allow Android Developers care about what is important, feautures not getting worry about something that should be trivial such as taking a picture. We look forward to make this a great library to make image capture process simple and painless. There are amny features and other issues waiting. If you would like to contribute please reach to us, or maybe be bold! Getting a surprise pull request is very gratifying.
+
+<br><br>
+
+## Video
+## You can see the video explication here (in spanish) This video is for MagicalCamera version 1.0
+https://www.youtube.com/watch?v=U-JxaFZDSn4
+
 <br><br><br>
 
-#License
->>>>>>> 51004cf7c22cc88f8e0ee6ed99d4b66109cfb6e7
+# License
 Copyright 2016 Fabian Rosales
 
 Licensed under the Apache License, Version 2.0 (the "License");
