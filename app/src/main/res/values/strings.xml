@@ -15,7 +15,7 @@
     <string name="title_activity">Activity Example Magical Camera</string>
     <string name="go_to_activity">Back to Activity</string>
     <string name="title_fragment">Fragment Example Magical Camera</string>
-    <string name="version">Version Library 5.0.3</string>
+    <string name="version">Version Library 5.0.5</string>
 
     <!-- Menu -->
     <string name="menu_shared">Shared</string>
@@ -71,7 +71,7 @@
     <string name="info_data_model_device">Model Device: </string>
 
     <!-- Email -->
-    <string name="email_subject">MagicalCamera 5.0.3 Android Library</string>
+    <string name="email_subject">MagicalCamera 5.0.5 Android Library</string>
     <string name="email_title">Share MagicalCamera</string>
     <string name="email_text">Hello We are Magical Camera, \n\n I want to share with you this awesome library, for use the camera photos/pictures of android native. \n\n This is the best library Open source of this subject. \n\n View this library here. \n XXXX1 \n\n And download the app here: \n XXXX2</string>
 
