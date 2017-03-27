@@ -10,7 +10,7 @@ android {
         minSdkVersion 14
         targetSdkVersion 25
         versionCode 5
-        versionName "5.0.3"
+        versionName "5.0.4"
     }
     android {
         lintOptions {
@@ -36,6 +36,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.android.support:support-v4:20.0.+'
     compile 'com.afollestad.material-dialogs:commons:0.8.6.1'
     compile 'com.android.support:design:25.2.0'
 
@@ -43,7 +44,7 @@ dependencies {
         transitive = true;
     }
     compile project(':magicalcamera')
-    //compile 'com.frosquivel:magicalcamera:5.0.3'
+    //compile 'com.frosquivel:magicalcamera:5.0.4'
     compile 'com.github.clans:fab:1.6.3'
     compile 'com.afollestad.material-dialogs:core:0.8.5.9'
     compile 'com.backendless:backendless:3.0.10'

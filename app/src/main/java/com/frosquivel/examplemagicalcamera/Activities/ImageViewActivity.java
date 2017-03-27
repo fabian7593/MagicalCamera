@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.frosquivel.examplemagicalcamera.R;
+import com.frosquivel.examplemagicalcamera.Utils.Utils;
 import com.frosquivel.magicalcamera.MagicalCamera;
 import com.frosquivel.magicalcamera.Utilities.ConvertSimpleImage;
 
@@ -26,20 +27,20 @@ public class ImageViewActivity extends Activity {
         setContentView(R.layout.activity_image);
         bigImageView = (ImageView) findViewById(R.id.bigImageView);
         btnChangeSize = (Button) findViewById(R.id.btnChangeSize);
-        bigImageView.setImageBitmap(MainActivity.magicalCameraBitmap);
+        bigImageView.setImageBitmap(Utils.magicalCameraBitmap);
 
         btnChangeSize.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                byte[] arrayBytesFromBitmap = ConvertSimpleImage.bitmapToBytes(MainActivity.magicalCameraBitmap,
+                byte[] arrayBytesFromBitmap = ConvertSimpleImage.bitmapToBytes(Utils.magicalCameraBitmap,
                         MagicalCamera.PNG);
 
-                MainActivity.magicalCameraBitmap =  ConvertSimpleImage.resizeImageRunTime(arrayBytesFromBitmap,
+                Utils.magicalCameraBitmap =  ConvertSimpleImage.resizeImageRunTime(arrayBytesFromBitmap,
                         300,
                         500, false);
 
-                bigImageView.setImageBitmap(MainActivity.magicalCameraBitmap);
+                bigImageView.setImageBitmap(Utils.magicalCameraBitmap);
             }
         });
     }

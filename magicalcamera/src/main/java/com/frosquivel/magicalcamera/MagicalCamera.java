@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.os.AsyncTask;
 
 import com.frosquivel.magicalcamera.Objects.ActionPictureObject;
 import com.frosquivel.magicalcamera.Objects.FaceRecognitionObject;
@@ -66,7 +64,7 @@ public class MagicalCamera {
                 magicalCameraObject.getActionPicture().takePhoto();
             }
         };
-        askPermissions(runnable);
+        askPermissions(runnable, MagicalPermissions.CAMERA);
     }
 
     public void selectedPicture(final String headerPopUpName){
@@ -76,7 +74,7 @@ public class MagicalCamera {
                 magicalCameraObject.getActionPicture().selectedPicture(headerPopUpName);
             }
         };
-        askPermissions(runnable);
+        askPermissions(runnable, MagicalPermissions.READ_EXTERNAL_STORAGE);
     }
 
     public void takeFragmentPhoto(final Fragment fragment) {
@@ -87,7 +85,7 @@ public class MagicalCamera {
                     fragment.startActivityForResult(getIntentFragment(), MagicalCamera.TAKE_PHOTO);
                 }
             };
-            askPermissions(runnable);
+            askPermissions(runnable, MagicalPermissions.CAMERA);
         }
     }
 
@@ -101,7 +99,7 @@ public class MagicalCamera {
                             MagicalCamera.SELECT_PHOTO);
                 }
             };
-            askPermissions(runnable);
+            askPermissions(runnable, MagicalPermissions.READ_EXTERNAL_STORAGE);
         }
     }
 
@@ -113,7 +111,7 @@ public class MagicalCamera {
                     fragment.startActivityForResult(getIntentFragment(), MagicalCamera.TAKE_PHOTO);
                 }
             };
-            askPermissions(runnable);
+            askPermissions(runnable, MagicalPermissions.CAMERA);
         }
     }
 
@@ -127,12 +125,16 @@ public class MagicalCamera {
                             MagicalCamera.SELECT_PHOTO);
                 }
             };
-            askPermissions(runnable);
+            askPermissions(runnable, MagicalPermissions.READ_EXTERNAL_STORAGE);
         }
     }
 
     private void askPermissions(final Runnable runnable){
         magicalPermissions.askPermissions(runnable);
+    }
+
+    private void askPermissions(final Runnable runnable, final String operationType){
+        magicalPermissions.askPermissions(runnable, operationType);
     }
 
     //Face detector methods
