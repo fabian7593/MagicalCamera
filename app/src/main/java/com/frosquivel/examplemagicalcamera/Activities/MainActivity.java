@@ -32,6 +32,7 @@ import com.google.android.gms.vision.face.Landmark;
 import com.crashlytics.android.Crashlytics;
 import io.fabric.sdk.android.Fabric;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -324,6 +325,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         Map<String, Boolean> map = magicalPermissions.permissionResult(requestCode, permissions, grantResults);
+
         for (String permission : map.keySet()) {
             Log.d("PERMISSIONS", permission + " was: " + map.get(permission));
         }

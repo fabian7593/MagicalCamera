@@ -41,6 +41,11 @@ public class MagicalCamera {
     public static final int LANDSCAPE_CAMERA = 2;
     public static final int NORMAL_CAMERA = 3;
 
+    //Constants for permissions
+    public static final String CAMERA = "android.permission.CAMERA";
+    public static final String EXTERNAL_STORAGE = "android.permission.READ_EXTERNAL_STORAGE";
+    public static final String ACCESS_LOCATION = "android.permission.ACCESS_COARSE_LOCATION";
+
     private MagicalCameraObject magicalCameraObject;
     private MagicalPermissions magicalPermissions;
 
@@ -64,7 +69,7 @@ public class MagicalCamera {
                 magicalCameraObject.getActionPicture().takePhoto();
             }
         };
-        askPermissions(runnable, MagicalPermissions.CAMERA);
+        askPermissions(runnable, CAMERA);
     }
 
     public void selectedPicture(final String headerPopUpName){
@@ -74,7 +79,7 @@ public class MagicalCamera {
                 magicalCameraObject.getActionPicture().selectedPicture(headerPopUpName);
             }
         };
-        askPermissions(runnable, MagicalPermissions.READ_EXTERNAL_STORAGE);
+        askPermissions(runnable, EXTERNAL_STORAGE);
     }
 
     public void takeFragmentPhoto(final Fragment fragment) {
@@ -85,7 +90,7 @@ public class MagicalCamera {
                     fragment.startActivityForResult(getIntentFragment(), MagicalCamera.TAKE_PHOTO);
                 }
             };
-            askPermissions(runnable, MagicalPermissions.CAMERA);
+            askPermissions(runnable, CAMERA);
         }
     }
 
@@ -99,7 +104,7 @@ public class MagicalCamera {
                             MagicalCamera.SELECT_PHOTO);
                 }
             };
-            askPermissions(runnable, MagicalPermissions.READ_EXTERNAL_STORAGE);
+            askPermissions(runnable, EXTERNAL_STORAGE);
         }
     }
 
@@ -111,7 +116,7 @@ public class MagicalCamera {
                     fragment.startActivityForResult(getIntentFragment(), MagicalCamera.TAKE_PHOTO);
                 }
             };
-            askPermissions(runnable, MagicalPermissions.CAMERA);
+            askPermissions(runnable, CAMERA);
         }
     }
 
@@ -125,7 +130,7 @@ public class MagicalCamera {
                             MagicalCamera.SELECT_PHOTO);
                 }
             };
-            askPermissions(runnable, MagicalPermissions.READ_EXTERNAL_STORAGE);
+            askPermissions(runnable, EXTERNAL_STORAGE);
         }
     }
 

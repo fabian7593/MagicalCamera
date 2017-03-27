@@ -28,14 +28,8 @@ public class MagicalPermissions {
     private String[] permissions;
     private String[] allPermissions;
     private Runnable task;
-    //Constants for permissions
-    public static final String CAMERA = "android.permission.CAMERA";
-    public static final String READ_EXTERNAL_STORAGE = "android.permission.READ_EXTERNAL_STORAGE";
-    public static final String WRITE_EXTERNAL_STORAGE = "android.permission.WRITE_EXTERNAL_STORAGE";
-    public static final String ACCESS_COARSE_LOCATION = "android.permission.ACCESS_COARSE_LOCATION";
-    public static final String ACCESS_FINE_LOCATION = "android.permission.ACCESS_FINE_LOCATION";
 
-    private static Map<String, Boolean> mapForResponsePermissions = new HashMap<>();
+
 
     public MagicalPermissions(Activity activity, String[] permissions) {
         this.activity = activity;
@@ -116,63 +110,37 @@ public class MagicalPermissions {
             runPendingTask();
         }
 
-        //if you have the list of permissions
-        if (!runPendingTaskFlag && this.mapForResponsePermissions.size() > 0) {
-
-            List<String> hasPermissions = new ArrayList<>();
-
-            //all of permissions that you need (include the permissions fault and success)
+        //validate if have permissions or not for call the request permissions
+        if (permissionListFault.size() > 0 && !runPendingTaskFlag) {
+            boolean isCurrentOpetationType = false;
             for (int x = 0; this.allPermissions.length > x; x++) {
-                Iterator it = this.mapForResponsePermissions.entrySet().iterator();
 
-                boolean isCurrentPermissionRequired = false;
-                while (it.hasNext()) {
-                    Map.Entry pair = (Map.Entry) it.next();
-
-                    if (this.allPermissions[x].equals(pair.getKey())) {
-                        isCurrentPermissionRequired = true;
-                        boolean permissionGranted = mapForResponsePermissions.get(pair.getKey().toString());
-                        if (permissionGranted) {
-                            if (operationType.equals(CAMERA)) {
-                                isCurrentPermissionRequired = false;
-                            } else if (operationType.equals(READ_EXTERNAL_STORAGE)) {
-                                isCurrentPermissionRequired = false;
-                            } else if (operationType.equals(WRITE_EXTERNAL_STORAGE)) {
-                                isCurrentPermissionRequired = false;
-                            } else if (operationType.equals(ACCESS_COARSE_LOCATION)) {
-                                isCurrentPermissionRequired = false;
-                            } else if (operationType.equals(ACCESS_FINE_LOCATION)) {
-                                isCurrentPermissionRequired = false;
-                            }
-                        }
+                boolean isSuccessPermission = true;
+                for (int i = 0; permissionListFault.size() > i; i++) {
+                    if (permissionListFault.get(i).equals(this.allPermissions[x])) {
+                        isSuccessPermission = false;
                     }
                 }
 
-                //if the operation selected have a permission granted true
-                //then add in list of haspermissions
-                if (!isCurrentPermissionRequired) {
-                    hasPermissions.add(this.allPermissions[x]);
+                if (isSuccessPermission) {
+                    if (operationType.equals(allPermissions[x])) {
+                        isCurrentOpetationType = true;
+                        runPendingTask();
+                        break;
+                    }
                 }
             }
 
-            //if the permissions is equeals to the selected permission
-            //run the task...
-            for (int x = 0; hasPermissions.size() > x; x++) {
-                if (hasPermissions.get(x).equals(operationType)) {
-                    runPendingTask();
+            if (!isCurrentOpetationType) {
+                //Request permissions is being lint, but that is not a problem in the askPermissions method there is a validation to prevent it in lowe API
+                //Adding a suppress warning annotation is worst because since android studio 2.3 annotated methods can be marked as dangerous
+                if (activity != null) {
+                    activity.requestPermissions(permissions, RC_PERMISSIONS_ACTIVITY);
+                } else if (fragment != null) {
+                    fragment.requestPermissions(permissions, RC_PERMISSIONS_FRAGMENT);
+                } else if (fragmentV4 != null) {
+                    fragmentV4.requestPermissions(permissions, RC_PERMISSIONS_FRAGMENT);
                 }
-            }
-
-            //if not have all permissions, request then.
-        }else if(!runPendingTaskFlag){
-            //Request permissions is being lint, but that is not a problem in the askPermissions method there is a validation to prevent it in lowe API
-            //Adding a suppress warning annotation is worst because since android studio 2.3 annotated methods can be marked as dangerous
-            if (activity != null) {
-                activity.requestPermissions(permissions, RC_PERMISSIONS_ACTIVITY);
-            } else if (fragment != null) {
-                fragment.requestPermissions(permissions, RC_PERMISSIONS_FRAGMENT);
-            } else if (fragmentV4 != null) {
-                fragmentV4.requestPermissions(permissions, RC_PERMISSIONS_FRAGMENT);
             }
         }
     }
@@ -193,7 +161,7 @@ public class MagicalPermissions {
                 runPendingTask();
             }
         }
-        mapForResponsePermissions = map;
+
         return map;
     }
 
