@@ -1,0 +1,130 @@
+<resources>
+    <string name="app_name">Magical Camera</string>
+
+    <string name="hello_world">Hola mundo!</string>
+    <string name="action_settings">Configuración</string>
+
+    <!-- menu photos-->
+    <string name="face_recognition">Reconocimineto facial</string>
+    <string name="information_photo">Información de Foto/Imágen</string>
+    <string name="full_image">Ver la Foto/Imágen completa</string>
+    <string name="rotate_picture">Rotar Foto/Imágen 90º</string>
+
+    <!-- titles and generals -->
+    <string name="go_to_fragment">Ir a Fragment</string>
+    <string name="title_activity">Ejemplo en Activity Magical Camera</string>
+    <string name="go_to_activity">Salir a Activity</string>
+    <string name="title_fragment">Ejemplo en Fragment Magical Camera</string>
+    <string name="version">Versión de librería 5.0.5</string>
+
+    <!-- Menu -->
+    <string name="menu_shared">Compartir</string>
+    <string name="menu_about">Acerca de Desarrolladores</string>
+    <string name="menu_settings">onfiguración</string>
+    <string name="menu_github">Github</string>
+    <string name="menu_donation">Donaciones</string>
+    <string name="menu_documentation">Documentación</string>
+    <string name="menu_todo_list">Siguientes tareas</string>
+
+    <!-- Links -->
+    <string name="link_git">https://github.com/fabian7593/MagicalCamera</string>
+    <string name="link_donate">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=L25MKCRPR7TWY</string>
+    <string name="link_todo">https://github.com/fabian7593/MagicalCamera/projects/1</string>
+    <string name="link_documentation">https://github.com/fabian7593/MagicalCamera/blob/master/README.md</string>
+    <string name="link_play_store">https://play.google.com/store/apps/details?id=com.frosquivel.examplemagicalcamera</string>
+
+    <!-- About Developers -->
+    <string name="dev_creator">Creador de MagicalCamera</string>
+    <string name="dev_name_creator">Fabián Rosales (Frosquivel Developer)</string>
+    <string name="dev_image_creator">https://avatars3.githubusercontent.com/u/13343461?v=3&amp;s=460</string>
+    <string name="dev_description">El creador de MagicalCamera, realizó la funcionalidad de toma de fotografía, selección de fotografía, rotación de imágen, conversión de Bitmap magical, guardar imágen en dispositivo, reconocimiento facial, y obtener información privada de la fotografía.</string>
+    <string name="dev_link_git_creator">https://github.com/fabian7593</string>
+    <string name="dev_link_git_contributor_1">https://github.com/arthursz</string>
+    <string name="dev_link_git_contributor_2">https://github.com/cutiko</string>
+    <string name="dev_contributor">Ayudantes y contribuyentes de MagicalCamera</string>
+    <string name="dev_name_contributor_1">Arthur Zettler</string>
+    <string name="dev_image_contributor_1">https://avatars2.githubusercontent.com/u/6000680?v=3&amp;s=460</string>
+    <string name="dev_desc_contributor_1">Arthur creó el return del String de la ruta de la imágen guardada en el dispositivo.</string>
+    <string name="dev_name_contributor_2">Erick Navarro</string>
+    <string name="dev_image_contributor_2">https://avatars3.githubusercontent.com/u/6012585?v=3&amp;s=460</string>
+    <string name="dev_desc_contributor_2">Erick añadío un mejor uso en las librerías de Google Play, y desarrollo una mejora de la aplicación a nivel de permisos requeridos, mejora a nivel de código y otros componentes.</string>
+
+    <!-- Messages -->
+    <string name="message_save_manual">La foto a sido guardada manualmente en el dispositivo, por favor revisa la siguiente ruta:</string>
+    <string name="message_see_photo_information">Ver la información de la imágen.</string>
+    <string name="convert_to_string_base_64_title">Ver el string en base 64, solo muestra una longitud de 300 carácteres para este ejemplo.</string>
+    <string name="convert_to_string_base_64">Convert to String base 64</string>
+    <string name="message_ok">Aceptar</string>
+
+    <!-- Information Data -->
+    <string name="info_data_latitude">Latitud: </string>
+    <string name="info_data_latitude_referene">Referencia de Latitud: </string>
+    <string name="info_data_longitude">Longitud: </string>
+    <string name="info_data_longitude_reference">Referencia de Longitud: </string>
+    <string name="info_data_date_time_photo">Fecha y hora de la foto: </string>
+    <string name="info_data_date_stamp_photo">Fecha sello de la foto: </string>
+    <string name="info_data_ISO">ISO: </string>
+    <string name="info_data_orientation_photo">Orientación de la imágen: </string>
+    <string name="info_data_image_lenght">Alto de la imágen: </string>
+    <string name="info_data_image_width">Ancho de la imágen: </string>
+    <string name="info_data_make_company">Compañia del dispositivo: </string>
+    <string name="info_data_model_device">Modelo de dispositivo: </string>
+
+    <!-- Email -->
+    <string name="email_subject">MagicalCamera 5.0.5 Librería de Android</string>
+    <string name="email_title">Compartir MagicalCamera</string>
+    <string name="email_text">Hola nosotros somos MagicalCamera, \n\n Quiero compartir con vos ésta increíble librería, para usar de una manera simple la cámara en Android nativo. \n\n Ésta es la mejor librería openSource de este tema. \n\n Puedes ver la librería en. \n XXXX1 \n\n Y descargar la aplicación aquí: \n XXXX2</string>
+
+    <!-- values preference -->
+    <string name="value_directory_name">Magical Camera</string>
+    <string name="value_photo_name">MagicalCamera_prueba_nombre_foto</string>
+    <string name="value_selected_picture">Seleccione Imágen</string>
+    <string name="value_quality_picture">100</string>
+    <string name="value_autoincrement_picture">True</string>
+    <string name="value_facial_recognition_thick">50</string>
+    <string name="value_facial_recognition_color">#0E477F</string>
+
+    <!-- shared preference -->
+    <string name="shared_photo_name">Nombre Foto</string>
+    <string name="shared_directory_name">Nombre de Carpeta</string>
+    <string name="shared_title_popup">Título de ventana emergente</string>
+    <string name="shared_quality_photo">Porcentaje de calidad de la foto</string>
+    <string name="shared_type_extension">Tipo de extensión</string>
+    <string name="shared_autoincrement">Incremento automático en nombre imágen</string>
+    <string name="shared_line_thickness">Grosor de línea reconocimiento facial</string>
+    <string name="shared_preference_title">Preferencias de configuración</string>
+    <string name="shared_accept">Aceptar</string>
+    <string name="shared_cancel">Cancelar</string>
+    <string name="shared_change_color">Cambiar Color</string>
+    <string name="shared_hexadecimal_color">Color de línea reconocimiento facial</string>
+    <string name="image_down_quality">Presione para bajar la calidad del Bitmap en tiempo real</string>
+
+    <string name="shared_preference_extension_png">PNG</string>
+    <string name="shared_preference_extension_jpg">JPEG</string>
+    <string name="shared_preference_extension_webp">WEBP</string>
+
+    <!-- errors -->
+    <string name="error">Error!</string>
+    <string name="error_image_null">Tu imágen es null, por favor seleccione o tome una.</string>
+    <string name="error_not_connect">No puede conectarse</string>
+    <string name="error_not_save_feedback">No pudiste enviar el mensaje, por favor intente más tarde.</string>
+    <string name="error_init_magicalcamera">Por favor inicie MagicalCamera, en un context static para usarlo en todo el activity.</string>
+    <string name="error_not_have_data">No tienes datos que mostrar, porque la ruta es incorrecta, guarda tu foto primeramente.</string>
+    <string name="error_dont_save_photo">Lo siento, su foto no pudo guardarse en el dispositivo, por favor asegurese que tiene activos los permisos de lectura y escritura.</string>
+    <string name="error_not_detect_face">La librería no detecta ningún rostro en la fotografía</string>
+    <string name="error_string_base_64">El String en base 64 es muy lento por favor intente de nuevo con un bitmap de menor tamaño.</string>
+    <string name="note_fragment">NOTA: Este cambio es solo reflejado en el ejemplo de Activity. El ejemplo de Fragments, siempre tiene la configuración básica.</string>
+
+    <string name="feedback">Críticas</string>
+    <string name="feedback_save">Guardar</string>
+    <string name="feedback_save_message">Tu comentario a sido guardado, gracias :)</string>
+    <string name="feedback_not_save">Por favor llene todos los campos.</string>
+    <string name="feedback_select_comment">Seleccione una opción</string>
+    <string name="feedback_write_comment">Escribe tu comentario</string>
+    <string-array name="feedbacks">
+        <item>Críticas</item>
+        <item>Problemas</item>
+        <item>Nuevas ideas</item>
+    </string-array>
+    <string name="title_activity_permissions">PermissionsActivity</string>
+</resources>

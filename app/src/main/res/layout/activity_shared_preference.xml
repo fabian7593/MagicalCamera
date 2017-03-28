@@ -139,14 +139,16 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
                 android:checked="false"
-                android:text="@string/shared_preference_extension_jpg" />
+                android:text="@string/shared_preference_extension_jpg"
+                android:textSize="12sp"/>
 
             <RadioButton
                 android:id="@+id/radioExtensionPNG"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
-                android:text="@string/shared_preference_extension_png" />
+                android:text="@string/shared_preference_extension_png"
+                android:textSize="12sp"/>
 
 
             <RadioButton
@@ -154,7 +156,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="false"
-                android:text="@string/shared_preference_extension_webp" />
+                android:text="@string/shared_preference_extension_webp"
+                android:textSize="12sp"/>
         </RadioGroup>
 
     </LinearLayout>
