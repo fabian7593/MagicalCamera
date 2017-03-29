@@ -61,4 +61,11 @@
         android:showAsAction="ifRoom"
         app:showAsAction="ifRoom"/>
 
+    <item
+        android:id="@+id/menu_terms_and_conditions"
+        android:orderInCategory="9"
+        android:title="@string/menu_terms_conditions"
+        android:showAsAction="ifRoom"
+        app:showAsAction="ifRoom"/>
+
 </menu>

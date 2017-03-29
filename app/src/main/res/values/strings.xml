@@ -25,6 +25,7 @@
     <string name="menu_donation">Donation</string>
     <string name="menu_documentation">Documentation</string>
     <string name="menu_todo_list">TODO List</string>
+    <string name="menu_terms_conditions">Terms and Conditions</string>
 
     <!-- Links -->
     <string name="link_git">https://github.com/fabian7593/MagicalCamera</string>
@@ -32,6 +33,8 @@
     <string name="link_todo">https://github.com/fabian7593/MagicalCamera/projects/1</string>
     <string name="link_documentation">https://github.com/fabian7593/MagicalCamera/blob/master/README.md</string>
     <string name="link_play_store">https://play.google.com/store/apps/details?id=com.frosquivel.examplemagicalcamera</string>
+    <string name="link_terms_and_conditions">https://drive.google.com/file/d/0B0NuDXZebVUGMVFpc2FsZFEwYmM/view</string>
+
 
     <!-- About Developers -->
     <string name="dev_creator">MagicalCamera creator</string>

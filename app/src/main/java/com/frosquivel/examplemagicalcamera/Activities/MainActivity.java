@@ -373,6 +373,12 @@ public class MainActivity extends AppCompatActivity {
                 Utils.goToWebView(getString(R.string.link_documentation), MainActivity.this);
                 break;
 
+            case R.id.menu_terms_and_conditions:
+                //http://drive.google.com/viewerng/viewer?embedded=true&
+                // //url=https://drive.google.com/file/d/0B0NuDXZebVUGMVFpc2FsZFEwYmM/view?usp=sharing
+                Utils.goToWebView(getString(R.string.link_terms_and_conditions), MainActivity.this);
+                break;
+
             default:
                 break;
         }
