@@ -257,7 +257,7 @@ private int RESIZE_PHOTO_PIXELS_PERCENTAGE = 80;
 You need to instance the MagicalCamera Class, like this:
 The fisrt param is the current Activity, and the second the resize percentage photo, and the third param is the Permission Granted
 ```bash
- MagicalCamera magicalCamera = new MagicalCamera(this,RESIZE_PHOTO_PIXELS_PERCENTAGE, permissionGranted);
+ MagicalCamera magicalCamera = new MagicalCamera(this,RESIZE_PHOTO_PIXELS_PERCENTAGE, magicalPermissions);
  
 ```
 
