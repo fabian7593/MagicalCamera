@@ -452,7 +452,7 @@ You need to write this code for example:
  //verify if the bitmap of image have data
  if(magicalCamera.getPhoto()!=null) {
    //verify if this photo is save in device, and if has private information to show and return true if have information, or false is not
-   if(magicalCamera.hasImageInformation()) {
+   if(magicalCamera.initImageInformation()) {
 
          StringBuilder builderInformation = new StringBuilder();
 
