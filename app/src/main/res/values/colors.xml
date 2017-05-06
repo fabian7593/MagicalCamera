@@ -7,5 +7,13 @@
     <color name="colorBlack">#343434</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlackLight">#6B6B6B</color>
+    <color name="colorGrayProgress">#F2FFFFFF</color>
     <color name="black_semi_transparent">#BF000000</color>
+
+    <color name="colorFirstFragment">#1abc9c</color>
+    <color name="colorSecondFragment">#f39c12</color>
+    <color name="colorThirdFragment">#e74c3c</color>f39c12
+    <color name="colorFourthFragment">#2ecc71</color>
+    <color name="colorFifthFragment">#3498db</color>
+    <color name="colorSixthFragment">#9b59b6</color>
 </resources>

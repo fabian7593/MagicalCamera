@@ -8,5 +8,9 @@
     <dimen name="icon_size">48dp</dimen>
     <dimen name="button_height">35dp</dimen>
     <dimen name="button_width">35dp</dimen>
+    <dimen name="button_normal_width">100dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
+
+    <dimen name="size_indicator">16dp</dimen>
+    <dimen name="space_indicator">10dp</dimen>
 </resources>

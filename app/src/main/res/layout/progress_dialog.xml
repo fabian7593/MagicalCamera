@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/progressLoadingIndicator"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/progress_dialog"
+    android:layout_centerInParent="true"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/material_design_ball_scale_ripple_loader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:indicatorName="BallTrianglePathIndicator"
+        app:indicatorColor="@color/colorPrimaryDark"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorBlack"
+        android:textSize="12sp"
+        android:gravity="center"
+        android:text="@string/progress_loading"
+        android:layout_marginTop="5dp"
+        android:textStyle="bold"/>
+
+</LinearLayout>

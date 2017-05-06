@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootFirstPage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:ignore="ContentDescription">
+
+    <ImageView
+        android:id="@+id/ivFirstImage"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_fragment_4_contact_us_1"
+        android:paddingTop="120dp"/>
+
+    <ImageView
+        android:id="@+id/ivSecondImage"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_alignLeft="@+id/ivFirstImage"
+        android:layout_alignBottom="@+id/ivFirstImage"
+        android:src="@drawable/ic_fragment_4_contact_us_2"
+        android:layout_marginLeft="-10dp"
+        android:paddingTop="70dp"
+        />
+
+    <ImageView
+        android:id="@+id/ivThirdImage"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_alignRight="@+id/ivFirstImage"
+        android:layout_alignBottom="@+id/ivFirstImage"
+        android:src="@drawable/ic_fragment_4_contact_us_3"
+        android:layout_marginRight="-10dp"
+        android:paddingTop="70dp"
+        />
+
+    <ImageView
+        android:id="@+id/ivFourthImage"
+        android:layout_width="110dp"
+        android:layout_height="110dp"
+        android:layout_below="@+id/ivFirstImage"
+        android:src="@drawable/ic_fragment_4_contact_us_4"
+        android:layout_centerHorizontal="true"
+        />
+
+    <TextView
+        android:id="@+id/txtFourthFragmentHireUs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/hire_us_fourth_fragment"
+        android:layout_gravity="center|bottom"
+        android:gravity="center"
+        android:foregroundGravity="center"
+        android:layout_margin="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorWhite"
+        android:textSize="14sp"
+        android:paddingBottom="80dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

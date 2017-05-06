@@ -9,8 +9,8 @@ android {
         applicationId "com.frosquivel.examplemagicalcamera"
         minSdkVersion 14
         targetSdkVersion 25
-        versionCode 6
-        versionName "5.0.6"
+        versionCode 7
+        versionName "5.0.7"
     }
     android {
         lintOptions {
@@ -39,6 +39,7 @@ dependencies {
     compile 'com.android.support:support-v4:20.0.+'
     compile 'com.afollestad.material-dialogs:commons:0.8.6.1'
     compile 'com.android.support:design:25.2.0'
+    compile 'com.android.support:percent:23.1.0'
 
     compile('com.crashlytics.sdk.android:crashlytics:2.6.7@aar') {
         transitive = true;
@@ -47,11 +48,12 @@ dependencies {
     compile 'com.frosquivel:magicalcamera:5.0.5'
     compile 'com.github.clans:fab:1.6.3'
     compile 'com.afollestad.material-dialogs:core:0.8.5.9'
-    compile 'com.backendless:backendless:3.0.10'
     compile 'com.github.ViksaaSkool:AwesomeSplash:v1.0.0'
     compile 'com.afollestad.material-dialogs:commons:0.8.6.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.larswerkman:HoloColorPicker:1.5'
     compile 'com.github.rey5137:material:1.2.4'
     compile 'com.github.rey5137:material:1.2.3.1-SNAPSHOT'
+    compile 'com.github.paolorotolo:appintro:4.1.0'
+    compile 'com.wang.avi:library:2.1.3'
 }

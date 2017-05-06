@@ -3,6 +3,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="progress_loading">Loading...</string>
 
     <!-- menu photos-->
     <string name="face_recognition">Face Recognition</string>
@@ -22,17 +23,19 @@
     <string name="menu_about">About Developers</string>
     <string name="menu_settings">Settings</string>
     <string name="menu_github">Github</string>
-    <string name="menu_donation">Donation</string>
+    <string name="menu_donation">Help Us</string>
     <string name="menu_documentation">Documentation</string>
     <string name="menu_todo_list">TODO List</string>
     <string name="menu_terms_conditions">Terms and Conditions</string>
+    <string name="menu_hire_us">Contact Us</string>
 
     <!-- Links -->
     <string name="link_git">https://github.com/fabian7593/MagicalCamera</string>
-    <string name="link_donate">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=L25MKCRPR7TWY</string>
+    <!--<string name="link_donate">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=L25MKCRPR7TWY</string>-->
     <string name="link_todo">https://github.com/fabian7593/MagicalCamera/projects/1</string>
     <string name="link_documentation">https://github.com/fabian7593/MagicalCamera/blob/master/README.md</string>
     <string name="link_play_store">https://play.google.com/store/apps/details?id=com.frosquivel.examplemagicalcamera</string>
+    <string name="link_play_store_payment">https://play.google.com/store/apps/details?id=com.frosquivel.examplemagicalcamerapay</string>
     <string name="link_terms_and_conditions">https://drive.google.com/file/d/0B0NuDXZebVUGMVFpc2FsZFEwYmM/view</string>
 
 
@@ -73,10 +76,16 @@
     <string name="info_data_make_company">Make company: </string>
     <string name="info_data_model_device">Model Device: </string>
 
+    <string name="help_us_text">You can help me of differents ways, \n for continue to make open source libraries (for Android and iOS): \n\n 1. Donate: The methods of help us is: \n           ºIn the github page in section How to start > Donate. \n           ºBuy the 1 dollar app in play store. \n 2. Shared with your friends. \n 3. Like and suscribe in youtube channel Frosquivel Developer. \n 4. Fork and give a star in github. \n 5. If you have any new ideas for open source libraries, or magical camera contact me in fabian7593@gmail.com.</string>
+
+    <string name="contact_us_title">Contact me</string>
+    <string name="contact_us">Im specialist in mobile develop (IOS / Android native), if you need to hire me, contact me by fabian7593@gmail.com</string>
+
     <!-- Email -->
     <string name="email_subject">MagicalCamera 5.0.5 Android Library</string>
+    <string name="email_choose">Choose Email Client</string>
     <string name="email_title">Share MagicalCamera</string>
-    <string name="email_text">Hello We are Magical Camera, \n\n I want to share with you this awesome library, for use the camera photos/pictures of android native. \n\n This is the best library Open source of this subject. \n\n View this library here. \n XXXX1 \n\n And download the app here: \n XXXX2</string>
+    <string name="email_text">Hello We are the developers of MagicalCamera library, \n\n we want to share with you this awesome library, MagicalCamera, for use the camera photos/pictures of android native. \n\n This is the best library Open source of this subject. \n\n View this library here. \n XXXX1 \n\n And download the app here: \n XXXX2, \n\n And if you have the possibility to buy the Payment app, we will be very grateful, you can see here: \n XXXX3</string>
 
     <!-- values preference -->
     <string name="value_directory_name">Magical Camera</string>
@@ -101,22 +110,35 @@
     <string name="shared_change_color">Change Color</string>
     <string name="shared_hexadecimal_color">Line color FaceRecognition</string>
     <string name="image_down_quality">Press to down quality of the bitmap in runtime</string>
-
     <string name="shared_preference_extension_png">PNG</string>
     <string name="shared_preference_extension_jpg">JPEG</string>
     <string name="shared_preference_extension_webp">WEBP</string>
+
+
+    <!-- Hire Us -->
+    <string name="hire_us_first_fragment">Hello, Im Fabian Rosales, do click in icons for contact me, or do swipe for view more.</string>
+    <string name="hire_us_second_fragment">Programming apps for mobile devices...</string>
+    <string name="hire_us_third_fragment">Android and iOS native programming 100%... ;)</string>
+    <string name="hire_us_fourth_fragment">Cloud technologies...</string>
+    <string name="hire_us_fifth_fragment">Programming Web Apps...</string>
+    <string name="hire_us_sixth_fragment">Charts, reporting and analysis.</string>
+
 
     <!-- errors -->
     <string name="error">Error!</string>
     <string name="error_image_null">Your image is null, please select or take one</string>
     <string name="error_not_connect">You Dont connect for feedback</string>
+    <string name="error_not_have_permissions">You not have permissions for active this funcionality, please accept the permissions.</string>
     <string name="error_not_save_feedback">You dont save feedback, please try again later</string>
     <string name="error_init_magicalcamera">Please initialized magical camera, maybe in static context for use in all activity</string>
     <string name="error_not_have_data">You dont have data to show because the real path photo is wrong, save your photo first</string>
     <string name="error_dont_save_photo">Sorry your photo dont save in devide, please make sure you have write permissions.</string>
     <string name="error_not_detect_face">The library not detect any face in the picture</string>
+    <string name="error_not_open_messenger">You cannot open Facebook Messenger</string>
+    <string name="error_not_open_linkedin">You cannot open LinkedIn</string>
+    <string name="error_not_open_youtube">You cannot open YouTube</string>
+    <string name="note_fragment">NOTE: This changes only be reflect into Activity Example, the fragment example will have a basic configuration. And dont be realize with AsyncTask to maintain code simplicity</string>
     <string name="error_string_base_64">The String base 64 is too big, please try again with a lower quality image</string>
-    <string name="note_fragment">NOTE: This changes only be reflect into Activity Example, the fragment example will have a basic configuration</string>
 
     <string name="feedback">FeedBacks</string>
     <string name="feedback_save">Save</string>

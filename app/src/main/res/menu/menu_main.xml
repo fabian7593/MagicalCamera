@@ -33,24 +33,25 @@
         app:showAsAction="ifRoom"
         />
 
-    <item
-        android:id="@+id/menu_donate"
-        android:orderInCategory="5"
-        android:title="@string/menu_donation"
-        android:showAsAction="ifRoom"
-        app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/menu_todo"
-        android:orderInCategory="6"
+        android:orderInCategory="5"
         android:title="@string/menu_todo_list"
         android:showAsAction="ifRoom"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/menu_feedback"
+        android:id="@+id/menu_donate"
+        android:orderInCategory="6"
+        android:title="@string/menu_donation"
+        android:showAsAction="ifRoom"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/menu_hire_us"
         android:orderInCategory="7"
-        android:title="@string/feedback"
+        android:title="@string/menu_hire_us"
         android:showAsAction="ifRoom"
         app:showAsAction="ifRoom"/>
 
@@ -58,13 +59,6 @@
         android:id="@+id/menu_about"
         android:orderInCategory="8"
         android:title="@string/menu_about"
-        android:showAsAction="ifRoom"
-        app:showAsAction="ifRoom"/>
-
-    <item
-        android:id="@+id/menu_terms_and_conditions"
-        android:orderInCategory="9"
-        android:title="@string/menu_terms_conditions"
         android:showAsAction="ifRoom"
         app:showAsAction="ifRoom"/>
 

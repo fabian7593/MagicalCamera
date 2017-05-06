@@ -1,13 +1,16 @@
 package com.frosquivel.examplemagicalcamera.Utils;
 
 import android.app.Activity;
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.net.Uri;
 import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.frosquivel.examplemagicalcamera.R;
 import com.frosquivel.examplemagicalcamera.Activities.WebViewActivity;
@@ -171,5 +174,50 @@ public class Utils {
         Intent intent = new Intent(activity, WebViewActivity.class);
         intent.putExtra("link",url);
         activity.startActivity(intent);
+    }
+
+
+    public static void openScheme(Activity activity, String scheme, String id, String url, String errorMessage){
+        Uri uri = Uri.parse(scheme);
+        try {
+            uri = ContentUris.withAppendedId(uri, Long.parseLong(id));
+        }catch(Exception ev){
+            uri = Uri.parse(scheme + id);
+        }
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        try {
+            activity.startActivity(intent);
+        }catch(Exception ev){
+            try {
+                Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+                activity.startActivity(browserIntent);
+            }catch(Exception ex){
+                Toast.makeText(activity,errorMessage,Toast.LENGTH_LONG).show();
+            }
+        }
+    }
+    
+    public static void sendMeAnEmail(Activity activity){
+        Intent email = new Intent(Intent.ACTION_SEND);
+        email.putExtra(Intent.EXTRA_EMAIL, new String[]{"fabian7593@gmail.com"});
+        email.putExtra(Intent.EXTRA_SUBJECT, activity.getString(R.string.email_subject));
+        email.putExtra(Intent.EXTRA_TEXT, "");
+        email.setType("message/rfc822");
+        activity.startActivity(Intent.createChooser(email, activity.getString(R.string.email_choose)));
+    }
+
+    public static void sharedApp(Activity activity) {
+        Intent shareIntent = new Intent();
+        String textEmail = activity.getString(R.string.email_text);
+        textEmail = textEmail.replace("XXXX1", activity.getString(R.string.link_git));
+        textEmail = textEmail.replace("XXXX2", activity.getString(R.string.link_play_store));
+        textEmail = textEmail.replace("XXXX3", activity.getString(R.string.link_play_store));
+
+        shareIntent.setAction(Intent.ACTION_SEND);
+        shareIntent.setType("text/plain");
+        shareIntent.putExtra(Intent.EXTRA_TEXT, textEmail);
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, activity.getString(R.string.email_subject));
+        shareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        activity.startActivity(Intent.createChooser(shareIntent, activity.getString(R.string.email_title)));
     }
 }

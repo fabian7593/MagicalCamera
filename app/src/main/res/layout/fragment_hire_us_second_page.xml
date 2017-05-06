@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootFirstPage"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ImageView
+        android:id="@+id/ivFirstImage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_gravity="center"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_fragment_2_contact_us_3"
+        />
+
+    <ImageView
+        android:id="@+id/ivSecondImage"
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:layout_alignLeft="@+id/ivFirstImage"
+        android:layout_alignBottom="@+id/ivFirstImage"
+        android:src="@drawable/ic_fragment_2_contact_us_2"
+        android:layout_marginLeft="-50dp"
+        />
+
+    <ImageView
+        android:id="@+id/ivFourthImage"
+        android:layout_marginTop="35dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignRight="@+id/ivFirstImage"
+        android:layout_alignBottom="@+id/ivFirstImage"
+        android:src="@drawable/ic_fragment_2_contact_us_4"
+        android:layout_marginLeft="-50dp"
+        />
+
+    <TextView
+        android:id="@+id/txtSecondFragmentHireUs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/hire_us_second_fragment"
+        android:layout_gravity="center|bottom"
+        android:gravity="center"
+        android:layout_margin="20dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorWhite"
+        android:textSize="14sp"
+        android:paddingBottom="80dp"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

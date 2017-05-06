@@ -23,9 +23,5 @@ public class WebViewActivity extends Activity {
         String link = getIntent().getStringExtra("link");
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(link);
-
-        if(link.equals(getString(R.string.link_donate))){
-            finish();
-        }
     }
 }

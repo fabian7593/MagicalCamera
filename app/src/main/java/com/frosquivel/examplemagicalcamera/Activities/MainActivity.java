@@ -1,10 +1,56 @@
 package com.frosquivel.examplemagicalcamera.Activities;
 
+/*
+    Copyright 2015 Dmytro Tarianyk
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+    http://www.apache.org/licenses/LICENSE-2.0
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+*/
+
+    /*Copyright 2015 Rey Pham.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+     */
+
+    /*
+    Copyright 2015 jack wang
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+     */
+
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -16,9 +62,11 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
+import com.frosquivel.examplemagicalcamera.Activities.HireUs.HireUsActivity;
 import com.frosquivel.examplemagicalcamera.Fragments.ActivityForFragment;
 import com.frosquivel.examplemagicalcamera.R;
 import com.frosquivel.examplemagicalcamera.Utils.Utils;
@@ -28,11 +76,10 @@ import com.frosquivel.magicalcamera.Utilities.ConvertSimpleImage;
 import com.github.clans.fab.FloatingActionButton;
 import com.github.clans.fab.FloatingActionMenu;
 import com.google.android.gms.vision.face.Landmark;
-
 import com.crashlytics.android.Crashlytics;
+
 import io.fabric.sdk.android.Fabric;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,6 +89,7 @@ import java.util.Map;
  * Modified Date       on 16/03/2017
  * This is an android library to take easy picture
  * Search the Utils class in the same package for view the code of this and your meaning
+ * https://github.com/Cleveroad/SlidingTutorial-Android/blob/master/sample/src/main/java/com/cleveroad/slidingtutorial/sample/MainActivity.java
  */
 public class MainActivity extends AppCompatActivity {
     //this is the image view for show your picture taken,
@@ -75,6 +123,10 @@ public class MainActivity extends AppCompatActivity {
     private MagicalCamera magicalCamera;
     private MagicalPermissions magicalPermissions;
 
+    //the variable of progress dialog loading
+    private LinearLayout progressLoadingIndicator;
+    Map<String, Boolean> mapPermissions = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,7 +134,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setUIComponents();
 
-        String[] permissions = new String[] {
+        String[] permissions = new String[]{
                 Manifest.permission.CAMERA,
                 Manifest.permission.READ_EXTERNAL_STORAGE,
                 Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -98,16 +150,25 @@ public class MainActivity extends AppCompatActivity {
         btntakephoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //call the method of take the picture
-                magicalCamera.takePhoto();
+
+                if (isActivePermission(MagicalCamera.CAMERA)) {
+                    //call the method of take the picture
+                    magicalCamera.takePhoto();
+                } else {
+                    Utils.viewSnackBar(getString(R.string.error_string_base_64), principalLayout);
+                }
             }
         });
 
         btnselectedphoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //call the method of selected picture
-                magicalCamera.selectedPicture(Utils.getSharedPreference(MainActivity.this, Utils.C_PREFERENCE_MC_SELECTED_PICTURE));
+                if (isActivePermission(MagicalCamera.EXTERNAL_STORAGE)) {
+                    //call the method of selected picture
+                    magicalCamera.selectedPicture(Utils.getSharedPreference(MainActivity.this, Utils.C_PREFERENCE_MC_SELECTED_PICTURE));
+                } else {
+                    Utils.viewSnackBar(getString(R.string.error_not_have_permissions), principalLayout);
+                }
             }
         });
 
@@ -117,17 +178,34 @@ public class MainActivity extends AppCompatActivity {
                 if (Utils.validateMagicalCameraNull(MainActivity.this, principalLayout, magicalCamera)) {
                     //save the photo in your memory external or internal of your device
                     //save the picture inmemory device, and return the physical path of this photo
-                    String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getPhoto(),
-                            Utils.getSharedPreference(MainActivity.this, Utils.C_PREFERENCE_MC_PHOTO_NAME),
-                            Utils.getSharedPreference(MainActivity.this, Utils.C_PREFERENCE_MC_DIRECTORY_NAME),
-                            Utils.getFormat(MainActivity.this),
-                            Boolean.parseBoolean(Utils.getSharedPreference(MainActivity.this, Utils.C_PREFERENCE_MC_AUTO_IC_NAME)));
 
-                    if (path != null) {
-                        Utils.viewSnackBar(getString(R.string.message_save_manual) + path, principalLayout);
-                    } else {
-                        Utils.viewSnackBar(getString(R.string.error_dont_save_photo), principalLayout);
-                    }
+                    new AsyncTask<Void, Void, String>() {
+                        protected void onPreExecute() {
+                            progressLoadingIndicator.setVisibility(View.VISIBLE);
+                        }
+
+                        protected String doInBackground(Void... params) {
+
+                            String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getPhoto(),
+                                    Utils.getSharedPreference(MainActivity.this, Utils.C_PREFERENCE_MC_PHOTO_NAME),
+                                    Utils.getSharedPreference(MainActivity.this, Utils.C_PREFERENCE_MC_DIRECTORY_NAME),
+                                    Utils.getFormat(MainActivity.this),
+                                    Boolean.parseBoolean(Utils.getSharedPreference(MainActivity.this, Utils.C_PREFERENCE_MC_AUTO_IC_NAME)));
+
+                            if (path != null) {
+                                Utils.viewSnackBar(getString(R.string.message_save_manual) + path, principalLayout);
+                            } else {
+                                Utils.viewSnackBar(getString(R.string.error_dont_save_photo), principalLayout);
+                            }
+
+                            return null;
+                        }
+
+                        protected void onPostExecute(String msg) {
+                            progressLoadingIndicator.setVisibility(View.GONE);
+                        }
+                    }.execute();
+
                 }
             }
         });
@@ -141,9 +219,23 @@ public class MainActivity extends AppCompatActivity {
                     //This error is E/JavaBinder﹕ !!! FAILED BINDER TRANSACTION !!!
                     //please check this link
                     //http://stackoverflow.com/questions/31708092/setting-a-bitmap-as-intent-extra-causes-error
-                    Utils.magicalCameraBitmap = magicalCamera.getPhoto();
-                    Intent intent = new Intent(MainActivity.this, ImageViewActivity.class);
-                    startActivity(intent);
+
+                    new AsyncTask<Void, Void, String>() {
+                        protected void onPreExecute() {
+                            progressLoadingIndicator.setVisibility(View.VISIBLE);
+                        }
+
+                        protected String doInBackground(Void... params) {
+                            Utils.magicalCameraBitmap = magicalCamera.getPhoto();
+                            Intent intent = new Intent(MainActivity.this, ImageViewActivity.class);
+                            startActivity(intent);
+                            return null;
+                        }
+
+                        protected void onPostExecute(String msg) {
+                            progressLoadingIndicator.setVisibility(View.GONE);
+                        }
+                    }.execute();
                 }
             }
         });
@@ -152,9 +244,24 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (Utils.validateMagicalCameraNull(MainActivity.this, principalLayout, magicalCamera)) {
-                    //for once click rotate the picture in 90ª, and set in the image view.
-                    magicalCamera.setPhoto(magicalCamera.rotatePicture(magicalCamera.getPhoto(), MagicalCamera.ORIENTATION_ROTATE_90));
-                    imageView.setImageBitmap(magicalCamera.getPhoto());
+                    new AsyncTask<Void, Void, String>() {
+                        protected void onPreExecute() {
+                            progressLoadingIndicator.setVisibility(View.VISIBLE);
+                        }
+
+                        protected String doInBackground(Void... params) {
+                            //for once click rotate the picture in 90ª, and set in the image view.
+                            magicalCamera.setPhoto(magicalCamera.rotatePicture(magicalCamera.getPhoto(), MagicalCamera.ORIENTATION_ROTATE_90));
+                            //its need the ui thread, but in this case we use in on Post Execute
+                            //imageView.setImageBitmap(magicalCamera.getPhoto());
+                            return null;
+                        }
+
+                        protected void onPostExecute(String msg) {
+                            imageView.setImageBitmap(magicalCamera.getPhoto());
+                            progressLoadingIndicator.setVisibility(View.GONE);
+                        }
+                    }.execute();
                 }
             }
         });
@@ -164,20 +271,37 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (Utils.validateMagicalCameraNull(MainActivity.this, principalLayout, magicalCamera)) {
 
-                    int hexToIntColor =
-                            Color.parseColor(Utils.getSharedPreference(MainActivity.this, Utils.C_PREFERENCE_MC_FACIAL_RECOGNITION_COLOR));
+                    new AsyncTask<Void, Void, String>() {
+                        Bitmap faceDetectorBitmap = null;
 
-                    Bitmap faceDetectorBitmap = magicalCamera.faceDetector(
-                            Integer.parseInt(Utils.getSharedPreference(MainActivity.this, Utils.C_PREFERENCE_MC_FACIAL_RECOGNITION_THICK)),
-                            hexToIntColor);
+                        protected void onPreExecute() {
+                            progressLoadingIndicator.setVisibility(View.VISIBLE);
+                        }
 
-                    if (faceDetectorBitmap != null) {
-                        imageView.setImageBitmap(faceDetectorBitmap);
-                        magicalCamera.setPhoto(faceDetectorBitmap);
-                        List<Landmark> listMark = magicalCamera.getFaceRecognitionInformation().getListLandMarkPhoto();
-                    } else {
-                        Utils.viewSnackBar(getString(R.string.error_not_detect_face), principalLayout);
-                    }
+                        protected String doInBackground(Void... params) {
+                            int hexToIntColor =
+                                    Color.parseColor(Utils.getSharedPreference(MainActivity.this, Utils.C_PREFERENCE_MC_FACIAL_RECOGNITION_COLOR));
+
+                            faceDetectorBitmap = magicalCamera.faceDetector(
+                                    Integer.parseInt(Utils.getSharedPreference(MainActivity.this, Utils.C_PREFERENCE_MC_FACIAL_RECOGNITION_THICK)),
+                                    hexToIntColor);
+
+                            if (faceDetectorBitmap != null) {
+
+                                magicalCamera.setPhoto(faceDetectorBitmap);
+                                List<Landmark> listMark = magicalCamera.getFaceRecognitionInformation().getListLandMarkPhoto();
+                            } else {
+                                Utils.viewSnackBar(getString(R.string.error_not_detect_face), principalLayout);
+                            }
+
+                            return null;
+                        }
+
+                        protected void onPostExecute(String msg) {
+                            imageView.setImageBitmap(faceDetectorBitmap);
+                            progressLoadingIndicator.setVisibility(View.GONE);
+                        }
+                    }.execute();
                 }
             }
         });
@@ -187,30 +311,46 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 if (Utils.validateMagicalCameraNull(MainActivity.this, principalLayout, magicalCamera)) {
 
-                    try {
-                        //convert the bitmap to bytes array
-                        byte[] bytesArray = ConvertSimpleImage.bitmapToBytes(magicalCamera.getPhoto(), Utils.getFormat(MainActivity.this));
-                        //convert the bytes to string 64, with this form is easly to send by web service or store data in DB
-                        String imageBase64 = ConvertSimpleImage.bytesToStringBase64(bytesArray);
+                    new AsyncTask<Void, Void, String>() {
+                        protected void onPreExecute() {
+                            progressLoadingIndicator.setVisibility(View.VISIBLE);
+                        }
 
-                        /*****************************************************************
-                         *                    Revert the process
-                         *****************************************************************/
-                        //if you need to revert the process
-                        //byte[] anotherArrayBytes = ConvertSimpleImage.stringBase64ToBytes(imageBase64);
-                        //again deserialize the image
-                        //Bitmap myImageAgain = ConvertSimpleImage.bytesToBitmap(anotherArrayBytes);
+                        protected String doInBackground(Void... params) {
+                            String base64 = "";
+                            try {
+                                //convert the bitmap to bytes array
+                                byte[] bytesArray = ConvertSimpleImage.bitmapToBytes(magicalCamera.getPhoto(), Utils.getFormat(MainActivity.this));
+                                //convert the bytes to string 64, with this form is easly to send by web service or store data in DB
+                                String imageBase64 = ConvertSimpleImage.bytesToStringBase64(bytesArray);
 
-                        String base64 = imageBase64.substring(0,300);
+                                /*****************************************************************
+                                 *                    Revert the process
+                                 *****************************************************************/
+                                //if you need to revert the process
+                                //byte[] anotherArrayBytes = ConvertSimpleImage.stringBase64ToBytes(imageBase64);
+                                //again deserialize the image
+                                //Bitmap myImageAgain = ConvertSimpleImage.bytesToBitmap(anotherArrayBytes);
 
-                        new MaterialDialog.Builder(MainActivity.this)
-                                .title(getString(R.string.convert_to_string_base_64_title))
-                                .content(base64)
-                                .positiveText(getString(R.string.message_ok))
-                                .show();
-                    } catch (Exception e) {
-                        Utils.viewSnackBar(getString(R.string.error_string_base_64), principalLayout);
-                    }
+                                base64 = imageBase64.substring(0, 300);
+
+
+                            } catch (Exception e) {
+                                Utils.viewSnackBar(getString(R.string.error_string_base_64), principalLayout);
+                            }
+
+                            return base64;
+                        }
+
+                        protected void onPostExecute(String msg) {
+                            new MaterialDialog.Builder(MainActivity.this)
+                                    .title(getString(R.string.convert_to_string_base_64_title))
+                                    .content(msg)
+                                    .positiveText(getString(R.string.message_ok))
+                                    .show();
+                            progressLoadingIndicator.setVisibility(View.GONE);
+                        }
+                    }.execute();
                 }
             }
         });
@@ -220,57 +360,70 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
 
                 if (Utils.validateMagicalCameraNull(MainActivity.this, principalLayout, magicalCamera)) {
-                    //for see the data you need to call this method ever
-                    //if the function return true you have the posibility of see the data
-                    if (magicalCamera.initImageInformation()) {
 
-                        StringBuilder builderInformation = new StringBuilder();
+                    new AsyncTask<Void, Void, String>() {
+                        protected void onPreExecute() {
+                            progressLoadingIndicator.setVisibility(View.VISIBLE);
+                        }
 
-                        //question in have data
-                        if (Utils.notNullNotFill(magicalCamera.getPrivateInformation().getLatitude() + ""))
-                            builderInformation.append(getString(R.string.info_data_latitude) + magicalCamera.getPrivateInformation().getLatitude() + "\n");
+                        protected String doInBackground(Void... params) {
+                            //for see the data you need to call this method ever
+                            //if the function return true you have the posibility of see the dat
+                            StringBuilder builderInformation = new StringBuilder();
+                            if (magicalCamera.initImageInformation()) {
 
-                        if (Utils.notNullNotFill(magicalCamera.getPrivateInformation().getLatitudeReference()))
-                            builderInformation.append(getString(R.string.info_data_latitude_referene) + magicalCamera.getPrivateInformation().getLatitudeReference() + "\n");
+                                //question in have data
+                                if (Utils.notNullNotFill(magicalCamera.getPrivateInformation().getLatitude() + ""))
+                                    builderInformation.append(getString(R.string.info_data_latitude) + magicalCamera.getPrivateInformation().getLatitude() + "\n");
 
-                        if (Utils.notNullNotFill(magicalCamera.getPrivateInformation().getLongitude() + ""))
-                            builderInformation.append(getString(R.string.info_data_longitude) + magicalCamera.getPrivateInformation().getLongitude() + "\n");
+                                if (Utils.notNullNotFill(magicalCamera.getPrivateInformation().getLatitudeReference()))
+                                    builderInformation.append(getString(R.string.info_data_latitude_referene) + magicalCamera.getPrivateInformation().getLatitudeReference() + "\n");
 
-                        if (Utils.notNullNotFill(magicalCamera.getPrivateInformation().getLongitudeReference()))
-                            builderInformation.append(getString(R.string.info_data_longitude_reference) + magicalCamera.getPrivateInformation().getLongitudeReference() + "\n");
+                                if (Utils.notNullNotFill(magicalCamera.getPrivateInformation().getLongitude() + ""))
+                                    builderInformation.append(getString(R.string.info_data_longitude) + magicalCamera.getPrivateInformation().getLongitude() + "\n");
 
-                        if (Utils.notNullNotFill(magicalCamera.getPrivateInformation().getDateTimeTakePhoto()))
-                            builderInformation.append(getString(R.string.info_data_date_time_photo) + magicalCamera.getPrivateInformation().getDateTimeTakePhoto() + "\n");
+                                if (Utils.notNullNotFill(magicalCamera.getPrivateInformation().getLongitudeReference()))
+                                    builderInformation.append(getString(R.string.info_data_longitude_reference) + magicalCamera.getPrivateInformation().getLongitudeReference() + "\n");
 
-                        if (Utils.notNullNotFill(magicalCamera.getPrivateInformation().getDateStamp()))
-                            builderInformation.append(getString(R.string.info_data_date_stamp_photo) + magicalCamera.getPrivateInformation().getDateStamp() + "\n");
+                                if (Utils.notNullNotFill(magicalCamera.getPrivateInformation().getDateTimeTakePhoto()))
+                                    builderInformation.append(getString(R.string.info_data_date_time_photo) + magicalCamera.getPrivateInformation().getDateTimeTakePhoto() + "\n");
 
-                        if (Utils.notNullNotFill(magicalCamera.getPrivateInformation().getIso()))
-                            builderInformation.append(getString(R.string.info_data_ISO) + magicalCamera.getPrivateInformation().getIso() + "\n");
+                                if (Utils.notNullNotFill(magicalCamera.getPrivateInformation().getDateStamp()))
+                                    builderInformation.append(getString(R.string.info_data_date_stamp_photo) + magicalCamera.getPrivateInformation().getDateStamp() + "\n");
 
-                        if (Utils.notNullNotFill(magicalCamera.getPrivateInformation().getOrientation()))
-                            builderInformation.append(getString(R.string.info_data_orientation_photo) + magicalCamera.getPrivateInformation().getOrientation() + "\n");
+                                if (Utils.notNullNotFill(magicalCamera.getPrivateInformation().getIso()))
+                                    builderInformation.append(getString(R.string.info_data_ISO) + magicalCamera.getPrivateInformation().getIso() + "\n");
 
-                        if (Utils.notNullNotFill(magicalCamera.getPrivateInformation().getImageLength()))
-                            builderInformation.append(getString(R.string.info_data_image_lenght) + magicalCamera.getPrivateInformation().getImageLength() + "\n");
+                                if (Utils.notNullNotFill(magicalCamera.getPrivateInformation().getOrientation()))
+                                    builderInformation.append(getString(R.string.info_data_orientation_photo) + magicalCamera.getPrivateInformation().getOrientation() + "\n");
 
-                        if (Utils.notNullNotFill(magicalCamera.getPrivateInformation().getImageWidth()))
-                            builderInformation.append(getString(R.string.info_data_image_width) + magicalCamera.getPrivateInformation().getImageWidth() + "\n");
+                                if (Utils.notNullNotFill(magicalCamera.getPrivateInformation().getImageLength()))
+                                    builderInformation.append(getString(R.string.info_data_image_lenght) + magicalCamera.getPrivateInformation().getImageLength() + "\n");
 
-                        if (Utils.notNullNotFill(magicalCamera.getPrivateInformation().getModelDevice()))
-                            builderInformation.append(getString(R.string.info_data_model_device) + magicalCamera.getPrivateInformation().getModelDevice() + "\n");
+                                if (Utils.notNullNotFill(magicalCamera.getPrivateInformation().getImageWidth()))
+                                    builderInformation.append(getString(R.string.info_data_image_width) + magicalCamera.getPrivateInformation().getImageWidth() + "\n");
 
-                        if (Utils.notNullNotFill(magicalCamera.getPrivateInformation().getMakeCompany()))
-                            builderInformation.append(getString(R.string.info_data_make_company) + magicalCamera.getPrivateInformation().getMakeCompany() + "\n");
+                                if (Utils.notNullNotFill(magicalCamera.getPrivateInformation().getModelDevice()))
+                                    builderInformation.append(getString(R.string.info_data_model_device) + magicalCamera.getPrivateInformation().getModelDevice() + "\n");
 
-                        new MaterialDialog.Builder(MainActivity.this)
-                                .title(getString(R.string.message_see_photo_information))
-                                .content(builderInformation.toString())
-                                .positiveText(getString(R.string.message_ok))
-                                .show();
-                    } else {
-                        Utils.viewSnackBar(getString(R.string.error_not_have_data), principalLayout);
-                    }
+                                if (Utils.notNullNotFill(magicalCamera.getPrivateInformation().getMakeCompany()))
+                                    builderInformation.append(getString(R.string.info_data_make_company) + magicalCamera.getPrivateInformation().getMakeCompany() + "\n");
+                            } else {
+                                Utils.viewSnackBar(getString(R.string.error_not_have_data), principalLayout);
+                            }
+
+                            return builderInformation.toString();
+                        }
+
+                        protected void onPostExecute(String msg) {
+                            new MaterialDialog.Builder(MainActivity.this)
+                                    .title(getString(R.string.message_see_photo_information))
+                                    .content(msg)
+                                    .positiveText(getString(R.string.message_ok))
+                                    .show();
+                            progressLoadingIndicator.setVisibility(View.GONE);
+                        }
+                    }.execute();
                 }
             }
         });
@@ -305,29 +458,63 @@ public class MainActivity extends AppCompatActivity {
                 saveImage.setVisibility(View.VISIBLE);
                 //set the photo in image view
                 imageView.setImageBitmap(magicalCamera.getPhoto());
+                final Activity activity = this;
 
-                //save the picture inmemory device, and return the physical path of this photo
-                String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getPhoto(),
-                        Utils.getSharedPreference(this, Utils.C_PREFERENCE_MC_PHOTO_NAME),
-                        Utils.getSharedPreference(this, Utils.C_PREFERENCE_MC_DIRECTORY_NAME),
-                        Utils.getFormat(this),
-                        Boolean.parseBoolean(Utils.getSharedPreference(this, Utils.C_PREFERENCE_MC_AUTO_IC_NAME)));
+                new AsyncTask<Void, Void, String>() {
+                    protected void onPreExecute() {
+                        progressLoadingIndicator.setVisibility(View.VISIBLE);
+                    }
 
-                if (path != null) {
-                    Utils.viewSnackBar(getString(R.string.message_save_manual) + path, principalLayout);
-                } else {
-                    Utils.viewSnackBar(getString(R.string.error_dont_save_photo), principalLayout);
-                }
+                    protected String doInBackground(Void... params) {
+
+                        //save the picture inmemory device, and return the physical path of this photo
+                        String path = magicalCamera.savePhotoInMemoryDevice(magicalCamera.getPhoto(),
+                                Utils.getSharedPreference(activity, Utils.C_PREFERENCE_MC_PHOTO_NAME),
+                                Utils.getSharedPreference(activity, Utils.C_PREFERENCE_MC_DIRECTORY_NAME),
+                                Utils.getFormat(activity),
+                                Boolean.parseBoolean(Utils.getSharedPreference(activity, Utils.C_PREFERENCE_MC_AUTO_IC_NAME)));
+                        if (path != null) {
+                            Utils.viewSnackBar(getString(R.string.message_save_manual) + path, principalLayout);
+                        } else {
+                            Utils.viewSnackBar(getString(R.string.error_dont_save_photo), principalLayout);
+                        }
+
+                        return null;
+                    }
+
+                    protected void onPostExecute(String msg) {
+                        progressLoadingIndicator.setVisibility(View.GONE);
+                    }
+                }.execute();
             }
+        }
+    }
+
+    //verify if the permission is active
+    private boolean isActivePermission(String permission) {
+        //this map is return in method onRequestPermissionsResult for view what permissions are actives
+        if (android.os.Build.VERSION.SDK_INT >= 23) {
+            if (mapPermissions != null) {
+                if (mapPermissions.size() > 0) {
+                    //obtain the code of camera permissions
+                    return mapPermissions.get(permission);
+                } else {
+                    return true;
+                }
+            } else {
+                return true;
+            }
+        } else {
+            return true;
         }
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        Map<String, Boolean> map = magicalPermissions.permissionResult(requestCode, permissions, grantResults);
+        mapPermissions = magicalPermissions.permissionResult(requestCode, permissions, grantResults);
 
-        for (String permission : map.keySet()) {
-            Log.d("PERMISSIONS", permission + " was: " + map.get(permission));
+        for (String permission : mapPermissions.keySet()) {
+            Log.d("PERMISSIONS", permission + " was: " + mapPermissions.get(permission));
         }
     }
 
@@ -342,7 +529,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_shared:
-                sharedApp();
+                Utils.sharedApp(this);
                 break;
 
             case R.id.menu_setting:
@@ -358,25 +545,20 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.menu_donate:
-                Utils.goToWebView(getString(R.string.link_donate), MainActivity.this);
+                //Utils.goToWebView(getString(R.string.link_donate), MainActivity.this);
+                startActivity(new Intent(MainActivity.this, HelpUsActivity.class));
                 break;
 
             case R.id.menu_todo:
                 Utils.goToWebView(getString(R.string.link_todo), MainActivity.this);
                 break;
 
-            case R.id.menu_feedback:
-                startActivity(new Intent(MainActivity.this, FeedbacksActivity.class));
-                break;
-
             case R.id.menu_documentation:
                 Utils.goToWebView(getString(R.string.link_documentation), MainActivity.this);
                 break;
 
-            case R.id.menu_terms_and_conditions:
-                //http://drive.google.com/viewerng/viewer?embedded=true&
-                // //url=https://drive.google.com/file/d/0B0NuDXZebVUGMVFpc2FsZFEwYmM/view?usp=sharing
-                Utils.goToWebView(getString(R.string.link_terms_and_conditions), MainActivity.this);
+            case R.id.menu_hire_us:
+                startActivity(new Intent(MainActivity.this, HireUsActivity.class));
                 break;
 
             default:
@@ -399,24 +581,11 @@ public class MainActivity extends AppCompatActivity {
         frame = (FrameLayout) findViewById(R.id.frame);
         principalLayout = findViewById(R.id.principalLayout);
         floatingBtnMenu = (FloatingActionMenu) findViewById(R.id.floatingBtnMenu);
+        progressLoadingIndicator = (LinearLayout) findViewById(R.id.progressLoadingIndicator);
 
         floatingBtnMenu.setVisibility(View.GONE);
         saveImage.setVisibility(View.GONE);
         btnGoTo.setText(getString(R.string.go_to_fragment));
         texttitle.setText(getString(R.string.title_activity));
-    }
-
-    private void sharedApp() {
-        Intent shareIntent = new Intent();
-        String textEmail = getString(R.string.email_text);
-        textEmail = textEmail.replace("XXXX1", getString(R.string.link_git));
-        textEmail = textEmail.replace("XXXX2", getString(R.string.link_play_store));
-
-        shareIntent.setAction(Intent.ACTION_SEND);
-        shareIntent.setType("text/plain");
-        shareIntent.putExtra(Intent.EXTRA_TEXT, textEmail);
-        shareIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.email_subject));
-        shareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(Intent.createChooser(shareIntent, getString(R.string.email_title)));
     }
 }

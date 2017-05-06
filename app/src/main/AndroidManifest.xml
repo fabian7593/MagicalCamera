@@ -54,9 +54,16 @@
         </activity>
 
         <activity
-            android:name=".Activities.FeedbacksActivity"
+            android:name=".Activities.HelpUsActivity"
             android:label="@string/app_name"
             android:configChanges="orientation|screenSize">
+        </activity>
+
+        <activity
+            android:name=".Activities.HireUs.HireUsActivity"
+            android:label="@string/app_name"
+            android:configChanges="orientation|screenSize"
+            android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
         <activity

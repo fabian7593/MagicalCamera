@@ -1,0 +1,58 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+
+    <Button
+        android:id="@+id/bffffRetry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+       android:layout_alignParentBottom="true"
+        android:text="Retry"/>
+
+    <ImageView
+        android:id="@+id/ivSecondImageCus"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/ic_fragment_1_contact_us_2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="100dp">
+
+
+
+        <ImageView
+            android:id="@+id/ivThirdImageCus"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_fragment_1_contact_us_3"/>
+
+        <ImageView
+            android:id="@+id/ivFifthImageCus"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_fragment_1_contact_us_5"/>
+
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</RelativeLayout>

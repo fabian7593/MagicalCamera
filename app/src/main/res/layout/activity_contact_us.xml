@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorWhite">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/normal_margin"
+                android:layout_marginTop="@dimen/normal_margin"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:text="@string/contact_us_title"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:layout_marginTop="@dimen/normal_margin_x2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:lines="4"
+                android:maxLines="4"
+                android:text="@string/contact_us"
+                android:textColor="@color/colorBlack"
+                android:textSize="12sp"
+                android:layout_margin="10dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

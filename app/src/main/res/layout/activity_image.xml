@@ -7,7 +7,10 @@
     <ImageView
         android:id="@+id/bigImageView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:layout_centerInParent="true"
+        android:adjustViewBounds="true"/>
 
     <Button
         android:id="@+id/btnChangeSize"
@@ -18,5 +21,7 @@
         android:text="@string/image_down_quality"
         style="@style/buttonStyle"
         android:textSize="18sp"/>
+
+    <include layout="@layout/progress_dialog" />
 
 </RelativeLayout>

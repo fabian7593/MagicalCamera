@@ -3,6 +3,7 @@
 
     <string name="hello_world">Hola mundo!</string>
     <string name="action_settings">Configuración</string>
+    <string name="progress_loading">Cargando...</string>
 
     <!-- menu photos-->
     <string name="face_recognition">Reconocimineto facial</string>
@@ -20,19 +21,21 @@
     <!-- Menu -->
     <string name="menu_shared">Compartir</string>
     <string name="menu_about">Acerca de Desarrolladores</string>
-    <string name="menu_settings">onfiguración</string>
+    <string name="menu_settings">Configuración</string>
     <string name="menu_github">Github</string>
-    <string name="menu_donation">Donaciones</string>
+    <string name="menu_donation">Ayúdanos</string>
     <string name="menu_documentation">Documentación</string>
     <string name="menu_todo_list">Siguientes tareas</string>
     <string name="menu_terms_conditions">Términos y condiciones</string>
+    <string name="menu_hire_us">Contáctenos</string>
 
     <!-- Links -->
     <string name="link_git">https://github.com/fabian7593/MagicalCamera</string>
-    <string name="link_donate">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=L25MKCRPR7TWY</string>
+    <!--<string name="link_donate">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=L25MKCRPR7TWY</string>-->
     <string name="link_todo">https://github.com/fabian7593/MagicalCamera/projects/1</string>
     <string name="link_documentation">https://github.com/fabian7593/MagicalCamera/blob/master/README.md</string>
     <string name="link_play_store">https://play.google.com/store/apps/details?id=com.frosquivel.examplemagicalcamera</string>
+    <string name="link_play_store_payment">https://play.google.com/store/apps/details?id=com.frosquivel.examplemagicalcamerapay</string>
     <string name="link_terms_and_conditions">https://drive.google.com/file/d/0B0NuDXZebVUGMVFpc2FsZFEwYmM/view</string>
 
     <!-- About Developers -->
@@ -55,7 +58,7 @@
     <string name="message_save_manual">La foto a sido guardada manualmente en el dispositivo, por favor revisa la siguiente ruta:</string>
     <string name="message_see_photo_information">Ver la información de la imágen.</string>
     <string name="convert_to_string_base_64_title">Ver el string en base 64, solo muestra una longitud de 300 carácteres para este ejemplo.</string>
-    <string name="convert_to_string_base_64">Convert to String base 64</string>
+    <string name="convert_to_string_base_64">Convertir a String Base64</string>
     <string name="message_ok">Aceptar</string>
 
     <!-- Information Data -->
@@ -72,10 +75,24 @@
     <string name="info_data_make_company">Compañia del dispositivo: </string>
     <string name="info_data_model_device">Modelo de dispositivo: </string>
 
+    <string name="help_us_text">Puedes ayudar de distintas maneras, \n para continuar realizando librerías OpenSource (para Android e iOS):</string>
+    <string name="help_us_option_1"><b>1. Donación.</b> Este método de ayuda puede realizarlo en:</string>
+    <string name="help_us_option_1_1">   * La página de github en la sección How to start > Donate.</string>
+    <string name="help_us_option_1_2">   * Comprar la aplicación MagicalCamera (donate) en play store por un dólar.</string>
+    <string name="help_us_option_2"><b>2.</b> Comparte con tus amigos.</string>
+    <string name="help_us_option_3"><b>3.</b> Dar me gusta y suscribirse al canal de youtube de Frosquivel Developer.</string>
+    <string name="help_us_option_4"><b>4.</b> Realizar Fork y dar una estrella en github.</string>
+    <string name="help_us_option_5"><b>5.</b> Si tienes alguna idea para una librería OpenSource o para agregar a Magical Camera comuníquese al correo fabian7593@gmail.com.</string>
+
+    <string name="contact_us_title">Contácteme</string>
+    <string name="contact_us">Soy especialista en desarrollo Mobile (Android / iOS nativo), si necesitas contratarme, contácteme al correo fabian7593@gmail.com</string>
+
+
     <!-- Email -->
     <string name="email_subject">MagicalCamera 5.0.5 Librería de Android</string>
+    <string name="email_choose">Elegir correo cliente</string>
     <string name="email_title">Compartir MagicalCamera</string>
-    <string name="email_text">Hola nosotros somos MagicalCamera, \n\n Quiero compartir con vos ésta increíble librería, para usar de una manera simple la cámara en Android nativo. \n\n Ésta es la mejor librería openSource de este tema. \n\n Puedes ver la librería en. \n XXXX1 \n\n Y descargar la aplicación aquí: \n XXXX2</string>
+    <string name="email_text">Hola somos los desarrolladores de MagicalCamera, \n\n Querémos compartir con usted ésta increíble librería, MagicalCamera, para usar de una manera simple la cámara en Android nativo. \n\n Ésta es la mejor librería openSource de este tema. \n\n Puedes ver la librería en. \n XXXX1 \n\n Y descargar la aplicación aquí: \n XXXX2 \n\n Y si puedes descargar la aplicación paga, nosotros estaremos muy agradecidos \n ver aquí: XXXX3</string>
 
     <!-- values preference -->
     <string name="value_directory_name">Magical Camera</string>
@@ -100,22 +117,33 @@
     <string name="shared_change_color">Cambiar Color</string>
     <string name="shared_hexadecimal_color">Color de línea reconocimiento facial</string>
     <string name="image_down_quality">Presione para bajar la calidad del Bitmap en tiempo real</string>
-
     <string name="shared_preference_extension_png">PNG</string>
     <string name="shared_preference_extension_jpg">JPEG</string>
     <string name="shared_preference_extension_webp">WEBP</string>
+
+    <!-- Hire Us -->
+    <string name="hire_us_first_fragment">Hola, Soy Fabián Rosales, haz clic en un ícono para contactarme, o deslice su dedo para ver más.</string>
+    <string name="hire_us_second_fragment">Programación de aplicaciones para dispositivos móviles...</string>
+    <string name="hire_us_third_fragment">Programación iOS y Android 100% nativo... ;)</string>
+    <string name="hire_us_fourth_fragment">Tecnologías en la nube...</string>
+    <string name="hire_us_fifth_fragment">Programación de aplicaciones Web...</string>
+    <string name="hire_us_sixth_fragment">Gráficos, informes y análisis.</string>
 
     <!-- errors -->
     <string name="error">Error!</string>
     <string name="error_image_null">Tu imágen es null, por favor seleccione o tome una.</string>
     <string name="error_not_connect">No puede conectarse</string>
+    <string name="error_not_have_permissions">No tiene los permisos para utilizar está funcionalidad, porfavor, acepte los permisos</string>
     <string name="error_not_save_feedback">No pudiste enviar el mensaje, por favor intente más tarde.</string>
     <string name="error_init_magicalcamera">Por favor inicie MagicalCamera, en un context static para usarlo en todo el activity.</string>
     <string name="error_not_have_data">No tienes datos que mostrar, porque la ruta es incorrecta, guarda tu foto primeramente.</string>
     <string name="error_dont_save_photo">Lo siento, su foto no pudo guardarse en el dispositivo, por favor asegurese que tiene activos los permisos de lectura y escritura.</string>
     <string name="error_not_detect_face">La librería no detecta ningún rostro en la fotografía</string>
+    <string name="error_not_open_messenger">No se puede abrir Facebook Messenger</string>
+    <string name="error_not_open_linkedin">No se puede abrir LinkedIn</string>
+    <string name="error_not_open_youtube">YNo se puede abrir YouTube</string>
     <string name="error_string_base_64">El String en base 64 es muy lento por favor intente de nuevo con un bitmap de menor tamaño.</string>
-    <string name="note_fragment">NOTA: Este cambio es solo reflejado en el ejemplo de Activity. El ejemplo de Fragments, siempre tiene la configuración básica.</string>
+    <string name="note_fragment">NOTA: Este cambio es solo reflejado en el ejemplo de Activity. El ejemplo de Fragments, siempre tiene la configuración básica, y no fue realizado con AsyncTask, para mantener la simplicidad del ejemplo.</string>
 
     <string name="feedback">Críticas</string>
     <string name="feedback_save">Guardar</string>
