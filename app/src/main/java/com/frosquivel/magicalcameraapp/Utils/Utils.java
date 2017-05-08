@@ -211,7 +211,7 @@ public class Utils {
         String textEmail = activity.getString(R.string.email_text);
         textEmail = textEmail.replace("XXXX1", activity.getString(R.string.link_git));
         textEmail = textEmail.replace("XXXX2", activity.getString(R.string.link_play_store));
-        textEmail = textEmail.replace("XXXX3", activity.getString(R.string.link_play_store));
+        textEmail = textEmail.replace("XXXX3", activity.getString(R.string.link_play_store_payment));
 
         shareIntent.setAction(Intent.ACTION_SEND);
         shareIntent.setType("text/plain");
