@@ -1,4 +1,4 @@
-package com.frosquivel.examplemagicalcamera.Fragments;
+package com.frosquivel.magicalcameraapp.Fragments;
 import android.Manifest;
 import android.app.Activity;
 import android.app.Fragment;
@@ -16,9 +16,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.frosquivel.examplemagicalcamera.Activities.ImageViewActivity;
-import com.frosquivel.examplemagicalcamera.R;
-import com.frosquivel.examplemagicalcamera.Utils.Utils;
+import com.frosquivel.magicalcameraapp.Activities.ImageViewActivity;
+import com.frosquivel.magicalcameraapp.R;
+import com.frosquivel.magicalcameraapp.Utils.Utils;
 import com.frosquivel.magicalcamera.MagicalCamera;
 import com.frosquivel.magicalcamera.MagicalPermissions;
 import com.frosquivel.magicalcamera.Utilities.ConvertSimpleImage;

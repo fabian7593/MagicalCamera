@@ -1,4 +1,4 @@
-package com.frosquivel.examplemagicalcamera.Activities;
+package com.frosquivel.magicalcameraapp.Activities;
 /*
 Copyright 2012 Lars Werkman
 
@@ -30,8 +30,8 @@ import android.widget.TextView;
 
 import com.afollestad.materialdialogs.DialogAction;
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.frosquivel.examplemagicalcamera.R;
-import com.frosquivel.examplemagicalcamera.Utils.Utils;
+import com.frosquivel.magicalcameraapp.R;
+import com.frosquivel.magicalcameraapp.Utils.Utils;
 import com.larswerkman.holocolorpicker.ColorPicker;
 import com.larswerkman.holocolorpicker.OpacityBar;
 import com.larswerkman.holocolorpicker.SVBar;

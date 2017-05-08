@@ -1,12 +1,12 @@
-package com.frosquivel.examplemagicalcamera.Activities;
+package com.frosquivel.magicalcameraapp.Activities.Menu;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.frosquivel.examplemagicalcamera.R;
-import com.frosquivel.examplemagicalcamera.Utils.Utils;
+import com.frosquivel.magicalcameraapp.R;
+import com.frosquivel.magicalcameraapp.Utils.Utils;
 
 /**
  * Created by Fabian on 30/03/2017.

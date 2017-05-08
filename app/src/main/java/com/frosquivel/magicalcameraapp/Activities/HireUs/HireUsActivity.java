@@ -1,9 +1,9 @@
-package com.frosquivel.examplemagicalcamera.Activities.HireUs;
+package com.frosquivel.magicalcameraapp.Activities.HireUs;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import com.frosquivel.examplemagicalcamera.R;
+import com.frosquivel.magicalcameraapp.R;
 import com.github.paolorotolo.appintro.AppIntro2;
 
 /**

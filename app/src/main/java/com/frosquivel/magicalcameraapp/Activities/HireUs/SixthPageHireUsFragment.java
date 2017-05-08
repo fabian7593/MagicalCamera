@@ -1,6 +1,5 @@
-package com.frosquivel.examplemagicalcamera.Activities.HireUs;
+package com.frosquivel.magicalcameraapp.Activities.HireUs;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
@@ -9,21 +8,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.frosquivel.examplemagicalcamera.R;
+import com.frosquivel.magicalcameraapp.R;
 import com.github.paolorotolo.appintro.ISlideBackgroundColorHolder;
 
 /**
  * Created by Fabian on 05/05/2017.
  */
 
-public class FourthPageHireUsFragment extends Fragment implements ISlideBackgroundColorHolder {
+public class SixthPageHireUsFragment extends Fragment implements ISlideBackgroundColorHolder {
 
-    private static final String ARG_LAYOUT_RES_ID = "fragment_hire_us_fourth_page";
+    private static final String ARG_LAYOUT_RES_ID = "fragment_hire_us_sixth_page";
     private int layoutResId;
     private View rootView;
 
-    public static FourthPageHireUsFragment newInstance(int layoutResId) {
-        FourthPageHireUsFragment sampleSlide = new FourthPageHireUsFragment();
+    public static SixthPageHireUsFragment newInstance(int layoutResId) {
+        SixthPageHireUsFragment sampleSlide = new SixthPageHireUsFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_LAYOUT_RES_ID, layoutResId);
         sampleSlide.setArguments(args);
@@ -43,14 +42,14 @@ public class FourthPageHireUsFragment extends Fragment implements ISlideBackgrou
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(layoutResId, container, false);
-        rootView.setBackgroundColor(getResources().getColor(R.color.colorFourthFragment));
+        rootView.setBackgroundColor(getResources().getColor(R.color.colorSixthFragment));
         return rootView;
     }
 
     @Override
     public int getDefaultBackgroundColor() {
         // Return the default background color of the slide.
-        return getResources().getColor(R.color.colorFourthFragment);
+        return getResources().getColor(R.color.colorSixthFragment);
     }
 
     @Override

@@ -1,6 +1,5 @@
-package com.frosquivel.examplemagicalcamera.Activities.HireUs;
+package com.frosquivel.magicalcameraapp.Activities.HireUs;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
@@ -9,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.frosquivel.examplemagicalcamera.R;
+import com.frosquivel.magicalcameraapp.R;
 import com.github.paolorotolo.appintro.ISlideBackgroundColorHolder;
 
 /**

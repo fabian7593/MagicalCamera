@@ -1,4 +1,4 @@
-package com.frosquivel.examplemagicalcamera.Activities;
+package com.frosquivel.magicalcameraapp.Activities;
 
 import android.app.Activity;
 import android.os.AsyncTask;
@@ -8,8 +8,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.frosquivel.examplemagicalcamera.R;
-import com.frosquivel.examplemagicalcamera.Utils.Utils;
+import com.frosquivel.magicalcameraapp.R;
+import com.frosquivel.magicalcameraapp.Utils.Utils;
 import com.frosquivel.magicalcamera.MagicalCamera;
 import com.frosquivel.magicalcamera.Utilities.ConvertSimpleImage;
 

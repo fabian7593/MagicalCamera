@@ -1,4 +1,4 @@
-package com.frosquivel.examplemagicalcamera.Activities;
+package com.frosquivel.magicalcameraapp.Activities;
 
 /*
     Copyright 2015 Dmytro Tarianyk
@@ -66,10 +66,12 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.afollestad.materialdialogs.MaterialDialog;
-import com.frosquivel.examplemagicalcamera.Activities.HireUs.HireUsActivity;
-import com.frosquivel.examplemagicalcamera.Fragments.ActivityForFragment;
-import com.frosquivel.examplemagicalcamera.R;
-import com.frosquivel.examplemagicalcamera.Utils.Utils;
+import com.frosquivel.magicalcameraapp.Activities.HireUs.HireUsActivity;
+import com.frosquivel.magicalcameraapp.Activities.Menu.AboutUsActivity;
+import com.frosquivel.magicalcameraapp.Activities.Menu.HelpUsActivity;
+import com.frosquivel.magicalcameraapp.Fragments.ActivityForFragment;
+import com.frosquivel.magicalcameraapp.R;
+import com.frosquivel.magicalcameraapp.Utils.Utils;
 import com.frosquivel.magicalcamera.MagicalCamera;
 import com.frosquivel.magicalcamera.MagicalPermissions;
 import com.frosquivel.magicalcamera.Utilities.ConvertSimpleImage;
@@ -269,6 +271,11 @@ public class MainActivity extends AppCompatActivity {
         floatingBtnFacialRecognition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
+
+
                 if (Utils.validateMagicalCameraNull(MainActivity.this, principalLayout, magicalCamera)) {
 
                     new AsyncTask<Void, Void, String>() {
@@ -555,6 +562,7 @@ public class MainActivity extends AppCompatActivity {
 
             case R.id.menu_documentation:
                 Utils.goToWebView(getString(R.string.link_documentation), MainActivity.this);
+                //startActivity(new Intent(MainActivity.this, MarkDownReadMeActivity.class));
                 break;
 
             case R.id.menu_hire_us:

@@ -1,4 +1,4 @@
-package com.frosquivel.examplemagicalcamera.Activities;
+package com.frosquivel.magicalcameraapp.Activities.Menu;
 /*
 The MIT License (MIT)
 
@@ -27,8 +27,9 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.daimajia.androidanimations.library.Techniques;
-import com.frosquivel.examplemagicalcamera.R;
-import com.frosquivel.examplemagicalcamera.Utils.Utils;
+import com.frosquivel.magicalcameraapp.Activities.MainActivity;
+import com.frosquivel.magicalcameraapp.R;
+import com.frosquivel.magicalcameraapp.Utils.Utils;
 import com.viksaa.sssplash.lib.activity.AwesomeSplash;
 import com.viksaa.sssplash.lib.cnst.Flags;
 import com.viksaa.sssplash.lib.model.ConfigSplash;
@@ -73,7 +74,6 @@ public class SplashActivity extends AwesomeSplash {
         configSplash.setTitleTextSize(25f); //float value
         configSplash.setAnimTitleDuration(2000);
         configSplash.setAnimTitleTechnique(Techniques.DropOut);
-        //configSplash.setTitleFont(ConstantsUtils.FONT_PATH); //provide string to your font located in assets/fonts/
     }
 
     @Override

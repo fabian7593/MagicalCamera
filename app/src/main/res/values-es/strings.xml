@@ -34,8 +34,8 @@
     <!--<string name="link_donate">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=L25MKCRPR7TWY</string>-->
     <string name="link_todo">https://github.com/fabian7593/MagicalCamera/projects/1</string>
     <string name="link_documentation">https://github.com/fabian7593/MagicalCamera/blob/master/README.md</string>
-    <string name="link_play_store">https://play.google.com/store/apps/details?id=com.frosquivel.examplemagicalcamera</string>
-    <string name="link_play_store_payment">https://play.google.com/store/apps/details?id=com.frosquivel.examplemagicalcamerapay</string>
+    <string name="link_play_store">https://play.google.com/store/apps/details?id=com.frosquivel.magicalcameraapp</string>
+    <string name="link_play_store_payment">https://play.google.com/store/apps/details?id=com.frosquivel.magicalcamerapayapp</string>
     <string name="link_terms_and_conditions">https://drive.google.com/file/d/0B0NuDXZebVUGMVFpc2FsZFEwYmM/view</string>
 
     <!-- About Developers -->
@@ -92,7 +92,7 @@
     <string name="email_subject">MagicalCamera 5.0.5 Librería de Android</string>
     <string name="email_choose">Elegir correo cliente</string>
     <string name="email_title">Compartir MagicalCamera</string>
-    <string name="email_text">Hola somos los desarrolladores de MagicalCamera, \n\n Querémos compartir con usted ésta increíble librería, MagicalCamera, para usar de una manera simple la cámara en Android nativo. \n\n Ésta es la mejor librería openSource de este tema. \n\n Puedes ver la librería en. \n XXXX1 \n\n Y descargar la aplicación aquí: \n XXXX2 \n\n Y si puedes descargar la aplicación paga, nosotros estaremos muy agradecidos \n ver aquí: XXXX3</string>
+    <string name="email_text">Hola somos los desarrolladores de MagicalCamera, \n\n Querémos compartir con usted ésta librería, MagicalCamera, para usar de una manera simple la cámara en Android nativo. \n\n Puedes ver la librería en. \n XXXX1 \n\n Y descargar la aplicación aquí: \n XXXX2 \n\n Y si puedes descargar la aplicación paga, nosotros estaremos muy agradecidos \n ver aquí: XXXX3</string>
 
     <!-- values preference -->
     <string name="value_directory_name">Magical Camera</string>

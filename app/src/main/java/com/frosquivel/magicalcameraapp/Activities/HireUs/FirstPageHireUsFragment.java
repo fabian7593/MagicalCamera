@@ -1,12 +1,6 @@
-package com.frosquivel.examplemagicalcamera.Activities.HireUs;
+package com.frosquivel.magicalcameraapp.Activities.HireUs;
 
 import android.app.Activity;
-import android.content.ContentUris;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
-import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
@@ -15,13 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.frosquivel.examplemagicalcamera.R;
-import com.frosquivel.examplemagicalcamera.Utils.Utils;
+import com.frosquivel.magicalcameraapp.R;
+import com.frosquivel.magicalcameraapp.Utils.Utils;
 import com.github.paolorotolo.appintro.ISlideBackgroundColorHolder;
-
-import java.util.List;
 
 /**
  * Created by Fabian on 04/05/2017.

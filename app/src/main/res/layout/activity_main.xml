@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorWhite"
     android:orientation="vertical"
-    tools:context=".Activities.MainActivity">
+    tools:context="com.frosquivel.magicalcameraapp.Activities.MainActivity">
 
     <ScrollView
         android:layout_width="match_parent"

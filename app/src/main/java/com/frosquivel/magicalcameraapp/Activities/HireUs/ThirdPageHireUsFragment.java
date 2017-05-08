@@ -1,6 +1,5 @@
-package com.frosquivel.examplemagicalcamera.Activities.HireUs;
+package com.frosquivel.magicalcameraapp.Activities.HireUs;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.annotation.Nullable;
@@ -9,30 +8,32 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.frosquivel.examplemagicalcamera.R;
+import com.frosquivel.magicalcameraapp.R;
 import com.github.paolorotolo.appintro.ISlideBackgroundColorHolder;
 
 /**
- * Created by Fabian on 05/05/2017.
+ * Created by Fabian on 04/05/2017.
  */
 
-public class SixthPageHireUsFragment extends Fragment implements ISlideBackgroundColorHolder {
-
-    private static final String ARG_LAYOUT_RES_ID = "fragment_hire_us_sixth_page";
+public class ThirdPageHireUsFragment extends Fragment implements ISlideBackgroundColorHolder {
+    private static final String ARG_LAYOUT_RES_ID = "fragment_hire_us_third_page";
     private int layoutResId;
     private View rootView;
 
-    public static SixthPageHireUsFragment newInstance(int layoutResId) {
-        SixthPageHireUsFragment sampleSlide = new SixthPageHireUsFragment();
+    public static ThirdPageHireUsFragment newInstance(int layoutResId) {
+        ThirdPageHireUsFragment sampleSlide = new ThirdPageHireUsFragment();
+
         Bundle args = new Bundle();
         args.putInt(ARG_LAYOUT_RES_ID, layoutResId);
         sampleSlide.setArguments(args);
+
         return sampleSlide;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         if (getArguments() != null && getArguments().containsKey(ARG_LAYOUT_RES_ID)) {
             layoutResId = getArguments().getInt(ARG_LAYOUT_RES_ID);
         }
@@ -43,14 +44,14 @@ public class SixthPageHireUsFragment extends Fragment implements ISlideBackgroun
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         rootView = inflater.inflate(layoutResId, container, false);
-        rootView.setBackgroundColor(getResources().getColor(R.color.colorSixthFragment));
+        rootView.setBackgroundColor(getResources().getColor(R.color.colorThirdFragment));
         return rootView;
     }
 
     @Override
     public int getDefaultBackgroundColor() {
         // Return the default background color of the slide.
-        return getResources().getColor(R.color.colorSixthFragment);
+        return getResources().getColor(R.color.colorThirdFragment);
     }
 
     @Override

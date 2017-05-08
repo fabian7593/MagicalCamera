@@ -34,8 +34,8 @@
     <!--<string name="link_donate">https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=L25MKCRPR7TWY</string>-->
     <string name="link_todo">https://github.com/fabian7593/MagicalCamera/projects/1</string>
     <string name="link_documentation">https://github.com/fabian7593/MagicalCamera/blob/master/README.md</string>
-    <string name="link_play_store">https://play.google.com/store/apps/details?id=com.frosquivel.examplemagicalcamera</string>
-    <string name="link_play_store_payment">https://play.google.com/store/apps/details?id=com.frosquivel.examplemagicalcamerapay</string>
+    <string name="link_play_store">https://play.google.com/store/apps/details?id=com.frosquivel.magicalcameraapp</string>
+    <string name="link_play_store_payment">https://play.google.com/store/apps/details?id=com.frosquivel.magicalcamerapayapp</string>
     <string name="link_terms_and_conditions">https://drive.google.com/file/d/0B0NuDXZebVUGMVFpc2FsZFEwYmM/view</string>
 
 
@@ -76,7 +76,15 @@
     <string name="info_data_make_company">Make company: </string>
     <string name="info_data_model_device">Model Device: </string>
 
-    <string name="help_us_text">You can help me of differents ways, \n for continue to make open source libraries (for Android and iOS): \n\n 1. Donate: The methods of help us is: \n           ºIn the github page in section How to start > Donate. \n           ºBuy the 1 dollar app in play store. \n 2. Shared with your friends. \n 3. Like and suscribe in youtube channel Frosquivel Developer. \n 4. Fork and give a star in github. \n 5. If you have any new ideas for open source libraries, or magical camera contact me in fabian7593@gmail.com.</string>
+    <string name="help_us_text">You can help me of differents ways, \n for continue to make open source libraries (for Android and iOS):</string>
+    <string name="help_us_option_1"><b>1. Donation.</b> You can realize a donation in</string>
+    <string name="help_us_option_1_1">   * The github page in the section How to start > Donate.</string>
+    <string name="help_us_option_1_2">   * buy the app MagicalCamera (donate) in play store for only $1</string>
+    <string name="help_us_option_2"><b>2.</b> Share with your friends.</string>
+    <string name="help_us_option_3"><b>3.</b> Give like and suscribe to youtube channel Frosquivel Developer.</string>
+    <string name="help_us_option_4"><b>4.</b> Realize Fork and give an star in github.</string>
+    <string name="help_us_option_5"><b>5.</b> If you have an idea for a open spurce library or for add into magical camera please contact me to mail, fabian7593@gmail.com.</string>
+
 
     <string name="contact_us_title">Contact me</string>
     <string name="contact_us">Im specialist in mobile develop (IOS / Android native), if you need to hire me, contact me by fabian7593@gmail.com</string>
@@ -85,7 +93,7 @@
     <string name="email_subject">MagicalCamera 5.0.5 Android Library</string>
     <string name="email_choose">Choose Email Client</string>
     <string name="email_title">Share MagicalCamera</string>
-    <string name="email_text">Hello We are the developers of MagicalCamera library, \n\n we want to share with you this awesome library, MagicalCamera, for use the camera photos/pictures of android native. \n\n This is the best library Open source of this subject. \n\n View this library here. \n XXXX1 \n\n And download the app here: \n XXXX2, \n\n And if you have the possibility to buy the Payment app, we will be very grateful, you can see here: \n XXXX3</string>
+    <string name="email_text">Hello We are the developers of MagicalCamera library, \n\n we want to share with you this library, MagicalCamera, for use the camera photos/pictures of android native. \n\n View this library here. \n XXXX1 \n\n And download the app here: \n XXXX2, \n\n And if you have the possibility to buy the Payment app, we will be very grateful, you can see here: \n XXXX3</string>
 
     <!-- values preference -->
     <string name="value_directory_name">Magical Camera</string>

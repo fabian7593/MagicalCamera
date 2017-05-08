@@ -1,4 +1,4 @@
-package com.frosquivel.examplemagicalcamera.Utils;
+package com.frosquivel.magicalcameraapp.Utils;
 
 import android.app.Activity;
 import android.content.ContentUris;
@@ -12,8 +12,8 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.frosquivel.examplemagicalcamera.R;
-import com.frosquivel.examplemagicalcamera.Activities.WebViewActivity;
+import com.frosquivel.magicalcameraapp.R;
+import com.frosquivel.magicalcameraapp.Activities.Menu.WebViewActivity;
 import com.frosquivel.magicalcamera.MagicalCamera;
 
 /**
