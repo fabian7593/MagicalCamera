@@ -19,7 +19,7 @@ A Magic library to take photos and select pictures in Android. In a simple way a
 - [Other Features](#other-features)
 
 ### Donate
-- [Buy me a Coffee](#donate)
+- [Donate](#donate)
 ### How to Start
 - - -
 - [Getting Started](#getting-started)
