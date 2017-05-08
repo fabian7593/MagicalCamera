@@ -18,7 +18,7 @@ A Magic library to take photos and select pictures in Android. In a simple way a
 - [Features MagicalCamera](#features-magicalcamera)
 - [Other Features](#other-features)
 
-### Donate
+### Buy me a Coffee (Donate)
 - [Donate](#donate)
 ### How to Start
 - - -
