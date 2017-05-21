@@ -324,7 +324,7 @@ As you can see MagicalCamera is working together MagicalPermissions so you don't
 <br>
 
 ### Save Photo in Memory Devices
-This method save your bitmap in internal memory device or if the internal memory is full this library save in sdcard (if you have anything :'D)
+This method save your bitmap in internal memory device or if the internal memory is full this library save in sdcard (if you have anything)
 This method have a lot of params that you can need to use the library:
 * **Bitmap:** This is the bitmap that you need to save in memory device.
 * **PhotoName:** The name of the photo
