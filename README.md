@@ -54,7 +54,7 @@ A Magic library to take photos and select pictures in Android. In a simple way a
   - [Preview of Example](#preview-of-example)
   - [Application that use MagicalCamera](#application-that-use-magicalcamera)
   - [Suggestions](#suggestions)
-- [Contributors](#contributors) 
+- [Credits and contributors](#credits-and-contributors) 
   - [Contributors are welcome](#contributors-are-welcome)
 - [Video Explanation](#video) 
 - [Apache License](#license) 
@@ -565,12 +565,20 @@ MagicalCamera was created to make Android Devoloper's life easy. If you have any
 Suggestions about how to improve the library or new features are welcome. Thanks for choosing us.
 <br><br>
 
-## Contributors
+## Credits and Contributors
 
-### [Fabián Rosales](https://github.com/fabian7593)
-**MagicalCamera Creator (Frosquivel developer)**
-A magical camera creator, I do the take camera, select photo, rotate picture, convert bitmap, facial recognition, save picture, get information and others...
+**Author**
+### [Fabián Rosales - Frosquivel Developer](https://github.com/fabian7593) : 
+A magical camera author, I do the take camera, select photo, rotate picture, convert bitmap, facial recognition, save picture, get information and others...
 
+[![alt tag](https://raw.githubusercontent.com/fabian7593/CountryAPI/master/Files/imgsReadme/github-logo.png)](https://github.com/fabian7593)
+[![alt tag](https://raw.githubusercontent.com/fabian7593/CountryAPI/master/Files/imgsReadme/facebook.png)](https://www.facebook.com/fabian.rosales.509)
+[![alt tag](https://raw.githubusercontent.com/fabian7593/CountryAPI/master/Files/imgsReadme/linkedin.png)](https://www.linkedin.com/in/fabian-rosales-esquivel-698893106/)
+[![alt tag](https://raw.githubusercontent.com/fabian7593/CountryAPI/master/Files/imgsReadme/youtube.png)](https://www.youtube.com/channel/UCJnvvHb_vwMwbnZWplkHIfw)
+
+<br>
+
+**Contributors**
 ### [Erick Navarro](https://github.com/cutiko)
 **MagicalCamera Contributor (Cutiko)**
 Erick Add a best usage of google play library, and he develop the better usage of permissions, and an excellent code refactor for permission class and other components.
