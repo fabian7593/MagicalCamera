@@ -114,9 +114,7 @@ git clone https://github.com/fabian7593/MagicalCamera.git
 Download from [Here](https://github.com/fabian7593/MagicalCamera/zipball/master)
 
 Another type download by Bintray from    [ ![Download](https://api.bintray.com/packages/fabian7593/maven/MagicalCamera/images/download.svg) ](https://bintray.com/fabian7593/maven/MagicalCamera/_latestVersion)
- 
- Give me a question in [![Codewake](https://www.codewake.com/badges/ask_question.svg)](https://www.codewake.com/p/magicalcamera)
- 
+
  <br>
  
 ## Setup
