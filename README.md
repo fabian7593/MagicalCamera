@@ -1,4 +1,4 @@
-[![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/Images/cameraHighQ.png)](https://github.com/fabian7593/MagicalCamera)
+[![alt tag](https://raw.githubusercontent.com/fabian7593/MagicalCamera/master/Images/cameraHighQ.png)](https://github.com/fabian7593/MagicalCamera)
 
 A Magic library to take photos and select pictures in Android. In a simple way and if you need it also save the pictures in device, and facial recognition, get the real uri path or the photo or obtain the private information of the picture.
 <br>
@@ -20,6 +20,7 @@ A Magic library to take photos and select pictures in Android. In a simple way a
 
 ### Buy me a Coffee (Donate)
 - [Donate](#donate)
+
 ### How to Start
 - - -
 - [Getting Started](#getting-started)
@@ -444,7 +445,7 @@ if(magicalCamera != null){
 The photo and bitmap converted is like to:
 <br>
 
-![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/Images/faceDetection2.png)
+![alt tag](https://raw.githubusercontent.com/fabian7593/MagicalCamera/master/Images/faceDetection2.png)
 
 
 ### Private information Photo:
@@ -531,7 +532,7 @@ You need to write this code for example:
 See the example of this infomartion return:
 <br>
 
-![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/Images/information2.png)
+![alt tag](https://raw.githubusercontent.com/fabian7593/MagicalCamera/master/Images/information2.png)
 
 <br><br><br>
 
@@ -545,7 +546,7 @@ All the code has a internal documentation for more explanation of this example.
 ## Preview of Example
 <br>
 
-![alt tag](https://github.com/fabian7593/MagicalCamera/blob/master/Images/magicalcamera.gif)
+![alt tag](https://raw.githubusercontent.com/fabian7593/MagicalCamera/master/Images/magicalcamera.gif)
 
 <br><br>
 
