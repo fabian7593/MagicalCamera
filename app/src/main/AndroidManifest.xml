@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.frosquivel.magicalcameraapp">
 
     <!-- Another permission for use gps, information and face recognition -->
@@ -15,13 +16,16 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CAMERA" />
 
+    <uses-permission android:name="com.frosquivel.magicalcameraapp.provider.READ"/>
+
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:largeHeap="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+       >
         <activity
 
             android:name="com.frosquivel.magicalcameraapp.Activities.Menu.AboutUsActivity"
@@ -94,6 +98,19 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="d99772e53218c64c9e36291cbc9ec30ae8c2c180" />
+
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.frosquivel.magicalcameraapp.provider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            android:readPermission="com.frosquivel.magicalcameraapp.provider.READ"
+            tools:replace="android:authorities">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
 
     </application>
 

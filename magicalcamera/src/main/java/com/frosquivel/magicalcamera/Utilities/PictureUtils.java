@@ -15,7 +15,6 @@ public class PictureUtils {
     // Utils methods, resize and get Photo Uri and others
     //================================================================================
 
-
     /**
      * Rotate the bitmap if the image is in landscape camera
      * @param source

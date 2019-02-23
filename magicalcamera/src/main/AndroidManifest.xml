@@ -1,7 +1,11 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.frosquivel.magicalcamera">
 
-    <application android:allowBackup="true" android:label="@string/app_name">
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:name=".MagicalCameraApplication">
         <meta-data
             android:name="com.google.android.gms.vision.DEPENDENCIES"
             android:value="face" />
@@ -15,6 +19,12 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths"/>
         </provider>
+
+        <provider
+            android:name="com.frosquivel.magicalcamera.Provider.PhotoProvider"
+            android:authorities="com.frosquivel.magicalcamera.Provider.PhotoProvider"
+            android:exported="false"
+            android:grantUriPermissions="true" />
     </application>
 
 </manifest>

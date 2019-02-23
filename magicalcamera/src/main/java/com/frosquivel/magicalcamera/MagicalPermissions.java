@@ -123,10 +123,12 @@ public class MagicalPermissions {
                 }
 
                 if (isSuccessPermission) {
-                    if (operationType.equals(allPermissions[x])) {
-                        isCurrentOpetationType = true;
-                        runPendingTask();
-                        break;
+                    if(allPermissions[x] != null && operationType != null){
+                        if (operationType.equals(allPermissions[x])) {
+                            isCurrentOpetationType = true;
+                            runPendingTask();
+                            break;
+                        }
                     }
                 }
             }

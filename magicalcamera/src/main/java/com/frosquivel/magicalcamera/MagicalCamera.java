@@ -194,6 +194,10 @@ public class MagicalCamera {
     }
 
     //get variables
+    public String getRealPath(){
+        return magicalCameraObject.getUriPaths().getUriPathsObject().getRealPath();
+    }
+
     public Bitmap getPhoto(){
         return magicalCameraObject.getActionPicture().getActionPictureObject().getMyPhoto();
     }

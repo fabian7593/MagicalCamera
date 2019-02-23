@@ -44,8 +44,8 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.6.7@aar') {
         transitive = true;
     }
-    //compile project(':magicalcamera')
-    compile 'com.frosquivel:magicalcamera:5.0.5'
+    compile project(':magicalcamera')
+    //compile 'com.frosquivel:magicalcamera:5.0.5'
     compile 'com.github.clans:fab:1.6.3'
     compile 'com.afollestad.material-dialogs:core:0.8.5.9'
     compile 'com.github.ViksaaSkool:AwesomeSplash:v1.0.0'
