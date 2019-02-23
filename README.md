@@ -40,6 +40,7 @@ A Magic library to take photos and select pictures in Android. In a simple way a
   - [Fragments Methods](#fragments-methods)
   - [Override the event onActivityResult](#override-the-event-onactivityresult)
   - [Save Photo in Memory Devices](#save-photo-in-memory-devices)
+  - [Get Uri path](#get-uri-path)
   - [Types of Formats for save photos](#types-of-formats-for-save-photos)
   
   - [Resize photo in real time](#resize-photo-in-real-time)
@@ -128,14 +129,14 @@ repositories {
 }
 
 dependencies {
-    compile 'com.frosquivel:magicalcamera:5.0.5'
+    compile 'com.frosquivel:magicalcamera:6.0.0'
 }
 ```
 
 If you have any problem with this dependence, because the library override any styles, colors or others, please change the last line for this code:
 
 ```bash
- compile('com.frosquivel:magicalcamera:5.0.5@aar') {
+ compile('com.frosquivel:magicalcamera:6.0.0@aar') {
         transitive = false;
     }
 ```
@@ -321,6 +322,12 @@ As you can see MagicalCamera is working together MagicalPermissions so you don't
 ```
 
 <br>
+
+### Get Uri path
+You only could use
+```bash
+magicalCamera.getRealPath()
+```
 
 ### Save Photo in Memory Devices
 This method save your bitmap in internal memory device or if the internal memory is full this library save in sdcard (if you have anything)
