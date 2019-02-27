@@ -182,7 +182,7 @@ On manifest, change the name, for the name of your Application class, like this:
 
 ```bash
   <application
-        android:name=".App.App">
+        android:name=".MyApplicationClass">
 ```
 
 
