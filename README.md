@@ -29,6 +29,7 @@ A Magic library to take photos and select pictures in Android. In a simple way a
   - [Add dependecies](#add-dependecies)
 - [How To use](#how-to-use)
   - [Import library](#import-library)
+  - [Extends Application Class](#extends-application-class)
   
 ### Photo Features and permissions
 - - -
@@ -156,6 +157,34 @@ import com.frosquivel.magicalcamera.Functionallities.PermissionGranted;
 import com.frosquivel.magicalcamera.Objects.MagicalCameraObject;
 ```
 <br>
+
+### Extends Application Class
+You need to extends MagicalCamera application
+
+```bash
+public class MyApplicationClass extends MagicalCameraApplication {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+    }
+    
+    //IF YOU NEED MULTIDEX, SET HERE, NOT ON APPLICATION TAG ON MANIFEAST, LIKE THIS
+    @Override
+    protected void attachBaseContext(Context base) {
+      super.attachBaseContext(base);
+      MultiDex.install(this);
+    }
+}
+
+```
+
+On manifest, change the name, for the name of your Application class, like this:
+
+```bash
+  <application
+        android:name=".App.App">
+```
+
 
 ### Permissions on real time
 With the MagicalPermissions class you can ask for permissions in a Activity or in an Fragment. This class will take care of validating the device API level, what permissions the user haven't granted yet, ask for thoose permissions, deliver the result and together with MagicalCamera will take the photo or select it from the gallery.
